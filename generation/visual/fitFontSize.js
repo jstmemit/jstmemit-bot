@@ -1,10 +1,19 @@
-export const fitFontSize = (ctx, textLines, box) => {
-    let fontSize = 60;
-    for (; fontSize > 10; fontSize -= 2) {
+import {cutText} from "./cutText.js";
+
+export const fitFontSize = (ctx, rawText, box, maxLines) => {
+    for (let fontSize = 60; fontSize > 20; fontSize--) {
         ctx.font = `${fontSize}px Impact`;
-        const tooWide = textLines.some(line => ctx.measureText(line).width > box.w);
-        const totalHeight = fontSize * textLines.length * 1.15;
-        if (!tooWide && totalHeight <= box.h) return fontSize;
+        const lines = cutText(ctx, rawText, box.w);
+
+        const totalHeight = fontSize * lines.length * 1.15;
+        const tooWide = lines.some(line => ctx.measureText(line).width > box.w);
+
+        if (!tooWide && lines.length <= maxLines && totalHeight <= box.h) {
+            return {fontSize, lines};
+        }
     }
-    return 10;
+
+    ctx.font = `20px Impact`;
+    const fallbackLines = cutText(ctx, rawText, box.w).slice(0, maxLines);
+    return {fontSize: 20, lines: fallbackLines};
 };

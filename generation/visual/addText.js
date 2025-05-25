@@ -2,13 +2,12 @@ import {AttachmentBuilder} from "discord.js";
 import {templateSettings} from "./templateSettings.js";
 import Canvas from "@napi-rs/canvas";
 import {getTimestamp, validateCanvasImage} from "../../utils.js";
-import {cutText} from "./cutText.js";
 import {fitFontSize} from "./fitFontSize.js";
 
 export const addText = async (templateName, image, text) => {
     image = await validateCanvasImage(image, Canvas);
 
-    const {fillStyle, textAlign, box, maxLines = 4} = templateSettings[templateName];
+    const {fillStyle, textAlign, box, maxLines = 2} = templateSettings[templateName];
 
     const canvas = new Canvas.Canvas(image.width, image.height);
     const ctx = canvas.getContext('2d');
@@ -25,8 +24,7 @@ export const addText = async (templateName, image, text) => {
         h: Math.round(box.h * canvas.height)
     };
 
-    const lines = cutText(ctx, text, relBox.w).slice(0, maxLines);
-    const fontSize = fitFontSize(ctx, lines, relBox);
+    const {fontSize, lines} = fitFontSize(ctx, text, relBox, maxLines);
     ctx.font = `${fontSize}px Impact`;
     ctx.fillStyle = fillStyle;
 

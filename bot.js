@@ -1,8 +1,9 @@
 import {initializeCommands} from "./commands/initializeCommands.js";
 import {commands} from "./commands.js";
 import dotenv from 'dotenv';
-import { Client, Events, GatewayIntentBits } from 'discord.js';
+import {Client, Events, GatewayIntentBits} from 'discord.js';
 import {debug} from "./commands/debug.js";
+import {handleNewMessage} from "./handlers/handleNewMessage.js";
 
 const client = new Client({
     intents: [
@@ -23,11 +24,19 @@ client.on(Events.ClientReady, readyClient => {
     })
 });
 
+client.on(Events.MessageCreate, message => {
+    if (message.author.bot) return;
+
+    handleNewMessage(message);
+});
+
 client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
-    if (interaction.commandName === 'debug') {
-        debug(interaction);
+    switch (interaction.commandName) {
+        case 'start':
+            debug(interaction);
+            break;
     }
 });
 

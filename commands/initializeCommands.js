@@ -1,4 +1,4 @@
-import { REST, Routes } from 'discord.js';
+import {REST, Routes} from 'discord.js';
 import dotenv from 'dotenv';
 
 export const initializeCommands = async (commands) => {
@@ -13,4 +13,4 @@ export const initializeCommands = async (commands) => {
     } catch (error) {
         console.error(error);
     }
-}
+};

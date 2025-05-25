@@ -9,5 +9,5 @@ export const pool = mysql.createPool({
     // password: dotenv.config().parsed.MYSQL_PASSWORD,
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
 });

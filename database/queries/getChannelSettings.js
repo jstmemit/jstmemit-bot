@@ -3,7 +3,7 @@ import {pool} from '../initializePool.js';
 export const getChannelSettings = (channelId) => {
     return pool.query(
         'SELECT * FROM channnels WHERE channel_id = ?',
-        [channelId]
+        [channelId],
     ).then(([rows]) => {
         if (rows.length === 0) {
             return null;
@@ -13,4 +13,4 @@ export const getChannelSettings = (channelId) => {
         console.error('Error fetching channel settings:', error);
         throw error;
     });
-}
+};

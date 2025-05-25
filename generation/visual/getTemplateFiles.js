@@ -12,4 +12,4 @@ export const getTemplateFiles = (filename) => {
     }
 
     return templateFiles.map(file => path.join(templatesDir, file));
-}
+};

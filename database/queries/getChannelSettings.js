@@ -2,7 +2,7 @@ import {pool} from '../initializePool.js';
 
 export const getChannelSettings = (channelId) => {
     return pool.query(
-        'SELECT * FROM channnels WHERE channel_id = ?',
+        'SELECT * FROM channels WHERE channel_id = ?',
         [channelId],
     ).then(([rows]) => {
         if (rows.length === 0) {

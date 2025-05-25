@@ -1,9 +1,9 @@
 import {pool} from '../initializePool.js';
 import {getChannelSettings} from "./getChannelSettings.js";
 
-export const getChannelMessages = (channelId) => {
+export const getChannelMessages = async (channelId) => {
 
-    const channelSettings = getChannelSettings(channelId);
+    const channelSettings = await getChannelSettings(channelId);
 
     if (channelSettings && !channelSettings.is_enabled) {
         return Promise.resolve(null);

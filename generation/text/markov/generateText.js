@@ -3,6 +3,7 @@ import pkg from 'markov-strings';
 const {default: Markov} = pkg;
 
 export const generateText = async (corpus, minLength, maxLength) => {
+    console.log(corpus, minLength, maxLength);
     const markov = new Markov({stateSize: 2})
     const data = corpus;
 

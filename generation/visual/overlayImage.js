@@ -2,7 +2,7 @@ import Canvas from '@napi-rs/canvas';
 import {AttachmentBuilder} from "discord.js";
 import {getTimestamp, validateCanvasImage} from "../../utils.js";
 
-export const overlayImage = async (image1, image2, variant, height) => {
+export const overlayImage = async (image1, image2, variant, height, convert) => {
     try {
 
         image1 = await validateCanvasImage(image1, Canvas);
@@ -24,7 +24,13 @@ export const overlayImage = async (image1, image2, variant, height) => {
         }
 
         const buffer = await canvas.encode('png');
-        return new AttachmentBuilder(buffer, {name: `meme_${getTimestamp()}.png`});
+
+        if (convert) {
+            return new AttachmentBuilder(buffer, {name: `meme_${getTimestamp()}.png`});
+        } else {
+            return buffer
+        }
+
 
     } catch (error) {
         console.error('Error overlaying images:', error);

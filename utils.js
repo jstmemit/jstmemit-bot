@@ -4,8 +4,12 @@ export const getTimestamp = () => {
 
 export const validateCanvasImage = async (image, canvas) => {
     try {
-        if (image.url) {
+        if (Buffer.isBuffer(image)) {
+            image = await canvas.loadImage(image);
+        } else if (image.url) {
             image = await canvas.loadImage(image.url);
+        } else if (image.attachment) {
+            image = await canvas.loadImage(image.attachment);
         } else if (typeof image === 'string') {
             image = await canvas.loadImage(image);
         }

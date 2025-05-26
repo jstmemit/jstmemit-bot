@@ -8,13 +8,14 @@ export const overlayImage = async (image1, image2, variant, height, convert) => 
         image1 = await validateCanvasImage(image1, Canvas);
         image2 = await validateCanvasImage(image2, Canvas);
 
-        const canvas = new Canvas.Canvas(image1.width, image1.height + height || 0);
+        const canvasHeight = (1024 + (height || 0));
+        const canvas = new Canvas.Canvas(image1.width, canvasHeight);
         const ctx = canvas.getContext('2d');
 
         ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, canvas.width, canvas.height, canvasHeight - height);
 
-        ctx.drawImage(image1, 0, canvas.height - image1.height);
+        ctx.drawImage(image1, 0, height, image1.width, canvasHeight - height);
 
         switch (variant) {
             default:

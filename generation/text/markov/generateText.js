@@ -4,6 +4,7 @@ const {default: Markov} = pkg;
 
 export const generateText = async (corpus, minLength, maxLength) => {
     console.log(corpus, minLength, maxLength);
+    let result;
     const markov = new Markov({stateSize: 2})
     const data = corpus;
 
@@ -19,7 +20,12 @@ export const generateText = async (corpus, minLength, maxLength) => {
         }
     }
 
-    const result = markov.generate(options);
+    try {
+        result = markov.generate(options);
+    } catch (error) {
+        console.error('Error generating text:', error);
+        return false;
+    }
     if (result && result.string) {
         return result.string;
     } else {

@@ -4,8 +4,9 @@ import dotenv from 'dotenv';
 import {Client, Events, GatewayIntentBits} from 'discord.js';
 import {debug} from "./commands/debug.js";
 import {handleNewMessage} from "./handlers/handleNewMessage.js";
+import {iamlucky} from "./commands/iamlucky.js";
 
-const client = new Client({
+export const client = new Client({
 	intents: [
 		GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMembers,
@@ -35,8 +36,10 @@ client.on(Events.InteractionCreate, async interaction => {
 
 	switch (interaction.commandName) {
 		case 'debug':
-			debug(interaction);
+			await debug(interaction);
 			break;
+		case 'iamlucky':
+			await iamlucky(interaction);
 	}
 });
 

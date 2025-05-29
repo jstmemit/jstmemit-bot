@@ -8,8 +8,6 @@ export const generateText = async (corpus, minLength, maxLength) => {
     const markov = new Markov({stateSize: 2})
     const data = corpus;
 
-    console.log(data)
-
     markov.addData(data);
 
     const options = {

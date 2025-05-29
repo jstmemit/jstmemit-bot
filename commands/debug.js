@@ -1,7 +1,7 @@
-import {generateText} from "../generation/text/markov/generateText.js";
-import {getTemplateFiles} from "../generation/visual/getTemplateFiles.js";
-import {overlayImage} from "../generation/visual/overlayImage.js";
-import {addText} from "../generation/visual/addText.js";
+import {generateText} from "../generation/text/markov/helpers/generateText.js";
+import {getTemplateFiles} from "../generation/visual/helpers/getTemplateFiles.js";
+import {overlayImage} from "../generation/visual/helpers/overlayImage.js";
+import {addText} from "../generation/visual/helpers/addText.js";
 import {getChannelMessages} from "../database/queries/getChannelMessages.js";
 
 export const debug = async (interaction) => {

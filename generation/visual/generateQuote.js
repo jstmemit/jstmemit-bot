@@ -1,8 +1,8 @@
-import {getChannelMessages} from "../database/queries/getChannelMessages.js";
-import {generateText} from "./text/markov/generateText.js";
-import {addText} from "./visual/addText.js";
-import {getRandomAvatar} from "../discord/getRandomAvatar.js";
-import {getRandomUsername} from "../discord/getRandomUsername.js";
+import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
+import {generateText} from "../text/markov/helpers/generateText.js";
+import {addText} from "./helpers/addText.js";
+import {getRandomAvatar} from "../../discord/getRandomAvatar.js";
+import {getRandomUsername} from "../../discord/getRandomUsername.js";
 
 export const generateQuote = async (image, channelId, serverId) => {
     const channelMessages = await getChannelMessages(channelId);

@@ -1,5 +1,5 @@
 import {getRandomAvatar} from "../discord/getRandomAvatar.js";
-import {generateQuote} from "../generation/generateQuote.js";
+import {generateQuote} from "../generation/visual/generateQuote.js";
 
 export const iamlucky = async (interaction) => {
     const image = await getRandomAvatar(interaction.guildId)

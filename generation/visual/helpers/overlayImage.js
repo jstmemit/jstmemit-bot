@@ -1,6 +1,6 @@
 import Canvas from '@napi-rs/canvas';
 import {AttachmentBuilder} from "discord.js";
-import {getTimestamp, validateCanvasImage} from "../../utils.js";
+import {getTimestamp, validateCanvasImage} from "../../../handlers/utils.js";
 
 export const overlayImage = async (image1, image2, variant, height, convert) => {
     try {

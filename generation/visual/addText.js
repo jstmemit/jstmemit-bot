@@ -7,12 +7,19 @@ import {fitFontSize} from "./fitFontSize.js";
 export const addText = async (templateName, image, text) => {
     image = await validateCanvasImage(image, Canvas);
 
-    const {fillStyle, textAlign, box, maxLines = 2} = templateSettings[templateName];
+    const {fillStyle, font, textAlign, box, maxLines = 2, baseImageOverlay} = templateSettings[templateName];
 
     const canvas = new Canvas.Canvas(image.width, image.height);
     const ctx = canvas.getContext('2d');
 
     ctx.drawImage(image, 0, 0);
+
+    if (baseImageOverlay > 0) {
+        ctx.globalCompositeOperation = "multiply"
+        ctx.fillStyle = `rgb(${baseImageOverlay},${baseImageOverlay},${baseImageOverlay})`;
+        ctx.fillRect(0, 0, image.width, image.height);
+        ctx.globalCompositeOperation = "source-over";
+    }
 
     ctx.textAlign = textAlign;
     ctx.textBaseline = 'top';
@@ -25,7 +32,7 @@ export const addText = async (templateName, image, text) => {
     };
 
     const {fontSize, lines} = fitFontSize(ctx, text, relBox, maxLines);
-    ctx.font = `${fontSize}px Impact`;
+    ctx.font = `${fontSize}px ${font}`;
     ctx.fillStyle = fillStyle;
 
     let y = relBox.y + (relBox.h - fontSize * lines.length * 1.15) / 2;

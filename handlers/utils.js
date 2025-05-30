@@ -25,3 +25,27 @@ export const validateCanvasImage = async (image, canvas) => {
         return null;
     }
 };
+
+export const resizeImage = (image, canvas, size) => {
+    if (!image || !image.width || !image.height) {
+        console.error('Invalid image:', image);
+        return null;
+    }
+
+    const aspectRatio = image.width / image.height;
+    let width, height;
+
+    if (image.width > image.height) {
+        width = Math.max(image.width, size);
+        height = width / aspectRatio;
+    } else {
+        height = Math.max(image.height, size);
+        width = height * aspectRatio;
+    }
+
+    const resizedCanvas = new canvas.Canvas(width, height);
+    const ctx = resizedCanvas.getContext('2d');
+    ctx.drawImage(image, 0, 0, width, height);
+
+    return resizedCanvas;
+}

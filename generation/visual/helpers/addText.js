@@ -1,7 +1,7 @@
 import {AttachmentBuilder} from "discord.js";
 import {templateSettings} from "../templateSettings.js";
 import Canvas from "@napi-rs/canvas";
-import {getTimestamp, validateCanvasImage} from "../../../handlers/utils.js";
+import {getTimestamp, resizeImage, validateCanvasImage} from "../../../handlers/utils.js";
 import {fitFontSize} from "./fitFontSize.js";
 
 export const addText = async (templateName, image, text) => {
@@ -11,6 +11,8 @@ export const addText = async (templateName, image, text) => {
 
     const canvas = new Canvas.Canvas(image.width, image.height);
     const ctx = canvas.getContext('2d');
+
+    image = await resizeImage(image, Canvas, 512);
 
     ctx.drawImage(image, 0, 0);
 

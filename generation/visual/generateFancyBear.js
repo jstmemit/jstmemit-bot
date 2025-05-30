@@ -8,8 +8,8 @@ export const generateFancyBear = async (channelId) => {
     const image = await getTemplateFiles('fancybear.jpg');
 
     const text = [
-        await generateText(channelMessages, 1, 4),
-        await generateText(channelMessages, 1, 4),
+        await generateText(channelMessages, 0, 4),
+        await generateText(channelMessages, 0, 4),
     ]
 
     const imageFirstTest = await addText('fancybear_1', image, text[0]);

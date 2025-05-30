@@ -7,8 +7,12 @@ let previous;
 export const generateText = async (corpus, minLength, maxLength) => {
     console.log(corpus, minLength, maxLength);
     let result;
-    const markov = new Markov({stateSize: 2})
+    const markov = new Markov({stateSize: 1})
     const data = corpus;
+
+    if (!data || data.length === 0) {
+        return false;
+    }
 
     markov.addData(data);
 

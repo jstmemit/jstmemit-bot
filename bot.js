@@ -1,7 +1,7 @@
 import {initializeCommands} from "./commands/initializeCommands.js";
 import {commands} from "./commands.js";
 import dotenv from 'dotenv';
-import {Client, Events, GatewayIntentBits} from 'discord.js';
+import {ActivityType, Client, Events, GatewayIntentBits} from 'discord.js';
 import {debug} from "./commands/debug.js";
 import {handleNewMessage} from "./handlers/handleNewMessage.js";
 import {iamlucky} from "./commands/iamlucky.js";
@@ -20,6 +20,7 @@ export const client = new Client({
 client.on(Events.ClientReady, readyClient => {
 	console.log(`Logged in as ${readyClient.user.tag}!`);
 
+	client.user.setActivity('meme generation', {type: ActivityType.Competing});
 	initializeCommands(commands).then(() => {
 		console.log('Commands initialized successfully.');
 	}).catch(error => {

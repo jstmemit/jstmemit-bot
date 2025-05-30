@@ -47,4 +47,12 @@ export const templateSettings = {
         maxLines: 2,
         baseImageOverlay: 0
     },
+    looksatpaperangry: {
+        fillStyle: '#000000',
+        textAlign: 'center',
+        font: 'Impact',
+        box: {x: 0.45, y: 0.6, w: 0.3, h: 0.25},
+        maxLines: 3,
+        baseImageOverlay: 0
+    }
 };

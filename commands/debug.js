@@ -1,13 +1,13 @@
 import {getRandomAvatar} from "../discord/getRandomAvatar.js";
-import {generateUncanny} from "../generation/visual/generateUncanny.js";
 import {runRandomFunction} from "../handlers/utils.js";
+import {generateLooksAtPaperAngry} from "../generation/visual/generateLooksAtPaperAngry.js";
 
 export const debug = async (interaction) => {
      let textResult, imageResult;
      const image = await getRandomAvatar(interaction.guildId)
 
      const memeTemplates = [
-          () => generateUncanny(interaction.channelId)
+          () => generateLooksAtPaperAngry(interaction.channelId, interaction.guildId)
      ]
 
      const result = await runRandomFunction(memeTemplates)

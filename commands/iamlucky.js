@@ -5,6 +5,7 @@ import {generateQuote} from "../generation/visual/generateQuote.js";
 import {generateSpeechbubble} from "../generation/visual/generateSpeechbubble.js";
 import {runRandomFunction} from "../handlers/utils.js";
 import {generateUncanny} from "../generation/visual/generateUncanny.js";
+import {generateLooksAtPaperAngry} from "../generation/visual/generateLooksAtPaperAngry.js";
 
 export const iamlucky = async (interaction) => {
     let textResult, imageResult;
@@ -15,7 +16,9 @@ export const iamlucky = async (interaction) => {
         () => generateSpeechbubble(image, interaction.channelId),
         () => generateFancyBear(interaction.channelId),
         () => generateGreentext(interaction.channelId),
-        () => generateUncanny(interaction.channelId)
+        () => generateUncanny(interaction.channelId),
+        () => generateLooksAtPaperAngry(interaction.channelId, interaction.guildId)
+
     ]
 
     const result = await runRandomFunction(memeTemplates)

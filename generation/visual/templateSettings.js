@@ -31,4 +31,20 @@ export const templateSettings = {
         maxLines: 2,
         baseImageOverlay: 0
     },
+    uncanny_1: {
+        fillStyle: '#ffffff',
+        textAlign: 'center',
+        font: 'Impact',
+        box: {x: 0.1, y: 0.7, w: 0.25, h: 0.25},
+        maxLines: 2,
+        baseImageOverlay: 0
+    },
+    uncanny_2: {
+        fillStyle: '#ffffff',
+        textAlign: 'center',
+        font: 'Impact',
+        box: {x: 0.64, y: 0.7, w: 0.25, h: 0.25},
+        maxLines: 2,
+        baseImageOverlay: 0
+    },
 };

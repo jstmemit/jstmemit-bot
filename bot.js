@@ -52,6 +52,12 @@ client.on(Events.InteractionCreate, async interaction => {
 		const id = customId.split('_')[0];
 		const analytics = customId.split('_')[1];
 
+		switch (id) {
+			case 'regenerate':
+				await iamlucky(interaction);
+				break;
+		}
+
 		if (id === 'like' || id === 'dislike') {
 			let record = votes.get(analytics);
 			if (!record) {

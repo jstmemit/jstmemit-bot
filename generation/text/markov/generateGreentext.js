@@ -3,7 +3,7 @@ import {generateText} from "./helpers/generateText.js";
 
 export const generateGreentext = async (channelId) => {
     const channelMessages = await getChannelMessages(channelId);
-    const mainText = await generateText(channelMessages, 5, 15);
+    const mainText = await generateText(channelMessages, 0, 15);
 
     const greentexts = [
         await generateText(channelMessages, 1, 5),

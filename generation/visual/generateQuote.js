@@ -6,7 +6,7 @@ import {getRandomUsername} from "../../discord/getRandomUsername.js";
 
 export const generateQuote = async (image, channelId, serverId) => {
     const channelMessages = await getChannelMessages(channelId);
-    const generatedText = await generateText(channelMessages, 5, 20);
+    const generatedText = await generateText(channelMessages, 0, 20);
 
     const quoteText = `“${generatedText}” - ${await getRandomUsername(serverId)}`;
 

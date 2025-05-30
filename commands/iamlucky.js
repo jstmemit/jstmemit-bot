@@ -3,6 +3,8 @@ import {generateFancyBear} from "../generation/visual/generateFancyBear.js";
 import {generateGreentext} from "../generation/text/markov/generateGreentext.js";
 import {generateQuote} from "../generation/visual/generateQuote.js";
 import {generateSpeechbubble} from "../generation/visual/generateSpeechbubble.js";
+import {runRandomFunction} from "../handlers/utils.js";
+import {generateUncanny} from "../generation/visual/generateUncanny.js";
 
 export const iamlucky = async (interaction) => {
     let textResult, imageResult;
@@ -12,12 +14,11 @@ export const iamlucky = async (interaction) => {
         () => generateQuote(image, interaction.channelId, interaction.guildId),
         () => generateSpeechbubble(image, interaction.channelId),
         () => generateFancyBear(interaction.channelId),
-        () => generateGreentext(interaction.channelId)
+        () => generateGreentext(interaction.channelId),
+        () => generateUncanny(interaction.channelId)
     ]
 
-    const randomIndex = Math.floor(Math.random() * memeTemplates.length);
-    const selectedTemplate = memeTemplates[randomIndex];
-    const result = await selectedTemplate();
+    const result = await runRandomFunction(memeTemplates)
 
     if (typeof result === 'string') {
         textResult = result;

@@ -1,20 +1,23 @@
-import {generateText} from "../generation/text/markov/helpers/generateText.js";
-import {getTemplateFiles} from "../generation/visual/helpers/getTemplateFiles.js";
-import {overlayImage} from "../generation/visual/helpers/overlayImage.js";
-import {addText} from "../generation/visual/helpers/addText.js";
-import {getChannelMessages} from "../database/queries/getChannelMessages.js";
+import {getRandomAvatar} from "../discord/getRandomAvatar.js";
+import {generateUncanny} from "../generation/visual/generateUncanny.js";
+import {runRandomFunction} from "../handlers/utils.js";
 
 export const debug = async (interaction) => {
-     const image = interaction.options.getAttachment('image')
-     const debugImageResult = await overlayImage(image, await getTemplateFiles('speechbubble.png'), 'speechbubble', 200)
+     let textResult, imageResult;
+     const image = await getRandomAvatar(interaction.guildId)
 
-     const channelMessages = await getChannelMessages(interaction.channelId);
-     const generatedText = await generateText(channelMessages, 2, 10);
-     const result = await addText('speechbubble', debugImageResult, generatedText);
+     const memeTemplates = [
+          () => generateUncanny(interaction.channelId)
+     ]
 
-     await interaction.reply({files: [result]});
+     const result = await runRandomFunction(memeTemplates)
 
-     // await interaction.reply({
-     //     content: await generateText(await getChannelMessages(interaction.channelId), 2, 10)
-     // });
+     if (typeof result === 'string') {
+          textResult = result;
+          await interaction.reply({content: textResult});
+
+     } else {
+          imageResult = result;
+          await interaction.reply({files: [result]});
+     }
 };

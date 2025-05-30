@@ -3,7 +3,7 @@ import {generateFancyBear} from "../generation/visual/generateFancyBear.js";
 import {generateGreentext} from "../generation/text/markov/generateGreentext.js";
 import {generateQuote} from "../generation/visual/generateQuote.js";
 import {generateSpeechbubble} from "../generation/visual/generateSpeechbubble.js";
-import {runRandomFunction} from "../handlers/utils.js";
+import {getTimestamp, runRandomFunction} from "../handlers/utils.js";
 import {generateUncanny} from "../generation/visual/generateUncanny.js";
 import {generateLooksAtPaperAngry} from "../generation/visual/generateLooksAtPaperAngry.js";
 import {ButtonStyle} from "discord.js";
@@ -22,14 +22,20 @@ export const iamlucky = async (interaction) => {
         () => generateLooksAtPaperAngry(interaction.channelId, interaction.guildId)
     ]
 
-    const result = await runRandomFunction(memeTemplates)
+    const {result, functionName} = await runRandomFunction(memeTemplates);
 
     if (typeof result === 'string') {
         textResult = result;
-        await interaction.reply({content: textResult, components: [await buildRow()]});
+        await interaction.reply({
+            content: textResult,
+            components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+        });
 
     } else {
         imageResult = result;
-        await interaction.reply({files: [result], components: [await buildRow()]});
+        await interaction.reply({
+            files: [result],
+            components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+        });
     }
 };

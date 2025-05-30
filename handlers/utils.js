@@ -52,6 +52,10 @@ export const resizeImage = (image, canvas, size) => {
 
 export const runRandomFunction = async (functions) => {
     const randomIndex = Math.floor(Math.random() * functions.length);
-    const selectedTemplate = functions[randomIndex];
-    return await selectedTemplate();
-}
+    const selectedFunction = functions[randomIndex];
+
+    const functionName = selectedFunction.toString().match(/generate\w+/)?.[0];
+
+    const result = await selectedFunction();
+    return {result, functionName};
+};

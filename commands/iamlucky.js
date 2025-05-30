@@ -18,7 +18,6 @@ export const iamlucky = async (interaction) => {
         () => generateGreentext(interaction.channelId),
         () => generateUncanny(interaction.channelId),
         () => generateLooksAtPaperAngry(interaction.channelId, interaction.guildId)
-
     ]
 
     const result = await runRandomFunction(memeTemplates)

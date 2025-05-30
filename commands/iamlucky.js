@@ -6,6 +6,8 @@ import {generateSpeechbubble} from "../generation/visual/generateSpeechbubble.js
 import {runRandomFunction} from "../handlers/utils.js";
 import {generateUncanny} from "../generation/visual/generateUncanny.js";
 import {generateLooksAtPaperAngry} from "../generation/visual/generateLooksAtPaperAngry.js";
+import {ButtonStyle} from "discord.js";
+import {buildRow} from "../discord/buttons/buildRow.js";
 
 export const iamlucky = async (interaction) => {
     let textResult, imageResult;
@@ -24,10 +26,10 @@ export const iamlucky = async (interaction) => {
 
     if (typeof result === 'string') {
         textResult = result;
-        await interaction.reply({content: textResult});
+        await interaction.reply({content: textResult, components: [await buildRow()]});
 
     } else {
         imageResult = result;
-        await interaction.reply({files: [result]});
+        await interaction.reply({files: [result], components: [await buildRow()]});
     }
 };

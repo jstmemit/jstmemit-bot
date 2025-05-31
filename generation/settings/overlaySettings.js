@@ -1,6 +1,6 @@
 export const overlaySettings = {
     speechbubble: {
-        type: 'full',
+        type: 'fill_full',
         dy: 0
     },
     looksatpaperangry_1: {
@@ -27,4 +27,7 @@ export const overlaySettings = {
         cy: 200,
         radius: 64
     },
+    wojackpoint_1: {
+        type: 'fullimage'
+    }
 }

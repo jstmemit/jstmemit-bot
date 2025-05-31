@@ -102,5 +102,14 @@ export const textSettings = {
         box: {x: 0.3, y: 0.6, w: 0.4, h: 0.25},
         maxLines: 3,
         baseImageOverlay: 0
+    },
+    wojackpoint_1: {
+        fillStyle: '#ffffff',
+        outlineStyle: '#000000',
+        textAlign: 'center',
+        font: 'Impact',
+        box: {x: 0.32, y: 0.7, w: 0.4, h: 0.25},
+        maxLines: 4,
+        baseImageOverlay: 0
     }
 };

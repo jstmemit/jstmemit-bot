@@ -2,7 +2,6 @@ import {getRandomAvatar} from "../discord/getRandomAvatar.js";
 import {generateFancyBear} from "../generation/visual/generateFancyBear.js";
 import {generateGreentext} from "../generation/text/markov/generateGreentext.js";
 import {generateQuote} from "../generation/visual/generateQuote.js";
-import {generateSpeechbubble} from "../generation/visual/generateSpeechbubble.js";
 import {getTimestamp, runRandomFunction} from "../handlers/utils.js";
 import {generateUncanny} from "../generation/visual/generateUncanny.js";
 import {generateLooksAtPaperAngry} from "../generation/visual/generateLooksAtPaperAngry.js";
@@ -22,7 +21,7 @@ export const iamlucky = async (interaction, isRegenerate) => {
 
     const memeTemplates = [
         () => generateQuote(image, interaction.channelId, interaction.guildId),
-        () => generateSpeechbubble(image, interaction.channelId),
+        // () => generateSpeechbubble(image, interaction.channelId),
         () => generateFancyBear(interaction.channelId),
         () => generateGreentext(interaction.channelId),
         () => generateUncanny(interaction.channelId),

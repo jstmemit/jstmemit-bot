@@ -3,7 +3,7 @@ import {commands} from "./commands.js";
 import dotenv from 'dotenv';
 import {ActivityType, Client, Events, GatewayIntentBits} from 'discord.js';
 import {debug} from "./commands/debug.js";
-import {handleNewMessage} from "./handlers/handleNewMessage.js";
+import {handleNewMessage} from "./discord/handleNewMessage.js";
 import {iamlucky} from "./commands/iamlucky.js";
 import {vote} from "./discord/buttons/vote/votes.js";
 

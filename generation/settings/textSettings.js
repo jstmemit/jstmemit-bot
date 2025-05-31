@@ -1,4 +1,4 @@
-export const templateSettings = {
+export const textSettings = {
     speechbubble: {
         fillStyle: '#000000',
         textAlign: 'center',

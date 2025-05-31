@@ -5,7 +5,6 @@ const {default: Markov} = pkg;
 let previous;
 
 export const generateText = async (corpus, minLength, maxLength) => {
-    console.log(corpus, minLength, maxLength);
     let result;
     const markov = new Markov({stateSize: 1})
     const data = corpus;

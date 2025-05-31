@@ -1,10 +1,13 @@
 import {initializeCommands} from "./commands/initializeCommands.js";
 import {commands} from "./commands.js";
 import dotenv from 'dotenv';
-import {Client, Events, GatewayIntentBits} from 'discord.js';
+import {ActivityType, Client, Events, GatewayIntentBits} from 'discord.js';
 import {debug} from "./commands/debug.js";
 import {handleNewMessage} from "./handlers/handleNewMessage.js";
 import {iamlucky} from "./commands/iamlucky.js";
+import {parseCount} from "./discord/buttons/parseReactions.js";
+import {buildRow} from "./discord/buttons/buildRow.js";
+import {vote, votes} from "./discord/buttons/vote/votes.js";
 
 export const client = new Client({
 	intents: [
@@ -18,6 +21,7 @@ export const client = new Client({
 client.on(Events.ClientReady, readyClient => {
 	console.log(`Logged in as ${readyClient.user.tag}!`);
 
+	client.user.setActivity('how to make memes', {type: ActivityType.Watching});
 	initializeCommands(commands).then(() => {
 		console.log('Commands initialized successfully.');
 	}).catch(error => {
@@ -32,15 +36,33 @@ client.on(Events.MessageCreate, message => {
 });
 
 client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	switch (interaction.commandName) {
-		case 'debug':
-			await debug(interaction);
-			break;
-		case 'iamlucky':
-			await iamlucky(interaction);
+	if (interaction.isChatInputCommand()) {
+		switch (interaction.commandName) {
+			case 'debug':
+				await debug(interaction);
+				break;
+			case 'iamlucky':
+				await iamlucky(interaction);
+		}
 	}
+
+	if (interaction.isButton()) {
+		const {customId} = interaction;
+
+		const id = customId.split('_')[0];
+		const analytics = customId.split('_')[1];
+
+		switch (id) {
+			case 'regenerate':
+				await iamlucky(interaction);
+				break;
+		}
+
+		if (id === 'like' || id === 'dislike') {
+			await vote(interaction, analytics, id);
+		}
+	}
+
 });
 
 client.login(dotenv.config().parsed.DISCORD_TOKEN);

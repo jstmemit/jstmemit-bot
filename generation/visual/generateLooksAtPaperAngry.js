@@ -6,6 +6,8 @@ import {getRandomAvatar} from "../../discord/getRandomAvatar.js";
 import {overlayImage} from "./helpers/overlayImage.js";
 
 export const generateLooksAtPaperAngry = async (channelId, serverId) => {
+    let result;
+
     const channelMessages = await getChannelMessages(channelId);
     const image = await getTemplateFiles('looksatpaperangry.png');
 
@@ -14,9 +16,9 @@ export const generateLooksAtPaperAngry = async (channelId, serverId) => {
 
     const text = await generateText(channelMessages, 0, 3);
 
-    const image_2 = await overlayImage(image, avatar_1, 'looksatpaperangry_1', 0)
-    const image_3 = await overlayImage(image_2, avatar_2, 'looksatpaperangry_2', 0);
-    const image_4 = await overlayImage(image_3, avatar_2, 'looksatpaperangry_3', 0);
+    result = await overlayImage(image, avatar_1, 'looksatpaperangry_1')
+    result = await overlayImage(result, avatar_2, 'looksatpaperangry_2');
+    result = await overlayImage(result, avatar_2, 'looksatpaperangry_3');
 
-    return await addText('looksatpaperangry', image_4, text);
+    return await addText('looksatpaperangry', result, text);
 }

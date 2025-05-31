@@ -21,7 +21,7 @@ export const client = new Client({
 client.on(Events.ClientReady, readyClient => {
 	console.log(`Logged in as ${readyClient.user.tag}!`);
 
-	client.user.setActivity('meme generation', {type: ActivityType.Competing});
+	client.user.setActivity('how to make memes', {type: ActivityType.Watching});
 	initializeCommands(commands).then(() => {
 		console.log('Commands initialized successfully.');
 	}).catch(error => {

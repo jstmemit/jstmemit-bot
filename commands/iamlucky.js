@@ -9,9 +9,13 @@ import {generateLooksAtPaperAngry} from "../generation/visual/generateLooksAtPap
 import {ButtonStyle} from "discord.js";
 import {buildRow} from "../discord/buttons/buildRow.js";
 
-export const iamlucky = async (interaction) => {
-    let textResult, imageResult;
+export const iamlucky = async (interaction, isRegenerate) => {
+    let textResult, imageResult, mention = '';
     const image = await getRandomAvatar(interaction.guildId)
+
+    if (isRegenerate) {
+        mention = `<@${interaction.user.id}>`;
+    }
 
     const memeTemplates = [
         () => generateQuote(image, interaction.channelId, interaction.guildId),
@@ -27,13 +31,14 @@ export const iamlucky = async (interaction) => {
     if (typeof result === 'string') {
         textResult = result;
         await interaction.reply({
-            content: textResult,
+            content: `${mention}\n${textResult}`,
             components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
         });
 
     } else {
         imageResult = result;
         await interaction.reply({
+            content: `${mention}`,
             files: [result],
             components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
         });

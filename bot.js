@@ -1,5 +1,5 @@
 import {initializeCommands} from "./discord/commands/initializeCommands.js";
-import {commands} from "./discord/commands.js";
+import {commands} from "./discord/commands/commands.js";
 import dotenv from 'dotenv';
 import {ActivityType, Client, Events, GatewayIntentBits} from 'discord.js';
 import {debug} from "./discord/commands/debug.js";
@@ -8,6 +8,7 @@ import {iamlucky} from "./discord/commands/iamlucky.js";
 import {vote} from "./discord/buttons/vote/votes.js";
 import {checkIsEnabled} from "./discord/checkIsEnabled.js";
 import {handleDisabledChannel} from "./discord/handlers/handleDisabledChannel.js";
+import {enable} from "./discord/commands/enable.js";
 
 export const client = new Client({
 	intents: [
@@ -39,6 +40,12 @@ client.on(Events.InteractionCreate, async interaction => {
 
 	if (interaction.isChatInputCommand()) {
 
+		switch (interaction.commandName) {
+			case 'enable':
+				await enable(interaction);
+				return;
+		}
+
 		if (!await checkIsEnabled(interaction.channelId)) {
 			await handleDisabledChannel(interaction);
 			return;
@@ -47,10 +54,12 @@ client.on(Events.InteractionCreate, async interaction => {
 		switch (interaction.commandName) {
 			case 'debug':
 				await debug(interaction);
-				break;
+				return;
 			case 'iamlucky':
 				await iamlucky(interaction);
+				return;
 		}
+
 	}
 
 	if (interaction.isButton()) {

@@ -6,5 +6,9 @@ export const commands = [
     {
         name: 'debug',
         description: 'test command for debugging new templates',
-    }
+    },
+    {
+        name: 'enable',
+        description: 'Enable meme generation in in this channel',
+    },
 ];

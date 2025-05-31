@@ -8,6 +8,7 @@ import {generateUncanny} from "../generation/visual/generateUncanny.js";
 import {generateLooksAtPaperAngry} from "../generation/visual/generateLooksAtPaperAngry.js";
 import {ButtonStyle} from "discord.js";
 import {buildRow} from "../discord/buttons/buildRow.js";
+import {generateCycle} from "../generation/visual/generateCycle.js";
 
 export const iamlucky = async (interaction, isRegenerate) => {
     let textResult, imageResult, mention = '';
@@ -23,7 +24,8 @@ export const iamlucky = async (interaction, isRegenerate) => {
         () => generateFancyBear(interaction.channelId),
         () => generateGreentext(interaction.channelId),
         () => generateUncanny(interaction.channelId),
-        () => generateLooksAtPaperAngry(interaction.channelId, interaction.guildId)
+        () => generateLooksAtPaperAngry(interaction.channelId, interaction.guildId),
+        () => generateCycle(interaction.channelId),
     ]
 
     const {result, functionName} = await runRandomFunction(memeTemplates);

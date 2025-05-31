@@ -54,5 +54,37 @@ export const textSettings = {
         box: {x: 0.45, y: 0.6, w: 0.3, h: 0.25},
         maxLines: 3,
         baseImageOverlay: 0
-    }
+    },
+    cycle_1: {
+        fillStyle: '#000000',
+        textAlign: 'center',
+        font: 'Arial',
+        box: {x: 0.38, y: 0.03, w: 0.25, h: 0.25},
+        maxLines: 2,
+        baseImageOverlay: 0
+    },
+    cycle_2: {
+        fillStyle: '#000000',
+        textAlign: 'center',
+        font: 'Arial',
+        box: {x: 0.72, y: 0.4, w: 0.25, h: 0.25},
+        maxLines: 2,
+        baseImageOverlay: 0
+    },
+    cycle_3: {
+        fillStyle: '#000000',
+        textAlign: 'center',
+        font: 'Arial',
+        box: {x: 0.39, y: 0.75, w: 0.25, h: 0.25},
+        maxLines: 2,
+        baseImageOverlay: 0
+    },
+    cycle_4: {
+        fillStyle: '#000000',
+        textAlign: 'center',
+        font: 'Arial',
+        box: {x: 0.05, y: 0.4, w: 0.25, h: 0.25},
+        maxLines: 2,
+        baseImageOverlay: 0
+    },
 };

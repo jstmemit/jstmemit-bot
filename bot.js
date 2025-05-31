@@ -5,9 +5,7 @@ import {ActivityType, Client, Events, GatewayIntentBits} from 'discord.js';
 import {debug} from "./commands/debug.js";
 import {handleNewMessage} from "./handlers/handleNewMessage.js";
 import {iamlucky} from "./commands/iamlucky.js";
-import {parseCount} from "./discord/buttons/parseReactions.js";
-import {buildRow} from "./discord/buttons/buildRow.js";
-import {vote, votes} from "./discord/buttons/vote/votes.js";
+import {vote} from "./discord/buttons/vote/votes.js";
 
 export const client = new Client({
 	intents: [
@@ -54,7 +52,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		switch (id) {
 			case 'regenerate':
-				await iamlucky(interaction);
+				await iamlucky(interaction, true);
 				break;
 		}
 

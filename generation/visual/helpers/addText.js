@@ -1,7 +1,7 @@
 import {AttachmentBuilder} from "discord.js";
 import {textSettings} from "../../settings/textSettings.js";
 import Canvas from "@napi-rs/canvas";
-import {getTimestamp, validateCanvasImage} from "../../../handlers/utils.js";
+import {getTimestamp, validateCanvasImage} from "../../../utils.js";
 import {fitFontSize} from "./fitFontSize.js";
 
 export const addText = async (templateName, image, text) => {

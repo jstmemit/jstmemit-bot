@@ -1,17 +1,17 @@
-import {getRandomImage} from "../discord/getRandomImage.js";
-import {generateFancyBear} from "../generation/visual/generateFancyBear.js";
-import {generateGreentext} from "../generation/text/markov/generateGreentext.js";
-import {generateQuote} from "../generation/visual/generateQuote.js";
-import {getTimestamp, runRandomFunction} from "../handlers/utils.js";
-import {generateUncanny} from "../generation/visual/generateUncanny.js";
-import {generateLooksAtPaperAngry} from "../generation/visual/generateLooksAtPaperAngry.js";
+import {getRandomImage} from "../getRandomImage.js";
+import {generateFancyBear} from "../../generation/visual/generateFancyBear.js";
+import {generateGreentext} from "../../generation/text/markov/generateGreentext.js";
+import {generateQuote} from "../../generation/visual/generateQuote.js";
+import {getTimestamp, runRandomFunction} from "../../utils.js";
+import {generateUncanny} from "../../generation/visual/generateUncanny.js";
+import {generateLooksAtPaperAngry} from "../../generation/visual/generateLooksAtPaperAngry.js";
 import {ButtonStyle} from "discord.js";
-import {buildRow} from "../discord/buttons/buildRow.js";
-import {generateCycle} from "../generation/visual/generateCycle.js";
-import {generateSteppedInShit} from "../generation/visual/generateSteppedInShit.js";
-import {generateWojackPoint} from "../generation/visual/generateWojackPoint.js";
-import {checkIsEnabled} from "../discord/checkIsEnabled.js";
-import {handleDisabledChannel} from "../discord/handlers/handleDisabledChannel.js";
+import {buildRow} from "../buttons/buildRow.js";
+import {generateCycle} from "../../generation/visual/generateCycle.js";
+import {generateSteppedInShit} from "../../generation/visual/generateSteppedInShit.js";
+import {generateWojackPoint} from "../../generation/visual/generateWojackPoint.js";
+import {checkIsEnabled} from "../checkIsEnabled.js";
+import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
 
 export const iamlucky = async (interaction, isRegenerate) => {
     let textResult, imageResult, mention = '';

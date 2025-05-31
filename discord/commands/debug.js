@@ -1,8 +1,8 @@
-import {getRandomImage} from "../discord/getRandomImage.js";
-import {getTimestamp, runRandomFunction} from "../handlers/utils.js";
+import {getRandomImage} from "../getRandomImage.js";
+import {getTimestamp, runRandomFunction} from "../../utils.js";
 import {ButtonStyle} from "discord.js";
-import {buildRow} from "../discord/buttons/buildRow.js";
-import {generateWojackPoint} from "../generation/visual/generateWojackPoint.js";
+import {buildRow} from "../buttons/buildRow.js";
+import {generateWojackPoint} from "../../generation/visual/generateWojackPoint.js";
 
 export const debug = async (interaction, isRegenerate) => {
      let textResult, imageResult, mention = '';

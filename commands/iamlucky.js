@@ -1,4 +1,4 @@
-import {getRandomAvatar} from "../discord/getRandomAvatar.js";
+import {getRandomImage} from "../discord/getRandomImage.js";
 import {generateFancyBear} from "../generation/visual/generateFancyBear.js";
 import {generateGreentext} from "../generation/text/markov/generateGreentext.js";
 import {generateQuote} from "../generation/visual/generateQuote.js";
@@ -13,7 +13,7 @@ import {generateWojackPoint} from "../generation/visual/generateWojackPoint.js";
 
 export const iamlucky = async (interaction, isRegenerate) => {
     let textResult, imageResult, mention = '';
-    const image = await getRandomAvatar(interaction.guildId)
+    const image = await getRandomImage(interaction.guildId, interaction.channelId)
 
     if (isRegenerate) {
         mention = `<@${interaction.user.id}>`;

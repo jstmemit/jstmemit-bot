@@ -2,7 +2,7 @@ import {getTemplateFiles} from "./helpers/getTemplateFiles.js";
 import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
 import {generateText} from "../text/markov/helpers/generateText.js";
 import {addText} from "./helpers/addText.js";
-import {getRandomAvatar} from "../../discord/getRandomAvatar.js";
+import {getRandomImage} from "../../discord/getRandomImage.js";
 import {overlayImage} from "./helpers/overlayImage.js";
 
 export const generateSteppedInShit = async (channelId, serverId) => {
@@ -11,7 +11,7 @@ export const generateSteppedInShit = async (channelId, serverId) => {
     const channelMessages = await getChannelMessages(channelId);
     const image = await getTemplateFiles('steppedinshit.png');
 
-    const avatar = await getRandomAvatar(serverId)
+    const avatar = await getRandomImage(serverId, channelId)
 
     const text = [
         await generateText(channelMessages, 0, 3),

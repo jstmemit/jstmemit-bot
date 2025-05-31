@@ -1,14 +1,14 @@
 import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
 import {generateText} from "../text/markov/helpers/generateText.js";
 import {addText} from "./helpers/addText.js";
-import {getRandomAvatar} from "../../discord/getRandomAvatar.js";
+import {getRandomImage} from "../../discord/getRandomImage.js";
 import {getTemplateFiles} from "./helpers/getTemplateFiles.js";
 import {overlayImage} from "./helpers/overlayImage.js";
 
 export const generateWojackPoint = async (channelId, serverId) => {
     let result;
 
-    const image = await getRandomAvatar(serverId);
+    const image = await getRandomImage(serverId, channelId);
     const channelMessages = await getChannelMessages(channelId);
     const meme = await getTemplateFiles('wojackpoint.png');
 

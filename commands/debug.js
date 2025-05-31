@@ -1,4 +1,4 @@
-import {getRandomAvatar} from "../discord/getRandomAvatar.js";
+import {getRandomImage} from "../discord/getRandomImage.js";
 import {getTimestamp, runRandomFunction} from "../handlers/utils.js";
 import {ButtonStyle} from "discord.js";
 import {buildRow} from "../discord/buttons/buildRow.js";
@@ -6,7 +6,7 @@ import {generateWojackPoint} from "../generation/visual/generateWojackPoint.js";
 
 export const debug = async (interaction, isRegenerate) => {
      let textResult, imageResult, mention = '';
-     const image = await getRandomAvatar(interaction.guildId)
+     const image = await getRandomImage(interaction.guildId, interaction.channelId)
 
      if (isRegenerate) {
           mention = `<@${interaction.user.id}>`;

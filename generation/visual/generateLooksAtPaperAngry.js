@@ -2,7 +2,7 @@ import {getTemplateFiles} from "./helpers/getTemplateFiles.js";
 import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
 import {generateText} from "../text/markov/helpers/generateText.js";
 import {addText} from "./helpers/addText.js";
-import {getRandomAvatar} from "../../discord/getRandomAvatar.js";
+import {getRandomImage} from "../../discord/getRandomImage.js";
 import {overlayImage} from "./helpers/overlayImage.js";
 
 export const generateLooksAtPaperAngry = async (channelId, serverId) => {
@@ -11,8 +11,8 @@ export const generateLooksAtPaperAngry = async (channelId, serverId) => {
     const channelMessages = await getChannelMessages(channelId);
     const image = await getTemplateFiles('looksatpaperangry.png');
 
-    const avatar_1 = await getRandomAvatar(serverId)
-    const avatar_2 = await getRandomAvatar(serverId)
+    const avatar_1 = await getRandomImage(serverId, channelId)
+    const avatar_2 = await getRandomImage(serverId, channelId)
 
     const text = await generateText(channelMessages, 0, 3);
 

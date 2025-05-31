@@ -13,10 +13,13 @@ export const generateSteppedInShit = async (channelId, serverId) => {
 
     const avatar = await getRandomAvatar(serverId)
 
-    const text = await generateText(channelMessages, 0, 3);
+    const text = [
+        await generateText(channelMessages, 0, 3),
+        await generateText(channelMessages, 0, 3),
+    ]
 
     result = await overlayImage(image, avatar, 'steppedinshit_1')
-    result = await addText('steppedinshit_1', result, text);
+    result = await addText('steppedinshit_1', result, text[0]);
 
-    return await addText('steppedinshit_2', result, text);
+    return await addText('steppedinshit_2', result, text[1]);
 }

@@ -7,7 +7,7 @@ import {handleNewMessage} from "./handlers/handleNewMessage.js";
 import {iamlucky} from "./commands/iamlucky.js";
 import {parseCount} from "./discord/buttons/parseReactions.js";
 import {buildRow} from "./discord/buttons/buildRow.js";
-import {votes} from "./discord/buttons/vote/votes.js";
+import {vote, votes} from "./discord/buttons/vote/votes.js";
 
 export const client = new Client({
 	intents: [
@@ -59,41 +59,7 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 
 		if (id === 'like' || id === 'dislike') {
-			let record = votes.get(analytics);
-			if (!record) {
-				record = {likes: new Set(), dislikes: new Set()};
-				votes.set(analytics, record);
-			}
-
-			if (record.likes.has(interaction.user.id) || record.dislikes.has(interaction.user.id)) {
-				await interaction.reply({
-					content: 'You have already voted on this meme.',
-					ephemeral: true
-				});
-				return;
-			}
-
-			const row = interaction.message.components[0];
-			const likesText = row.components.find(c => c.customId.startsWith('like'));
-			const dislikesText = row.components.find(c => c.customId.startsWith('dislike'));
-
-			const likes = parseCount(likesText.label);
-			const dislikes = parseCount(dislikesText.label);
-
-			const newLikes = id === 'like' ? likes + 1 : likes;
-			const newDislikes = id === 'dislike' ? dislikes + 1 : dislikes;
-
-			if (id === 'like') {
-				record.likes.add(interaction.user.id);
-			}
-
-			if (id === 'dislike') {
-				record.dislikes.add(interaction.user.id);
-			}
-
-			await interaction.update({
-				components: [buildRow(newLikes, newDislikes, analytics)],
-			});
+			await vote(interaction, analytics, id);
 		}
 	}
 

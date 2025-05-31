@@ -20,5 +20,11 @@ export const overlaySettings = {
         cx: 200,
         cy: 490,
         radius: 150
-    }
+    },
+    steppedinshit_1: {
+        type: 'circle',
+        cx: 370,
+        cy: 200,
+        radius: 64
+    },
 }

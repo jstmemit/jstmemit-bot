@@ -87,4 +87,20 @@ export const textSettings = {
         maxLines: 2,
         baseImageOverlay: 0
     },
+    steppedinshit_1: {
+        fillStyle: '#000000',
+        textAlign: 'center',
+        font: 'Impact',
+        box: {x: 0.3, y: 0.035, w: 0.3, h: 0.1},
+        maxLines: 2,
+        baseImageOverlay: 0
+    },
+    steppedinshit_2: {
+        fillStyle: '#000000',
+        textAlign: 'center',
+        font: 'Impact',
+        box: {x: 0.3, y: 0.6, w: 0.4, h: 0.25},
+        maxLines: 3,
+        baseImageOverlay: 0
+    }
 };

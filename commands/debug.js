@@ -2,7 +2,7 @@ import {getRandomAvatar} from "../discord/getRandomAvatar.js";
 import {getTimestamp, runRandomFunction} from "../handlers/utils.js";
 import {ButtonStyle} from "discord.js";
 import {buildRow} from "../discord/buttons/buildRow.js";
-import {generateCycle} from "../generation/visual/generateCycle.js";
+import {generateSteppedInShit} from "../generation/visual/generateSteppedInShit.js";
 
 export const debug = async (interaction, isRegenerate) => {
      let textResult, imageResult, mention = '';
@@ -13,7 +13,7 @@ export const debug = async (interaction, isRegenerate) => {
      }
 
      const memeTemplates = [
-          () => generateCycle(interaction.channelId),
+          () => generateSteppedInShit(interaction.channelId, interaction.guildId),
      ]
 
      const {result, functionName} = await runRandomFunction(memeTemplates);

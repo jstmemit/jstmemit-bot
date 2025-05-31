@@ -1,4 +1,4 @@
-import {insertMessage} from "../database/queries/insertMessage.js";
+import {insertMessage} from "../../database/queries/insertMessage.js";
 
 export const handleNewMessage = (interaction) => {
 

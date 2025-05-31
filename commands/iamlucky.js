@@ -10,12 +10,18 @@ import {buildRow} from "../discord/buttons/buildRow.js";
 import {generateCycle} from "../generation/visual/generateCycle.js";
 import {generateSteppedInShit} from "../generation/visual/generateSteppedInShit.js";
 import {generateWojackPoint} from "../generation/visual/generateWojackPoint.js";
+import {checkIsEnabled} from "../discord/checkIsEnabled.js";
+import {handleDisabledChannel} from "../discord/handlers/handleDisabledChannel.js";
 
 export const iamlucky = async (interaction, isRegenerate) => {
     let textResult, imageResult, mention = '';
     const image = await getRandomImage(interaction.guildId, interaction.channelId)
 
     if (isRegenerate) {
+        if (!await checkIsEnabled(interaction.channelId)) {
+            await handleDisabledChannel(interaction);
+            return;
+        }
         mention = `<@${interaction.user.id}>`;
     }
 

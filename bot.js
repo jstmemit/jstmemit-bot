@@ -3,9 +3,11 @@ import {commands} from "./commands.js";
 import dotenv from 'dotenv';
 import {ActivityType, Client, Events, GatewayIntentBits} from 'discord.js';
 import {debug} from "./commands/debug.js";
-import {handleNewMessage} from "./discord/handleNewMessage.js";
+import {handleNewMessage} from "./discord/handlers/handleNewMessage.js";
 import {iamlucky} from "./commands/iamlucky.js";
 import {vote} from "./discord/buttons/vote/votes.js";
+import {checkIsEnabled} from "./discord/checkIsEnabled.js";
+import {handleDisabledChannel} from "./discord/handlers/handleDisabledChannel.js";
 
 export const client = new Client({
 	intents: [
@@ -34,7 +36,14 @@ client.on(Events.MessageCreate, message => {
 });
 
 client.on(Events.InteractionCreate, async interaction => {
+
 	if (interaction.isChatInputCommand()) {
+
+		if (!await checkIsEnabled(interaction.channelId)) {
+			await handleDisabledChannel(interaction);
+			return;
+		}
+
 		switch (interaction.commandName) {
 			case 'debug':
 				await debug(interaction);

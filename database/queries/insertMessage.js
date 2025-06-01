@@ -25,7 +25,6 @@ export const insertMessage = async (channelId, message) => {
     } catch (error) {
         await conn.rollback();
         console.error('Database error:', error);
-        throw error;
     } finally {
         conn.release();
     }

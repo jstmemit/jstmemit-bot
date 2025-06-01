@@ -21,70 +21,70 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
 
     const frequency = [
         {
-            label: "Never",
+            label: t("settingsMemesFrequencyOptionNeverTitle", language),
             value: "0",
-            description: "Don't send memes, unless requested via a command",
+            description: t("settingsMemesFrequencyOptionNeverDescription", language),
             emoji: "⬛",
         },
         {
-            label: "Hardly ever",
+            label: t("settingsMemesFrequencyOptionHardlyEverTitle", language),
             value: "1",
-            description: "Once every ~100 messages",
+            description: t("settingsMemesFrequencyOptionHardlyEverDescription", language),
             emoji: "🟥",
         },
         {
-            label: "Rarely",
+            label: t("settingsMemesFrequencyOptionRarelyTitle", language),
             value: "2",
-            description: "Once every ~50 messages",
+            description: t("settingsMemesFrequencyOptionRarelyDescription", language),
             emoji: "🟧",
         },
         {
-            label: "Sometimes",
+            label: t("settingsMemesFrequencyOptionSometimesTitle", language),
             value: "5",
-            description: "Once every ~20 messages (recommended)",
+            description: t("settingsMemesFrequencyOptionSometimesDescription", language),
             emoji: "🟨",
         },
         {
-            label: "Often",
+            label: t("settingsMemesFrequencyOptionOftenTitle", language),
             value: "10",
-            description: "Once every ~10 messages",
+            description: t("settingsMemesFrequencyOptionOftenDescription", language),
             emoji: "🟩",
         },
     ];
 
     const memeTemplates = [
         {
-            label: "Wojak pointing",
+            label: t("settingsMemesTemplatesOptionWojakPointingTitle", language),
             value: "wojakpointing",
             emoji: {id: "1378516235125526618"},
         },
         {
-            label: "Uncanny",
+            label: t("settingsMemesTemplatesOptionUncannyTitle", language),
             value: "uncanny",
             emoji: {id: "1378516226099384462"},
         },
         {
-            label: "Stepped in shit",
+            label: t("settingsMemesTemplatesOptionSteppedInShitTitle", language),
             value: "steppedinshit",
             emoji: {id: "1378516213600223303"},
         },
         {
-            label: "Speechbubble",
+            label: t("settingsMemesTemplatesOptionSpeechbubbleTitle", language),
             value: "speechbubble",
             emoji: {id: "1378516203366252646"},
         },
         {
-            label: "Looks at paper angry",
+            label: t("settingsMemesTemplatesOptionLooksAtPaperAngryTitle", language),
             value: "looksatpaperangry",
             emoji: {id: "1378516194562150491"},
         },
         {
-            label: "Winnie the Pooh",
+            label: t("settingsMemesTemplatesOptionFancyBearTitle", language),
             value: "fancybear",
             emoji: {id: "1378516184617717800"},
         },
         {
-            label: "Cycle",
+            label: t("settingsMemesTemplatesOptionCycleTitle", language),
             value: "cycle",
             emoji: {id: "1378516169073496155"},
         },
@@ -92,28 +92,28 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
 
     const dataRetentionOptions = [
         {
-            label: "2 days",
+            label: t("settingsDataRetentionHowLongOption2DaysTitle", language),
             value: "2",
             emoji: {name: "⏱️"},
-            description: "For very active channels",
+            description: t("settingsDataRetentionHowLongOption2DaysDescription", language),
         },
         {
-            label: "7 days",
+            label: t("settingsDataRetentionHowLongOption7DaysTitle", language),
             value: "7",
             emoji: {name: "⏱️"},
-            description: "For active channels",
+            description: t("settingsDataRetentionHowLongOption7DaysDescription", language),
         },
         {
-            label: "14 days",
+            label: t("settingsDataRetentionHowLongOption14DaysTitle", language),
             value: "14",
             emoji: {name: "⏱️"},
-            description: "For not very active channels (recommended)",
+            description: t("settingsDataRetentionHowLongOption14DaysDescription", language),
         },
         {
-            label: "30 days",
+            label: t("settingsDataRetentionHowLongOption30DaysTitle", language),
             value: "30",
             emoji: {name: "⏱️"},
-            description: "For very inactive channels",
+            description: t("settingsDataRetentionHowLongOption30DaysDescription", language),
         },
     ]
 
@@ -204,19 +204,19 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
             // memes in the chat
             new ContainerBuilder()
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("## 💬 Memes in the chat"),
+                    new TextDisplayBuilder().setContent(`## 💬 ${(t("settingsMemesTitle", language))}`),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("This section contains options related to random memes in the chat. You can control how often bot is going to send memes and also what memes do you want to see."),
+                    new TextDisplayBuilder().setContent(t("settingsMemesDescription", language)),
                 )
                 .addSeparatorComponents(
                     new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("### Frequency"),
+                    new TextDisplayBuilder().setContent(`### ${(t("settingsMemesFrequencyTitle", language))}`),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("How often should the bot send a random meme in the chat without any commands?"),
+                    new TextDisplayBuilder().setContent(t("settingsMemesFrequencyDescription", language)),
                 )
                 .addActionRowComponents(
                     new ActionRowBuilder().addComponents(
@@ -238,10 +238,10 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                     new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("### What memes are going to be sent?"),
+                    new TextDisplayBuilder().setContent(`### ${(t("settingsMemesTemplatesTitle", language))}`),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("Which templates are going to be used for random sent memes in this channel? You can select multiple options."),
+                    new TextDisplayBuilder().setContent(t("settingsMemesTemplatesDescription", language))
                 )
                 .addActionRowComponents(
                     new ActionRowBuilder().addComponents(
@@ -264,28 +264,28 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
             // data retention
             new ContainerBuilder()
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("## 🔒 Data retention"),
+                    new TextDisplayBuilder().setContent(`## ${t("settingsDataRetentionTitle", language)} `),
                 )
                 .addSectionComponents(
                     new SectionBuilder()
                         .setButtonAccessory(
                             new ButtonBuilder()
                                 .setStyle(ButtonStyle.Danger)
-                                .setLabel("Erase saved channel data")
+                                .setLabel(t("btnEraseData", language))
                                 .setCustomId(`erase-${channelId}`),
                         )
                         .addTextDisplayComponents(
-                            new TextDisplayBuilder().setContent("This section contains options related to data retention and privacy. Because memes are generated based on the context of this channel, bot saves anonymous message data in the database. You can control for how long this data is going to be saved or completely erase it now."),
+                            new TextDisplayBuilder().setContent(t("settingsDataRetentionDescription", language)),
                         ),
                 )
                 .addSeparatorComponents(
                     new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("### For how long should the bot keep messages?"),
+                    new TextDisplayBuilder().setContent(`### ${t("settingsDataRetentionHowLongTitle", language)}`),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("After this amount of days, bot will delete saved messages for this channel. More context = better memes."),
+                    new TextDisplayBuilder().setContent(t("settingsDataRetentionHowLongDescription", language))
                 )
                 .addActionRowComponents(
                     new ActionRowBuilder().addComponents(
@@ -312,10 +312,10 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                     new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("### Should bot use user sent images in memes?"),
+                    new TextDisplayBuilder().setContent(`### ${t("settingsDataRetentionUserImagesTitle", language)}`
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("If set to **yes**, sometimes instead of using avatars it will use user sent images instead. Only images sent no more than 24 hours ago will be used."),
+                    new TextDisplayBuilder().setContent(t("settingsDataRetentionUserImagesDescription", language)))
                 )
                 .addActionRowComponents(
                     new ActionRowBuilder()
@@ -324,14 +324,15 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                                 .setCustomId("select-useuserimages")
                                 .addOptions(
                                     new SelectMenuOptionBuilder()
-                                        .setLabel("No")
+                                        .setLabel(t("no", language))
+                                        .setDefault(currentSettings.use_user_images == 0)
                                         .setValue("no")
                                         .setEmoji({
                                             name: "❌",
                                         }),
                                     new SelectMenuOptionBuilder()
-                                        .setLabel("Yes")
-                                        .setDefault(true)
+                                        .setLabel(t("yes", language))
+                                        .setDefault(currentSettings.use_user_images == 1)
                                         .setValue("yes")
                                         .setEmoji({
                                             name: "✅",

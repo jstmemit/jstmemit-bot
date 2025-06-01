@@ -7,7 +7,7 @@ export const insertMessage = async (channelId, message) => {
 
         await conn.query(
             `INSERT INTO channels (channel_id, is_enabled)
-             VALUES (?, 1)
+             VALUES (?, 0)
              ON DUPLICATE KEY UPDATE channel_id = channel_id`,
             [channelId],
         );

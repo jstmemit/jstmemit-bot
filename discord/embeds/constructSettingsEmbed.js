@@ -16,8 +16,6 @@ import {
 
 export const constructSettingsEmbed = (currentSettings, channelId) => {
 
-    currentSettings.enabled_random_memes = currentSettings.enabled_random_memes.split(',')
-
     const frequency = [
         {
             label: "Never",
@@ -138,6 +136,14 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
             emoji: {id: "1378662074850344960"},
         },
     ]
+
+    if (currentSettings) {
+        if (currentSettings.enabled_random_memes === "all") {
+            currentSettings.enabled_random_memes = memeTemplates.map(template => template.value);
+        } else {
+            currentSettings.enabled_random_memes = currentSettings.enabled_random_memes.split(',')
+        }
+    }
 
     return [
         [

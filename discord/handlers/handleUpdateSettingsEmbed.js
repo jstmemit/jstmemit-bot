@@ -11,7 +11,7 @@ export const handleUpdateSettingsEmbed = async (interaction) => {
 
         await interaction.editReply({
             flags: MessageFlags.IsComponentsV2,
-            components: components[0]
+            components: components
         })
     } catch (error) {
         console.error("Error updating embed:", error);

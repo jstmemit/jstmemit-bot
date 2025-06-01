@@ -15,15 +15,10 @@ export const settings = async (interaction) => {
         }
     }
 
-    const settingsEmbeds = constructSettingsEmbed(channelSettings, interaction.channelId);
+    const settingsEmbed = constructSettingsEmbed(channelSettings, interaction.channelId);
 
     await interaction.reply({
         flags: MessageFlags.IsComponentsV2,
-        components: settingsEmbeds[0]
-    })
-
-    await interaction.followUp({
-        flags: MessageFlags.IsComponentsV2,
-        components: settingsEmbeds[1]
+        components: settingsEmbed
     })
 }

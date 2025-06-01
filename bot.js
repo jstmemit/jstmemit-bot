@@ -79,7 +79,11 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		if (customId.startsWith("enable-") || customId.startsWith("disable-")) {
 			await handleToggleBot(interaction);
-			await handleUpdateSettingsEmbed(interaction);
+			try {
+				await handleUpdateSettingsEmbed(interaction);
+			} catch (error) {
+
+			}
 			return;
 		}
 
@@ -108,18 +112,23 @@ client.on(Events.InteractionCreate, async interaction => {
 		switch (customId) {
 			case "select-frequency":
 				await handleFrequencyChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
 				break;
 			case "select-memetemplates":
 				await handleMemeTemplatesChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
 				break;
 			case "select-dataretention":
 				await handleDataRetentionChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
 				break;
 			case "select-useuserimages":
 				await handleUseUserImagesChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
 				break;
 			case "select-language":
 				await handleLanguageChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
 				break;
 		}
 	}

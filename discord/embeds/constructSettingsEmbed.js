@@ -13,8 +13,11 @@ import {
     TextDisplayBuilder,
     ThumbnailBuilder
 } from 'discord.js';
+import {t} from "../i18n/utils.js";
 
 export const constructSettingsEmbed = (currentSettings, channelId) => {
+
+    const language = currentSettings?.language || "english";
 
     const frequency = [
         {
@@ -138,15 +141,19 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
     ]
 
     if (currentSettings) {
-        if (currentSettings.enabled_random_memes === "all") {
-            currentSettings.enabled_random_memes = memeTemplates.map(template => template.value);
-        } else {
-            currentSettings.enabled_random_memes = currentSettings.enabled_random_memes.split(',')
+        let memes = currentSettings.enabled_random_memes;
+        if (
+            memes === "all" || memes === "" || (Array.isArray(memes) && (memes[0] === "" || memes.length === 0))
+        ) {
+            currentSettings.enabled_random_memes = memeTemplates.map(
+                template => template.value
+            );
+        } else if (typeof memes === "string") {
+            currentSettings.enabled_random_memes = memes.split(",");
         }
     }
 
     return [
-        [
             new ContainerBuilder()
                 .addSectionComponents(
                     new SectionBuilder()
@@ -155,9 +162,25 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                                 .setURL("https://media.discordapp.net/attachments/1375839391448170517/1378490221410127984/logopng.png?ex=683cca8f&is=683b790f&hm=91e3d48f610703f7fa2685426283a4b79b120e8467d9a98d222cea500cc49f17&=&format=webp&quality=lossless")
                         )
                         .addTextDisplayComponents(
-                            new TextDisplayBuilder().setContent("# ⚙️ Settings"),
-                            new TextDisplayBuilder().setContent("Here you can change bot's behaviour in this channel."),
+                            new TextDisplayBuilder().setContent(`# ⚙️ ${(t("settingsTitle", language))}`),
+                            new TextDisplayBuilder().setContent(t("settingsDescription", language)),
                         ),
+                )
+                .addActionRowComponents(
+                    new ActionRowBuilder()
+                        .addComponents(
+                            new StringSelectMenuBuilder()
+                                .setCustomId("select-language")
+                                .addOptions(
+                                    languageOptions.map((option) =>
+                                        new SelectMenuOptionBuilder()
+                                            .setLabel(option.label)
+                                            .setValue(option.value)
+                                            .setDefault(currentSettings.language === option.value)
+                                            .setEmoji(option.emoji)
+                                    )
+                                )
+                        )
                 )
                 .addSeparatorComponents(
                     new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
@@ -167,15 +190,15 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                         .setButtonAccessory(
                             new ButtonBuilder()
                                 .setStyle(currentSettings.is_enabled ? ButtonStyle.Danger : ButtonStyle.Success)
-                                .setLabel(`${currentSettings.is_enabled ? "Disable" : "Enable"}`)
+                                .setLabel(`${currentSettings.is_enabled ? (t("btnDisable", language)) : (t("btnEnable", language))}`)
                                 .setCustomId(`${currentSettings.is_enabled ? "disable" : "enable"}-${channelId}`),
                         )
                         .addTextDisplayComponents(
-                            new TextDisplayBuilder().setContent(`${currentSettings.is_enabled ? "🟢 Bot is **working** in this channel!" : "🔴 Bot is **not working** in this channel!"}`),
+                            new TextDisplayBuilder().setContent(`${currentSettings.is_enabled ? (t("settingsStatusEnabled", language)) : (t("settingsStatusDisabled", language))}`),
                         ),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent(`-# Channel ID: ${channelId}`),
+                    new TextDisplayBuilder().setContent(`-# ${(t("settingsFooterChannelId", language))} ${channelId}`),
                 ),
 
             // memes in the chat
@@ -316,38 +339,5 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                                 ),
                         ),
                 ),
-        ],
-        [
-            // i18n
-            new ContainerBuilder()
-                .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("## 🌍 Language"),
-                )
-                .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("This section contains options related to internalization and language of the bot in general. If you change the language here, it won't affect language in other channels."),
-                )
-                .addSeparatorComponents(
-                    new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
-                )
-                .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("### What language should the bot use?"),
-                )
-                .addActionRowComponents(
-                    new ActionRowBuilder()
-                        .addComponents(
-                            new StringSelectMenuBuilder()
-                                .setCustomId("select-language")
-                                .addOptions(
-                                    languageOptions.map((option) =>
-                                        new SelectMenuOptionBuilder()
-                                            .setLabel(option.label)
-                                            .setValue(option.value)
-                                            .setDefault(currentSettings.language === option.value)
-                                            .setEmoji(option.emoji)
-                                    )
-                                )
-                        )
-                )
         ]
-    ]
 };

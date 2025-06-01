@@ -1,6 +1,9 @@
 import {pool} from '../initializePool.js';
 
 export const insertMessage = async (channelId, message) => {
+    if (!channelId || !message) {
+        console.log('Error in insertMessage')
+    }
     const conn = await pool.getConnection();
     try {
         await conn.beginTransaction();

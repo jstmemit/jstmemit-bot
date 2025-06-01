@@ -17,6 +17,7 @@ import {handleMemeTemplatesChange} from "./discord/handlers/handleMemeTemplatesC
 import {handleFrequencyChange} from "./discord/handlers/handleFrequencyChange.js";
 import {handleEraseData} from "./discord/handlers/handleEraseData.js";
 import {handleToggleBot} from "./discord/handlers/handleToggleBot.js";
+import {handleUpdateSettingsEmbed} from "./discord/handlers/handleUpdateSettingsEmbed.js";
 
 export const client = new Client({
 	intents: [
@@ -78,6 +79,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		if (customId.startsWith("enable-") || customId.startsWith("disable-")) {
 			await handleToggleBot(interaction);
+			await handleUpdateSettingsEmbed(interaction);
 			return;
 		}
 

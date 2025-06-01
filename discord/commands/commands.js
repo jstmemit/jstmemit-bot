@@ -11,4 +11,8 @@ export const commands = [
         name: 'enable',
         description: 'Enable meme generation in in this channel',
     },
+    {
+        name: 'settings',
+        description: 'Modify bot\'s behavior in this channel',
+    }
 ];

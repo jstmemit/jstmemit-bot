@@ -9,6 +9,7 @@ import {vote} from "./discord/buttons/vote/votes.js";
 import {checkIsEnabled} from "./discord/checkIsEnabled.js";
 import {handleDisabledChannel} from "./discord/handlers/handleDisabledChannel.js";
 import {enable} from "./discord/commands/enable.js";
+import {settings} from "./discord/commands/settings.js";
 
 export const client = new Client({
 	intents: [
@@ -43,6 +44,9 @@ client.on(Events.InteractionCreate, async interaction => {
 		switch (interaction.commandName) {
 			case 'enable':
 				await enable(interaction);
+				return;
+			case 'settings':
+				await settings(interaction);
 				return;
 		}
 

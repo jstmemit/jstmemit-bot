@@ -298,18 +298,18 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                     new ActionRowBuilder()
                         .addComponents(
                             new StringSelectMenuBuilder()
-                                .setCustomId("465f4eec7a6b4cc5c3f4676ace5868d4122")
+                                .setCustomId("select-useuserimages")
                                 .addOptions(
                                     new SelectMenuOptionBuilder()
                                         .setLabel("No")
-                                        .setValue("b82ace5dcdfc463aa275d9e583edc9e912233")
+                                        .setValue("no")
                                         .setEmoji({
                                             name: "❌",
                                         }),
                                     new SelectMenuOptionBuilder()
                                         .setLabel("Yes")
                                         .setDefault(true)
-                                        .setValue("058d07715ebb4eafa832987ecfca013012233")
+                                        .setValue("yes")
                                         .setEmoji({
                                             name: "✅",
                                         }),

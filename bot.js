@@ -10,6 +10,13 @@ import {checkIsEnabled} from "./discord/checkIsEnabled.js";
 import {handleDisabledChannel} from "./discord/handlers/handleDisabledChannel.js";
 import {enable} from "./discord/commands/enable.js";
 import {settings} from "./discord/commands/settings.js";
+import {handleLanguageChange} from "./discord/handlers/handleLanguageChange.js";
+import {handleUseUserImagesChange} from "./discord/handlers/handleUseUserImagesChange.js";
+import {handleDataRetentionChange} from "./discord/handlers/handleDataRetentionChange.js";
+import {handleMemeTemplatesChange} from "./discord/handlers/handleMemeTemplatesChange.js";
+import {handleFrequencyChange} from "./discord/handlers/handleFrequencyChange.js";
+import {handleEraseData} from "./discord/handlers/handleEraseData.js";
+import {handleToggleBot} from "./discord/handlers/handleToggleBot.js";
 
 export const client = new Client({
 	intents: [
@@ -69,6 +76,16 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (interaction.isButton()) {
 		const {customId} = interaction;
 
+		if (customId.startsWith("enable-") || customId.startsWith("disable-")) {
+			await handleToggleBot(interaction);
+			return;
+		}
+
+		if (customId.startsWith("erase-")) {
+			await handleEraseData(interaction);
+			return;
+		}
+
 		const id = customId.split('_')[0];
 		const analytics = customId.split('_')[1];
 
@@ -80,6 +97,28 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		if (id === 'like' || id === 'dislike') {
 			await vote(interaction, analytics, id);
+		}
+	}
+
+	if (interaction.isStringSelectMenu()) {
+		const {customId} = interaction;
+
+		switch (customId) {
+			case "select-frequency":
+				await handleFrequencyChange(interaction);
+				break;
+			case "select-memetemplates":
+				await handleMemeTemplatesChange(interaction);
+				break;
+			case "select-dataretention":
+				await handleDataRetentionChange(interaction);
+				break;
+			case "select-useuserimages":
+				await handleUseUserImagesChange(interaction);
+				break;
+			case "select-language":
+				await handleLanguageChange(interaction);
+				break;
 		}
 	}
 

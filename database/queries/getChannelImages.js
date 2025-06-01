@@ -10,7 +10,7 @@ export const getChannelImages = async (channelId) => {
     }
 
     return pool.query(
-        'SELECT * FROM messages WHERE channel_id = ? AND message LIKE ?',
+        'SELECT * FROM messages WHERE channel_id = ? AND message LIKE ? AND timestamp >= (NOW() - INTERVAL 20 HOUR)',
         [channelId, 'https://cdn.discordapp.com/attachments/%'],
     ).then(([rows]) => {
         if (rows.length === 0) {

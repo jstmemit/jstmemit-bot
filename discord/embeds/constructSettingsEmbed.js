@@ -264,7 +264,7 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
             // data retention
             new ContainerBuilder()
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent(`## ${t("settingsDataRetentionTitle", language)} `),
+                    new TextDisplayBuilder().setContent(`## 🔒 ${t("settingsDataRetentionTitle", language)} `),
                 )
                 .addSectionComponents(
                     new SectionBuilder()
@@ -312,10 +312,10 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                     new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent(`### ${t("settingsDataRetentionUserImagesTitle", language)}`
+                    new TextDisplayBuilder().setContent(`### ${t("settingsDataRetentionUserImagesTitle", language)}`)
                 )
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent(t("settingsDataRetentionUserImagesDescription", language)))
+                    new TextDisplayBuilder().setContent(t("settingsDataRetentionUserImagesDescription", language))
                 )
                 .addActionRowComponents(
                     new ActionRowBuilder()

@@ -1,13 +1,13 @@
 import {AttachmentBuilder} from "discord.js";
 import {textSettings} from "../../settings/textSettings.js";
 import Canvas from "@napi-rs/canvas";
-import {getTimestamp, validateCanvasImage} from "../../../handlers/utils.js";
+import {getTimestamp, validateCanvasImage} from "../../../utils.js";
 import {fitFontSize} from "./fitFontSize.js";
 
 export const addText = async (templateName, image, text) => {
     image = await validateCanvasImage(image, Canvas);
 
-    const {fillStyle, font, textAlign, box, maxLines = 2, baseImageOverlay} = textSettings[templateName];
+    const {fillStyle, font, textAlign, box, maxLines = 2, baseImageOverlay, outlineStyle} = textSettings[templateName];
 
     const canvas = new Canvas.Canvas(image.width, image.height);
     const ctx = canvas.getContext('2d');
@@ -37,9 +37,19 @@ export const addText = async (templateName, image, text) => {
     ctx.font = `${fontSize}px ${font}`;
     ctx.fillStyle = fillStyle;
 
+    if (outlineStyle) {
+        ctx.strokeStyle = outlineStyle;
+        ctx.lineWidth = fontSize / 10;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+    }
+
     let y = relBox.y + (relBox.h - fontSize * lines.length * 1.15) / 2;
     for (const line of lines) {
         const x = textAlign === 'center' ? relBox.x + relBox.w / 2 : relBox.x;
+        if (outlineStyle) {
+            ctx.strokeText(line, x, y, relBox.w);
+        }
         ctx.fillText(line, x, y, relBox.w);
         y += fontSize * 1.15;
     }

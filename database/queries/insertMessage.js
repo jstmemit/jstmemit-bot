@@ -1,13 +1,16 @@
 import {pool} from '../initializePool.js';
 
 export const insertMessage = async (channelId, message) => {
+    if (!channelId || !message) {
+        console.log('Error in insertMessage')
+    }
     const conn = await pool.getConnection();
     try {
         await conn.beginTransaction();
 
         await conn.query(
             `INSERT INTO channels (channel_id, is_enabled)
-             VALUES (?, 1)
+             VALUES (?, 0)
              ON DUPLICATE KEY UPDATE channel_id = channel_id`,
             [channelId],
         );
@@ -22,7 +25,6 @@ export const insertMessage = async (channelId, message) => {
     } catch (error) {
         await conn.rollback();
         console.error('Database error:', error);
-        throw error;
     } finally {
         conn.release();
     }

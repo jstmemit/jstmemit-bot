@@ -1,6 +1,6 @@
 export const overlaySettings = {
     speechbubble: {
-        type: 'full',
+        type: 'fill_full',
         dy: 0
     },
     looksatpaperangry_1: {
@@ -20,5 +20,20 @@ export const overlaySettings = {
         cx: 200,
         cy: 490,
         radius: 150
-    }
+    },
+    steppedinshit_1: {
+        type: 'circle',
+        cx: 370,
+        cy: 200,
+        radius: 64
+    },
+    wojackpoint_1: {
+        type: 'fullimage'
+    },
+    isthisapigeon_1: {
+        type: 'circle',
+        cx: 450,
+        cy: 700,
+        radius: 300
+    },
 }

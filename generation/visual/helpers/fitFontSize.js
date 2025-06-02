@@ -1,7 +1,7 @@
 import {cutText} from "./cutText.js";
 
 export const fitFontSize = (ctx, rawText, box, maxLines) => {
-    for (let fontSize = 60; fontSize > 20; fontSize--) {
+    for (let fontSize = 90; fontSize > 20; fontSize--) {
         ctx.font = `${fontSize}px Impact`;
         const lines = cutText(ctx, rawText, box.w);
 

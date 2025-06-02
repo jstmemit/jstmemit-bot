@@ -1,6 +1,6 @@
 import Canvas from '@napi-rs/canvas';
 import {AttachmentBuilder} from "discord.js";
-import {getTimestamp, validateCanvasImage} from "../../../handlers/utils.js";
+import {getTimestamp, validateCanvasImage} from "../../../utils.js";
 import {overlaySettings} from "../../settings/overlaySettings.js";
 import {drawFullWidth} from "./overlay/drawFullWidth.js";
 import {drawAvatar} from "./overlay/drawAvatar.js";
@@ -14,16 +14,22 @@ export const overlayImage = async (image1, image2, variant, height = 0, convert)
         const canvas = new Canvas.Canvas(baseImage.width, canvasHeight);
         const ctx = canvas.getContext('2d');
 
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        const mode = overlaySettings[variant]
+
+        if (mode.type === 'fill_fullwidth') {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
 
         ctx.drawImage(baseImage, 0, height);
 
-        const mode = overlaySettings[variant]
-
         switch (mode.type) {
-            case 'full':
-                drawFullWidth(ctx, overlayImage, mode.dy + height, baseImage.width, overlayImage.height);
+            case 'fullwidth':
+                const dy = Number(mode.dy) || 0;
+                drawFullWidth(ctx, overlayImage, dy + height, baseImage.width, overlayImage.height);
+                break;
+            case 'fullimage':
+                ctx.drawImage(overlayImage, 0, height, baseImage.width, canvasHeight - height);
                 break;
             case 'circle':
                 drawAvatar(ctx, overlayImage, mode)

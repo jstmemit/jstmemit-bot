@@ -1,13 +1,23 @@
-import {initializeCommands} from "./commands/initializeCommands.js";
-import {commands} from "./commands.js";
+import {initializeCommands} from "./discord/commands/initializeCommands.js";
+import {commands} from "./discord/commands/commands.js";
 import dotenv from 'dotenv';
 import {ActivityType, Client, Events, GatewayIntentBits} from 'discord.js';
-import {debug} from "./commands/debug.js";
-import {handleNewMessage} from "./handlers/handleNewMessage.js";
-import {iamlucky} from "./commands/iamlucky.js";
-import {parseCount} from "./discord/buttons/parseReactions.js";
-import {buildRow} from "./discord/buttons/buildRow.js";
-import {vote, votes} from "./discord/buttons/vote/votes.js";
+import {debug} from "./discord/commands/debug.js";
+import {handleNewMessage} from "./discord/handlers/handleNewMessage.js";
+import {iamlucky} from "./discord/commands/iamlucky.js";
+import {vote} from "./discord/buttons/vote/votes.js";
+import {checkIsEnabled} from "./discord/checkIsEnabled.js";
+import {handleDisabledChannel} from "./discord/handlers/handleDisabledChannel.js";
+import {enable} from "./discord/commands/enable.js";
+import {settings} from "./discord/commands/settings.js";
+import {handleLanguageChange} from "./discord/handlers/handleLanguageChange.js";
+import {handleUseUserImagesChange} from "./discord/handlers/handleUseUserImagesChange.js";
+import {handleDataRetentionChange} from "./discord/handlers/handleDataRetentionChange.js";
+import {handleMemeTemplatesChange} from "./discord/handlers/handleMemeTemplatesChange.js";
+import {handleFrequencyChange} from "./discord/handlers/handleFrequencyChange.js";
+import {handleEraseData} from "./discord/handlers/handleEraseData.js";
+import {handleToggleBot} from "./discord/handlers/handleToggleBot.js";
+import {handleUpdateSettingsEmbed} from "./discord/handlers/handleUpdateSettingsEmbed.js";
 
 export const client = new Client({
 	intents: [
@@ -36,30 +46,90 @@ client.on(Events.MessageCreate, message => {
 });
 
 client.on(Events.InteractionCreate, async interaction => {
+
 	if (interaction.isChatInputCommand()) {
+
+		switch (interaction.commandName) {
+			case 'enable':
+				await enable(interaction);
+				return;
+			case 'settings':
+				await settings(interaction);
+				return;
+		}
+
+		if (!await checkIsEnabled(interaction.channelId)) {
+			await handleDisabledChannel(interaction);
+			return;
+		}
+
 		switch (interaction.commandName) {
 			case 'debug':
 				await debug(interaction);
-				break;
+				return;
 			case 'iamlucky':
 				await iamlucky(interaction);
+				return;
 		}
+
 	}
 
 	if (interaction.isButton()) {
 		const {customId} = interaction;
+
+		if (customId.startsWith("enable-") || customId.startsWith("disable-")) {
+			await handleToggleBot(interaction);
+			try {
+				await handleUpdateSettingsEmbed(interaction);
+			} catch (error) {
+
+			}
+			return;
+		}
+
+		if (customId.startsWith("erase-")) {
+			await handleEraseData(interaction);
+			return;
+		}
 
 		const id = customId.split('_')[0];
 		const analytics = customId.split('_')[1];
 
 		switch (id) {
 			case 'regenerate':
-				await iamlucky(interaction);
+				await iamlucky(interaction, true);
 				break;
 		}
 
 		if (id === 'like' || id === 'dislike') {
 			await vote(interaction, analytics, id);
+		}
+	}
+
+	if (interaction.isStringSelectMenu()) {
+		const {customId} = interaction;
+
+		switch (customId) {
+			case "select-frequency":
+				await handleFrequencyChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
+				break;
+			case "select-memetemplates":
+				await handleMemeTemplatesChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
+				break;
+			case "select-dataretention":
+				await handleDataRetentionChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
+				break;
+			case "select-useuserimages":
+				await handleUseUserImagesChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
+				break;
+			case "select-language":
+				await handleLanguageChange(interaction);
+				await handleUpdateSettingsEmbed(interaction);
+				break;
 		}
 	}
 

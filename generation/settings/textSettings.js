@@ -124,5 +124,23 @@ export const textSettings = {
         box: {x: 0.32, y: 0.7, w: 0.4, h: 0.25},
         maxLines: 4,
         baseImageOverlay: 0
-    }
+    },
+    isthisapigeon_1: {
+        fillStyle: '#ffffff',
+        outlineStyle: '#000000',
+        textAlign: 'center',
+        font: 'Impact',
+        box: {x: 0.1, y: 0.75, w: 0.8, h: 0.25},
+        maxLines: 2,
+        baseImageOverlay: 0
+    },
+    isthisapigeon_2: {
+        fillStyle: '#ffffff',
+        outlineStyle: '#000000',
+        textAlign: 'center',
+        font: 'Impact',
+        box: {x: 0.76, y: 0.1, w: 0.15, h: 0.25},
+        maxLines: 3,
+        baseImageOverlay: 0
+    },
 };

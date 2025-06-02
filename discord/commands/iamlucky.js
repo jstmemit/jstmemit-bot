@@ -12,6 +12,7 @@ import {generateSteppedInShit} from "../../generation/visual/generateSteppedInSh
 import {generateWojackPoint} from "../../generation/visual/generateWojackPoint.js";
 import {checkIsEnabled} from "../checkIsEnabled.js";
 import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
+import {generateIsThisAPigeon} from "../../generation/visual/generateIsThisAPigeon.js";
 
 export const iamlucky = async (interaction, isRegenerate) => {
     let textResult, imageResult, mention = '';
@@ -35,6 +36,7 @@ export const iamlucky = async (interaction, isRegenerate) => {
         () => generateCycle(interaction.channelId),
         () => generateSteppedInShit(interaction.channelId, interaction.guildId),
         () => generateWojackPoint(interaction.channelId, interaction.guildId),
+        () => generateIsThisAPigeon(interaction.channelId, interaction.guildId),
     ]
 
     const {result, functionName} = await runRandomFunction(memeTemplates);

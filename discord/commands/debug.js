@@ -2,7 +2,7 @@ import {getRandomImage} from "../getRandomImage.js";
 import {getTimestamp, runRandomFunction} from "../../utils.js";
 import {ButtonStyle} from "discord.js";
 import {buildRow} from "../buttons/buildRow.js";
-import {generateWojackPoint} from "../../generation/visual/generateWojackPoint.js";
+import {generateIsThisAPigeon} from "../../generation/visual/generateIsThisAPigeon.js";
 
 export const debug = async (interaction, isRegenerate) => {
      let textResult, imageResult, mention = '';
@@ -13,7 +13,7 @@ export const debug = async (interaction, isRegenerate) => {
      }
 
      const memeTemplates = [
-          () => generateWojackPoint(interaction.channelId, interaction.guildId),
+          () => generateIsThisAPigeon(interaction.channelId, interaction.guildId),
      ]
 
      const {result, functionName} = await runRandomFunction(memeTemplates);

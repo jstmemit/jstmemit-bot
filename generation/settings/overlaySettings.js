@@ -29,5 +29,11 @@ export const overlaySettings = {
     },
     wojackpoint_1: {
         type: 'fullimage'
-    }
+    },
+    isthisapigeon_1: {
+        type: 'circle',
+        cx: 450,
+        cy: 700,
+        radius: 300
+    },
 }

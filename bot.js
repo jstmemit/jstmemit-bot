@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import {ActivityType, Client, Events, GatewayIntentBits} from 'discord.js';
 import {debug} from "./discord/commands/debug.js";
 import {handleNewMessage} from "./discord/handlers/handleNewMessage.js";
-import {iamlucky} from "./discord/commands/iamlucky.js";
+import {meme} from "./discord/commands/meme.js";
 import {vote} from "./discord/buttons/vote/votes.js";
 import {checkIsEnabled} from "./discord/checkIsEnabled.js";
 import {handleDisabledChannel} from "./discord/handlers/handleDisabledChannel.js";
@@ -67,8 +67,8 @@ client.on(Events.InteractionCreate, async interaction => {
 			case 'debug':
 				await debug(interaction);
 				return;
-			case 'iamlucky':
-				await iamlucky(interaction);
+			case 'meme':
+				await meme(interaction);
 				return;
 		}
 
@@ -97,7 +97,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		switch (id) {
 			case 'regenerate':
-				await iamlucky(interaction, true);
+				await meme(interaction, true);
 				break;
 		}
 

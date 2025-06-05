@@ -15,7 +15,7 @@ import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
 import {generateIsThisAPigeon} from "../../generation/visual/generateIsThisAPigeon.js";
 import {generateYesChad} from "../../generation/visual/generateYesChad.js";
 
-export const iamlucky = async (interaction, isRegenerate) => {
+export const meme = async (interaction, isRegenerate) => {
     let textResult, imageResult, mention = '';
     const image = await getRandomImage(interaction.guildId, interaction.channelId)
 

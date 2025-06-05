@@ -171,7 +171,7 @@ export const locale = {
         settingsMemesTemplatesOptionWojakPointingTitle: "Wojak wijst",
         settingsMemesTemplatesOptionUncannyTitle: "Uncanny",
         settingsMemesTemplatesOptionSteppedInShitTitle: "In de stront gestapt",
-        settingsMemesTemplatesOptionSpeechbubbleTitle: "Spreekballon",
+        settingsMemesTemplatesOptionSpeechbubbleTitle: "Speechbubble",
         settingsMemesTemplatesOptionLooksAtPaperAngryTitle: "Kijkt boos naar papier",
         settingsMemesTemplatesOptionFancyBearTitle: "Winnie de Poeh",
         settingsMemesTemplatesOptionCycleTitle: "Cycle",

@@ -1,14 +1,25 @@
+import {eraseChannelMessages} from "../../database/queries/eraseChannelMessages.js";
+
 export const handleEraseData = async interaction => {
     try {
         await interaction.deferUpdate();
 
         const channelId = interaction.customId.split("-")[1];
 
-        // erase logic is coming
+        const result = await eraseChannelMessages(channelId, 'all');
 
-        await interaction.followUp({
-            content: "Saved messages were erased successfully. If you want to also disable the bot use the button below. ",
-        });
+        if (result) {
+            await interaction.followUp({
+                content: "Saved messages were erased successfully.",
+                components: [],
+            });
+        } else {
+            await interaction.followUp({
+                content: "No messages associated with this channel were found, so nothing was erased.",
+                components: [],
+            });
+        }
+
     } catch (error) {
         console.error("Error erasing data:", error);
     }

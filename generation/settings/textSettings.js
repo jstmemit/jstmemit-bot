@@ -143,4 +143,13 @@ export const textSettings = {
         maxLines: 3,
         baseImageOverlay: 0
     },
+    yeschad_1: {
+        fillStyle: '#000000',
+        outlineStyle: '#ffffff',
+        textAlign: 'center',
+        font: 'Impact',
+        box: {x: 0.1, y: 0.75, w: 0.3, h: 0.25},
+        maxLines: 2,
+        baseImageOverlay: 0
+    },
 };

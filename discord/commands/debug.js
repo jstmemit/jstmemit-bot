@@ -2,7 +2,7 @@ import {getRandomImage} from "../getRandomImage.js";
 import {getTimestamp, runRandomFunction} from "../../utils.js";
 import {ButtonStyle} from "discord.js";
 import {buildRow} from "../buttons/buildRow.js";
-import {generateIsThisAPigeon} from "../../generation/visual/generateIsThisAPigeon.js";
+import {generateYesChad} from "../../generation/visual/generateYesChad.js";
 
 export const debug = async (interaction, isRegenerate) => {
      let textResult, imageResult, mention = '';
@@ -13,7 +13,7 @@ export const debug = async (interaction, isRegenerate) => {
      }
 
      const memeTemplates = [
-          () => generateIsThisAPigeon(interaction.channelId, interaction.guildId),
+          () => generateYesChad(interaction.channelId, interaction.guildId),
      ]
 
      const {result, functionName} = await runRandomFunction(memeTemplates);

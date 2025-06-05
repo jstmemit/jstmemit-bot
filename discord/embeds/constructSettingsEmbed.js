@@ -88,6 +88,21 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
             value: "cycle",
             emoji: {id: "1378516169073496155"},
         },
+        {
+            label: t("settingsMemesTemplatesOptionGreentextTitle", language),
+            value: "greentext",
+            emoji: {name: "💬"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionIsThisAPigeonTitle", language),
+            value: "isthisapigeon",
+            emoji: {id: "1380165207216750654"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionYesChadTitle", language),
+            value: "yeschad",
+            emoji: {id: "1380165052992061542"},
+        },
     ]
 
     const dataRetentionOptions = [

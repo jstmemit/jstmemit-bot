@@ -36,4 +36,10 @@ export const overlaySettings = {
         cy: 700,
         radius: 300
     },
+    yeschad_1: {
+        type: 'circle',
+        cx: 365,
+        cy: 300,
+        radius: 230
+    },
 }

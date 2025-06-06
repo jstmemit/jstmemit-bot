@@ -63,6 +63,9 @@ export const locale = {
         settingsStatusEnabled: "🟢 Bot is **working** in this channel!",
         settingsStatusDisabled: "🔴 Bot is **disabled** in this channel!",
 
+        notEnoughContextTitle: "Not enough training data",
+        notEnoughContextDescription: "Bot failed to generate text for the meme. This could be because there is not enough training data. Try again after sending about **{{amount}}** more messages.",
+
         btnDisable: "Disable",
         btnEnable: "Enable",
         btnEraseData: "Erase Data",
@@ -133,6 +136,9 @@ export const locale = {
 
         settingsStatusEnabled: "🟢 Бот **включен** и работает в этом канале!",
         settingsStatusDisabled: "🔴 Бот **выключен** в этом канале!",
+
+        notEnoughContextTitle: "Недостаточно данных",
+        notEnoughContextDescription: "Бот не смог сгенерировать текст для мема. Скорее всего у него не хватает данных для обучения. Попробуйте сгенерировать мем ещё раз после отправки **{{amount}}** сообщений.",
 
         btnDisable: "Отключить",
         btnEnable: "Включить",
@@ -205,6 +211,9 @@ export const locale = {
         settingsStatusEnabled: "🟢 Bot is **aan** en werkt in dit kanaal!",
         settingsStatusDisabled: "🔴 Bot is **uit** in dit kanaal!",
 
+        notEnoughContextTitle: "Niet genoeg trainingsdata",
+        notEnoughContextDescription: "De bot kon geen tekst genereren voor de meme. Dit kan komen doordat er niet genoeg trainingsdata is. Probeer het opnieuw nadat je nog ongeveer **{{amount}}** berichten hebt verzonden.",
+
         btnDisable: "Uitzetten",
         btnEnable: "Aanzetten",
         btnEraseData: "Gegevens wissen",
@@ -275,6 +284,9 @@ export const locale = {
 
         settingsStatusEnabled: "🟢 Бот **увімкнений** і працює в цьому каналі!",
         settingsStatusDisabled: "🔴 Бот **вимкнений** в цьому каналі!",
+
+        notEnoughContextTitle: "Недостатньо даних",
+        notEnoughContextDescription: "Бот не зміг згенерувати текст для мему. Це може бути через те, що у нього недостатньо даних. Спробуйте ще раз після відправки приблизно **{{amount}}** повідомлень.",
 
         btnDisable: "Вимкнути",
         btnEnable: "Увімкнути",

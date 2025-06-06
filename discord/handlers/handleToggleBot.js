@@ -1,7 +1,11 @@
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
+import {handlePermissionCheck} from "./handlePermissionCheck.js";
 
 export const handleToggleBot = async interaction => {
+    if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+        return;
+    }
     try {
         await interaction.deferUpdate();
 

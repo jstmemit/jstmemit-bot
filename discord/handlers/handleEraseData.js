@@ -1,7 +1,13 @@
 import {eraseChannelMessages} from "../../database/queries/eraseChannelMessages.js";
+import {handlePermissionCheck} from "./handlePermissionCheck.js";
 
 export const handleEraseData = async interaction => {
     try {
+
+        if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+            return;
+        }
+
         await interaction.deferUpdate();
 
         const channelId = interaction.customId.split("-")[1];

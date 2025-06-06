@@ -14,6 +14,7 @@ export const commands = [
             'uk': 'Згенерувати рандомний мем',
         },
         contexts: [0],
+        dm_permission: false
     },
     {
         name: 'enable',
@@ -32,6 +33,9 @@ export const commands = [
             'de': 'Meme-Generierung in diesem Kanal aktivieren oder deaktivieren',
             'uk': 'Увімкнути або вимкнути генерацію мемів у цьому каналі',
         },
+        contexts: [0],
+        default_member_permissions: '32',
+        dm_permission: false
     },
     {
         name: 'settings',
@@ -50,5 +54,8 @@ export const commands = [
             'de': 'Bot-Einstellungen für diesen Kanal ändern',
             'uk': 'Змінити налаштування бота для цього каналу',
         },
+        contexts: [0],
+        default_member_permissions: '32',
+        dm_permission: false
     }
 ];

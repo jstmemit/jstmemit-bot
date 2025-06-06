@@ -66,6 +66,9 @@ export const locale = {
         notEnoughContextTitle: "Not enough training data",
         notEnoughContextDescription: "Bot failed to generate text for the meme. This could be because there is not enough training data. Try again after sending about **{{amount}}** more messages.",
 
+        noPermissionsTitle: "You don't have permissions to do that",
+        noPermissionsDescription: "You must have **{{permission}}** permission in order to use this command.",
+
         btnDisable: "Disable",
         btnEnable: "Enable",
         btnEraseData: "Erase Data",
@@ -139,6 +142,9 @@ export const locale = {
 
         notEnoughContextTitle: "Недостаточно данных",
         notEnoughContextDescription: "Бот не смог сгенерировать текст для мема. Скорее всего у него не хватает данных для обучения. Попробуйте сгенерировать мем ещё раз после отправки **{{amount}}** сообщений.",
+
+        noPermissionsTitle: "У вас нет прав",
+        noPermissionsDescription: "Вы должны иметь доступ к **{{permission}}**, чтобы использовать эту команду.",
 
         btnDisable: "Отключить",
         btnEnable: "Включить",
@@ -214,6 +220,9 @@ export const locale = {
         notEnoughContextTitle: "Niet genoeg trainingsdata",
         notEnoughContextDescription: "De bot kon geen tekst genereren voor de meme. Dit kan komen doordat er niet genoeg trainingsdata is. Probeer het opnieuw nadat je nog ongeveer **{{amount}}** berichten hebt verzonden.",
 
+        noPermissionsTitle: "Je hebt geen rechten om dit te doen",
+        noPermissionsDescription: "Je moet de **{{permission}}** recht hebben om deze command te gebruiken.",
+
         btnDisable: "Uitzetten",
         btnEnable: "Aanzetten",
         btnEraseData: "Gegevens wissen",
@@ -287,6 +296,9 @@ export const locale = {
 
         notEnoughContextTitle: "Недостатньо даних",
         notEnoughContextDescription: "Бот не зміг згенерувати текст для мему. Це може бути через те, що у нього недостатньо даних. Спробуйте ще раз після відправки приблизно **{{amount}}** повідомлень.",
+
+        noPermissionsTitle: "У вас немає прав",
+        noPermissionsDescription: "Вам потрібно **{{permission}}** право, щоб використати цю команду.",
 
         btnDisable: "Вимкнути",
         btnEnable: "Увімкнути",

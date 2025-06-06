@@ -29,7 +29,7 @@ export const constructSettingsEmbed = (currentSettings, channelId, amount) => {
                     ),
             )
             .addSeparatorComponents(
-                new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(true),
+                new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`-# ${(t("settingsFooterChannelId", language))} ${channelId}`),

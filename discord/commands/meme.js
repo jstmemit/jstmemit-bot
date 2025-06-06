@@ -14,9 +14,18 @@ import {checkIsEnabled} from "../checkIsEnabled.js";
 import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
 import {generateIsThisAPigeon} from "../../generation/visual/generateIsThisAPigeon.js";
 import {generateYesChad} from "../../generation/visual/generateYesChad.js";
+import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
+import {handleNotEnoughContext} from "../handlers/handleNotEnoughContext.js";
 
 export const meme = async (interaction, isRegenerate) => {
     let textResult, imageResult, mention = '';
+    const messages = await getChannelMessages(interaction.channelId)
+
+    if (messages.length < 20) {
+        await handleNotEnoughContext(interaction, messages.length)
+        return;
+    }
+
     const image = await getRandomImage(interaction.guildId, interaction.channelId)
 
     if (isRegenerate) {

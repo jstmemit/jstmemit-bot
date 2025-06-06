@@ -1,6 +1,6 @@
 import Canvas from '@napi-rs/canvas';
 import {AttachmentBuilder} from "discord.js";
-import {getTimestamp, validateCanvasImage} from "../../../utils.js";
+import {getTimestamp, validateCanvasImage} from "../../utils.js";
 import {overlaySettings} from "../../settings/overlaySettings.js";
 import {drawFullWidth} from "./overlay/drawFullWidth.js";
 import {drawAvatar} from "./overlay/drawAvatar.js";

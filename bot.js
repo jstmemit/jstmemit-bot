@@ -19,6 +19,7 @@ import {handleEraseData} from "./discord/handlers/handleEraseData.js";
 import {handleToggleBot} from "./discord/handlers/handleToggleBot.js";
 import {handleUpdateSettingsEmbed} from "./discord/handlers/handleUpdateSettingsEmbed.js";
 import {handlePermissionCheck} from "./discord/handlers/handlePermissionCheck.js";
+import {startDataRoutine} from "./database/routines/startDataRoutine.js";
 
 export const client = new Client({
 	intents: [
@@ -139,5 +140,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 
 });
+
+startDataRoutine()
 
 client.login(dotenv.config().parsed.DISCORD_TOKEN);

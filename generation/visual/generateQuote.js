@@ -21,5 +21,5 @@ export const generateQuote = async (image, channelId, serverId) => {
 
     await analytics.flush()
 
-    return await addText('quote', await getRandomImage(serverId), quoteText);
+    return await addText('quote', await getRandomImage(serverId, channelId), quoteText);
 }

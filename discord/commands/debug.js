@@ -1,5 +1,5 @@
 import {getRandomImage} from "../getRandomImage.js";
-import {getTimestamp, runRandomFunction} from "../../utils.js";
+import {getTimestamp, runRandomFunction} from "../utils.js";
 import {ButtonStyle} from "discord.js";
 import {buildRow} from "../buttons/buildRow.js";
 import {generateYesChad} from "../../generation/visual/generateYesChad.js";

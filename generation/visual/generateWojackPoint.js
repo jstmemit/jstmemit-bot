@@ -4,6 +4,7 @@ import {addText} from "./helpers/addText.js";
 import {getRandomImage} from "../../discord/getRandomImage.js";
 import {getTemplateFiles} from "./helpers/getTemplateFiles.js";
 import {overlayImage} from "./helpers/overlayImage.js";
+import {analytics} from "../../bot.js";
 
 export const generateWojackPoint = async (channelId, serverId) => {
     let result;
@@ -15,7 +16,17 @@ export const generateWojackPoint = async (channelId, serverId) => {
     const text = await generateText(channelMessages, 0, 6);
 
     result = await overlayImage(image, meme, 'wojackpoint_1', 0);
-    result = await addText('wojackpoint_1', result, text)
+    result = await addText('wojackpoint_1', result, text);
+
+    await analytics.capture({
+        distinctId: channelId,
+        event: 'meme_generated',
+        properties: {
+            template: 'wojackpoint',
+        },
+    })
+
+    await analytics.flush()
 
     return result
 }

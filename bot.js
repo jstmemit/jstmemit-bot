@@ -20,6 +20,15 @@ import {handleToggleBot} from "./discord/handlers/handleToggleBot.js";
 import {handleUpdateSettingsEmbed} from "./discord/handlers/handleUpdateSettingsEmbed.js";
 import {handlePermissionCheck} from "./discord/handlers/handlePermissionCheck.js";
 import {startDataRoutine} from "./database/routines/startDataRoutine.js";
+import {PostHog} from 'posthog-node'
+
+export const analytics = await new PostHog(
+	dotenv.config().parsed.POSTHOG_KEY,
+	{
+		host: 'https://eu.i.posthog.com',
+		enableExceptionAutocapture: true
+	}
+)
 
 export const client = new Client({
 	intents: [

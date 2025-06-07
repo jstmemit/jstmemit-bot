@@ -4,6 +4,7 @@ import {generateText} from "../text/markov/helpers/generateText.js";
 import {addText} from "./helpers/addText.js";
 import {getRandomImage} from "../../discord/getRandomImage.js";
 import {overlayImage} from "./helpers/overlayImage.js";
+import {analytics} from "../../bot.js";
 
 export const generateLooksAtPaperAngry = async (channelId, serverId) => {
     let result;
@@ -19,6 +20,16 @@ export const generateLooksAtPaperAngry = async (channelId, serverId) => {
     result = await overlayImage(image, avatar_1, 'looksatpaperangry_1')
     result = await overlayImage(result, avatar_2, 'looksatpaperangry_2');
     result = await overlayImage(result, avatar_2, 'looksatpaperangry_3');
+
+    await analytics.capture({
+        distinctId: channelId,
+        event: 'meme_generated',
+        properties: {
+            template: 'looksatpaperangry',
+        },
+    })
+
+    await analytics.flush()
 
     return await addText('looksatpaperangry', result, text);
 }

@@ -4,6 +4,7 @@ import {generateText} from "../text/markov/helpers/generateText.js";
 import {addText} from "./helpers/addText.js";
 import {getRandomImage} from "../../discord/getRandomImage.js";
 import {overlayImage} from "./helpers/overlayImage.js";
+import {analytics} from "../../bot.js";
 
 export const generateIsThisAPigeon = async (channelId, serverId) => {
     let result;
@@ -20,5 +21,16 @@ export const generateIsThisAPigeon = async (channelId, serverId) => {
 
     result = await overlayImage(image, avatar, 'isthisapigeon_1');
     result = await addText('isthisapigeon_1', result, text[0]);
+
+    await analytics.capture({
+        distinctId: channelId,
+        event: 'meme_generated',
+        properties: {
+            template: 'isthisapigeon',
+        },
+    })
+
+    await analytics.flush()
+
     return await addText('isthisapigeon_2', result, text[1]);
 }

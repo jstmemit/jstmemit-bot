@@ -174,7 +174,7 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                     new SectionBuilder()
                         .setThumbnailAccessory(
                             new ThumbnailBuilder()
-                                .setURL("https://media.discordapp.net/attachments/1375839391448170517/1378490221410127984/logopng.png?ex=683cca8f&is=683b790f&hm=91e3d48f610703f7fa2685426283a4b79b120e8467d9a98d222cea500cc49f17&=&format=webp&quality=lossless")
+                                .setURL("https://jstmemit.com/assets/logo.png")
                         )
                         .addTextDisplayComponents(
                             new TextDisplayBuilder().setContent(`# ⚙️ ${(t("settingsTitle", language))}`),

@@ -18,7 +18,7 @@ export const constructEnableEmbed = (isEnabled, channelId) => {
                 new ButtonBuilder()
                     .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
                     .setLabel(`${isEnabled ? "Disable" : "Enable"}`)
-                    .setCustomId(`${isEnabled ? "disable" : "enable"}-${channelId}`),
+                    .setCustomId(`${isEnabled ? "disable" : "enable"}-${channelId}-false`),
             )
             .addComponents(
                 new ButtonBuilder()

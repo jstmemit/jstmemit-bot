@@ -1,6 +1,8 @@
 import {insertMessage} from "../../database/queries/insertMessage.js";
+import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
+import {handleUnpromtedMeme} from "./handleUnpromtedMeme.js";
 
-export const handleNewMessage = (interaction) => {
+export const handleNewMessage = async (interaction) => {
 
     if (interaction.attachments.size > 0) {
         try {
@@ -19,5 +21,8 @@ export const handleNewMessage = (interaction) => {
     } else {
         insertMessage(interaction.channelId, interaction.content);
     }
+
+    const channelSettings = await getChannelSettings(interaction.channelId);
+    await handleUnpromtedMeme(interaction, channelSettings);
 
 };

@@ -52,10 +52,10 @@ client.on(Events.ClientReady, readyClient => {
 	});
 });
 
-client.on(Events.MessageCreate, message => {
+client.on(Events.MessageCreate, async message => {
 	if (message.author.bot) return;
 
-	handleNewMessage(message);
+	await handleNewMessage(message);
 });
 
 client.on(Events.InteractionCreate, async interaction => {

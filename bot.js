@@ -106,7 +106,7 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 
 		if (customId == 'settings-open') {
-			const loading = constructLoadingEmbed(interaction.channelId)
+			const loading = await constructLoadingEmbed(interaction.channelId)
 			await interaction.reply({
 				flags: MessageFlags.IsComponentsV2,
 				components: loading

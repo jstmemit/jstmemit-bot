@@ -1,7 +1,7 @@
 import {initializeCommands} from "./discord/commands/initializeCommands.js";
 import {commands} from "./discord/commands/commands.js";
 import dotenv from 'dotenv';
-import {ActivityType, Client, Events, GatewayIntentBits} from 'discord.js';
+import {ActivityType, Client, Events, GatewayIntentBits, MessageFlags} from 'discord.js';
 import {debug} from "./discord/commands/debug.js";
 import {handleNewMessage} from "./discord/handlers/handleNewMessage.js";
 import {meme} from "./discord/commands/meme.js";
@@ -21,6 +21,8 @@ import {handleUpdateSettingsEmbed} from "./discord/handlers/handleUpdateSettings
 import {handlePermissionCheck} from "./discord/handlers/handlePermissionCheck.js";
 import {startDataRoutine} from "./database/routines/startDataRoutine.js";
 import {PostHog} from 'posthog-node'
+import {handleUpdateEnableEmbed} from "./discord/handlers/handleUpdateEnableEmbed.js";
+import {constructLoadingEmbed} from "./discord/embeds/constructLoadingEmbed.js";
 
 export const analytics = await new PostHog(
 	dotenv.config().parsed.POSTHOG_KEY,
@@ -90,12 +92,26 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		if (customId.startsWith("enable-") || customId.startsWith("disable-")) {
 			await handleToggleBot(interaction);
-			try {
-				await handleUpdateSettingsEmbed(interaction);
-			} catch (error) {
 
+			if (customId.split('-')[2] == 'false') {
+				await handleUpdateEnableEmbed(interaction);
+			} else {
+				try {
+					await handleUpdateSettingsEmbed(interaction);
+				} catch (error) {
+					console.log(error)
+				}
 			}
 			return;
+		}
+
+		if (customId == 'settings-open') {
+			const loading = await constructLoadingEmbed(interaction.channelId)
+			await interaction.reply({
+				flags: MessageFlags.IsComponentsV2,
+				components: loading
+			})
+			await handleUpdateSettingsEmbed(interaction);
 		}
 
 		if (customId.startsWith("erase-")) {

@@ -69,9 +69,14 @@ export const locale = {
         noPermissionsTitle: "You don't have permissions to do that",
         noPermissionsDescription: "You must have **{{permission}}** permission in order to use this command.",
 
+        enableDescription: "If you want to change this, click the button below. There are also more fine-tuned options available in the settings menu.",
+
         btnDisable: "Disable",
         btnEnable: "Enable",
         btnEraseData: "Erase Data",
+        btnSettings: "Settings",
+
+        loading: "Loading...",
 
         yes: "Yes",
         no: "No",
@@ -146,9 +151,14 @@ export const locale = {
         noPermissionsTitle: "У вас нет прав",
         noPermissionsDescription: "Вы должны иметь доступ к **{{permission}}**, чтобы использовать эту команду.",
 
+        enableDescription: "Вы можете изменить это нажав на кнопку под сообщением. Намного больше параметров доступны в меню настроек.",
+
         btnDisable: "Отключить",
         btnEnable: "Включить",
         btnEraseData: "Очистить данные",
+        btnSettings: "Настройки",
+
+        loading: "Загрузка...",
 
         yes: "Да",
         no: "Нет",
@@ -223,9 +233,14 @@ export const locale = {
         noPermissionsTitle: "Je hebt geen rechten om dit te doen",
         noPermissionsDescription: "Je moet de **{{permission}}** recht hebben om deze command te gebruiken.",
 
+        enableDescription: "Je kunt dit wijzigen door op de knop onder het bericht te klikken. Er zijn nog veel meer parameters beschikbaar in het instellingenmenu.",
+
         btnDisable: "Uitzetten",
         btnEnable: "Aanzetten",
         btnEraseData: "Gegevens wissen",
+        btnSettings: "Instellingen",
+
+        loading: "Loading...",
 
         yes: "Ja",
         no: "Nee",
@@ -300,9 +315,14 @@ export const locale = {
         noPermissionsTitle: "У вас немає прав",
         noPermissionsDescription: "Вам потрібно **{{permission}}** право, щоб використати цю команду.",
 
+        enableDescription: "Ви можете змінити це натиснувши на кнопку під повідомленням. Набагато більше параметрів доступні в меню налаштувань.",
+
         btnDisable: "Вимкнути",
         btnEnable: "Увімкнути",
         btnEraseData: "Очистити дані",
+        btnSettings: "Налаштування",
+
+        loading: "Загрузка...",
 
         yes: "Так",
         no: "Ні",

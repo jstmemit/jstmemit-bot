@@ -14,6 +14,6 @@ export const enable = async (interaction) => {
 
     interaction.reply({
         flags: MessageFlags.IsComponentsV2,
-        components: constructEnableEmbed(isEnabled, interaction.channelId)
+        components: await constructEnableEmbed(isEnabled, interaction.channelId)
     })
 }

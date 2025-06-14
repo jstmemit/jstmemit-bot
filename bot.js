@@ -2,7 +2,6 @@ import {initializeCommands} from "./discord/commands/initializeCommands.js";
 import {commands} from "./discord/commands/commands.js";
 import dotenv from 'dotenv';
 import {ActivityType, Client, Events, GatewayIntentBits, MessageFlags} from 'discord.js';
-import {debug} from "./discord/commands/debug.js";
 import {handleNewMessage} from "./discord/handlers/handleNewMessage.js";
 import {meme} from "./discord/commands/meme.js";
 import {vote} from "./discord/buttons/vote/votes.js";
@@ -52,10 +51,10 @@ client.on(Events.ClientReady, readyClient => {
 	});
 });
 
-client.on(Events.MessageCreate, message => {
+client.on(Events.MessageCreate, async message => {
 	if (message.author.bot) return;
 
-	handleNewMessage(message);
+	await handleNewMessage(message);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -77,9 +76,6 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 
 		switch (interaction.commandName) {
-			case 'debug':
-				await debug(interaction);
-				return;
 			case 'meme':
 				await meme(interaction);
 				return;

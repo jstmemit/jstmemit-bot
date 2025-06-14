@@ -1,11 +1,22 @@
-export const runRandomFunction = async (functions) => {
-    const randomIndex = Math.floor(Math.random() * functions.length);
-    const selectedFunction = functions[randomIndex];
+export const runRandomFunction = async (functionsWithWeights) => {
+    const totalWeight = functionsWithWeights.reduce(
+        (sum, item) => sum + item.weight,
+        0
+    );
 
-    const functionName = selectedFunction.toString().match(/generate\w+/)?.[0];
+    const random = Math.random() * totalWeight;
 
-    const result = await selectedFunction();
-    return {result, functionName};
+    let currentWeight = 0;
+    for (const item of functionsWithWeights) {
+        currentWeight += item.weight;
+        if (random <= currentWeight) {
+            const result = await item.func();
+            return {
+                result,
+                functionName: item.name,
+            };
+        }
+    }
 };
 
 export const getTimestamp = () => {

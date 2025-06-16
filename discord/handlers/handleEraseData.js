@@ -1,5 +1,6 @@
 import {eraseChannelMessages} from "../../database/queries/eraseChannelMessages.js";
 import {handlePermissionCheck} from "./handlePermissionCheck.js";
+import {analytics as posthog} from "../../bot.js";
 
 export const handleEraseData = async interaction => {
     try {
@@ -25,6 +26,13 @@ export const handleEraseData = async interaction => {
                 components: [],
             });
         }
+
+        await posthog.capture({
+            distinctId: interaction.channelId,
+            event: 'data_erased',
+        })
+
+        await posthog.flush()
 
     } catch (error) {
         console.error("Error erasing data:", error);

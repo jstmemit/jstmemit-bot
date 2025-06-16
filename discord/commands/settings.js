@@ -2,6 +2,7 @@ import {ButtonStyle, MessageFlags} from 'discord.js';
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {constructSettingsEmbed} from "../embeds/constructSettingsEmbed.js";
 import {handlePermissionCheck} from "../handlers/handlePermissionCheck.js";
+import {analytics as posthog} from "../../bot.js";
 
 export const settings = async (interaction) => {
     let channelSettings = await getChannelSettings(interaction.channelId);
@@ -21,6 +22,16 @@ export const settings = async (interaction) => {
     }
 
     const settingsEmbed = constructSettingsEmbed(channelSettings, interaction.channelId);
+
+    await posthog.capture({
+        distinctId: interaction.channelId,
+        event: 'command_sent',
+        properties: {
+            commandName: "settings",
+        },
+    })
+
+    await posthog.flush()
 
     await interaction.reply({
         flags: MessageFlags.IsComponentsV2,

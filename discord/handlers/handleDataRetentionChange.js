@@ -1,5 +1,6 @@
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
+import {analytics as posthog} from "../../bot.js";
 
 export const handleDataRetentionChange = async interaction => {
     try {
@@ -14,6 +15,16 @@ export const handleDataRetentionChange = async interaction => {
             channel_id: channelId,
             delete_messages_after: newRetentionDays,
         };
+
+        await posthog.capture({
+            distinctId: interaction.channelId,
+            event: 'settings_changed',
+            properties: {
+                deleteMessagesAfter: newSettings.delete_messages_after,
+            },
+        })
+
+        await posthog.flush()
 
         await changeChannelSettings(newSettings);
     } catch (error) {

@@ -12,7 +12,7 @@ export const textSettings = {
         fillStyle: '#ffffff',
         outlineStyle: '#000000',
         textAlign: 'center',
-        font: 'Arial',
+        font: 'Comic Sans MS',
         box: {x: 0.1, y: 0.375, w: 0.80, h: 0.25},
         maxLines: 4,
         baseImageOverlay: 128

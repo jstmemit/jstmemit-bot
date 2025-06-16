@@ -1,5 +1,6 @@
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
+import {analytics as posthog} from "../../bot.js";
 
 export const handleLanguageChange = async interaction => {
     try {
@@ -14,6 +15,16 @@ export const handleLanguageChange = async interaction => {
             channel_id: channelId,
             language: newLanguage,
         };
+
+        await posthog.capture({
+            distinctId: interaction.channelId,
+            event: 'settings_changed',
+            properties: {
+                language: newLanguage,
+            },
+        })
+
+        await posthog.flush()
 
         await changeChannelSettings(newSettings);
     } catch (error) {

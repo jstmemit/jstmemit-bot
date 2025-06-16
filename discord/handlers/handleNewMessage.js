@@ -4,6 +4,14 @@ import {handleUnpromtedMeme} from "./handleUnpromtedMeme.js";
 
 export const handleNewMessage = async (interaction) => {
 
+    const channelSettings = await getChannelSettings(interaction.channelId);
+
+    if (channelSettings) {
+        if (!channelSettings.is_enabled) {
+            return;
+        }
+    }
+
     if (interaction.attachments.size > 0) {
         try {
             interaction.attachments.forEach(attachment => {
@@ -22,7 +30,6 @@ export const handleNewMessage = async (interaction) => {
         insertMessage(interaction.channelId, interaction.content);
     }
 
-    const channelSettings = await getChannelSettings(interaction.channelId);
     await handleUnpromtedMeme(interaction, channelSettings);
 
 };

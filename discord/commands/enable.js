@@ -1,6 +1,7 @@
 import {ButtonStyle, MessageFlags} from 'discord.js';
 import {constructEnableEmbed} from "../embeds/constructEnableEmbed.js";
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
+import {analytics as posthog} from "../../bot.js";
 
 export const enable = async (interaction) => {
     const channelSettings = await getChannelSettings(interaction.channelId);
@@ -11,6 +12,16 @@ export const enable = async (interaction) => {
     } else {
         isEnabled = channelSettings.is_enabled
     }
+
+    await posthog.capture({
+        distinctId: interaction.channelId,
+        event: 'command_sent',
+        properties: {
+            commandName: "enable",
+        },
+    })
+
+    await posthog.flush()
 
     interaction.reply({
         flags: MessageFlags.IsComponentsV2,

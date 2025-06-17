@@ -9,7 +9,7 @@ export const handleNotEnoughContext = async (interaction, amount) => {
 
     await posthog.capture({
         distinctId: interaction.channelId,
-        event: 'not_enough_contexd_failed',
+        event: 'not_enough_context_failed',
     })
 
     await posthog.flush()

@@ -37,16 +37,20 @@ export const meme = async (interaction, isRegenerate) => {
 
     const {result, functionName} = await runRandomFunction(memeTemplates);
 
+    await interaction.deferReply({
+        ephemeral: false
+    });
+
     if (typeof result === 'string') {
         textResult = result;
-        await interaction.reply({
+        await interaction.editReply({
             content: `${mention}\n${textResult}`,
             components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
         });
 
     } else {
         imageResult = result;
-        await interaction.reply({
+        await interaction.editReply({
             content: `${mention}`,
             files: [result],
             components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]

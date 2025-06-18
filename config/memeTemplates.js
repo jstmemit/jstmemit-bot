@@ -10,12 +10,19 @@ import {generateIsThisAPigeon} from "../generation/visual/generateIsThisAPigeon.
 import {generateYesChad} from "../generation/visual/generateYesChad.js";
 import {calculateWeights, getAnalyticsData} from "../analytics/likesAndDislikes.js";
 import {settings} from "./settings.js";
+import {generateBottomCaption} from "../generation/visual/generateBottomCaption.js";
 
 const baseConfig = [
     {
         name: "generateQuote",
         generator: (image, channelId, guildId) =>
             generateQuote(image, channelId, guildId),
+        requiresImage: true,
+    },
+    {
+        name: "generateBottomCaption",
+        generator: (image, channelId, guildId) =>
+            generateBottomCaption(image, channelId, guildId),
         requiresImage: true,
     },
     {

@@ -152,4 +152,13 @@ export const textSettings = {
         maxLines: 2,
         baseImageOverlay: 0
     },
+    bottomcaption: {
+        fillStyle: '#ffffff',
+        outlineStyle: '#000000',
+        textAlign: 'center',
+        font: 'Comic Sans MS',
+        box: {x: 0.1, y: 0.7, w: 0.80, h: 0.25},
+        maxLines: 4,
+        baseImageOverlay: 0
+    },
 };

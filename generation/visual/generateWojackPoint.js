@@ -7,26 +7,31 @@ import {overlayImage} from "./helpers/overlayImage.js";
 import {analytics} from "../../bot.js";
 
 export const generateWojackPoint = async (channelId, serverId) => {
-    let result;
+    try {
+        let result;
 
-    const image = await getRandomImage(serverId, channelId);
-    const channelMessages = await getChannelMessages(channelId);
-    const meme = await getTemplateFiles('wojackpoint.png');
+        const image = await getRandomImage(serverId, channelId);
+        const channelMessages = await getChannelMessages(channelId);
+        const meme = await getTemplateFiles('wojackpoint.png');
 
-    const text = await generateText(channelMessages, 0, 6);
+        const text = await generateText(channelMessages, 0, 6);
 
-    result = await overlayImage(image, meme, 'wojackpoint_1', 0);
-    result = await addText('wojackpoint_1', result, text);
+        result = await overlayImage(image, meme, 'wojackpoint_1', 0);
+        result = await addText('wojackpoint_1', result, text);
 
-    await analytics.capture({
-        distinctId: channelId,
-        event: 'meme_generated',
-        properties: {
-            template: 'wojackpoint',
-        },
-    })
+        await analytics.capture({
+            distinctId: channelId,
+            event: 'meme_generated',
+            properties: {
+                template: 'wojackpoint',
+            },
+        })
 
-    await analytics.flush()
+        await analytics.flush()
 
-    return result
+        return result
+    } catch (e) {
+        console.error('Error in generateWojackPoint:', e.message);
+        throw e;
+    }
 }

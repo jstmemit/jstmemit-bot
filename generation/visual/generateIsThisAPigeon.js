@@ -7,6 +7,7 @@ import {overlayImage} from "./helpers/overlayImage.js";
 import {analytics} from "../../bot.js";
 
 export const generateIsThisAPigeon = async (channelId, serverId) => {
+    try {
     let result;
 
     const channelMessages = await getChannelMessages(channelId);
@@ -33,4 +34,8 @@ export const generateIsThisAPigeon = async (channelId, serverId) => {
     await analytics.flush()
 
     return await addText('isthisapigeon_2', result, text[1]);
+    } catch (e) {
+        console.error('Error in generateIsThisAPigeon:', e.message);
+        throw e;
+    }
 }

@@ -7,6 +7,8 @@ import {overlayImage} from "./helpers/overlayImage.js";
 import {analytics} from "../../bot.js";
 
 export const generateLooksAtPaperAngry = async (channelId, serverId) => {
+    try {
+
     let result;
 
     const channelMessages = await getChannelMessages(channelId);
@@ -21,7 +23,7 @@ export const generateLooksAtPaperAngry = async (channelId, serverId) => {
     result = await overlayImage(result, avatar_2, 'looksatpaperangry_2');
     result = await overlayImage(result, avatar_2, 'looksatpaperangry_3');
 
-    await analytics.capture({
+        analytics.capture({
         distinctId: channelId,
         event: 'meme_generated',
         properties: {
@@ -32,4 +34,8 @@ export const generateLooksAtPaperAngry = async (channelId, serverId) => {
     await analytics.flush()
 
     return await addText('looksatpaperangry', result, text);
+    } catch (e) {
+        console.error('Error in generateLooksAtPaperAngry:', e.message);
+        throw e;
+    }
 }

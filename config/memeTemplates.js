@@ -108,5 +108,3 @@ export const getConfig = async () => {
 
     return cachedWeights;
 };
-
-export const config = await getConfig();

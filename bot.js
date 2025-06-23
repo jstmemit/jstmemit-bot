@@ -23,13 +23,20 @@ import {PostHog} from 'posthog-node'
 import {handleUpdateEnableEmbed} from "./discord/handlers/handleUpdateEnableEmbed.js";
 import {constructLoadingEmbed} from "./discord/embeds/constructLoadingEmbed.js";
 
-export const analytics = await new PostHog(
-	dotenv.config().parsed.POSTHOG_KEY,
-	{
-		host: 'https://eu.i.posthog.com',
-		enableExceptionAutocapture: true
-	}
-)
+let analytics = null;
+try {
+	analytics = new PostHog(
+		process.env.POSTHOG_KEY,
+		{
+			host: 'https://eu.i.posthog.com',
+			enableExceptionAutocapture: true
+		}
+	);
+} catch (error) {
+	console.error('Failed to initialize PostHog:', error.message);
+}
+
+export {analytics};
 
 export const client = new Client({
 	intents: [
@@ -160,6 +167,14 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 	}
 
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+	console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+process.on('uncaughtException', (error) => {
+	console.error('Uncaught Exception:', error);
 });
 
 startDataRoutine()

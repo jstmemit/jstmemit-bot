@@ -67,39 +67,44 @@ export const getAnalyticsData = async (days = 30) => {
 };
 
 export const calculateWeights = (analyticsData) => {
-    const weights = {};
+    try {
+        const weights = {};
 
-    const likedCounts = {};
-    analyticsData.liked.forEach(([template, count]) => {
-        likedCounts[template] = count;
-    });
+        const likedCounts = {};
+        analyticsData.liked.forEach(([template, count]) => {
+            likedCounts[template] = count;
+        });
 
-    const dislikedCounts = {};
-    analyticsData.disliked.forEach(([template, count]) => {
-        dislikedCounts[template] = count;
-    });
+        const dislikedCounts = {};
+        analyticsData.disliked.forEach(([template, count]) => {
+            dislikedCounts[template] = count;
+        });
 
-    const allTemplates = new Set([
-        ...Object.keys(likedCounts),
-        ...Object.keys(dislikedCounts),
-    ]);
+        const allTemplates = new Set([
+            ...Object.keys(likedCounts),
+            ...Object.keys(dislikedCounts),
+        ]);
 
-    allTemplates.forEach(template => {
-        const likes = likedCounts[template] || 0;
-        const dislikes = dislikedCounts[template] || 0;
-        const total = likes + dislikes;
+        allTemplates.forEach(template => {
+            const likes = likedCounts[template] || 0;
+            const dislikes = dislikedCounts[template] || 0;
+            const total = likes + dislikes;
 
-        if (total === 0) {
-            weights[template] = 0.3;
-        } else {
-            const satisfactionRatio = likes / total;
-            let weight = 0.05 + (satisfactionRatio * 0.9);
-            const volumeBoost = Math.min(total / 100, 0.15);
-            weight = Math.min(weight + volumeBoost, 0.95);
-            weight = Math.max(weight, 0.05);
-            weights[template] = parseFloat(weight.toFixed(2));
-        }
-    });
+            if (total === 0) {
+                weights[template] = 0.3;
+            } else {
+                const satisfactionRatio = likes / total;
+                let weight = 0.05 + (satisfactionRatio * 0.9);
+                const volumeBoost = Math.min(total / 100, 0.15);
+                weight = Math.min(weight + volumeBoost, 0.95);
+                weight = Math.max(weight, 0.05);
+                weights[template] = parseFloat(weight.toFixed(2));
+            }
+        });
 
-    return weights;
+        return weights;
+    } catch (error) {
+        console.error('Error calculating weights:', error);
+        return {};
+    }
 };

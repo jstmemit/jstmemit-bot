@@ -14,7 +14,7 @@ export const getRandomImage = async (serverId, channelId) => {
             if (!images) {
                 return randomMember.user.displayAvatarURL({dynamic: true, size: 1024});
             }
-            if (images.size === 0) {
+            if (images.length === 0) {
                 return randomMember.user.displayAvatarURL({dynamic: true, size: 1024});
             }
             return images[Math.floor(Math.random() * images.length)];

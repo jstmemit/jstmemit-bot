@@ -8,13 +8,26 @@ import {drawAvatar} from "./overlay/drawAvatar.js";
 export const overlayImage = async (image1, image2, variant, height = 0, convert) => {
     try {
         const baseImage = await validateCanvasImage(image1, Canvas);
+
+        if (!image2) {
+            throw new Error('Overlay image is not set');
+        }
+
         const overlayImage = await validateCanvasImage(image2, Canvas);
 
         const canvasHeight = baseImage.height + height;
+
+        if (baseImage.width <= 0 || canvasHeight <= 0 ||
+            baseImage.width > 8192 || canvasHeight > 8192) {
+        }
+
         const canvas = new Canvas.Canvas(baseImage.width, canvasHeight);
         const ctx = canvas.getContext('2d');
 
-        const mode = overlaySettings[variant]
+        const mode = overlaySettings[variant];
+        if (!mode) {
+            throw new Error(`Unknown overlay variant: ${variant}`);
+        }
 
         if (mode.type === 'fill_fullwidth') {
             ctx.fillStyle = '#ffffff';
@@ -32,18 +45,24 @@ export const overlayImage = async (image1, image2, variant, height = 0, convert)
                 ctx.drawImage(overlayImage, 0, height, baseImage.width, canvasHeight - height);
                 break;
             case 'circle':
-                drawAvatar(ctx, overlayImage, mode)
+                drawAvatar(ctx, overlayImage, mode);
                 break;
         }
-
         const png = await canvas.encode('png');
+
+        if (!png || png.length === 0) {
+            throw new Error('Generated empty PNG buffer');
+        }
+
         if (convert) {
             return new AttachmentBuilder(png, {name: `meme_${getTimestamp()}.png`});
         } else {
             return png;
         }
-    } catch (error) {
 
+    } catch (error) {
+        console.error('An error in overlayImage', error);
+        throw new Error(`overlayImage failed: ${error.message}`);
     }
 }
 

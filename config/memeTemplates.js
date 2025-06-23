@@ -15,65 +15,70 @@ import {generateBottomCaption} from "../generation/visual/generateBottomCaption.
 const baseConfig = [
     {
         name: "generateQuote",
-        generator: (image, channelId, guildId) =>
-            generateQuote(image, channelId, guildId),
+        generator: (image, channelId, interaction) =>
+            generateQuote(image, channelId, interaction),
         requiresImage: true,
     },
     {
         name: "generateBottomCaption",
-        generator: (image, channelId, guildId) =>
-            generateBottomCaption(image, channelId, guildId),
+        generator: (image, channelId, interaction) =>
+            generateBottomCaption(image, channelId, interaction),
         requiresImage: true,
     },
     {
         name: "generateFancyBear",
-        generator: (image, channelId, guildId) => generateFancyBear(channelId),
+        generator: (image, channelId, interaction) => generateFancyBear(channelId),
         requiresImage: false,
     },
     {
         name: "generateGreentext",
-        generator: (image, channelId, guildId) => generateGreentext(channelId),
+        generator: (image, channelId, interaction) => generateGreentext(channelId),
         requiresImage: false,
     },
     {
         name: "generateUncanny",
-        generator: (image, channelId, guildId) => generateUncanny(channelId),
+        generator: (image, channelId, interaction) => generateUncanny(channelId),
         requiresImage: false,
     },
     {
         name: "generateLooksAtPaperAngry",
-        generator: (image, channelId, guildId) =>
-            generateLooksAtPaperAngry(channelId, guildId),
+        generator: (image, channelId, interaction) =>
+            generateLooksAtPaperAngry(channelId, interaction),
         requiresImage: false,
     },
     {
         name: "generateCycle",
-        generator: (image, channelId, guildId) => generateCycle(channelId),
+        generator: (image, channelId, interaction) => generateCycle(channelId),
         requiresImage: false,
     },
     {
         name: "generateSteppedInShit",
-        generator: (image, channelId, guildId) =>
-            generateSteppedInShit(channelId, guildId),
+        generator: (image, channelId, interaction) =>
+            generateSteppedInShit(channelId, interaction),
         requiresImage: false,
     },
     {
         name: "generateWojackPoint",
-        generator: (image, channelId, guildId) =>
-            generateWojackPoint(channelId, guildId),
+        generator: (image, channelId, interaction) =>
+            generateWojackPoint(channelId, interaction),
         requiresImage: false,
     },
     {
         name: "generateIsThisAPigeon",
-        generator: (image, channelId, guildId) =>
-            generateIsThisAPigeon(channelId, guildId),
+        generator: (image, channelId, interaction) =>
+            generateIsThisAPigeon(channelId, interaction),
         requiresImage: false,
     },
     {
         name: "generateYesChad",
-        generator: (image, channelId, guildId) => generateYesChad(channelId, guildId),
+        generator: (image, channelId, interaction) => generateYesChad(channelId, interaction),
         requiresImage: false,
     },
+    // {
+    //     name: "generateTexting",
+    //     generator: (image, channelId, interaction) => generateTexting(channelId, interaction),
+    //     requiresImage: false,
+    // },
 ];
 
 let cachedWeights = null;

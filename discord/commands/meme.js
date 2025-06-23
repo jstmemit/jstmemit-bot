@@ -53,7 +53,7 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
                 console.error('Config fetch failed:', err.message);
                 return [];
             }),
-            withTimeout(getRandomImage(guildId, channelId), 10000).catch(err => {
+            withTimeout(getRandomImage(interaction, channelId), 10000).catch(err => {
                 console.error('Image fetch failed:', err.message);
                 return null;
             })
@@ -64,7 +64,7 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         }
 
         const memeTemplates = config.map((template) => ({
-            func: () => template.generator(image, channelId, guildId),
+            func: () => template.generator(image, channelId, interaction),
             weight: template.weight,
             name: template.name,
         }));

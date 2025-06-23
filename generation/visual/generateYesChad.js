@@ -6,14 +6,14 @@ import {getRandomImage} from "../../discord/getRandomImage.js";
 import {overlayImage} from "./helpers/overlayImage.js";
 import {analytics} from "../../bot.js";
 
-export const generateYesChad = async (channelId, serverId) => {
+export const generateYesChad = async (channelId, interaction) => {
     try {
         let result;
 
         const channelMessages = await getChannelMessages(channelId);
         const image = await getTemplateFiles('yeschad.png');
 
-        const avatar = await getRandomImage(serverId, channelId)
+        const avatar = await getRandomImage(interaction, channelId)
 
         const text = [
             await generateText(channelMessages, 0, 4),

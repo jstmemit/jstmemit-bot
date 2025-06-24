@@ -337,6 +337,7 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                         .addComponents(
                             new StringSelectMenuBuilder()
                                 .setCustomId("select-useuserimages")
+                                .setDisabled(true)
                                 .addOptions(
                                     new SelectMenuOptionBuilder()
                                         .setLabel(t("no", language))

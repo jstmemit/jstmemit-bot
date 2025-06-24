@@ -42,4 +42,16 @@ export const overlaySettings = {
         cy: 300,
         radius: 230
     },
+    texting_1: {
+        type: 'circle',
+        cx: 280,
+        cy: 130,
+        radius: 110
+    },
+    texting_2: {
+        type: 'circle',
+        cx: 400,
+        cy: 530,
+        radius: 110
+    },
 }

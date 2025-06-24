@@ -56,7 +56,7 @@ export const locale = {
         settingsDataRetentionHowLongOption30DaysDescription: "For channels with low activity",
 
         settingsDataRetentionUserImagesTitle: "Should bot use user sent images in memes?",
-        settingsDataRetentionUserImagesDescription: "If set to **yes**, sometimes instead of using avatars it will use user sent images instead. Only images sent no more than 24 hours ago will be used.",
+        settingsDataRetentionUserImagesDescription: "If set to **yes**, sometimes instead of using avatars it will use user sent images instead. Only images sent no more than 24 hours ago will be used. __Cannot be disabled due to new Intents limitations, will be fixes soon.__",
 
         settingsFooterChannelId: "Channel ID:",
 
@@ -138,7 +138,7 @@ export const locale = {
         settingsDataRetentionHowLongOption30DaysDescription: "Для каналов с низкой активностью",
 
         settingsDataRetentionUserImagesTitle: "Использовать ли отправленные картинки в мемах?",
-        settingsDataRetentionUserImagesDescription: "Если включено, то иногда вместо аватаров будут использоваться отправленные картинки. Но только отправленные не более 24 часов назад.",
+        settingsDataRetentionUserImagesDescription: "Если включено, то иногда вместо аватаров будут использоваться отправленные картинки. Но только отправленные не более 24 часов назад. __Не может быть отключено из-за новых ограничений Intents у дискорда, будет исправлено скоро.__",
 
         settingsFooterChannelId: "ID канала:",
 

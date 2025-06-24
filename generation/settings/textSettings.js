@@ -161,4 +161,22 @@ export const textSettings = {
         maxLines: 4,
         baseImageOverlay: 0
     },
+    texting_1: {
+        fillStyle: '#ffffff',
+        outlineStyle: '#000000',
+        textAlign: 'center',
+        font: 'Comic Sans MS',
+        box: {x: 0.7, y: 0.1, w: 0.25, h: 0.25},
+        maxLines: 4,
+        baseImageOverlay: 0
+    },
+    texting_2: {
+        fillStyle: '#ffffff',
+        outlineStyle: '#000000',
+        textAlign: 'center',
+        font: 'Comic Sans MS',
+        box: {x: 0.05, y: 0.6, w: 0.3, h: 0.25},
+        maxLines: 4,
+        baseImageOverlay: 0
+    },
 };

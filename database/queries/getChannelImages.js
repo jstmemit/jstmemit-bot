@@ -18,12 +18,13 @@ export const getChannelImages = async (channelId) => {
     }
 
     const result = await pool.query(
-        `SELECT message
+        `SELECT DISTINCT message
          FROM messages
          WHERE channel_id = ?
            AND timestamp >= DATE_SUB(NOW(), INTERVAL 20 HOUR)
-           AND message LIKE 'https://cdn.discordapp.com/attachments/%'
-         ORDER BY internal_id DESC
+           AND (message LIKE 'https://cdn.discordapp.com/attachments/%'
+             OR message LIKE 'https://cdn.discordapp.com/avatars/%')
+         ORDER BY RAND()
          LIMIT 5`,
         [channelId]
     ).then(async ([rows]) => {

@@ -7,7 +7,7 @@ export const getRandomImage = async (interaction, channelId) => {
             size: 1024,
         });
 
-        if (Math.random() < 0.2) {
+        if (Math.random() < 0.05) {
             return authorAvatar;
         } else {
             const images = await getChannelImages(channelId);

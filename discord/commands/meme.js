@@ -49,7 +49,7 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         }
 
         const [config, image] = await Promise.all([
-            withTimeout(getConfig(), 10000).catch(err => {
+            withTimeout(getConfig(), 13000).catch(err => {
                 console.error('Config fetch failed:', err.message);
                 return [];
             }),

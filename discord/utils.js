@@ -32,7 +32,7 @@ export const withTimeout = (promise, ms = 30000) => {
     return Promise.race([
         promise,
         new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('Operation timed out')), ms)
+            setTimeout(() => reject(new Error('Operation timed out')), ms),
         )
     ]);
 };

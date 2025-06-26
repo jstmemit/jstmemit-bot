@@ -167,7 +167,7 @@ export const textSettings = {
         textAlign: 'center',
         font: 'Comic Sans MS',
         box: {x: 0.7, y: 0.1, w: 0.25, h: 0.25},
-        maxLines: 4,
+        maxLines: 1,
         baseImageOverlay: 0
     },
     texting_2: {
@@ -177,6 +177,51 @@ export const textSettings = {
         font: 'Comic Sans MS',
         box: {x: 0.05, y: 0.6, w: 0.3, h: 0.25},
         maxLines: 4,
+        baseImageOverlay: 0
+    },
+    connor_1: {
+        fillStyle: '#000000',
+        outlineStyle: '#ffffff',
+        textAlign: 'left',
+        font: 'Comic Sans MS',
+        box: {x: 0.1, y: 0, w: 0.8, h: 0.1},
+        maxLines: 1,
+        baseImageOverlay: 0
+    },
+    connor_2: {
+        fillStyle: '#000000',
+        outlineStyle: '#ffffff',
+        textAlign: 'left',
+        font: 'Comic Sans MS',
+        box: {x: 0.1, y: 0.09, w: 0.8, h: 0.1},
+        maxLines: 1,
+        baseImageOverlay: 0
+    },
+    connor_3: {
+        fillStyle: '#000000',
+        outlineStyle: '#ffffff',
+        textAlign: 'left',
+        font: 'Comic Sans MS',
+        box: {x: 0.1, y: 0.2, w: 0.8, h: 0.1},
+        maxLines: 1,
+        baseImageOverlay: 0
+    },
+    connor_4: {
+        fillStyle: '#000000',
+        outlineStyle: '#ffffff',
+        textAlign: 'left',
+        font: 'Comic Sans MS',
+        box: {x: 0.1, y: 0.3, w: 0.8, h: 0.1},
+        maxLines: 4,
+        baseImageOverlay: 0
+    },
+    connor_5: {
+        fillStyle: '#ffffff',
+        outlineStyle: '#000000',
+        textAlign: 'center',
+        font: 'Comic Sans MS',
+        box: {x: 0.1, y: 0.8, w: 0.8, h: 0.25},
+        maxLines: 1,
         baseImageOverlay: 0
     },
 };

@@ -12,6 +12,7 @@ import {generateSteppedInShit} from "../generation/visual/generateSteppedInShit.
 import {generateWojackPoint} from "../generation/visual/generateWojackPoint.js";
 import {generateIsThisAPigeon} from "../generation/visual/generateIsThisAPigeon.js";
 import {generateYesChad} from "../generation/visual/generateYesChad.js";
+import {generateConnor} from "../generation/visual/generateConnor.js";
 
 const baseConfig = [
     {
@@ -78,6 +79,11 @@ const baseConfig = [
     {
         name: "generateTexting",
         generator: (image, channelId, interaction) => generateTexting(channelId, interaction),
+        requiresImage: false,
+    },
+    {
+        name: "generateConnor",
+        generator: (image, channelId, interaction) => generateConnor(channelId, interaction),
         requiresImage: false,
     },
 ];

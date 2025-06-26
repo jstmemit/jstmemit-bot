@@ -54,4 +54,10 @@ export const overlaySettings = {
         cy: 530,
         radius: 110
     },
+    connor_1: {
+        type: 'circle',
+        cx: 720,
+        cy: 740,
+        radius: 110
+    },
 }

@@ -21,9 +21,11 @@ export const getChannelImages = async (channelId) => {
         `SELECT DISTINCT message
          FROM messages
          WHERE channel_id = ?
-           AND timestamp >= DATE_SUB(NOW(), INTERVAL 20 HOUR)
-           AND (message LIKE 'https://cdn.discordapp.com/attachments/%'
-             OR message LIKE 'https://cdn.discordapp.com/avatars/%')
+           AND (
+             (message LIKE 'https://cdn.discordapp.com/attachments/%'
+                 AND timestamp >= DATE_SUB(NOW(), INTERVAL 20 HOUR))
+                 OR message LIKE 'https://cdn.discordapp.com/avatars/%'
+             )
          ORDER BY RAND()
          LIMIT 5`,
         [channelId]

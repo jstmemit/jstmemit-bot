@@ -60,4 +60,10 @@ export const overlaySettings = {
         cy: 740,
         radius: 110
     },
+    buzz_1: {
+        type: 'circle',
+        cx: 380,
+        cy: 200,
+        radius: 80
+    },
 }

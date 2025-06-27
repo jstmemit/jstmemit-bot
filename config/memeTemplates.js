@@ -13,6 +13,7 @@ import {generateWojackPoint} from "../generation/visual/generateWojackPoint.js";
 import {generateIsThisAPigeon} from "../generation/visual/generateIsThisAPigeon.js";
 import {generateYesChad} from "../generation/visual/generateYesChad.js";
 import {generateConnor} from "../generation/visual/generateConnor.js";
+import {generateBuzz} from "../generation/visual/generateBuzz.js";
 
 const baseConfig = [
     {
@@ -86,6 +87,11 @@ const baseConfig = [
         generator: (image, channelId, interaction) => generateConnor(channelId, interaction),
         requiresImage: false,
     },
+    {
+        name: "generateBuzz",
+        generator: (image, channelId, interaction) => generateBuzz(channelId, interaction),
+        requiresImage: false,
+    },
 ];
 
 let cachedWeights = null;
@@ -101,10 +107,17 @@ export const getConfig = async () => {
             const analyticsData = await getAnalyticsData(30);
             const calculatedWeights = calculateWeights(analyticsData);
 
-            cachedWeights = baseConfig.map(template => ({
-                ...template,
-                weight: calculatedWeights[template.name] || 0.3,
-            }));
+            // just in case
+            cachedWeights = baseConfig.map(template => {
+                const analyticsKey = template.name.startsWith('generate')
+                    ? template.name.slice(8)
+                    : template.name;
+
+                return {
+                    ...template,
+                    weight: calculatedWeights[analyticsKey] || 0.3,
+                };
+            });
 
             lastFetch = now;
 

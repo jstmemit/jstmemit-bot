@@ -39,6 +39,7 @@ export const locale = {
         settingsMemesTemplatesOptionTextingTitle: "Texting",
         settingsMemesTemplatesOptionConnorTitle: "Connor",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Big Thumbs Up",
+        settingsMemesTemplatesOptionBuzzTitle: "Buzz",
 
         settingsDataRetentionTitle: "Data Retention",
         settingsDataRetentionDescription: "You can choose how long the bot will keep the data related to this channel. If you want to erase all data, you can also do it here.",
@@ -124,6 +125,7 @@ export const locale = {
         settingsMemesTemplatesOptionTextingTitle: "Пишет новости",
         settingsMemesTemplatesOptionConnorTitle: "Коннор",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Молодец, палец вверх",
+        settingsMemesTemplatesOptionBuzzTitle: "Баззлайтер",
 
         settingsDataRetentionTitle: "Хранение данных",
         settingsDataRetentionDescription: "Вы можете выбрать как долго бот будет хранить данные связанные с этим каналом. Если вы хотите удалить все сохраненные сообщения, вы также можете сделать это здесь.",
@@ -209,6 +211,7 @@ export const locale = {
         settingsMemesTemplatesOptionTextingTitle: "Texting",
         settingsMemesTemplatesOptionConnorTitle: "Connor",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Duim omhoog",
+        settingsMemesTemplatesOptionBuzzTitle: "Buzz",
 
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
@@ -294,6 +297,7 @@ export const locale = {
         settingsMemesTemplatesOptionTextingTitle: "Пише новини",
         settingsMemesTemplatesOptionConnorTitle: "Коннор",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Молодець, великий палець вгору",
+        settingsMemesTemplatesOptionBuzzTitle: "Баззлайтер",
 
         settingsDataRetentionTitle: "Зберігання даних",
         settingsDataRetentionDescription: "Ви можете вибрати як довго бот буде зберігати дані, пов'язані з цим каналом. Якщо ви хочете видалити всі збережені повідомлення, ви також можете зробити це тут.",

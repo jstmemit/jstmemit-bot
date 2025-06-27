@@ -118,6 +118,11 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
             value: "bigthumbsup",
             emoji: {id: "1387736796863004793"},
         },
+        {
+            label: t("settingsMemesTemplatesOptionBuzzTitle", language),
+            value: "buzz",
+            emoji: {id: "1388199124351844382"},
+        },
     ]
 
     const dataRetentionOptions = [

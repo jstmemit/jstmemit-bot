@@ -224,4 +224,13 @@ export const textSettings = {
         maxLines: 1,
         baseImageOverlay: 0
     },
+    buzz_1: {
+        fillStyle: '#ffffff',
+        outlineStyle: '#000000',
+        textAlign: 'center',
+        font: 'Comic Sans MS',
+        box: {x: 0.1, y: 0.75, w: 0.8, h: 0.25},
+        maxLines: 1,
+        baseImageOverlay: 0
+    },
 };

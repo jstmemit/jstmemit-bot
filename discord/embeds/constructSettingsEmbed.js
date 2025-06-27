@@ -103,6 +103,21 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
             value: "yeschad",
             emoji: {id: "1380165052992061542"},
         },
+        {
+            label: t("settingsMemesTemplatesOptionTextingTitle", language),
+            value: "texting",
+            emoji: {id: "1387734304049725490"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionConnorTitle", language),
+            value: "connor",
+            emoji: {id: "1387714462286610442"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionBigThumbsUpTitle", language),
+            value: "bigthumbsup",
+            emoji: {id: "1387736796863004793"},
+        },
     ]
 
     const dataRetentionOptions = [
@@ -337,6 +352,7 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                         .addComponents(
                             new StringSelectMenuBuilder()
                                 .setCustomId("select-useuserimages")
+                                .setDisabled(true)
                                 .addOptions(
                                     new SelectMenuOptionBuilder()
                                         .setLabel(t("no", language))

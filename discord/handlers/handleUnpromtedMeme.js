@@ -14,7 +14,7 @@ export const handleUnpromtedMeme = async (interaction, channelSettings) => {
             if (frequency > 0) {
                 const randomValue = Math.random() * 100;
                 if (randomValue < frequency) {
-                    await meme(interaction)
+                    await meme(interaction, false, true)
                 }
             }
         }

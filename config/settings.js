@@ -5,5 +5,10 @@ export const settings = {
     },
     values: {
         baseWeight: 0.3,
-    }
+    },
+    canvas: {
+        maxFileSize: 7 * 1024 * 1024,
+        maxDimension: 2048,
+        minDimension: 1,
+    },
 }

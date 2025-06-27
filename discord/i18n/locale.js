@@ -36,6 +36,9 @@ export const locale = {
         settingsMemesTemplatesOptionGreentextTitle: "Greentext",
         settingsMemesTemplatesOptionIsThisAPigeonTitle: "Is this a pigeon?",
         settingsMemesTemplatesOptionYesChadTitle: "Yes Chad",
+        settingsMemesTemplatesOptionTextingTitle: "Texting",
+        settingsMemesTemplatesOptionConnorTitle: "Connor",
+        settingsMemesTemplatesOptionBigThumbsUpTitle: "Big Thumbs Up",
 
         settingsDataRetentionTitle: "Data Retention",
         settingsDataRetentionDescription: "You can choose how long the bot will keep the data related to this channel. If you want to erase all data, you can also do it here.",
@@ -56,7 +59,7 @@ export const locale = {
         settingsDataRetentionHowLongOption30DaysDescription: "For channels with low activity",
 
         settingsDataRetentionUserImagesTitle: "Should bot use user sent images in memes?",
-        settingsDataRetentionUserImagesDescription: "If set to **yes**, sometimes instead of using avatars it will use user sent images instead. Only images sent no more than 24 hours ago will be used.",
+        settingsDataRetentionUserImagesDescription: "If set to **yes**, sometimes instead of using avatars it will use user sent images instead. Only images sent no more than 24 hours ago will be used. __Cannot be disabled due to new Intents limitations, will be fixes soon.__",
 
         settingsFooterChannelId: "Channel ID:",
 
@@ -118,6 +121,9 @@ export const locale = {
         settingsMemesTemplatesOptionGreentextTitle: "Гринтекст",
         settingsMemesTemplatesOptionIsThisAPigeonTitle: "Это голубь?",
         settingsMemesTemplatesOptionYesChadTitle: "Чад",
+        settingsMemesTemplatesOptionTextingTitle: "Пишет новости",
+        settingsMemesTemplatesOptionConnorTitle: "Коннор",
+        settingsMemesTemplatesOptionBigThumbsUpTitle: "Молодец, палец вверх",
 
         settingsDataRetentionTitle: "Хранение данных",
         settingsDataRetentionDescription: "Вы можете выбрать как долго бот будет хранить данные связанные с этим каналом. Если вы хотите удалить все сохраненные сообщения, вы также можете сделать это здесь.",
@@ -138,7 +144,7 @@ export const locale = {
         settingsDataRetentionHowLongOption30DaysDescription: "Для каналов с низкой активностью",
 
         settingsDataRetentionUserImagesTitle: "Использовать ли отправленные картинки в мемах?",
-        settingsDataRetentionUserImagesDescription: "Если включено, то иногда вместо аватаров будут использоваться отправленные картинки. Но только отправленные не более 24 часов назад.",
+        settingsDataRetentionUserImagesDescription: "Если включено, то иногда вместо аватаров будут использоваться отправленные картинки. Но только отправленные не более 24 часов назад. __Не может быть отключено из-за новых ограничений Intents у дискорда, будет исправлено скоро.__",
 
         settingsFooterChannelId: "ID канала:",
 
@@ -200,6 +206,9 @@ export const locale = {
         settingsMemesTemplatesOptionGreentextTitle: "Greentext",
         settingsMemesTemplatesOptionIsThisAPigeonTitle: "Is dit een vogel?",
         settingsMemesTemplatesOptionYesChadTitle: "Ja Chad",
+        settingsMemesTemplatesOptionTextingTitle: "Texting",
+        settingsMemesTemplatesOptionConnorTitle: "Connor",
+        settingsMemesTemplatesOptionBigThumbsUpTitle: "Duim omhoog",
 
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
@@ -282,6 +291,9 @@ export const locale = {
         settingsMemesTemplatesOptionGreentextTitle: "Гринтекст",
         settingsMemesTemplatesOptionIsThisAPigeonTitle: "Це голуб?",
         settingsMemesTemplatesOptionYesChadTitle: "Так Чад",
+        settingsMemesTemplatesOptionTextingTitle: "Пише новини",
+        settingsMemesTemplatesOptionConnorTitle: "Коннор",
+        settingsMemesTemplatesOptionBigThumbsUpTitle: "Молодець, великий палець вгору",
 
         settingsDataRetentionTitle: "Зберігання даних",
         settingsDataRetentionDescription: "Ви можете вибрати як довго бот буде зберігати дані, пов'язані з цим каналом. Якщо ви хочете видалити всі збережені повідомлення, ви також можете зробити це тут.",

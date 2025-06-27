@@ -6,36 +6,40 @@ import {getRandomImage} from "../../discord/getRandomImage.js";
 import {overlayImage} from "./helpers/overlayImage.js";
 import {analytics} from "../../bot.js";
 
-export const generateSteppedInShit = async (channelId, serverId) => {
+export const generateTexting = async (channelId, serverId) => {
     try {
         let result;
 
         const channelMessages = await getChannelMessages(channelId);
-        const image = await getTemplateFiles('steppedinshit.png');
+        const image = await getTemplateFiles('texting.png');
 
-        const avatar = await getRandomImage(serverId, channelId)
+        const avatar = await getRandomImage(serverId, channelId);
+        const avatar2 = await getRandomImage(serverId, channelId);
 
         const text = [
-            await generateText(channelMessages, 0, 3),
-            await generateText(channelMessages, 0, 3),
+            await generateText(channelMessages, 0, 4),
+            await generateText(channelMessages, 0, 4)
         ]
 
-        result = await overlayImage(image, avatar, 'steppedinshit_1')
-        result = await addText('steppedinshit_1', result, text[0]);
+        result = await overlayImage(image, avatar, 'texting_1');
+        result = await overlayImage(result, avatar2, 'texting_2');
 
         await analytics.capture({
             distinctId: channelId,
             event: 'meme_generated',
             properties: {
-                template: 'steppedinshit',
+                template: 'texting',
             },
         })
 
         await analytics.flush()
 
-        return await addText('steppedinshit_2', result, text[1]);
+        result = await addText('texting_1', result, text[0]);
+        result = await addText('texting_2', result, text[1]);
+
+        return result;
     } catch (e) {
-        console.error('Error in steppedInShit:', e.message);
+        console.error('Error in generateTexting:', e.message);
         throw e;
     }
 }

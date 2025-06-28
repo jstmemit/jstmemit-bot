@@ -66,4 +66,19 @@ export const overlaySettings = {
         cy: 200,
         radius: 80
     },
+    explains_1: {
+        type: 'circle',
+        cx: 230,
+        cy: 180,
+        radius: 280
+    },
+    explains_2: {
+        type: 'circle',
+        cx: 200,
+        cy: 660,
+        radius: 290
+    },
+    explains_3: {
+        type: 'fullimage'
+    },
 }

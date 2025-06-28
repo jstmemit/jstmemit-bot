@@ -12,6 +12,7 @@ import {generateIsThisAPigeon} from "../generation/visual/generateIsThisAPigeon.
 import {generateYesChad} from "../generation/visual/generateYesChad.js";
 import {generateConnor} from "../generation/visual/generateConnor.js";
 import {generateBuzz} from "../generation/visual/generateBuzz.js";
+import {generateExplains} from "../generation/visual/generateExplains.js";
 
 export const settings = {
     cache: {
@@ -101,6 +102,11 @@ export const settings = {
         {
             name: "generateBuzz",
             generator: (image, channelId, interaction) => generateBuzz(channelId, interaction),
+            requiresImage: false,
+        },
+        {
+            name: "generateExplains",
+            generator: (image, channelId, interaction) => generateExplains(channelId, interaction),
             requiresImage: false,
         },
     ]

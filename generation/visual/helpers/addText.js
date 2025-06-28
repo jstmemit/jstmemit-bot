@@ -1,5 +1,5 @@
 import {AttachmentBuilder} from "discord.js";
-import {textSettings} from "../../settings/textSettings.js";
+import {settings} from "../../../config/settings.js";
 import Canvas from "@napi-rs/canvas";
 import {getTimestamp, validateCanvasImage} from "../../utils.js";
 import {fitFontSize} from "./fitFontSize.js";
@@ -16,7 +16,7 @@ export const addText = async (templateName, image, text) => {
             maxLines = 2,
             baseImageOverlay,
             outlineStyle
-        } = textSettings[templateName];
+        } = settings.textSettings[templateName];
 
         if (image.width <= 0 || image.height <= 0 || image.width > 8192 || image.height > 8192) {
             throw new Error(`Invalid canvas dimensions: ${image.width}x${image.height}`);

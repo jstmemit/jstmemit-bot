@@ -1,7 +1,7 @@
 import Canvas from '@napi-rs/canvas';
 import {AttachmentBuilder} from "discord.js";
 import {getTimestamp, validateCanvasImage} from "../../utils.js";
-import {overlaySettings} from "../../settings/overlaySettings.js";
+import {settings} from "../../../config/settings.js";
 import {drawFullWidth} from "./overlay/drawFullWidth.js";
 import {drawAvatar} from "./overlay/drawAvatar.js";
 
@@ -24,7 +24,7 @@ export const overlayImage = async (image1, image2, variant, height = 0, convert)
         const canvas = new Canvas.Canvas(baseImage.width, canvasHeight);
         const ctx = canvas.getContext('2d');
 
-        const mode = overlaySettings[variant];
+        const mode = settings.overlaySettings[variant];
         if (!mode) {
             throw new Error(`Unknown overlay variant: ${variant}`);
         }

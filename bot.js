@@ -1,27 +1,27 @@
-import {initializeCommands} from "./discord/commands/initializeCommands.js";
-import {commands} from "./discord/commands/commands.js";
+import {initializeCommands} from "./src/discord/commands/initializeCommands.js";
+import {commands} from "./src/discord/commands/commands.js";
 import dotenv from 'dotenv';
 import {ActivityType, Client, Events, GatewayIntentBits, MessageFlags} from 'discord.js';
-import {handleNewMessage} from "./discord/handlers/handleNewMessage.js";
-import {meme} from "./discord/commands/meme.js";
-import {vote} from "./discord/buttons/vote/votes.js";
-import {checkIsEnabled} from "./discord/checkIsEnabled.js";
-import {handleDisabledChannel} from "./discord/handlers/handleDisabledChannel.js";
-import {enable} from "./discord/commands/enable.js";
-import {settings} from "./discord/commands/settings.js";
-import {handleLanguageChange} from "./discord/handlers/handleLanguageChange.js";
-import {handleUseUserImagesChange} from "./discord/handlers/handleUseUserImagesChange.js";
-import {handleDataRetentionChange} from "./discord/handlers/handleDataRetentionChange.js";
-import {handleMemeTemplatesChange} from "./discord/handlers/handleMemeTemplatesChange.js";
-import {handleFrequencyChange} from "./discord/handlers/handleFrequencyChange.js";
-import {handleEraseData} from "./discord/handlers/handleEraseData.js";
-import {handleToggleBot} from "./discord/handlers/handleToggleBot.js";
-import {handleUpdateSettingsEmbed} from "./discord/handlers/handleUpdateSettingsEmbed.js";
-import {handlePermissionCheck} from "./discord/handlers/handlePermissionCheck.js";
-import {startDataRoutine} from "./database/routines/startDataRoutine.js";
+import {handleNewMessage} from "./src/discord/handlers/handleNewMessage.js";
+import {meme} from "./src/discord/commands/meme.js";
+import {vote} from "./src/discord/buttons/vote/votes.js";
+import {checkIsEnabled} from "./src/discord/checkIsEnabled.js";
+import {handleDisabledChannel} from "./src/discord/handlers/handleDisabledChannel.js";
+import {enable} from "./src/discord/commands/enable.js";
+import {settings} from "./src/discord/commands/settings.js";
+import {handleLanguageChange} from "./src/discord/handlers/handleLanguageChange.js";
+import {handleUseUserImagesChange} from "./src/discord/handlers/handleUseUserImagesChange.js";
+import {handleDataRetentionChange} from "./src/discord/handlers/handleDataRetentionChange.js";
+import {handleMemeTemplatesChange} from "./src/discord/handlers/handleMemeTemplatesChange.js";
+import {handleFrequencyChange} from "./src/discord/handlers/handleFrequencyChange.js";
+import {handleEraseData} from "./src/discord/handlers/handleEraseData.js";
+import {handleToggleBot} from "./src/discord/handlers/handleToggleBot.js";
+import {handleUpdateSettingsEmbed} from "./src/discord/handlers/handleUpdateSettingsEmbed.js";
+import {handlePermissionCheck} from "./src/discord/handlers/handlePermissionCheck.js";
+import {startDataRoutine} from "./src/database/routines/startDataRoutine.js";
 import {PostHog} from 'posthog-node'
-import {handleUpdateEnableEmbed} from "./discord/handlers/handleUpdateEnableEmbed.js";
-import {constructLoadingEmbed} from "./discord/embeds/constructLoadingEmbed.js";
+import {handleUpdateEnableEmbed} from "./src/discord/handlers/handleUpdateEnableEmbed.js";
+import {constructLoadingEmbed} from "./src/discord/embeds/constructLoadingEmbed.js";
 
 let analytics = null;
 try {
@@ -62,6 +62,10 @@ client.on(Events.MessageCreate, async message => {
 
 	await handleNewMessage(message);
 });
+
+client.on(Events.EntitlementCreate, async entitlement => {
+	console.log(entitlement)
+})
 
 client.on(Events.InteractionCreate, async interaction => {
 

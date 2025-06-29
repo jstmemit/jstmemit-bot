@@ -1,18 +1,18 @@
-import {generateTexting} from "../generation/visual/generateTexting.js";
-import {generateQuote} from "../generation/visual/generateQuote.js";
-import {generateBottomCaption} from "../generation/visual/generateBottomCaption.js";
-import {generateFancyBear} from "../generation/visual/generateFancyBear.js";
-import {generateGreentext} from "../generation/text/markov/generateGreentext.js";
-import {generateUncanny} from "../generation/visual/generateUncanny.js";
-import {generateLooksAtPaperAngry} from "../generation/visual/generateLooksAtPaperAngry.js";
-import {generateCycle} from "../generation/visual/generateCycle.js";
-import {generateSteppedInShit} from "../generation/visual/generateSteppedInShit.js";
-import {generateWojackPoint} from "../generation/visual/generateWojackPoint.js";
-import {generateIsThisAPigeon} from "../generation/visual/generateIsThisAPigeon.js";
-import {generateYesChad} from "../generation/visual/generateYesChad.js";
-import {generateConnor} from "../generation/visual/generateConnor.js";
-import {generateBuzz} from "../generation/visual/generateBuzz.js";
-import {generateExplains} from "../generation/visual/generateExplains.js";
+import {generateTexting} from "../src/generation/visual/generateTexting.js";
+import {generateQuote} from "../src/generation/visual/generateQuote.js";
+import {generateBottomCaption} from "../src/generation/visual/generateBottomCaption.js";
+import {generateFancyBear} from "../src/generation/visual/generateFancyBear.js";
+import {generateGreentext} from "../src/generation/text/markov/generateGreentext.js";
+import {generateUncanny} from "../src/generation/visual/generateUncanny.js";
+import {generateLooksAtPaperAngry} from "../src/generation/visual/generateLooksAtPaperAngry.js";
+import {generateCycle} from "../src/generation/visual/generateCycle.js";
+import {generateSteppedInShit} from "../src/generation/visual/generateSteppedInShit.js";
+import {generateWojackPoint} from "../src/generation/visual/generateWojackPoint.js";
+import {generateIsThisAPigeon} from "../src/generation/visual/generateIsThisAPigeon.js";
+import {generateYesChad} from "../src/generation/visual/generateYesChad.js";
+import {generateConnor} from "../src/generation/visual/generateConnor.js";
+import {generateBuzz} from "../src/generation/visual/generateBuzz.js";
+import {generateExplains} from "../src/generation/visual/generateExplains.js";
 
 export const settings = {
     cache: {

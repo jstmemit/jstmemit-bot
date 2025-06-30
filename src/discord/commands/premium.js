@@ -3,7 +3,7 @@ import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {handlePermissionCheck} from "../handlers/handlePermissionCheck.js";
 import {analytics as posthog} from "../../../bot.js";
 import {constructPremiumEmbed} from "../embeds/constructPremiumEmbed.js";
-import {settings} from "../../../config/settings.js";
+import {checkPremium} from "../utils.js";
 
 export const premium = async (interaction) => {
     let channelSettings = await getChannelSettings(interaction.channelId);
@@ -23,12 +23,7 @@ export const premium = async (interaction) => {
         return;
     }
 
-    if (interaction.entitlements && interaction.entitlements.size > 0) {
-        hasPremium = interaction.entitlements.some(
-            (entitlement) =>
-                entitlement.skuId === settings.monetization.premiumSkuId && !entitlement.deleted
-        );
-    }
+    hasPremium = await checkPremium(interaction)
 
     const premiumEmbed = constructPremiumEmbed(channelSettings, interaction.channelId, hasPremium);
 

@@ -1,5 +1,5 @@
 import {getRandomImage} from "../getRandomImage.js";
-import {getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
+import {checkPremium, filterMentions, getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
 import {buildRow} from "../buttons/buildRow.js";
 import {checkIsEnabled} from "../checkIsEnabled.js";
 import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
@@ -76,6 +76,10 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
 
         if (typeof result === 'string') {
             textResult = result;
+
+            const hasPremium = await checkPremium(interaction)
+
+            textResult = await filterMentions(textResult, !hasPremium);
 
             if (!isUnpromted) {
                 await interaction.editReply({

@@ -27,6 +27,9 @@ export const settings = {
         maxDimension: 2048,
         minDimension: 1,
     },
+    monetization: {
+        premiumSkuId: '1388188866057474048',
+    },
     templates: [
         {
             name: "generateQuote",

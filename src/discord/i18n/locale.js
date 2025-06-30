@@ -75,10 +75,41 @@ export const locale = {
 
         enableDescription: "If you want to change this, click the button below. There are also more fine-tuned options available in the settings menu.",
 
+
+        premiumTitle: "Premium",
+        premiumDescription: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features, which you can see below.",
+        premiumStatusActive: "Premium is **active** on this server!",
+        premiumStatusInactive: "Premium is **not active** on this server",
+
+        premiumCustomizationTitle: "More customization",
+        premiumCustomizationDescription: "These features will give you more control over how the bot looks and behaves in this channel. Features are isolated on the channel level, so you can have different settings in different channels.",
+
+        premiumSetOwnWatermarkTitle: "Set your own watermark",
+        premiumSetOwnWatermarkDescription: "By default there are no watermarks on memes, but with premium you can set your own server logo or text as a watermark on memes. It will be placed in the bottom right corner of the meme.",
+        premiumSetOwnWatermarkActive: "✔️  Your own watermark is **set**!",
+        premiumSetOwnWatermarkInactive: "❌  No watermark is set",
+
+        premiumLinkChannelsTogetherTitle: "Link channels training data together",
+        premiumLinkChannelsTogetherDescription: "If you don't want to flood your general chat with memes, you can link a \"flood\" channel. Bot will operate there with training data from this channel, so it will be able to generate memes based on the context of this channel.",
+        premiumLinkChannelsTogetherActive: "✔️  <#{{thischannel}}> and <#{{floodchannel}}> are **linked together**!",
+        premiumLinkChannelsTogetherInactive: "❌  No channel is linked",
+
+        premiumTurnOffMentionsTitle: "Turn off @mentions in text memes",
+        premiumTurnOffMentionsDescription: "By default bot can in some occasions mention users in text memes. Although @everyone and @here mentions are always turned off even in free version.",
+        premiumTurnOffMentionsActive: "✔️  Mentions are **being replaced** in text memes!",
+        premiumTurnOffMentionsInactive: "❌  Mentions are **not being replaced** in text memes",
+
         btnDisable: "Disable",
         btnEnable: "Enable",
         btnEraseData: "Erase Data",
         btnSettings: "Settings",
+        btnPremiumActive: "Manage subscription",
+        btnTurnOn: "Turn on",
+        btnTurnOff: "Turn off",
+        btnLink: "Link channels",
+        btnUnlink: "Unlink channels",
+        btnSetWatermark: "Set watermark",
+        btnRemoveWatermark: "Remove watermark",
 
         loading: "Loading...",
 
@@ -161,10 +192,30 @@ export const locale = {
 
         enableDescription: "Вы можете изменить это нажав на кнопку под сообщением. Намного больше параметров доступны в меню настроек.",
 
+
+        premiumTitle: "Премиум",
+        premiumDescription: "Вы можете поддержать разработку этого бота, подписавшись на премиум. Этот сервер получит доступ к **персонализации бота**, **возможности связывать каналы** и некоторым другим функциям, которые вы можете увидеть ниже.",
+        premiumStatusActive: "Премиум **активен** на этом сервере!",
+        premiumStatusInactive: "Премиум **не активен** на этом сервере.",
+
+        premiumCustomizationTitle: "Больше персонализации",
+        premiumCustomizationDescription: "Эти функции дадут вам больше контроля над тем, как бот выглядит и ведет себя в этом канале. Функции изолированы на уровне канала, поэтому вы можете иметь разные настройки в разных каналах.",
+
+        premiumSetOwnWatermarkTitle: "Собственный водяной знак",
+        premiumSetOwnWatermarkDescription: "По умолчанию на мемах нет вообще никаких водяных знаков, но с премиумом вы можете установить собственный логотип сервера или текст на мемах. Он будет размещен в правом нижнем углу.",
+
+        premiumLinkChannelsTogetherTitle: "Связать каналы",
+        premiumLinkChannelsTogetherDescription: "Если вы не хотите засорять общий чат мемами, вы можете привязать канал для \"флуда\". Бот будет работать там с данными из этого канала, так что он сможет генерировать мемы на основе контекста этого канала.",
+
+        premiumTurnOffMentionsTitle: "Отключить @упоминания в текстовых мемах",
+        premiumTurnOffMentionsDescription: "По умолчанию бот может в некоторых случаях упоминать пользователей в текстовых мемах. Хотя упоминания @everyone и @here всегда отключены даже в бесплатной версии.",
+
+
         btnDisable: "Отключить",
         btnEnable: "Включить",
         btnEraseData: "Очистить данные",
         btnSettings: "Настройки",
+        btnPremiumActive: "Управление подпиской",
 
         loading: "Загрузка...",
 
@@ -247,10 +298,30 @@ export const locale = {
 
         enableDescription: "Je kunt dit wijzigen door op de knop onder het bericht te klikken. Er zijn nog veel meer parameters beschikbaar in het instellingenmenu.",
 
+
+        premiumTitle: "Premium",
+        premiumDescription: "Je kunt de ontwikkeling van deze bot ondersteunen door deze server te abonneren op premium. Deze server krijgt toegang tot **meer personalizatie**, **de mogelijkheid om kanalen aan elkaar te koppelen** en enkele andere functies, die je hieronder kunt zien.",
+
+        premiumStatusActive: "Premium is **actief** op deze server!",
+        premiumStatusInactive: "Premium is **niet actief** op deze server.",
+
+        premiumCustomizationTitle: "Meer personalisatie",
+        premiumCustomizationDescription: "Deze functies geven je meer controle over hoe de bot eruit ziet en zich gedraagt in dit kanaal. Functies zijn geïsoleerd op het niveau van het kanaal, zodat je verschillende instellingen kunt hebben in verschillende kanalen.",
+
+        premiumSetOwnWatermarkTitle: "Stel je eigen watermerk in",
+        premiumSetOwnWatermarkDescription: "Standaard zijn er geen watermerken op meme's, maar met premium kun je je eigen serverlogo of tekst instellen als watermerk op meme's. Het wordt geplaatst in de rechterbenedenhoek van de meme.",
+
+        premiumLinkChannelsTogetherTitle: "Koppel kanalen samen",
+        premiumLinkChannelsTogetherDescription: "Als je je algemene chat niet wilt vervuilen met meme's, kun je een \"flood\" kanaal koppelen. De bot zal daar werken met trainingsdata van dit kanaal, zodat het memes kan genereren op basis van de context van dit kanaal.",
+
+        premiumTurnOffMentionsTitle: "Schakel @mentions uit in tekst meme's",
+        premiumTurnOffMentionsDescription: "Standaard kan de bot in sommige gevallen gebruikers vermelden in tekst meme's. Hoewel @everyone en @here vermeldingen altijd zijn uitgeschakeld, zelfs in de gratis versie.",
+
         btnDisable: "Uitzetten",
         btnEnable: "Aanzetten",
         btnEraseData: "Gegevens wissen",
         btnSettings: "Instellingen",
+        btnPremiumActive: "Beheer abonnement",
 
         loading: "Loading...",
 
@@ -333,10 +404,30 @@ export const locale = {
 
         enableDescription: "Ви можете змінити це натиснувши на кнопку під повідомленням. Набагато більше параметрів доступні в меню налаштувань.",
 
+
+        premiumTitle: "Преміум",
+        premiumDescription: "Ви можете підтримати розробку цього бота підписавшись на преміум. Цей сервер отримає доступ до **більшої персоналізації**, **можливості пов'язувати канали** та деяких інших функцій, які ви можете побачити нижче.",
+
+        premiumStatusActive: "Преміум **активний** на цьому сервері!",
+        premiumStatusInactive: "Преміум **не активний** на цьому сервері.",
+
+        premiumCustomizationTitle: "Більше персоналізації",
+        premiumCustomizationDescription: "Ці функції дадуть вам більше контролю над тим, як бот виглядає і поводиться в цьому каналі. Функції ізольовані на рівні каналу, тому ви можете мати різні налаштування в різних каналах.",
+
+        premiumSetOwnWatermarkTitle: "Встановити власний водяний знак",
+        premiumSetOwnWatermarkDescription: "За замовчуванням на мемах немає водяних знаків, але з преміумом ви можете встановити власний логотип сервера або текст як водяний знак на мемах. Він буде розміщений у правому нижньому куті мему.",
+
+        premiumLinkChannelsTogetherTitle: "Зв'язати канали разом",
+        premiumLinkChannelsTogetherDescription: "Якщо ви не хочете засмічувати загальний чат мемами, ви можете прив'язати канал для \"флуду\". Бот буде працювати там з даними з цього каналу, тому він зможе генерувати меми на основі контексту цього каналу.",
+
+        premiumTurnOffMentionsTitle: "Вимкнути @згадування в текстових мемах",
+        premiumTurnOffMentionsDescription: "За замовчуванням бот може в деяких випадках згадувати користувачів у текстових мемах. Хоча @everyone і @here згадки завжди вимкнені навіть у безкоштовній версії.",
+
         btnDisable: "Вимкнути",
         btnEnable: "Увімкнути",
         btnEraseData: "Очистити дані",
         btnSettings: "Налаштування",
+        btnPremiumActive: "Керування підпискою",
 
         loading: "Загрузка...",
 

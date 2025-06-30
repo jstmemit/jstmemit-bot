@@ -22,6 +22,8 @@ import {startDataRoutine} from "./src/database/routines/startDataRoutine.js";
 import {PostHog} from 'posthog-node'
 import {handleUpdateEnableEmbed} from "./src/discord/handlers/handleUpdateEnableEmbed.js";
 import {constructLoadingEmbed} from "./src/discord/embeds/constructLoadingEmbed.js";
+import {premium} from "./src/discord/commands/premium.js";
+import {handleNewEntitlement} from "./src/discord/handlers/handleNewEntitlement.js";
 
 let analytics = null;
 try {
@@ -64,7 +66,7 @@ client.on(Events.MessageCreate, async message => {
 });
 
 client.on(Events.EntitlementCreate, async entitlement => {
-	console.log(entitlement)
+	await handleNewEntitlement(entitlement);
 })
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -77,6 +79,9 @@ client.on(Events.InteractionCreate, async interaction => {
 				return;
 			case 'settings':
 				await settings(interaction);
+				return;
+			case 'premium':
+				await premium(interaction);
 				return;
 		}
 

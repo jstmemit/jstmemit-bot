@@ -1,8 +1,10 @@
 // noinspection JSCheckFunctionSignatures
 
 import {
+    ActionRowBuilder,
     ButtonBuilder,
     ButtonStyle,
+    ChannelSelectMenuBuilder,
     ContainerBuilder,
     SectionBuilder,
     SeparatorBuilder,
@@ -15,8 +17,15 @@ import {t} from "../i18n/utils.js";
 export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) => {
 
     const language = currentSettings?.language || "english";
+    let watermarkEnabled = false, anyChannelLinked = false;
 
-    currentSettings.replace_mentions == true
+    if (currentSettings.watermarkLogo === true && currentSettings.watermarkText) {
+        watermarkEnabled = true;
+    }
+
+    if (currentSettings.linkedChannels && currentSettings.linkedChannels.length > 0) {
+        anyChannelLinked = true;
+    }
 
     return [
         new ContainerBuilder()
@@ -92,7 +101,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
-                            hasPremium
+                            currentSettings.replace_mentions
                                 ? t("premiumTurnOffMentionsActive", language)
                                 : t("premiumTurnOffMentionsInactive", language)
                         ),
@@ -113,9 +122,10 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                         hasPremium
                             ?
                             new ButtonBuilder()
-                                .setStyle(currentSettings.replace_mentions ? ButtonStyle.Danger : ButtonStyle.Success)
-                                .setLabel(`${currentSettings.replace_mentions ? (t("btnTurnOff", language)) : (t("btnTurnOn", language))}`)
-                                .setCustomId(`${currentSettings.replace_mentions ? "disable" : "enable"}-${channelId}`)
+                                .setStyle(anyChannelLinked ? ButtonStyle.Danger : ButtonStyle.Success)
+                                .setLabel(`${anyChannelLinked ? (t("btnUnlink", language)) : (t("btnLinkBelow", language))}`)
+                                .setCustomId(`${anyChannelLinked ? "unlink" : "link"}-${channelId}`)
+                                .setDisabled(anyChannelLinked ? false : true)
                             :
                             new ButtonBuilder()
                                 .setStyle(ButtonStyle.Secondary)
@@ -125,11 +135,23 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
-                            hasPremium
+                            anyChannelLinked
                                 ? t("premiumLinkChannelsTogetherActive", language)
                                 : t("premiumLinkChannelsTogetherInactive", language)
                         ),
                     ),
+            )
+            .addActionRowComponents(
+                hasPremium
+                    ? new ActionRowBuilder()
+                        .addComponents(
+                            new ChannelSelectMenuBuilder()
+                                .setCustomId(`linkchannel-${channelId}`)
+                                .setPlaceholder(t("premiumSelectChannelPlaceholder", language))
+                                .setChannelTypes([0, 5])
+                                .setDisabled(!hasPremium || anyChannelLinked)
+                        )
+                    : []
             )
             .addSeparatorComponents(
                 new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
@@ -146,9 +168,9 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                         hasPremium
                             ?
                             new ButtonBuilder()
-                                .setStyle(currentSettings.replace_mentions ? ButtonStyle.Danger : ButtonStyle.Success)
-                                .setLabel(`${currentSettings.replace_mentions ? (t("btnTurnOff", language)) : (t("btnTurnOn", language))}`)
-                                .setCustomId(`${currentSettings.replace_mentions ? "disable" : "enable"}-${channelId}`)
+                                .setStyle(ButtonStyle.Primary)
+                                .setLabel(t("btnSetWatermark", language))
+                                .setCustomId(`set_watermark-${channelId}`)
                             :
                             new ButtonBuilder()
                                 .setStyle(ButtonStyle.Secondary)
@@ -158,7 +180,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
-                            hasPremium
+                            watermarkEnabled
                                 ? t("premiumSetOwnWatermarkActive", language)
                                 : t("premiumSetOwnWatermarkInactive", language)
                         ),

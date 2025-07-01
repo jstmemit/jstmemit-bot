@@ -93,8 +93,9 @@ export const locale = {
         premiumLinkChannelsTogetherDescription: "If you don't want to flood your general chat with memes, you can link a \"flood\" channel. Bot will operate there with training data from this channel, so it will be able to generate memes based on the context of this channel.",
         premiumLinkChannelsTogetherActive: "✔️  <#{{thischannel}}> and <#{{floodchannel}}> are **linked together**!",
         premiumLinkChannelsTogetherInactive: "❌  No channel is linked",
+        premiumSelectChannelPlaceholder: "🔗  Select channel to link",
 
-        premiumTurnOffMentionsTitle: "Turn off @mentions in text memes",
+        premiumTurnOffMentionsTitle: "Replace @mentions in text memes with usernames",
         premiumTurnOffMentionsDescription: "By default bot can in some occasions mention users in text memes. Although @everyone and @here mentions are always turned off even in free version.",
         premiumTurnOffMentionsActive: "✔️  Mentions are **being replaced** in text memes!",
         premiumTurnOffMentionsInactive: "❌  Mentions are **not being replaced** in text memes",
@@ -107,6 +108,7 @@ export const locale = {
         btnTurnOn: "Turn on",
         btnTurnOff: "Turn off",
         btnLink: "Link channels",
+        btnLinkBelow: "Use menu below to link channels",
         btnUnlink: "Unlink channels",
         btnSetWatermark: "Set watermark",
         btnRemoveWatermark: "Remove watermark",

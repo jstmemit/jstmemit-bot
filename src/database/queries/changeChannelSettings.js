@@ -9,7 +9,8 @@ export const changeChannelSettings = async (channelSettings) => {
         enabled_random_memes,
         delete_messages_after,
         use_user_images,
-        language
+        language,
+        replace_mentions
     } = channelSettings;
 
     await conn.beginTransaction();
@@ -28,9 +29,10 @@ export const changeChannelSettings = async (channelSettings) => {
                      enabled_random_memes  = ?,
                      delete_messages_after = ?,
                      use_user_images = ?,
-                     language = ?
+                     language         = ?,
+                     replace_mentions = ?
                  WHERE channel_id = ?`,
-                [is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language, channel_id]
+                [is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language, replace_mentions, channel_id]
             );
         } else {
             await conn.query(

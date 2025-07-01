@@ -13,12 +13,6 @@ export const premium = async (interaction) => {
         channelSettings = await getChannelSettings(interaction.channelId);
     }
 
-    if (channelSettings) {
-        if (channelSettings.enabled_random_memes <= 0) {
-            channelSettings.enabled_random_memes = "all";
-        }
-    }
-
     if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
         return;
     }

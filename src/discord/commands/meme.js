@@ -1,11 +1,12 @@
 import {getRandomImage} from "../getRandomImage.js";
-import {checkPremium, filterMentions, getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
+import {filterMentions, getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
 import {buildRow} from "../buttons/buildRow.js";
 import {checkIsEnabled} from "../checkIsEnabled.js";
 import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
 import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
 import {handleNotEnoughContext} from "../handlers/handleNotEnoughContext.js";
 import {getConfig} from "../../generation/getConfig.js";
+import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 
 export const meme = async (interaction, isRegenerate, isUnpromted) => {
     let channelId, guildId;
@@ -19,6 +20,13 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         if (!channelId || !guildId) {
             console.error('No channel id or guild id');
             return;
+        }
+
+        let channelSettings = await getChannelSettings(interaction.channelId);
+
+        // yes, it will be refactored later anyway
+        if (!channelSettings) {
+            channelSettings = await getChannelSettings(interaction.channelId);
         }
 
         const messages = await withTimeout(getChannelMessages(channelId), 10000);
@@ -77,9 +85,9 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         if (typeof result === 'string') {
             textResult = result;
 
-            const hasPremium = await checkPremium(interaction)
+            const replaceMentions = channelSettings.replace_mentions;
 
-            textResult = await filterMentions(textResult, !hasPremium);
+            textResult = await filterMentions(textResult, replaceMentions);
 
             if (!isUnpromted) {
                 await interaction.editReply({

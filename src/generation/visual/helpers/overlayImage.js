@@ -47,6 +47,16 @@ export const overlayImage = async (image1, image2, variant, height = 0, convert)
             case 'circle':
                 drawAvatar(ctx, overlayImage, mode);
                 break;
+            case 'watermark_corner':
+                const size = Math.min(baseImage.width * (mode.size || 0.10), 200);
+                const padding = Math.max(10, Math.min(baseImage.width, baseImage.height) * (mode.padding || 0.02));
+                const x = baseImage.width - size - padding;
+                const y = baseImage.height - size - padding;
+
+                ctx.globalAlpha = mode.opacity || 0.8;
+                ctx.drawImage(overlayImage, x, y, size, size);
+                ctx.globalAlpha = 1.0;
+                break;
         }
         const png = await canvas.encode('png');
 

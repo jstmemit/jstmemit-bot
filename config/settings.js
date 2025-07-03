@@ -195,6 +195,10 @@ export const settings = {
         },
         explains_3: {
             type: 'fullimage'
+        },
+        watermark_logo: {
+            type: 'watermark_corner',
+            position: 'bottom-right',
         }
     },
     textSettings: {
@@ -440,6 +444,15 @@ export const settings = {
             box: {x: 0.1, y: 0.85, w: 0.8, h: 0.15},
             maxLines: 1,
             baseImageOverlay: 0
+        },
+        watermark_text: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            font: 'Comic Sans MS',
+            textAlign: 'right',
+            box: {x: 0.2, y: 0.95, w: 0.3, h: 0.05},
+            maxLines: 1,
+            baseImageOverlay: 0,
         }
     }
 }

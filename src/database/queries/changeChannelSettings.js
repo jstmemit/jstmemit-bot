@@ -11,7 +11,8 @@ export const changeChannelSettings = async (channelSettings) => {
         use_user_images,
         language,
         replace_mentions,
-        watermarkLogo
+        watermarkLogo,
+        linked_channel
     } = channelSettings;
 
     await conn.beginTransaction();
@@ -32,16 +33,17 @@ export const changeChannelSettings = async (channelSettings) => {
                      use_user_images = ?,
                      language             = ?,
                      replace_mentions     = ?,
-                     watermarkLogo        = ?
+                     watermarkLogo  = ?,
+                     linked_channel = ?
                  WHERE channel_id = ?`,
-                [is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language, replace_mentions, watermarkLogo, channel_id]
+                [is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language, replace_mentions, watermarkLogo, linked_channel, channel_id]
             );
         } else {
             await conn.query(
                 `INSERT INTO channels (channel_id, is_enabled, frequency, enabled_random_memes, delete_messages_after,
-                                       use_user_images, language, replace_mentions, watermarkLogo)
-                 VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                [channel_id, is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language, replace_mentions, watermarkLogo]
+                                       use_user_images, language, replace_mentions, watermarkLogo, linked_channel)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                [channel_id, is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language, replace_mentions, watermarkLogo, linked_channel]
             );
         }
 

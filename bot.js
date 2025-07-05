@@ -27,6 +27,7 @@ import {handleNewEntitlement} from "./src/discord/handlers/handleNewEntitlement.
 import {handleToggleMentions} from "./src/discord/handlers/handleToggleMentions.js";
 import {handleUpdatePremiumEmbed} from "./src/discord/handlers/handleUpdatePremiumEmbed.js";
 import {handleToggleWatermark} from "./src/discord/handlers/handleToggleWatermark.js";
+import {handleLinkChannel} from "./src/discord/handlers/handleLinkChannel.js";
 
 let analytics = null;
 try {
@@ -168,6 +169,11 @@ client.on(Events.InteractionCreate, async interaction => {
 				break;
 		}
 
+		if (customId.startsWith("unlink-")) {
+			await handleLinkChannel(interaction);
+			await handleUpdatePremiumEmbed(interaction);
+		}
+
 		if (id === 'like' || id === 'dislike') {
 			await vote(interaction, analytics, id);
 		}
@@ -200,6 +206,21 @@ client.on(Events.InteractionCreate, async interaction => {
 			case "select-language":
 				await handleLanguageChange(interaction);
 				await handleUpdateSettingsEmbed(interaction);
+				break;
+		}
+	}
+
+	if (interaction.isChannelSelectMenu()) {
+		const {customId} = interaction;
+
+		if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+			return;
+		}
+
+		switch (customId) {
+			case "select-linkchannel":
+				await handleLinkChannel(interaction);
+				await handleUpdatePremiumEmbed(interaction);
 				break;
 		}
 	}

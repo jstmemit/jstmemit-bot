@@ -13,6 +13,7 @@ import {
     ThumbnailBuilder
 } from 'discord.js';
 import {t} from "../i18n/utils.js";
+import {settings} from "../../../config/settings.js";
 
 export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) => {
 
@@ -23,7 +24,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
         watermarkEnabled = true;
     }
 
-    if (currentSettings.linkedChannels && currentSettings.linkedChannels.length > 0) {
+    if (currentSettings.linked_channel) {
         anyChannelLinked = true;
     }
 
@@ -56,7 +57,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                             :
                             new ButtonBuilder()
                                 .setStyle(ButtonStyle.Premium)
-                                .setSKUId('1388188866057474048')
+                                .setSKUId(`${settings.monetization.premiumSkuId}`)
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
@@ -137,7 +138,10 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
                             anyChannelLinked
-                                ? t("premiumLinkChannelsTogetherActive", language)
+                                ? t("premiumLinkChannelsTogetherActive", language, {
+                                    thischannel: channelId,
+                                    floodchannel: currentSettings.linked_channel
+                                })
                                 : t("premiumLinkChannelsTogetherInactive", language)
                         ),
                     ),
@@ -147,7 +151,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                     ? new ActionRowBuilder()
                         .addComponents(
                             new ChannelSelectMenuBuilder()
-                                .setCustomId(`linkchannel-${channelId}`)
+                                .setCustomId(`select-linkchannel`)
                                 .setPlaceholder(t("premiumSelectChannelPlaceholder", language))
                                 .setChannelTypes([0, 5])
                                 .setDisabled(!hasPremium || anyChannelLinked)

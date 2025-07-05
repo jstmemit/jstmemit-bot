@@ -10,7 +10,8 @@ export const changeChannelSettings = async (channelSettings) => {
         delete_messages_after,
         use_user_images,
         language,
-        replace_mentions
+        replace_mentions,
+        watermarkLogo
     } = channelSettings;
 
     await conn.beginTransaction();
@@ -24,22 +25,23 @@ export const changeChannelSettings = async (channelSettings) => {
         if (existing.length > 0) {
             await conn.query(
                 `UPDATE channels
-                 SET is_enabled            = ?,
-                     frequency             = ?,
-                     enabled_random_memes  = ?,
+                 SET is_enabled           = ?,
+                     frequency            = ?,
+                     enabled_random_memes = ?,
                      delete_messages_after = ?,
                      use_user_images = ?,
-                     language         = ?,
-                     replace_mentions = ?
+                     language             = ?,
+                     replace_mentions     = ?,
+                     watermarkLogo        = ?
                  WHERE channel_id = ?`,
-                [is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language, replace_mentions, channel_id]
+                [is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language, replace_mentions, watermarkLogo, channel_id]
             );
         } else {
             await conn.query(
                 `INSERT INTO channels (channel_id, is_enabled, frequency, enabled_random_memes, delete_messages_after,
-                                       use_user_images, language)
+                                       use_user_images, language, replace_mentions, watermarkLogo)
                  VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                [channel_id, is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language]
+                [channel_id, is_enabled, frequency, enabled_random_memes, delete_messages_after, use_user_images, language, replace_mentions, watermarkLogo]
             );
         }
 

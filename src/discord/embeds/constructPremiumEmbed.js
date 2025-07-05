@@ -123,7 +123,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                         hasPremium
                             ?
                             new ButtonBuilder()
-                                .setStyle(anyChannelLinked ? ButtonStyle.Danger : ButtonStyle.Success)
+                                .setStyle(anyChannelLinked ? ButtonStyle.Danger : ButtonStyle.Secondary)
                                 .setLabel(`${anyChannelLinked ? (t("btnUnlink", language)) : (t("btnLinkBelow", language))}`)
                                 .setCustomId(`${anyChannelLinked ? "unlink" : "link"}-${channelId}`)
                                 .setDisabled(anyChannelLinked ? false : true)
@@ -169,9 +169,9 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                         hasPremium
                             ?
                             new ButtonBuilder()
-                                .setStyle(ButtonStyle.Primary)
-                                .setLabel(t("btnSetWatermark", language))
-                                .setCustomId(`set_watermark-${channelId}`)
+                                .setStyle(currentSettings.watermarkLogo ? ButtonStyle.Danger : ButtonStyle.Success)
+                                .setLabel(`${currentSettings.watermarkLogo ? (t("btnRemoveWatermark", language)) : (t("btnSetWatermark", language))}`)
+                                .setCustomId(`${currentSettings.watermarkLogo ? "watermarkdisable" : "watermarkenable"}-${channelId}`)
                             :
                             new ButtonBuilder()
                                 .setStyle(ButtonStyle.Secondary)
@@ -181,7 +181,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
-                            watermarkEnabled
+                            currentSettings.watermarkLogo
                                 ? t("premiumSetOwnWatermarkActive", language)
                                 : t("premiumSetOwnWatermarkInactive", language)
                         ),

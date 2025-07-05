@@ -26,6 +26,7 @@ import {premium} from "./src/discord/commands/premium.js";
 import {handleNewEntitlement} from "./src/discord/handlers/handleNewEntitlement.js";
 import {handleToggleMentions} from "./src/discord/handlers/handleToggleMentions.js";
 import {handleUpdatePremiumEmbed} from "./src/discord/handlers/handleUpdatePremiumEmbed.js";
+import {handleToggleWatermark} from "./src/discord/handlers/handleToggleWatermark.js";
 
 let analytics = null;
 try {
@@ -121,6 +122,17 @@ client.on(Events.InteractionCreate, async interaction => {
 		if (customId.startsWith("mentionenable-") || customId.startsWith("mentiondisable-")) {
 			try {
 				await handleToggleMentions(interaction);
+				await handleUpdatePremiumEmbed(interaction);
+			} catch (error) {
+				console.log(error)
+			}
+
+			return;
+		}
+
+		if (customId.startsWith("watermarkenable-") || customId.startsWith("watermarkdisable-")) {
+			try {
+				await handleToggleWatermark(interaction);
 				await handleUpdatePremiumEmbed(interaction);
 			} catch (error) {
 				console.log(error)

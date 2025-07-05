@@ -1,6 +1,22 @@
 import {generateSpongebob} from "../src/generation/visual/generateSpongebob.js";
 import {generateAbsoluteCinema} from "../src/generation/visual/generateAbsoluteCinema.js";
 import {generateCrying} from "../src/generation/visual/generateCrying.js";
+import {generateQuote} from "../src/generation/visual/generateQuote.js";
+import {generateBottomCaption} from "../src/generation/visual/generateBottomCaption.js";
+import {generateFancyBear} from "../src/generation/visual/generateFancyBear.js";
+import {generateGreentext} from "../src/generation/text/markov/generateGreentext.js";
+import {generateUncanny} from "../src/generation/visual/generateUncanny.js";
+import {generateLooksAtPaperAngry} from "../src/generation/visual/generateLooksAtPaperAngry.js";
+import {generateCycle} from "../src/generation/visual/generateCycle.js";
+import {generateSteppedInShit} from "../src/generation/visual/generateSteppedInShit.js";
+import {generateWojackPoint} from "../src/generation/visual/generateWojackPoint.js";
+import {generateIsThisAPigeon} from "../src/generation/visual/generateIsThisAPigeon.js";
+import {generateYesChad} from "../src/generation/visual/generateYesChad.js";
+import {generateTexting} from "../src/generation/visual/generateTexting.js";
+import {generateConnor} from "../src/generation/visual/generateConnor.js";
+import {generateBuzz} from "../src/generation/visual/generateBuzz.js";
+import {generateExplains} from "../src/generation/visual/generateExplains.js";
+import {generateLiveReaction} from "../src/generation/visual/generateLiveReaction.js";
 
 export const settings = {
     cache: {

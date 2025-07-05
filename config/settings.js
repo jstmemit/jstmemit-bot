@@ -13,6 +13,7 @@ import {generateYesChad} from "../src/generation/visual/generateYesChad.js";
 import {generateConnor} from "../src/generation/visual/generateConnor.js";
 import {generateBuzz} from "../src/generation/visual/generateBuzz.js";
 import {generateExplains} from "../src/generation/visual/generateExplains.js";
+import {generateLiveReaction} from "../src/generation/visual/generateLiveReaction.js";
 
 export const settings = {
     cache: {
@@ -112,6 +113,11 @@ export const settings = {
             generator: (image, channelId, interaction) => generateExplains(channelId, interaction),
             requiresImage: false,
         },
+        {
+            name: "generateLiveReaction",
+            generator: (image, channelId, interaction) => generateLiveReaction(channelId, interaction),
+            requiresImage: false,
+        },
     ],
     overlaySettings: {
         speechbubble: {
@@ -194,6 +200,21 @@ export const settings = {
             radius: 290
         },
         explains_3: {
+            type: 'fullimage'
+        },
+        livereaction_1: {
+            type: 'circle',
+            cx: 450,
+            cy: 600,
+            radius: 650
+        },
+        livereaction_2: {
+            type: 'circle',
+            cx: 330,
+            cy: 120,
+            radius: 70
+        },
+        livereaction_3: {
             type: 'fullimage'
         },
         watermark_logo: {

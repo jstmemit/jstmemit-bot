@@ -40,6 +40,9 @@ export const locale = {
         settingsMemesTemplatesOptionConnorTitle: "Connor",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Big Thumbs Up",
         settingsMemesTemplatesOptionBuzzTitle: "Buzz",
+        settingsMemesTemplatesOptionSpongebobTitle: "SpongeBob",
+        settingsMemesTemplatesOptionCryingTitle: "Crying",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Absolute Cinema",
 
         settingsDataRetentionTitle: "Data Retention",
         settingsDataRetentionDescription: "You can choose how long the bot will keep the data related to this channel. If you want to erase all data, you can also do it here.",
@@ -77,8 +80,8 @@ export const locale = {
 
 
         premiumTitle: "Premium",
-        premiumDescription: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features, which you can see below.\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.",
-        premiumDescriptionSettingsVariant: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features.\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.",
+        premiumDescription: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features, which you can see below. More things are coming in the near future!\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.",
+        premiumDescriptionSettingsVariant: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features. More things are coming in the near future!\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.",
         premiumStatusActive: "Premium is **active** on this server!",
         premiumStatusInactive: "Premium is **not active** on this server",
 
@@ -162,6 +165,9 @@ export const locale = {
         settingsMemesTemplatesOptionConnorTitle: "Коннор",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Молодец, палец вверх",
         settingsMemesTemplatesOptionBuzzTitle: "Баззлайтер",
+        settingsMemesTemplatesOptionSpongebobTitle: "Губка Боб",
+        settingsMemesTemplatesOptionCryingTitle: "Плачет",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Абсолютное кино",
 
         settingsDataRetentionTitle: "Хранение данных",
         settingsDataRetentionDescription: "Вы можете выбрать как долго бот будет хранить данные связанные с этим каналом. Если вы хотите удалить все сохраненные сообщения, вы также можете сделать это здесь.",
@@ -200,6 +206,7 @@ export const locale = {
 
         premiumTitle: "Премиум",
         premiumDescription: "Вы можете поддержать разработку этого бота, подписавшись на премиум. Этот сервер получит доступ к **персонализации бота**, **возможности связывать каналы** и некоторым другим функциям, которые вы можете увидеть ниже.\n\nВсе пользователи на этом сервере получат **Премиум** возможности. Даже если только один человек подпишется.",
+        premiumDescriptionSettingsVariant: "Вы можете поддержать разработку этого бота, подписавшись на премиум. Этот сервер получит доступ к **персонализации бота**, **возможности связывать каналы** и некоторым другим функциям. Больше возможностей уже в пути!\n\nВсе пользователи на этом сервере получат **Премиум** возможности. Даже если только один человек подпишется.",
         premiumStatusActive: "Премиум **активен** на этом сервере!",
         premiumStatusInactive: "Премиум **не активен** на этом сервере.",
 
@@ -226,7 +233,9 @@ export const locale = {
         btnEnable: "Включить",
         btnEraseData: "Очистить данные",
         btnSettings: "Настройки",
-        btnPremiumActive: "Управление подпиской",
+        btnPremiumActive: "Премиум активен!",
+        btnManagePremium: "Настройки премиума",
+        btnLearnMore: "Узнать больше",
         btnTurnOn: "Включить",
         btnTurnOff: "Выключить",
         btnLink: "Связать каналы",
@@ -281,6 +290,9 @@ export const locale = {
         settingsMemesTemplatesOptionConnorTitle: "Connor",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Duim omhoog",
         settingsMemesTemplatesOptionBuzzTitle: "Buzz",
+        settingsMemesTemplatesOptionSpongebobTitle: "SpongeBob",
+        settingsMemesTemplatesOptionCryingTitle: "Huilen",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Absoluut cinema",
 
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
@@ -318,6 +330,7 @@ export const locale = {
 
         premiumTitle: "Premium",
         premiumDescription: "Je kunt de ontwikkeling van deze bot ondersteunen door deze server te abonneren op premium. Deze server krijgt toegang tot **meer personalizatie**, **de mogelijkheid om kanalen aan elkaar te koppelen** en enkele andere functies, die je hieronder kunt zien.\n\nIedereen op deze server krijgt **Premium** voordelen, zelfs als maar een persoon zich abonneert.",
+        premiumDescriptionSettingsVariant: "Je kunt de ontwikkeling van deze bot ondersteunen door deze server te abonneren op premium. Deze server krijgt toegang tot **meer personalizatie**, **de mogelijkheid om kanalen aan elkaar te koppelen** en enkele andere functies. Meer dingen komen binnenkort!\n\nIedereen op deze server krijgt **Premium** voordelen, zelfs als maar een persoon zich abonneert.",
 
         premiumStatusActive: "Premium is **actief** op deze server!",
         premiumStatusInactive: "Premium is **niet actief** op deze server.",
@@ -345,7 +358,9 @@ export const locale = {
         btnEnable: "Aanzetten",
         btnEraseData: "Gegevens wissen",
         btnSettings: "Instellingen",
-        btnPremiumActive: "Beheer abonnement",
+        btnPremiumActive: "Premium is actief!",
+        btnManagePremium: "Premium instellingen",
+        btnLearnMore: "Meer informatie",
         btnTurnOn: "Aanzetten",
         btnTurnOff: "Uitzetten",
         btnLink: "Kanalen koppelen",
@@ -400,6 +415,9 @@ export const locale = {
         settingsMemesTemplatesOptionConnorTitle: "Коннор",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Молодець, великий палець вгору",
         settingsMemesTemplatesOptionBuzzTitle: "Баззлайтер",
+        settingsMemesTemplatesOptionSpongebobTitle: "Губка Боб",
+        settingsMemesTemplatesOptionCryingTitle: "Плаче",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Абсолютне кіно",
 
         settingsDataRetentionTitle: "Зберігання даних",
         settingsDataRetentionDescription: "Ви можете вибрати як довго бот буде зберігати дані, пов'язані з цим каналом. Якщо ви хочете видалити всі збережені повідомлення, ви також можете зробити це тут.",
@@ -437,6 +455,7 @@ export const locale = {
 
         premiumTitle: "Преміум",
         premiumDescription: "Ви можете підтримати розробку цього бота підписавшись на преміум. Цей сервер отримає доступ до **більшої персоналізації**, **можливості пов'язувати канали** та деяких інших функцій, які ви можете побачити нижче.\n\nВсі користувачі на цьому сервері отримають **Преміум** можливості. Навіть якщо тільки одна людина підпишеться.",
+        premiumDescriptionSettingsVariant: "Ви можете підтримати розробку цього бота підписавшись на преміум. Цей сервер отримає доступ до **більшої персоналізації**, **можливості пов'язувати канали** та деяких інших функцій. Більше можливостей вже в дорозі!\n\nВсі користувачі на цьому сервері отримають **Преміум** можливості. Навіть якщо тільки одна людина підпишеться.",
 
         premiumStatusActive: "Преміум **активний** на цьому сервері!",
         premiumStatusInactive: "Преміум **не активний** на цьому сервері.",
@@ -464,7 +483,9 @@ export const locale = {
         btnEnable: "Увімкнути",
         btnEraseData: "Очистити дані",
         btnSettings: "Налаштування",
-        btnPremiumActive: "Керування підпискою",
+        btnPremiumActive: "Преміум активний!",
+        btnManagePremium: "Налаштування преміум",
+        btnLearnMore: "Дізнатися більше",
         btnTurnOn: "Увімкнути",
         btnTurnOff: "Вимкнути",
         btnLink: "Зв'язати канали",

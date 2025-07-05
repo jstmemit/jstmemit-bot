@@ -123,6 +123,21 @@ export const constructSettingsEmbed = (currentSettings, channelId, hasPremium) =
             value: "buzz",
             emoji: {id: "1388199124351844382"},
         },
+        {
+            label: t("settingsMemesTemplatesOptionSpongebobTitle", language),
+            value: "spongebob",
+            emoji: {id: "1391135707451621579"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionCryingTitle", language),
+            value: "crying",
+            emoji: {id: "1391135689642606642"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionAbsoluteCinemaTitle", language),
+            value: "absolutecinema",
+            emoji: {id: "1391135672118808586"},
+        },
     ]
 
     const dataRetentionOptions = [

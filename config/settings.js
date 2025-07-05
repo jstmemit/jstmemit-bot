@@ -1,19 +1,4 @@
-import {generateTexting} from "../src/generation/visual/generateTexting.js";
-import {generateQuote} from "../src/generation/visual/generateQuote.js";
-import {generateBottomCaption} from "../src/generation/visual/generateBottomCaption.js";
-import {generateFancyBear} from "../src/generation/visual/generateFancyBear.js";
-import {generateGreentext} from "../src/generation/text/markov/generateGreentext.js";
-import {generateUncanny} from "../src/generation/visual/generateUncanny.js";
-import {generateLooksAtPaperAngry} from "../src/generation/visual/generateLooksAtPaperAngry.js";
-import {generateCycle} from "../src/generation/visual/generateCycle.js";
-import {generateSteppedInShit} from "../src/generation/visual/generateSteppedInShit.js";
-import {generateWojackPoint} from "../src/generation/visual/generateWojackPoint.js";
-import {generateIsThisAPigeon} from "../src/generation/visual/generateIsThisAPigeon.js";
-import {generateYesChad} from "../src/generation/visual/generateYesChad.js";
-import {generateConnor} from "../src/generation/visual/generateConnor.js";
-import {generateBuzz} from "../src/generation/visual/generateBuzz.js";
-import {generateExplains} from "../src/generation/visual/generateExplains.js";
-import {generateLiveReaction} from "../src/generation/visual/generateLiveReaction.js";
+import {generateSpongebob} from "../src/generation/visual/generateSpongebob.js";
 
 export const settings = {
     cache: {
@@ -32,90 +17,95 @@ export const settings = {
         premiumSkuId: '1388188866057474048',
     },
     templates: [
+        // {
+        //     name: "generateQuote",
+        //     generator: (image, channelId, interaction) =>
+        //         generateQuote(image, channelId, interaction),
+        //     requiresImage: true,
+        // },
+        // {
+        //     name: "generateBottomCaption",
+        //     generator: (image, channelId, interaction) =>
+        //         generateBottomCaption(image, channelId, interaction),
+        //     requiresImage: true,
+        // },
+        // {
+        //     name: "generateFancyBear",
+        //     generator: (image, channelId, interaction) => generateFancyBear(channelId),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateGreentext",
+        //     generator: (image, channelId, interaction) => generateGreentext(channelId),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateUncanny",
+        //     generator: (image, channelId, interaction) => generateUncanny(channelId),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateLooksAtPaperAngry",
+        //     generator: (image, channelId, interaction) =>
+        //         generateLooksAtPaperAngry(channelId, interaction),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateCycle",
+        //     generator: (image, channelId, interaction) => generateCycle(channelId),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateSteppedInShit",
+        //     generator: (image, channelId, interaction) =>
+        //         generateSteppedInShit(channelId, interaction),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateWojackPoint",
+        //     generator: (image, channelId, interaction) =>
+        //         generateWojackPoint(channelId, interaction),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateIsThisAPigeon",
+        //     generator: (image, channelId, interaction) =>
+        //         generateIsThisAPigeon(channelId, interaction),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateYesChad",
+        //     generator: (image, channelId, interaction) => generateYesChad(channelId, interaction),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateTexting",
+        //     generator: (image, channelId, interaction) => generateTexting(channelId, interaction),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateConnor",
+        //     generator: (image, channelId, interaction) => generateConnor(channelId, interaction),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateBuzz",
+        //     generator: (image, channelId, interaction) => generateBuzz(channelId, interaction),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateExplains",
+        //     generator: (image, channelId, interaction) => generateExplains(channelId, interaction),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateLiveReaction",
+        //     generator: (image, channelId, interaction) => generateLiveReaction(channelId, interaction),
+        //     requiresImage: false,
+        // },
         {
-            name: "generateQuote",
-            generator: (image, channelId, interaction) =>
-                generateQuote(image, channelId, interaction),
-            requiresImage: true,
-        },
-        {
-            name: "generateBottomCaption",
-            generator: (image, channelId, interaction) =>
-                generateBottomCaption(image, channelId, interaction),
-            requiresImage: true,
-        },
-        {
-            name: "generateFancyBear",
-            generator: (image, channelId, interaction) => generateFancyBear(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "generateGreentext",
-            generator: (image, channelId, interaction) => generateGreentext(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "generateUncanny",
-            generator: (image, channelId, interaction) => generateUncanny(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "generateLooksAtPaperAngry",
-            generator: (image, channelId, interaction) =>
-                generateLooksAtPaperAngry(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateCycle",
-            generator: (image, channelId, interaction) => generateCycle(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "generateSteppedInShit",
-            generator: (image, channelId, interaction) =>
-                generateSteppedInShit(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateWojackPoint",
-            generator: (image, channelId, interaction) =>
-                generateWojackPoint(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateIsThisAPigeon",
-            generator: (image, channelId, interaction) =>
-                generateIsThisAPigeon(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateYesChad",
-            generator: (image, channelId, interaction) => generateYesChad(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateTexting",
-            generator: (image, channelId, interaction) => generateTexting(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateConnor",
-            generator: (image, channelId, interaction) => generateConnor(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateBuzz",
-            generator: (image, channelId, interaction) => generateBuzz(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateExplains",
-            generator: (image, channelId, interaction) => generateExplains(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateLiveReaction",
-            generator: (image, channelId, interaction) => generateLiveReaction(channelId, interaction),
+            name: "generateSpongebob",
+            generator: (image, channelId, interaction) => generateSpongebob(channelId, interaction),
             requiresImage: false,
         },
     ],
@@ -215,6 +205,15 @@ export const settings = {
             radius: 70
         },
         livereaction_3: {
+            type: 'fullimage'
+        },
+        spongebob_1: {
+            type: 'circle',
+            cx: 130,
+            cy: 150,
+            radius: 200
+        },
+        spongebob_2: {
             type: 'fullimage'
         },
         watermark_logo: {
@@ -474,6 +473,15 @@ export const settings = {
             box: {x: 0.2, y: 0.95, w: 0.3, h: 0.05},
             maxLines: 1,
             baseImageOverlay: 0,
-        }
+        },
+        spongebob_1: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Comic Sans MS',
+            box: {x: 0.1, y: 0.85, w: 0.8, h: 0.15},
+            maxLines: 1,
+            baseImageOverlay: 0
+        },
     }
 }

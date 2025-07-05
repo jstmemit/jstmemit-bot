@@ -3,6 +3,7 @@ import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {constructSettingsEmbed} from "../embeds/constructSettingsEmbed.js";
 import {handlePermissionCheck} from "../handlers/handlePermissionCheck.js";
 import {analytics as posthog} from "../../../bot.js";
+import {checkPremium} from "../utils.js";
 
 export const settings = async (interaction) => {
     let channelSettings = await getChannelSettings(interaction.channelId);
@@ -21,7 +22,9 @@ export const settings = async (interaction) => {
         return;
     }
 
-    const settingsEmbed = constructSettingsEmbed(channelSettings, interaction.channelId);
+    const hasPremium = await checkPremium(interaction);
+
+    const settingsEmbed = constructSettingsEmbed(channelSettings, interaction.channelId, hasPremium);
 
     await posthog.capture({
         distinctId: interaction.channelId,

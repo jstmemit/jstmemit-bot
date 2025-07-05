@@ -143,6 +143,10 @@ client.on(Events.InteractionCreate, async interaction => {
 			return;
 		}
 
+		if (customId.startsWith("manage-premium")) {
+			await premium(interaction);
+		}
+
 		const id = customId.split('_')[0];
 		const analytics = customId.split('_')[1];
 

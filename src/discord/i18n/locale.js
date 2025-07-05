@@ -78,6 +78,7 @@ export const locale = {
 
         premiumTitle: "Premium",
         premiumDescription: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features, which you can see below.\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.",
+        premiumDescriptionSettingsVariant: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features.\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.",
         premiumStatusActive: "Premium is **active** on this server!",
         premiumStatusInactive: "Premium is **not active** on this server",
 
@@ -85,7 +86,7 @@ export const locale = {
         premiumCustomizationDescription: "These features will give you more control over how the bot looks and behaves in this channel. Features are isolated on the channel level, so you can have different settings in different channels.",
 
         premiumSetOwnWatermarkTitle: "Set your own watermark",
-        premiumSetOwnWatermarkDescription: "By default there are no watermarks on memes, but with premium you can set your own server logo or text as a watermark on memes. It will be placed in the bottom right corner of the meme.",
+        premiumSetOwnWatermarkDescription: "By default there are no watermarks on memes, but with premium you can set your own server logo as a watermark on memes. It will be placed in the bottom right corner of the meme.",
         premiumSetOwnWatermarkActive: "✔️  Your own watermark is **set**!",
         premiumSetOwnWatermarkInactive: "❌  No watermark is set",
 
@@ -104,7 +105,9 @@ export const locale = {
         btnEnable: "Enable",
         btnEraseData: "Erase Data",
         btnSettings: "Settings",
-        btnPremiumActive: "Manage subscription",
+        btnPremiumActive: "Premium is active!",
+        btnManagePremium: "Premium settings",
+        btnLearnMore: "Learn more",
         btnTurnOn: "Turn on",
         btnTurnOff: "Turn off",
         btnLink: "Link channels",
@@ -204,7 +207,7 @@ export const locale = {
         premiumCustomizationDescription: "Эти функции дадут вам больше контроля над тем, как бот выглядит и ведет себя в этом канале. Функции изолированы на уровне канала, поэтому вы можете иметь разные настройки в разных каналах.",
 
         premiumSetOwnWatermarkTitle: "Собственный водяной знак",
-        premiumSetOwnWatermarkDescription: "По умолчанию на мемах нет вообще никаких водяных знаков, но с премиумом вы можете установить собственный логотип сервера или текст на мемах. Он будет размещен в правом нижнем углу.",
+        premiumSetOwnWatermarkDescription: "По умолчанию на мемах нет вообще никаких водяных знаков, но с премиумом вы можете установить собственный логотип сервера на мемах. Он будет размещен в правом нижнем углу.",
         premiumSetOwnWatermarkActive: "✔️  Собственный водяной знак **установлен**!",
         premiumSetOwnWatermarkInactive: "❌  Водяной знак не установлен",
 
@@ -323,7 +326,7 @@ export const locale = {
         premiumCustomizationDescription: "Deze functies geven je meer controle over hoe de bot eruit ziet en zich gedraagt in dit kanaal. Functies zijn geïsoleerd op het niveau van het kanaal, zodat je verschillende instellingen kunt hebben in verschillende kanalen.",
 
         premiumSetOwnWatermarkTitle: "Stel je eigen watermerk in",
-        premiumSetOwnWatermarkDescription: "Standaard zijn er geen watermerken op meme's, maar met premium kun je je eigen serverlogo of tekst instellen als watermerk op meme's. Het wordt geplaatst in de rechterbenedenhoek van de meme.",
+        premiumSetOwnWatermarkDescription: "Standaard zijn er geen watermerken op meme's, maar met premium kun je je eigen serverlogo instellen als watermerk op meme's. Het wordt geplaatst in de rechterbenedenhoek van de meme.",
         premiumSetOwnWatermarkActive: "✔️  Je eigen watermerk is **ingesteld**!",
         premiumSetOwnWatermarkInactive: "❌  Geen watermerk ingesteld",
 
@@ -442,7 +445,7 @@ export const locale = {
         premiumCustomizationDescription: "Ці функції дадуть вам більше контролю над тим, як бот виглядає і поводиться в цьому каналі. Функції ізольовані на рівні каналу, тому ви можете мати різні налаштування в різних каналах.",
 
         premiumSetOwnWatermarkTitle: "Встановити власний водяний знак",
-        premiumSetOwnWatermarkDescription: "За замовчуванням на мемах немає водяних знаків, але з преміумом ви можете встановити власний логотип сервера або текст як водяний знак на мемах. Він буде розміщений у правому нижньому куті мему.",
+        premiumSetOwnWatermarkDescription: "За замовчуванням на мемах немає водяних знаків, але з преміумом ви можете встановити власний логотип сервера як водяний знак на мемах. Він буде розміщений у правому нижньому куті мему.",
         premiumSetOwnWatermarkActive: "✔️  Власний водяний знак **встановлено**!",
         premiumSetOwnWatermarkInactive: "❌  Водяний знак не встановлено",
 

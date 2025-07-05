@@ -52,6 +52,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                                 .setStyle(ButtonStyle.Success)
                                 .setLabel(`${t("btnPremiumActive", language)}`)
                                 .setCustomId(`manage-premium`)
+                                .setDisabled(true)
                             :
                             new ButtonBuilder()
                                 .setStyle(ButtonStyle.Premium)

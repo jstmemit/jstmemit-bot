@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {Collection} from 'discord.js'
-import {settings} from "../../../config/settings.js";
-import {checkPremium} from "../../../src/discord/helpers/checkPremium.js";
+import {settings} from "#config/settings.js";
+import {checkPremium} from "#src/discord/helpers/checkPremium.js";
 
 test('server has premium', async () => {
     const interaction = {

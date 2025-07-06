@@ -3,7 +3,8 @@ import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {handlePermissionCheck} from "../handlers/handlePermissionCheck.js";
 import {analytics as posthog} from "../../../bot.js";
 import {constructPremiumEmbed} from "../embeds/constructPremiumEmbed.js";
-import {checkPremium} from "../utils.js";
+
+import {checkPremium} from "../helpers/checkPremium.js";
 
 export const premium = async (interaction) => {
     let channelSettings = await getChannelSettings(interaction.channelId);

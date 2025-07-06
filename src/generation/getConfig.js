@@ -3,8 +3,15 @@ import {settings} from "../../config/settings.js";
 
 let cachedWeights = null;
 let lastFetch = null;
-const CACHE_DURATION = settings.cache.memeTemplatesAnalyticsCache || 60 * 60 * 1000;
-const baseConfig = settings.templates || []
+let CACHE_DURATION = 60 * 60 * 1000;
+let baseConfig = [];
+if (settings) {
+    CACHE_DURATION = settings.cache && settings.cache.memeTemplatesAnalyticsCache
+        ? settings.cache.memeTemplatesAnalyticsCache
+        : CACHE_DURATION;
+
+    baseConfig = settings.templates || [];
+}
 
 export const getConfig = async () => {
     const now = Date.now();

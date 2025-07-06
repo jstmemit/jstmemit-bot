@@ -4,7 +4,13 @@ import {settings} from "../../../config/settings.js";
 import {validateImage} from "../utils.js";
 
 const imageCache = new Map();
-const CACHE_TTL = settings.channelImagesCache;
+let CACHE_TTL = 1000 * 60 * 60;
+
+if (settings) {
+    CACHE_TTL = settings.cache && settings.cache.channelImagesCache
+        ? settings.cache.channelImagesCache
+        : CACHE_TTL;
+}
 
 export const getChannelImages = async (channelId) => {
     const cached = imageCache.get(channelId);

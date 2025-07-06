@@ -4,7 +4,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
-    "eslint": "^9.27.0"
+    "eslint": "^9.27.0",
+    "vitest": "^3.2.4"
   }
 }

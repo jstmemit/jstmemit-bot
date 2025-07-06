@@ -15,7 +15,7 @@ import {
 } from 'discord.js';
 import {t} from "../i18n/utils.js";
 
-export const constructSettingsEmbed = (currentSettings, channelId) => {
+export const constructSettingsEmbed = (currentSettings, channelId, hasPremium) => {
 
     const language = currentSettings?.language || "english";
 
@@ -122,6 +122,21 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
             label: t("settingsMemesTemplatesOptionBuzzTitle", language),
             value: "buzz",
             emoji: {id: "1388199124351844382"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionSpongebobTitle", language),
+            value: "spongebob",
+            emoji: {id: "1391135707451621579"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionCryingTitle", language),
+            value: "crying",
+            emoji: {id: "1391135689642606642"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionAbsoluteCinemaTitle", language),
+            value: "absolutecinema",
+            emoji: {id: "1391135672118808586"},
         },
     ]
 
@@ -231,9 +246,6 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                         .addTextDisplayComponents(
                             new TextDisplayBuilder().setContent(`${currentSettings.is_enabled ? (t("settingsStatusEnabled", language)) : (t("settingsStatusDisabled", language))}`),
                         ),
-                )
-                .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent(`-# ${(t("settingsFooterChannelId", language))} ${channelId}`),
                 ),
 
             // memes in the chat
@@ -269,9 +281,9 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                             )
                     )
                 )
-                .addSeparatorComponents(
-                    new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
-                )
+                // .addSeparatorComponents(
+                //     new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
+                // )
                 .addTextDisplayComponents(
                     new TextDisplayBuilder().setContent(`### ${(t("settingsMemesTemplatesTitle", language))}`),
                 )
@@ -341,40 +353,42 @@ export const constructSettingsEmbed = (currentSettings, channelId) => {
                                     return builder;
                                 })
                             )
-                    )
-                )
-                .addSeparatorComponents(
-                    new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
-                )
-                .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent(`### ${t("settingsDataRetentionUserImagesTitle", language)}`)
-                )
-                .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent(t("settingsDataRetentionUserImagesDescription", language))
-                )
-                .addActionRowComponents(
-                    new ActionRowBuilder()
-                        .addComponents(
-                            new StringSelectMenuBuilder()
-                                .setCustomId("select-useuserimages")
-                                .setDisabled(true)
-                                .addOptions(
-                                    new SelectMenuOptionBuilder()
-                                        .setLabel(t("no", language))
-                                        .setDefault(currentSettings.use_user_images == 0)
-                                        .setValue("no")
-                                        .setEmoji({
-                                            name: "❌",
-                                        }),
-                                    new SelectMenuOptionBuilder()
-                                        .setLabel(t("yes", language))
-                                        .setDefault(currentSettings.use_user_images == 1)
-                                        .setValue("yes")
-                                        .setEmoji({
-                                            name: "✅",
-                                        }),
-                                ),
-                        ),
+                    ),
                 ),
-        ]
+
+        // premium
+        new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ✨ ${(t("premiumTitle", language))}`),
+                    )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(t("premiumDescriptionSettingsVariant", language)),
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
+            )
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setButtonAccessory(
+                        hasPremium
+                            ?
+                            new ButtonBuilder()
+                                .setStyle(ButtonStyle.Success)
+                                .setLabel(`${t("btnManagePremium", language)}`)
+                                .setCustomId(`manage-premium`)
+                            :
+                            new ButtonBuilder()
+                                .setStyle(ButtonStyle.Success)
+                                .setLabel(`${t("btnLearnMore", language)}`)
+                                .setCustomId(`manage-premium`)
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            hasPremium
+                                ? t("premiumStatusActive", language)
+                                : t("premiumStatusInactive", language)
+                                ),
+                    ),
+            ),
+    ]
 };

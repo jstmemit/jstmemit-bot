@@ -1,18 +1,18 @@
 import {MessageFlags} from "discord.js";
-import {constructSettingsEmbed} from "../embeds/constructSettingsEmbed.js";
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {handlePermissionCheck} from "./handlePermissionCheck.js";
+import {constructPremiumEmbed} from "../embeds/constructPremiumEmbed.js";
 import {checkPremium} from "../utils.js";
 
-export const handleUpdateSettingsEmbed = async (interaction) => {
+export const handleUpdatePremiumEmbed = async (interaction) => {
     if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
         return;
     }
     try {
+        const hasPremium = checkPremium(interaction);
 
         const currentSettings = await getChannelSettings(interaction.channelId);
-        const hasPremium = await checkPremium(interaction);
-        const components = await constructSettingsEmbed(currentSettings, interaction.channelId, hasPremium)
+        const components = await constructPremiumEmbed(currentSettings, interaction.channelId, hasPremium)
 
         await interaction.editReply({
             flags: MessageFlags.IsComponentsV2,

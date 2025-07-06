@@ -1,17 +1,20 @@
 import {getRandomImage} from "../getRandomImage.js";
-import {getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
+import {checkPremium, filterMentions, getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
 import {buildRow} from "../buttons/buildRow.js";
 import {checkIsEnabled} from "../checkIsEnabled.js";
 import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
 import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
 import {handleNotEnoughContext} from "../handlers/handleNotEnoughContext.js";
 import {getConfig} from "../../generation/getConfig.js";
+import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
+import {applyWatermark} from "../../generation/visual/helpers/applyWatermark.js";
 
 export const meme = async (interaction, isRegenerate, isUnpromted) => {
     let channelId, guildId;
 
     try {
         let textResult, imageResult, mention = '';
+        const hasPremium = checkPremium(interaction)
 
         channelId = interaction.channelId
         guildId = interaction.guildId
@@ -19,6 +22,13 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         if (!channelId || !guildId) {
             console.error('No channel id or guild id');
             return;
+        }
+
+        let channelSettings = await getChannelSettings(interaction.channelId);
+
+        // yes, it will be refactored later anyway
+        if (!channelSettings) {
+            channelSettings = await getChannelSettings(interaction.channelId);
         }
 
         const messages = await withTimeout(getChannelMessages(channelId), 10000);
@@ -69,13 +79,17 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
             name: template.name,
         }));
 
-        const {result, functionName} = await withTimeout(
+        let {result, functionName} = await withTimeout(
             runRandomFunction(memeTemplates),
             25000
         );
 
         if (typeof result === 'string') {
             textResult = result;
+
+            const replaceMentions = channelSettings.replace_mentions;
+
+            textResult = await filterMentions(textResult, replaceMentions);
 
             if (!isUnpromted) {
                 await interaction.editReply({
@@ -89,7 +103,12 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
                 });
             }
         } else {
-            imageResult = result;
+
+            // only put watermark if premium server selected their own watermark
+            const serverLogo = interaction.guild?.iconURL({size: 512, extension: 'png'}) || null;
+            if (hasPremium) {
+                result = await applyWatermark(result, serverLogo, channelSettings.watermark_text, channelSettings.watermarkLogo);
+            }
 
             if (!isUnpromted) {
                 await interaction.editReply({

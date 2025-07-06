@@ -1,31 +1,23 @@
-import {pool} from '../initializePool.js';
 import {getChannelSettings} from "./getChannelSettings.js";
+import {processChannelMessages} from "../helpers/processChannelMessages.js";
 
 export const getChannelMessages = async (channelId) => {
-
     const channelSettings = await getChannelSettings(channelId);
 
     if (channelSettings && !channelSettings.is_enabled) {
         return Promise.resolve(null);
     }
 
-    return pool.query(
-        'SELECT * FROM messages WHERE channel_id = ?',
-        [channelId],
-    ).then(([rows]) => {
-        if (rows.length === 0) {
-            return null;
-        }
+    try {
+        const visitedChannels = new Set();
+        const allMessages = [];
 
-        const result = []
+        await processChannelMessages(channelId, visitedChannels, allMessages);
 
-        rows.forEach((row) => {
-            result.push(row.message)
-        })
+        return allMessages.length > 0 ? allMessages : null;
 
-        return result;
-    }).catch(error => {
+    } catch (error) {
         console.error('Error fetching channel messages:', error);
         throw error;
-    });
+    }
 };

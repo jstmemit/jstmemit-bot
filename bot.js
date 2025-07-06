@@ -22,6 +22,12 @@ import {startDataRoutine} from "./src/database/routines/startDataRoutine.js";
 import {PostHog} from 'posthog-node'
 import {handleUpdateEnableEmbed} from "./src/discord/handlers/handleUpdateEnableEmbed.js";
 import {constructLoadingEmbed} from "./src/discord/embeds/constructLoadingEmbed.js";
+import {premium} from "./src/discord/commands/premium.js";
+import {handleNewEntitlement} from "./src/discord/handlers/handleNewEntitlement.js";
+import {handleToggleMentions} from "./src/discord/handlers/handleToggleMentions.js";
+import {handleUpdatePremiumEmbed} from "./src/discord/handlers/handleUpdatePremiumEmbed.js";
+import {handleToggleWatermark} from "./src/discord/handlers/handleToggleWatermark.js";
+import {handleLinkChannel} from "./src/discord/handlers/handleLinkChannel.js";
 
 let analytics = null;
 try {
@@ -64,7 +70,7 @@ client.on(Events.MessageCreate, async message => {
 });
 
 client.on(Events.EntitlementCreate, async entitlement => {
-	console.log(entitlement)
+	await handleNewEntitlement(entitlement);
 })
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -77,6 +83,9 @@ client.on(Events.InteractionCreate, async interaction => {
 				return;
 			case 'settings':
 				await settings(interaction);
+				return;
+			case 'premium':
+				await premium(interaction);
 				return;
 		}
 
@@ -111,6 +120,28 @@ client.on(Events.InteractionCreate, async interaction => {
 			return;
 		}
 
+		if (customId.startsWith("mentionenable-") || customId.startsWith("mentiondisable-")) {
+			try {
+				await handleToggleMentions(interaction);
+				await handleUpdatePremiumEmbed(interaction);
+			} catch (error) {
+				console.log(error)
+			}
+
+			return;
+		}
+
+		if (customId.startsWith("watermarkenable-") || customId.startsWith("watermarkdisable-")) {
+			try {
+				await handleToggleWatermark(interaction);
+				await handleUpdatePremiumEmbed(interaction);
+			} catch (error) {
+				console.log(error)
+			}
+
+			return;
+		}
+
 		if (customId == 'settings-open') {
 			const loading = await constructLoadingEmbed(interaction.channelId)
 			await interaction.reply({
@@ -125,6 +156,10 @@ client.on(Events.InteractionCreate, async interaction => {
 			return;
 		}
 
+		if (customId.startsWith("manage-premium")) {
+			await premium(interaction);
+		}
+
 		const id = customId.split('_')[0];
 		const analytics = customId.split('_')[1];
 
@@ -132,6 +167,11 @@ client.on(Events.InteractionCreate, async interaction => {
 			case 'regenerate':
 				await meme(interaction, true);
 				break;
+		}
+
+		if (customId.startsWith("unlink-")) {
+			await handleLinkChannel(interaction);
+			await handleUpdatePremiumEmbed(interaction);
 		}
 
 		if (id === 'like' || id === 'dislike') {
@@ -166,6 +206,21 @@ client.on(Events.InteractionCreate, async interaction => {
 			case "select-language":
 				await handleLanguageChange(interaction);
 				await handleUpdateSettingsEmbed(interaction);
+				break;
+		}
+	}
+
+	if (interaction.isChannelSelectMenu()) {
+		const {customId} = interaction;
+
+		if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+			return;
+		}
+
+		switch (customId) {
+			case "select-linkchannel":
+				await handleLinkChannel(interaction);
+				await handleUpdatePremiumEmbed(interaction);
 				break;
 		}
 	}

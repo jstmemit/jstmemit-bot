@@ -1,4 +1,6 @@
-import {generateTexting} from "../src/generation/visual/generateTexting.js";
+import {generateSpongebob} from "../src/generation/visual/generateSpongebob.js";
+import {generateAbsoluteCinema} from "../src/generation/visual/generateAbsoluteCinema.js";
+import {generateCrying} from "../src/generation/visual/generateCrying.js";
 import {generateQuote} from "../src/generation/visual/generateQuote.js";
 import {generateBottomCaption} from "../src/generation/visual/generateBottomCaption.js";
 import {generateFancyBear} from "../src/generation/visual/generateFancyBear.js";
@@ -10,9 +12,11 @@ import {generateSteppedInShit} from "../src/generation/visual/generateSteppedInS
 import {generateWojackPoint} from "../src/generation/visual/generateWojackPoint.js";
 import {generateIsThisAPigeon} from "../src/generation/visual/generateIsThisAPigeon.js";
 import {generateYesChad} from "../src/generation/visual/generateYesChad.js";
+import {generateTexting} from "../src/generation/visual/generateTexting.js";
 import {generateConnor} from "../src/generation/visual/generateConnor.js";
 import {generateBuzz} from "../src/generation/visual/generateBuzz.js";
 import {generateExplains} from "../src/generation/visual/generateExplains.js";
+import {generateLiveReaction} from "../src/generation/visual/generateLiveReaction.js";
 
 export const settings = {
     cache: {
@@ -26,6 +30,10 @@ export const settings = {
         maxFileSize: 7 * 1024 * 1024,
         maxDimension: 2048,
         minDimension: 1,
+    },
+    monetization: {
+        // premiumSkuId: '1388188866057474048', // dev bot premium SKU ID
+        premiumSkuId: '1387929454356987945', // production bot premium SKU ID
     },
     templates: [
         {
@@ -107,6 +115,26 @@ export const settings = {
         {
             name: "generateExplains",
             generator: (image, channelId, interaction) => generateExplains(channelId, interaction),
+            requiresImage: false,
+        },
+        {
+            name: "generateLiveReaction",
+            generator: (image, channelId, interaction) => generateLiveReaction(channelId, interaction),
+            requiresImage: false,
+        },
+        {
+            name: "generateSpongebob",
+            generator: (image, channelId, interaction) => generateSpongebob(channelId, interaction),
+            requiresImage: false,
+        },
+        {
+            name: "generateCrying",
+            generator: (image, channelId, interaction) => generateCrying(channelId, interaction),
+            requiresImage: false,
+        },
+        {
+            name: "generateAbsoluteCinema",
+            generator: (image, channelId, interaction) => generateAbsoluteCinema(channelId, interaction),
             requiresImage: false,
         },
     ],
@@ -192,6 +220,46 @@ export const settings = {
         },
         explains_3: {
             type: 'fullimage'
+        },
+        livereaction_1: {
+            type: 'circle',
+            cx: 450,
+            cy: 600,
+            radius: 650
+        },
+        livereaction_2: {
+            type: 'circle',
+            cx: 330,
+            cy: 120,
+            radius: 70
+        },
+        livereaction_3: {
+            type: 'fullimage'
+        },
+        spongebob_1: {
+            type: 'circle',
+            cx: 130,
+            cy: 150,
+            radius: 200
+        },
+        spongebob_2: {
+            type: 'fullimage'
+        },
+        absolutecinema_1: {
+            type: 'fullimage'
+        },
+        absolutecinema_2: {
+            type: 'fullimage'
+        },
+        crying_1: {
+            type: 'fullimage'
+        },
+        crying_2: {
+            type: 'fullimage'
+        },
+        watermark_logo: {
+            type: 'watermark_corner',
+            position: 'bottom-right',
         }
     },
     textSettings: {
@@ -437,6 +505,33 @@ export const settings = {
             box: {x: 0.1, y: 0.85, w: 0.8, h: 0.15},
             maxLines: 1,
             baseImageOverlay: 0
-        }
+        },
+        watermark_text: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            font: 'Comic Sans MS',
+            textAlign: 'right',
+            box: {x: 0.2, y: 0.95, w: 0.3, h: 0.05},
+            maxLines: 1,
+            baseImageOverlay: 0,
+        },
+        spongebob_1: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Comic Sans MS',
+            box: {x: 0.1, y: 0.85, w: 0.8, h: 0.15},
+            maxLines: 1,
+            baseImageOverlay: 0
+        },
+        crying_1: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Comic Sans MS',
+            box: {x: 0.25, y: 0.75, w: 0.65, h: 0.15},
+            maxLines: 1,
+            baseImageOverlay: 0
+        },
     }
 }

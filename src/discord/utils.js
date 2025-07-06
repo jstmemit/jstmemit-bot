@@ -1,3 +1,6 @@
+import {client} from "../../bot.js";
+import {settings} from "../../config/settings.js";
+
 export const runRandomFunction = async (functionsWithWeights) => {
     try {
         const totalWeight = functionsWithWeights.reduce(
@@ -36,3 +39,63 @@ export const withTimeout = (promise, ms = 30000) => {
         )
     ]);
 };
+
+export const filterMentions = async (text, onlyGlobal) => {
+    // replace all @everyone and @here to varianta with cyrillic characters
+    let filteredText = await text
+        .replace(/@everyone/g, '@еveryone')
+        .replace(/@here/g, '@hеre')
+
+    if (onlyGlobal) {
+        return filteredText;
+    }
+
+    const mentionRegex = /<@!?(\d+)>/g;
+    const mentions = [...filteredText.matchAll(mentionRegex)];
+
+    if (mentions.length === 0 || !client) {
+        return filteredText;
+    }
+
+    const replacements = new Map();
+
+    for (const match of mentions) {
+        const [fullMatch, userId] = match;
+
+        if (replacements.has(fullMatch)) {
+            continue;
+        }
+
+        try {
+            let user = client.users.cache.get(userId);
+
+            if (!user) {
+                user = await client.users.fetch(userId);
+            }
+
+            const username = user.displayName || user.username;
+            replacements.set(fullMatch, `${username}`);
+        } catch (error) {
+            replacements.set(fullMatch, fullMatch);
+        }
+    }
+
+    for (const [mention, replacement] of replacements) {
+        filteredText = filteredText.replace(new RegExp(escapeRegex(mention), 'g'), replacement);
+    }
+
+    return filteredText;
+};
+
+const escapeRegex = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
+
+export const checkPremium = async (interaction) => {
+    if (interaction.entitlements && interaction.entitlements.size > 0) {
+        return interaction.entitlements.some(
+            (entitlement) =>
+                entitlement.skuId === settings.monetization.premiumSkuId && !entitlement.deleted
+        );
+    }
+}

@@ -40,6 +40,9 @@ export const locale = {
         settingsMemesTemplatesOptionConnorTitle: "Connor",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Big Thumbs Up",
         settingsMemesTemplatesOptionBuzzTitle: "Buzz",
+        settingsMemesTemplatesOptionSpongebobTitle: "SpongeBob",
+        settingsMemesTemplatesOptionCryingTitle: "Crying",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Absolute Cinema",
 
         settingsDataRetentionTitle: "Data Retention",
         settingsDataRetentionDescription: "You can choose how long the bot will keep the data related to this channel. If you want to erase all data, you can also do it here.",
@@ -75,10 +78,46 @@ export const locale = {
 
         enableDescription: "If you want to change this, click the button below. There are also more fine-tuned options available in the settings menu.",
 
+
+        premiumTitle: "Premium",
+        premiumDescription: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features, which you can see below. More things are coming in the near future!\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.\n\n*Sometimes Discord doesn't render the button propery, if it says \"Product unavailable\" you can still get premium in the bot's profile store.*",
+        premiumDescriptionSettingsVariant: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features. More things are coming in the near future!\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.",
+        premiumStatusActive: "Premium is **active** on this server!",
+        premiumStatusInactive: "Premium is **not active** on this server",
+
+        premiumCustomizationTitle: "More customization",
+        premiumCustomizationDescription: "These features will give you more control over how the bot looks and behaves in this channel. Features are isolated on the channel level, so you can have different settings in different channels.",
+
+        premiumSetOwnWatermarkTitle: "Set your own watermark",
+        premiumSetOwnWatermarkDescription: "By default there are no watermarks on memes, but with premium you can set your own server logo as a watermark on memes. It will be placed in the bottom right corner of the meme.",
+        premiumSetOwnWatermarkActive: "✔️  Your own watermark is **set**!",
+        premiumSetOwnWatermarkInactive: "❌  No watermark is set",
+
+        premiumLinkChannelsTogetherTitle: "Link channels training data together",
+        premiumLinkChannelsTogetherDescription: "If you don't want to flood your general chat with memes, you can link a \"flood\" channel. Bot will operate there with training data from this channel, so it will be able to generate memes based on the context of this channel.",
+        premiumLinkChannelsTogetherActive: "✔️  <#{{thischannel}}> and <#{{floodchannel}}> are **linked together**!",
+        premiumLinkChannelsTogetherInactive: "❌  No channel is linked",
+        premiumSelectChannelPlaceholder: "🔗  Select channel to link",
+
+        premiumTurnOffMentionsTitle: "Replace @mentions in text memes with usernames",
+        premiumTurnOffMentionsDescription: "By default bot can in some occasions mention users in text memes. Although @everyone and @here mentions are always turned off even in free version.",
+        premiumTurnOffMentionsActive: "✔️  Mentions are **being replaced** in text memes!",
+        premiumTurnOffMentionsInactive: "❌  Mentions are **not being replaced** in text memes",
+
         btnDisable: "Disable",
         btnEnable: "Enable",
         btnEraseData: "Erase Data",
         btnSettings: "Settings",
+        btnPremiumActive: "Premium is active!",
+        btnManagePremium: "Premium settings",
+        btnLearnMore: "Learn more",
+        btnTurnOn: "Turn on",
+        btnTurnOff: "Turn off",
+        btnLink: "Link channels",
+        btnLinkBelow: "Use menu below to link channels",
+        btnUnlink: "Unlink channels",
+        btnSetWatermark: "Set watermark",
+        btnRemoveWatermark: "Remove watermark",
 
         loading: "Loading...",
 
@@ -126,6 +165,9 @@ export const locale = {
         settingsMemesTemplatesOptionConnorTitle: "Коннор",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Молодец, палец вверх",
         settingsMemesTemplatesOptionBuzzTitle: "Баззлайтер",
+        settingsMemesTemplatesOptionSpongebobTitle: "Губка Боб",
+        settingsMemesTemplatesOptionCryingTitle: "Плачет",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Абсолютное кино",
 
         settingsDataRetentionTitle: "Хранение данных",
         settingsDataRetentionDescription: "Вы можете выбрать как долго бот будет хранить данные связанные с этим каналом. Если вы хотите удалить все сохраненные сообщения, вы также можете сделать это здесь.",
@@ -161,10 +203,46 @@ export const locale = {
 
         enableDescription: "Вы можете изменить это нажав на кнопку под сообщением. Намного больше параметров доступны в меню настроек.",
 
+
+        premiumTitle: "Премиум",
+        premiumDescription: "Вы можете поддержать разработку этого бота, подписавшись на премиум. Этот сервер получит доступ к **персонализации бота**, **возможности связывать каналы** и некоторым другим функциям, которые вы можете увидеть ниже.\n\nВсе пользователи на этом сервере получат **Премиум** возможности. Даже если только один человек подпишется.",
+        premiumDescriptionSettingsVariant: "Вы можете поддержать разработку этого бота, подписавшись на премиум. Этот сервер получит доступ к **персонализации бота**, **возможности связывать каналы** и некоторым другим функциям. Больше возможностей уже в пути!\n\nВсе пользователи на этом сервере получат **Премиум** возможности. Даже если только один человек подпишется.",
+        premiumStatusActive: "Премиум **активен** на этом сервере!",
+        premiumStatusInactive: "Премиум **не активен** на этом сервере.",
+
+        premiumCustomizationTitle: "Больше персонализации",
+        premiumCustomizationDescription: "Эти функции дадут вам больше контроля над тем, как бот выглядит и ведет себя в этом канале. Функции изолированы на уровне канала, поэтому вы можете иметь разные настройки в разных каналах.",
+
+        premiumSetOwnWatermarkTitle: "Собственный водяной знак",
+        premiumSetOwnWatermarkDescription: "По умолчанию на мемах нет вообще никаких водяных знаков, но с премиумом вы можете установить собственный логотип сервера на мемах. Он будет размещен в правом нижнем углу.",
+        premiumSetOwnWatermarkActive: "✔️  Собственный водяной знак **установлен**!",
+        premiumSetOwnWatermarkInactive: "❌  Водяной знак не установлен",
+
+        premiumLinkChannelsTogetherTitle: "Связать каналы",
+        premiumLinkChannelsTogetherDescription: "Если вы не хотите засорять общий чат мемами, вы можете привязать канал для \"флуда\". Бот будет работать там с данными из этого канала, так что он сможет генерировать мемы на основе контекста этого канала.",
+        premiumLinkChannelsTogetherActive: "✔️  <#{{thischannel}}> и <#{{floodchannel}}> **связаны**!",
+        premiumLinkChannelsTogetherInactive: "❌  Каналы не связаны",
+        premiumSelectChannelPlaceholder: "🔗  Выберите канал для связи",
+
+        premiumTurnOffMentionsTitle: "Отключить @упоминания в текстовых мемах",
+        premiumTurnOffMentionsDescription: "По умолчанию бот может в некоторых случаях упоминать пользователей в текстовых мемах. Хотя упоминания @everyone и @here всегда отключены даже в бесплатной версии.",
+        premiumTurnOffMentionsActive: "✔️  Упоминания **заменяются** в текстовых мемах!",
+        premiumTurnOffMentionsInactive: "❌  Упоминания **не заменяются** в текстовых мемах",
+
         btnDisable: "Отключить",
         btnEnable: "Включить",
         btnEraseData: "Очистить данные",
         btnSettings: "Настройки",
+        btnPremiumActive: "Премиум активен!",
+        btnManagePremium: "Настройки премиума",
+        btnLearnMore: "Узнать больше",
+        btnTurnOn: "Включить",
+        btnTurnOff: "Выключить",
+        btnLink: "Связать каналы",
+        btnLinkBelow: "Используйте меню ниже для связи каналов",
+        btnUnlink: "Отвязать каналы",
+        btnSetWatermark: "Установить водяной знак",
+        btnRemoveWatermark: "Убрать водяной знак",
 
         loading: "Загрузка...",
 
@@ -212,6 +290,9 @@ export const locale = {
         settingsMemesTemplatesOptionConnorTitle: "Connor",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Duim omhoog",
         settingsMemesTemplatesOptionBuzzTitle: "Buzz",
+        settingsMemesTemplatesOptionSpongebobTitle: "SpongeBob",
+        settingsMemesTemplatesOptionCryingTitle: "Huilen",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Absoluut cinema",
 
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
@@ -232,7 +313,7 @@ export const locale = {
         settingsDataRetentionHowLongOption30DaysDescription: "Voor kanalen met lage activiteit",
 
         settingsDataRetentionUserImagesTitle: "Kan de bot verzonden afbeeldingen gebruiken in meme's?",
-        settingsDataRetentionUserImagesDescription: "Als dit is ingesteld op **ja**, zal de bot soms in plaats van avatars afbeeldingen gebruiken die door gebruikers zijn verzonden. Alleen afbeeldingen die niet ouder zijn dan 24 uur worden gebruikt.",
+        settingsDataRetentionUserImagesDescription: "Als dit is ingesteld op **ja**, zal de bot soms in plaats van avatars afbeeldingen gebruiken die door gebruikers zijn verzonden. Alleen afbeeldingen die niet ouder zijn dan 24 uur worden gebruikt. __Kan niet worden uitgeschakeld vanwege nieuwe Intents beperkingen, wordt binnenkort opgelost.__",
 
         settingsFooterChannelId: "Kanaal ID:",
 
@@ -247,10 +328,46 @@ export const locale = {
 
         enableDescription: "Je kunt dit wijzigen door op de knop onder het bericht te klikken. Er zijn nog veel meer parameters beschikbaar in het instellingenmenu.",
 
+        premiumTitle: "Premium",
+        premiumDescription: "Je kunt de ontwikkeling van deze bot ondersteunen door deze server te abonneren op premium. Deze server krijgt toegang tot **meer personalizatie**, **de mogelijkheid om kanalen aan elkaar te koppelen** en enkele andere functies, die je hieronder kunt zien.\n\nIedereen op deze server krijgt **Premium** voordelen, zelfs als maar een persoon zich abonneert.",
+        premiumDescriptionSettingsVariant: "Je kunt de ontwikkeling van deze bot ondersteunen door deze server te abonneren op premium. Deze server krijgt toegang tot **meer personalizatie**, **de mogelijkheid om kanalen aan elkaar te koppelen** en enkele andere functies. Meer dingen komen binnenkort!\n\nIedereen op deze server krijgt **Premium** voordelen, zelfs als maar een persoon zich abonneert.",
+
+        premiumStatusActive: "Premium is **actief** op deze server!",
+        premiumStatusInactive: "Premium is **niet actief** op deze server.",
+
+        premiumCustomizationTitle: "Meer personalisatie",
+        premiumCustomizationDescription: "Deze functies geven je meer controle over hoe de bot eruit ziet en zich gedraagt in dit kanaal. Functies zijn geïsoleerd op het niveau van het kanaal, zodat je verschillende instellingen kunt hebben in verschillende kanalen.",
+
+        premiumSetOwnWatermarkTitle: "Stel je eigen watermerk in",
+        premiumSetOwnWatermarkDescription: "Standaard zijn er geen watermerken op meme's, maar met premium kun je je eigen serverlogo instellen als watermerk op meme's. Het wordt geplaatst in de rechterbenedenhoek van de meme.",
+        premiumSetOwnWatermarkActive: "✔️  Je eigen watermerk is **ingesteld**!",
+        premiumSetOwnWatermarkInactive: "❌  Geen watermerk ingesteld",
+
+        premiumLinkChannelsTogetherTitle: "Koppel kanalen samen",
+        premiumLinkChannelsTogetherDescription: "Als je je algemene chat niet wilt vervuilen met meme's, kun je een \"flood\" kanaal koppelen. De bot zal daar werken met trainingsdata van dit kanaal, zodat het memes kan genereren op basis van de context van dit kanaal.",
+        premiumLinkChannelsTogetherActive: "✔️  <#{{thischannel}}> en <#{{floodchannel}}> zijn **gekoppeld**!",
+        premiumLinkChannelsTogetherInactive: "❌  Geen kanaal gekoppeld",
+        premiumSelectChannelPlaceholder: "🔗  Selecteer kanaal om te koppelen",
+
+        premiumTurnOffMentionsTitle: "Schakel @mentions uit in tekst meme's",
+        premiumTurnOffMentionsDescription: "Standaard kan de bot in sommige gevallen gebruikers vermelden in tekst meme's. Hoewel @everyone en @here vermeldingen altijd zijn uitgeschakeld, zelfs in de gratis versie.",
+        premiumTurnOffMentionsActive: "✔️  Mentions worden **vervangen** in tekst meme's!",
+        premiumTurnOffMentionsInactive: "❌  Mentions worden **niet vervangen** in tekst meme's",
+
         btnDisable: "Uitzetten",
         btnEnable: "Aanzetten",
         btnEraseData: "Gegevens wissen",
         btnSettings: "Instellingen",
+        btnPremiumActive: "Premium is actief!",
+        btnManagePremium: "Premium instellingen",
+        btnLearnMore: "Meer informatie",
+        btnTurnOn: "Aanzetten",
+        btnTurnOff: "Uitzetten",
+        btnLink: "Kanalen koppelen",
+        btnLinkBelow: "Gebruik onderstaand menu om kanalen te koppelen",
+        btnUnlink: "Kanalen ontkoppelen",
+        btnSetWatermark: "Watermerk instellen",
+        btnRemoveWatermark: "Watermerk verwijderen",
 
         loading: "Loading...",
 
@@ -298,6 +415,9 @@ export const locale = {
         settingsMemesTemplatesOptionConnorTitle: "Коннор",
         settingsMemesTemplatesOptionBigThumbsUpTitle: "Молодець, великий палець вгору",
         settingsMemesTemplatesOptionBuzzTitle: "Баззлайтер",
+        settingsMemesTemplatesOptionSpongebobTitle: "Губка Боб",
+        settingsMemesTemplatesOptionCryingTitle: "Плаче",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Абсолютне кіно",
 
         settingsDataRetentionTitle: "Зберігання даних",
         settingsDataRetentionDescription: "Ви можете вибрати як довго бот буде зберігати дані, пов'язані з цим каналом. Якщо ви хочете видалити всі збережені повідомлення, ви також можете зробити це тут.",
@@ -318,7 +438,7 @@ export const locale = {
         settingsDataRetentionHowLongOption30DaysDescription: "Для каналів з низькою активністю",
 
         settingsDataRetentionUserImagesTitle: "Використовувати чи ні надіслані зображення в мемах?",
-        settingsDataRetentionUserImagesDescription: "Якщо встановлено **так**, то іноді замість аватарів будуть використовуватися надіслані зображення. Але тільки ті, що були надіслані не більше 24 годин тому.",
+        settingsDataRetentionUserImagesDescription: "Якщо встановлено **так**, то іноді замість аватарів будуть використовуватися надіслані зображення. Але тільки ті, що були надіслані не більше 24 годин тому. __Не може бути відключено через нові обмеження Intents, буде виправлено незабаром.__",
 
         settingsFooterChannelId: "ID каналу:",
 
@@ -333,10 +453,46 @@ export const locale = {
 
         enableDescription: "Ви можете змінити це натиснувши на кнопку під повідомленням. Набагато більше параметрів доступні в меню налаштувань.",
 
+        premiumTitle: "Преміум",
+        premiumDescription: "Ви можете підтримати розробку цього бота підписавшись на преміум. Цей сервер отримає доступ до **більшої персоналізації**, **можливості пов'язувати канали** та деяких інших функцій, які ви можете побачити нижче.\n\nВсі користувачі на цьому сервері отримають **Преміум** можливості. Навіть якщо тільки одна людина підпишеться.",
+        premiumDescriptionSettingsVariant: "Ви можете підтримати розробку цього бота підписавшись на преміум. Цей сервер отримає доступ до **більшої персоналізації**, **можливості пов'язувати канали** та деяких інших функцій. Більше можливостей вже в дорозі!\n\nВсі користувачі на цьому сервері отримають **Преміум** можливості. Навіть якщо тільки одна людина підпишеться.",
+
+        premiumStatusActive: "Преміум **активний** на цьому сервері!",
+        premiumStatusInactive: "Преміум **не активний** на цьому сервері.",
+
+        premiumCustomizationTitle: "Більше персоналізації",
+        premiumCustomizationDescription: "Ці функції дадуть вам більше контролю над тим, як бот виглядає і поводиться в цьому каналі. Функції ізольовані на рівні каналу, тому ви можете мати різні налаштування в різних каналах.",
+
+        premiumSetOwnWatermarkTitle: "Встановити власний водяний знак",
+        premiumSetOwnWatermarkDescription: "За замовчуванням на мемах немає водяних знаків, але з преміумом ви можете встановити власний логотип сервера як водяний знак на мемах. Він буде розміщений у правому нижньому куті мему.",
+        premiumSetOwnWatermarkActive: "✔️  Власний водяний знак **встановлено**!",
+        premiumSetOwnWatermarkInactive: "❌  Водяний знак не встановлено",
+
+        premiumLinkChannelsTogetherTitle: "Зв'язати канали разом",
+        premiumLinkChannelsTogetherDescription: "Якщо ви не хочете засмічувати загальний чат мемами, ви можете прив'язати канал для \"флуду\". Бот буде працювати там з даними з цього каналу, тому він зможе генерувати меми на основі контексту цього каналу.",
+        premiumLinkChannelsTogetherActive: "✔️  <#{{thischannel}}> та <#{{floodchannel}}> **пов'язані**!",
+        premiumLinkChannelsTogetherInactive: "❌  Канали не пов'язані",
+        premiumSelectChannelPlaceholder: "🔗  Оберіть канал для зв'язку",
+
+        premiumTurnOffMentionsTitle: "Вимкнути @згадування в текстових мемах",
+        premiumTurnOffMentionsDescription: "За замовчуванням бот може в деяких випадках згадувати користувачів у текстових мемах. Хоча @everyone і @here згадки завжди вимкнені навіть у безкоштовній версії.",
+        premiumTurnOffMentionsActive: "✔️  Згадування **замінюються** в текстових мемах!",
+        premiumTurnOffMentionsInactive: "❌  Згадування **не замінюються** в текстових мемах",
+
         btnDisable: "Вимкнути",
         btnEnable: "Увімкнути",
         btnEraseData: "Очистити дані",
         btnSettings: "Налаштування",
+        btnPremiumActive: "Преміум активний!",
+        btnManagePremium: "Налаштування преміум",
+        btnLearnMore: "Дізнатися більше",
+        btnTurnOn: "Увімкнути",
+        btnTurnOff: "Вимкнути",
+        btnLink: "Зв'язати канали",
+        btnLinkBelow: "Використовуйте меню нижче для зв'язку каналів",
+        btnUnlink: "Розв'язати канали",
+        btnSetWatermark: "Встановити водяний знак",
+        btnRemoveWatermark: "Видалити водяний знак",
 
         loading: "Загрузка...",
 

@@ -1,22 +1,5 @@
-import {generateSpongebob} from "../src/generation/visual/generateSpongebob.js";
-import {generateAbsoluteCinema} from "../src/generation/visual/generateAbsoluteCinema.js";
-import {generateCrying} from "../src/generation/visual/generateCrying.js";
-import {generateQuote} from "../src/generation/visual/generateQuote.js";
-import {generateBottomCaption} from "../src/generation/visual/generateBottomCaption.js";
-import {generateFancyBear} from "../src/generation/visual/generateFancyBear.js";
 import {generateGreentext} from "../src/generation/text/markov/generateGreentext.js";
-import {generateUncanny} from "../src/generation/visual/generateUncanny.js";
-import {generateLooksAtPaperAngry} from "../src/generation/visual/generateLooksAtPaperAngry.js";
-import {generateCycle} from "../src/generation/visual/generateCycle.js";
-import {generateSteppedInShit} from "../src/generation/visual/generateSteppedInShit.js";
-import {generateWojackPoint} from "../src/generation/visual/generateWojackPoint.js";
-import {generateIsThisAPigeon} from "../src/generation/visual/generateIsThisAPigeon.js";
-import {generateYesChad} from "../src/generation/visual/generateYesChad.js";
-import {generateTexting} from "../src/generation/visual/generateTexting.js";
-import {generateConnor} from "../src/generation/visual/generateConnor.js";
-import {generateBuzz} from "../src/generation/visual/generateBuzz.js";
-import {generateExplains} from "../src/generation/visual/generateExplains.js";
-import {generateLiveReaction} from "../src/generation/visual/generateLiveReaction.js";
+import {createMemeGenerator} from "../src/generation/visual/memeFactory.js";
 
 export const settings = {
     cache: {
@@ -38,103 +21,97 @@ export const settings = {
     templates: [
         {
             name: "generateQuote",
-            generator: (image, channelId, interaction) =>
-                generateQuote(image, channelId, interaction),
+            generator: createMemeGenerator('quote'),
             requiresImage: true,
         },
         {
             name: "generateBottomCaption",
-            generator: (image, channelId, interaction) =>
-                generateBottomCaption(image, channelId, interaction),
+            generator: createMemeGenerator('bottomcaption'),
             requiresImage: true,
         },
         {
             name: "generateFancyBear",
-            generator: (image, channelId, interaction) => generateFancyBear(channelId),
+            generator: createMemeGenerator('fancybear'),
+            requiresImage: false,
+        },
+        {
+            name: "generateUncanny",
+            generator: createMemeGenerator('uncanny'),
+            requiresImage: false,
+        },
+        {
+            name: "generateLooksAtPaperAngry",
+            generator: createMemeGenerator('looksatpaperangry'),
+            requiresImage: false,
+        },
+        {
+            name: "generateCycle",
+            generator: createMemeGenerator('cycle'),
+            requiresImage: false,
+        },
+        {
+            name: "generateSteppedInShit",
+            generator: createMemeGenerator('steppedinshit'),
+            requiresImage: false,
+        },
+        {
+            name: "generateWojackPoint",
+            generator: createMemeGenerator('wojackpoint'),
+            requiresImage: false,
+        },
+        {
+            name: "generateIsThisAPigeon",
+            generator: createMemeGenerator('isthisapigeon'),
+            requiresImage: false,
+        },
+        {
+            name: "generateYesChad",
+            generator: createMemeGenerator('yeschad'),
+            requiresImage: false,
+        },
+        {
+            name: "generateTexting",
+            generator: createMemeGenerator('texting'),
+            requiresImage: false,
+        },
+        {
+            name: "generateConnor",
+            generator: createMemeGenerator('connor'),
+            requiresImage: false,
+        },
+        {
+            name: "generateBuzz",
+            generator: createMemeGenerator('buzz'),
+            requiresImage: false,
+        },
+        {
+            name: "generateExplains",
+            generator: createMemeGenerator('explains'),
+            requiresImage: false,
+        },
+        {
+            name: "generateLiveReaction",
+            generator: createMemeGenerator('livereaction'),
+            requiresImage: false,
+        },
+        {
+            name: "generateSpongebob",
+            generator: createMemeGenerator('spongebob'),
+            requiresImage: false,
+        },
+        {
+            name: "generateCrying",
+            generator: createMemeGenerator('crying'),
+            requiresImage: false,
+        },
+        {
+            name: "generateAbsoluteCinema",
+            generator: createMemeGenerator('absolutecinema'),
             requiresImage: false,
         },
         {
             name: "generateGreentext",
             generator: (image, channelId, interaction) => generateGreentext(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "generateUncanny",
-            generator: (image, channelId, interaction) => generateUncanny(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "generateLooksAtPaperAngry",
-            generator: (image, channelId, interaction) =>
-                generateLooksAtPaperAngry(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateCycle",
-            generator: (image, channelId, interaction) => generateCycle(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "generateSteppedInShit",
-            generator: (image, channelId, interaction) =>
-                generateSteppedInShit(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateWojackPoint",
-            generator: (image, channelId, interaction) =>
-                generateWojackPoint(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateIsThisAPigeon",
-            generator: (image, channelId, interaction) =>
-                generateIsThisAPigeon(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateYesChad",
-            generator: (image, channelId, interaction) => generateYesChad(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateTexting",
-            generator: (image, channelId, interaction) => generateTexting(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateConnor",
-            generator: (image, channelId, interaction) => generateConnor(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateBuzz",
-            generator: (image, channelId, interaction) => generateBuzz(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateExplains",
-            generator: (image, channelId, interaction) => generateExplains(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateLiveReaction",
-            generator: (image, channelId, interaction) => generateLiveReaction(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateSpongebob",
-            generator: (image, channelId, interaction) => generateSpongebob(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateCrying",
-            generator: (image, channelId, interaction) => generateCrying(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateAbsoluteCinema",
-            generator: (image, channelId, interaction) => generateAbsoluteCinema(channelId, interaction),
             requiresImage: false,
         },
     ],
@@ -527,9 +504,9 @@ export const settings = {
         crying_1: {
             fillStyle: '#ffffff',
             outlineStyle: '#000000',
-            textAlign: 'center',
+            textAlign: 'left',
             font: 'Comic Sans MS',
-            box: {x: 0.25, y: 0.75, w: 0.65, h: 0.15},
+            box: {x: 0.4, y: 0.75, w: 0.65, h: 0.15},
             maxLines: 1,
             baseImageOverlay: 0
         },

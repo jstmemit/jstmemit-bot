@@ -32,7 +32,8 @@ export const settings = {
         minDimension: 1,
     },
     monetization: {
-        premiumSkuId: '1388188866057474048',
+        // premiumSkuId: '1388188866057474048', // dev bot premium SKU ID
+        premiumSkuId: '1387929454356987945', // production bot premium SKU ID
     },
     templates: [
         {
@@ -528,7 +529,7 @@ export const settings = {
             outlineStyle: '#000000',
             textAlign: 'center',
             font: 'Comic Sans MS',
-            box: {x: 0.25, y: 0.75, w: 0.8, h: 0.15},
+            box: {x: 0.25, y: 0.75, w: 0.65, h: 0.15},
             maxLines: 1,
             baseImageOverlay: 0
         },

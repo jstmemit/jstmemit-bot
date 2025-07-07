@@ -22,7 +22,7 @@ export const t = (key, language, variables = {}) => {
 
 const interpolateString = (string, variables) => {
     return string.replace(/\{\{(\w+)\}\}/g, (match, key) => {
-        return variables.hasOwnProperty(1) ? variables[key] : match;
+        return variables.hasOwnProperty(key) ? variables[key] : match;
     });
 };
 

@@ -27,6 +27,49 @@ export const mockChannelSettings = {
     linked_channel: '987654321'
 }
 
+vi.mock('@napi-rs/canvas', () => ({
+    createCanvas: vi.fn(() => ({
+        getContext: vi.fn(() => ({
+            fillRect: vi.fn(),
+            fillText: vi.fn(),
+            drawImage: vi.fn(),
+            save: vi.fn(),
+            restore: vi.fn(),
+            translate: vi.fn(),
+            scale: vi.fn(),
+            rotate: vi.fn(),
+            clearRect: vi.fn(),
+            beginPath: vi.fn(),
+            closePath: vi.fn(),
+            moveTo: vi.fn(),
+            lineTo: vi.fn(),
+            arc: vi.fn(),
+            fill: vi.fn(),
+            stroke: vi.fn(),
+            measureText: vi.fn(() => ({width: 100})),
+            font: '',
+            fillStyle: '',
+            strokeStyle: '',
+            lineWidth: 1,
+        })),
+        toBuffer: vi.fn(() => Buffer.from('mock-image-data')),
+        toDataURL: vi.fn(() => 'data:image/png;base64,mock-data'),
+        width: 800,
+        height: 600,
+    })),
+    Image: vi.fn(() => ({
+        onload: null,
+        onerror: null,
+        src: '',
+        width: 0,
+        height: 0,
+    })),
+    loadImage: vi.fn(() => Promise.resolve({
+        width: 100,
+        height: 100,
+    })),
+}))
+
 beforeEach(async () => {
     vi.clearAllMocks()
 

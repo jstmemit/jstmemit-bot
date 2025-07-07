@@ -27,6 +27,15 @@ export const mockChannelSettings = {
     linked_channel: '987654321'
 }
 
+vi.mock('posthog-node', () => ({
+    PostHog: vi.fn(() => ({
+        capture: vi.fn(),
+        flush: vi.fn(),
+        identify: vi.fn(),
+        shutdown: vi.fn(),
+    })),
+}))
+
 vi.mock('@napi-rs/canvas', () => ({
     createCanvas: vi.fn(() => ({
         getContext: vi.fn(() => ({

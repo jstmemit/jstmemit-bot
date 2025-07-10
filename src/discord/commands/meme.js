@@ -1,5 +1,5 @@
 import {getRandomImage} from "../getRandomImage.js";
-import {checkPremium, filterMentions, getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
+import {filterMentions, getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
 import {buildRow} from "../buttons/buildRow.js";
 import {checkIsEnabled} from "../checkIsEnabled.js";
 import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
@@ -8,6 +8,7 @@ import {handleNotEnoughContext} from "../handlers/handleNotEnoughContext.js";
 import {getConfig} from "../../generation/getConfig.js";
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {applyWatermark} from "../../generation/visual/helpers/applyWatermark.js";
+import {checkPremium} from "../helpers/checkPremium.js";
 
 export const meme = async (interaction, isRegenerate, isUnpromted) => {
     let channelId, guildId;

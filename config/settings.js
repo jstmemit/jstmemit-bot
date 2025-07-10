@@ -115,6 +115,16 @@ export const settings = {
             requiresImage: false,
         },
         {
+            name: "generatePoliticalCompass1",
+            generator: createMemeGenerator('politicalcompass1'),
+            requiresImage: false,
+        },
+        {
+            name: "generatePoliticalCompass2",
+            generator: createMemeGenerator('politicalcompass2'),
+            requiresImage: false,
+        },
+        {
             name: "generateGreentext",
             generator: (image, channelId, interaction) => generateGreentext(channelId),
             requiresImage: false,
@@ -238,6 +248,57 @@ export const settings = {
         },
         absolutecinema_2: {
             type: 'fullimage'
+        },
+        fullimage: {
+            type: 'fullimage'
+        },
+        politicalcompass_1: {
+            type: 'circle',
+            cx: 150,
+            cy: 190,
+            radius: 90
+        },
+        politicalcompass_2: {
+            type: 'circle',
+            cx: 700,
+            cy: 200,
+            radius: 90
+        },
+        politicalcompass_3: {
+            type: 'circle',
+            cx: 170,
+            cy: 730,
+            radius: 90
+        },
+        politicalcompass_4: {
+            type: 'circle',
+            cx: 850,
+            cy: 800,
+            radius: 90
+        },
+        politicalcompass_5: {
+            type: 'circle',
+            cx: 250,
+            cy: 200,
+            radius: 90
+        },
+        politicalcompass_6: {
+            type: 'circle',
+            cx: 650,
+            cy: 200,
+            radius: 90
+        },
+        politicalcompass_7: {
+            type: 'circle',
+            cx: 170,
+            cy: 770,
+            radius: 90
+        },
+        politicalcompass_8: {
+            type: 'circle',
+            cx: 850,
+            cy: 180,
+            radius: 90
         },
         crying_1: {
             type: 'fullimage'

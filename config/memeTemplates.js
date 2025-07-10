@@ -221,4 +221,30 @@ export const memeTemplates = {
             {key: 'spongebob_1', minLength: 0, maxLength: 3}
         ]
     },
+
+    politicalcompass1: {
+        templateFile: 'politicalcompass.png',
+        requiresChannelMessages: false,
+        images: [
+            {type: 'template', overlay: 'fullimage'},
+            {type: 'random', overlay: 'politicalcompass_1'},
+            {type: 'random', overlay: 'politicalcompass_2'},
+            {type: 'random', overlay: 'politicalcompass_3'},
+            {type: 'random', overlay: 'politicalcompass_4'},
+        ],
+        texts: []
+    },
+
+    politicalcompass2: {
+        templateFile: 'politicalcompass.png',
+        requiresChannelMessages: false,
+        images: [
+            {type: 'template', overlay: 'fullimage'},
+            {type: 'random', overlay: 'politicalcompass_5'},
+            {type: 'random', overlay: 'politicalcompass_6'},
+            {type: 'random', overlay: 'politicalcompass_7'},
+            {type: 'random', overlay: 'politicalcompass_8'},
+        ],
+        texts: []
+    },
 };

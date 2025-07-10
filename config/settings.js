@@ -110,6 +110,11 @@ export const settings = {
             requiresImage: false,
         },
         {
+            name: "generateSpongebobHappy",
+            generator: createMemeGenerator('spongebobhappy'),
+            requiresImage: false,
+        },
+        {
             name: "generateGreentext",
             generator: (image, channelId, interaction) => generateGreentext(channelId),
             requiresImage: false,
@@ -221,6 +226,12 @@ export const settings = {
         },
         spongebob_2: {
             type: 'fullimage'
+        },
+        spongebobhappy_1: {
+            type: 'circle',
+            cx: 280,
+            cy: 270,
+            radius: 130
         },
         absolutecinema_1: {
             type: 'fullimage'

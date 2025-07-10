@@ -209,4 +209,16 @@ export const memeTemplates = {
             {key: 'wojackpoint_1', minLength: 0, maxLength: 6}
         ]
     },
+
+    spongebobhappy: {
+        templateFile: 'spongebobhappy.png',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'template', overlay: 'spongebob_2'},
+            {type: 'random', overlay: 'spongebobhappy_1'},
+        ],
+        texts: [
+            {key: 'spongebob_1', minLength: 0, maxLength: 3}
+        ]
+    },
 };

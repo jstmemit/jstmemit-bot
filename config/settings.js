@@ -128,9 +128,14 @@ export const settings = {
         //     generator: createMemeGenerator('bigthumbsup'),
         //     requiresImage: false,
         // },
+        // {
+        //     name: "generateTf2Hahaha",
+        //     generator: createMemeGenerator('tf2hahaha'),
+        //     requiresImage: false,
+        // },
         {
-            name: "generateTf2Hahaha",
-            generator: createMemeGenerator('tf2hahaha'),
+            name: "generateHomerHiding",
+            generator: createMemeGenerator('homerhiding'),
             requiresImage: false,
         },
         // {
@@ -326,6 +331,18 @@ export const settings = {
             cx: 50,
             cy: 450,
             radius: 45
+        },
+        homerhiding_1: {
+            type: 'circle',
+            cx: 180,
+            cy: 95,
+            radius: 60
+        },
+        homerhiding_2: {
+            type: 'circle',
+            cx: 490,
+            cy: 100,
+            radius: 60
         },
         crying_1: {
             type: 'fullimage'
@@ -598,6 +615,15 @@ export const settings = {
             font: 'Comic Sans MS',
             box: {x: 0.1, y: 0.75, w: 0.8, h: 0.25},
             maxLines: 1,
+            baseImageOverlay: 0
+        },
+        homerhiding_1: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Impact',
+            box: {x: 0.1, y: 0.75, w: 0.8, h: 0.2},
+            maxLines: 2,
             baseImageOverlay: 0
         },
         explains_1: {

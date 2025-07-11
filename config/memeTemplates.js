@@ -270,4 +270,16 @@ export const memeTemplates = {
             {key: 'tf2hahaha', minLength: 0, maxLength: 12},
         ]
     },
+
+    homerhiding: {
+        templateFile: 'homerhiding.jpg',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'random', overlay: 'homerhiding_1'},
+            {type: 'random', overlay: 'homerhiding_2', sameAs: 0},
+        ],
+        texts: [
+            {key: 'homerhiding_1', minLength: 0, maxLength: 8},
+        ]
+    },
 };

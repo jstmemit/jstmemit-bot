@@ -282,4 +282,16 @@ export const memeTemplates = {
             {key: 'homerhiding_1', minLength: 0, maxLength: 8},
         ]
     },
+
+    sleepy: {
+        templateFile: 'sleepy.png',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'random', overlay: 'sleepy_1'},
+            {type: 'template', overlay: 'fullimage'}
+        ],
+        texts: [
+            {key: 'impactbottomtext', minLength: 0, maxLength: 8}
+        ]
+    },
 };

@@ -133,9 +133,14 @@ export const settings = {
         //     generator: createMemeGenerator('tf2hahaha'),
         //     requiresImage: false,
         // },
+        // {
+        //     name: "generateHomerHiding",
+        //     generator: createMemeGenerator('homerhiding'),
+        //     requiresImage: false,
+        // },
         {
-            name: "generateHomerHiding",
-            generator: createMemeGenerator('homerhiding'),
+            name: "generateSleepy",
+            generator: createMemeGenerator('sleepy'),
             requiresImage: false,
         },
         // {
@@ -247,6 +252,12 @@ export const settings = {
             cx: 130,
             cy: 150,
             radius: 200
+        },
+        sleepy_1: {
+            type: 'circle',
+            cx: 530,
+            cy: 300,
+            radius: 700
         },
         spongebob_2: {
             type: 'fullimage'
@@ -660,6 +671,15 @@ export const settings = {
             font: 'Comic Sans MS',
             box: {x: 0.4, y: 0.75, w: 0.65, h: 0.15},
             maxLines: 1,
+            baseImageOverlay: 0
+        },
+        impactbottomtext: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Impact',
+            box: {x: 0.1, y: 0.75, w: 0.8, h: 0.2},
+            maxLines: 2,
             baseImageOverlay: 0
         },
     }

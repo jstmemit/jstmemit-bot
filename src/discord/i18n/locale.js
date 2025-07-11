@@ -123,6 +123,8 @@ export const locale = {
 
         yes: "Yes",
         no: "No",
+
+        errorText: "An error happened white generating the meme. Please try again later."
     },
     russian: {
         settingsTitle: "Настройки",
@@ -248,6 +250,8 @@ export const locale = {
 
         yes: "Да",
         no: "Нет",
+
+        errorText: "Произошла ошибка при генерации мема. Пожалуйста, попробуйте ещё раз позже."
     },
     dutch: {
         settingsTitle: "Instellingen",
@@ -373,6 +377,8 @@ export const locale = {
 
         yes: "Ja",
         no: "Nee",
+
+        errorText: "Er is een fout opgetreden bij het genereren van de meme. Probeer het later opnieuw."
     },
     ukrainian: {
         settingsTitle: "Налаштування",
@@ -498,5 +504,7 @@ export const locale = {
 
         yes: "Так",
         no: "Ні",
+
+        errorText: "Сталася помилка при генерації мему. Будь ласка, спробуйте ще раз пізніше."
     },
 }

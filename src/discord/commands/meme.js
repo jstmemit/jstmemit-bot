@@ -9,6 +9,7 @@ import {getConfig} from "../../generation/getConfig.js";
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {applyWatermark} from "../../generation/visual/helpers/applyWatermark.js";
 import {checkPremium} from "../helpers/checkPremium.js";
+import {t} from "#src/discord/i18n/utils.js";
 
 export const meme = async (interaction, isRegenerate, isUnpromted) => {
     let channelId, guildId;
@@ -127,7 +128,8 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
 
     } catch (error) {
         try {
-            const errorMessage = 'An error happened white generating the meme. Please try again later.';
+            const channelSettings = await getChannelSettings(channelId);
+            const errorMessage = t("errorText", channelSettings.language || "english")
 
             if (!isUnpromted) {
                 if (interaction.deferred || interaction.replied) {

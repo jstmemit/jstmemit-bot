@@ -261,4 +261,13 @@ export const memeTemplates = {
             {key: 'bigthumbsup_2', minLength: 0, maxLength: 4}
         ]
     },
+
+    tf2hahaha: {
+        templateFile: 'tf2hahaha.jpg',
+        requiresChannelMessages: true,
+        images: [],
+        texts: [
+            {key: 'tf2hahaha', minLength: 0, maxLength: 12},
+        ]
+    },
 };

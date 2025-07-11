@@ -123,9 +123,14 @@ export const settings = {
         //     generator: createMemeGenerator('politicalcompass2'),
         //     requiresImage: false,
         // },
+        // {
+        //     name: "generateBigThumbsUp",
+        //     generator: createMemeGenerator('bigthumbsup'),
+        //     requiresImage: false,
+        // },
         {
-            name: "generateBigThumbsUp",
-            generator: createMemeGenerator('bigthumbsup'),
+            name: "generateTf2Hahaha",
+            generator: createMemeGenerator('tf2hahaha'),
             requiresImage: false,
         },
         // {
@@ -575,6 +580,15 @@ export const settings = {
             font: 'Comic Sans MS',
             box: {x: 0.23, y: 0.70, w: 0.3, h: 0.15},
             maxLines: 2,
+            baseImageOverlay: 0
+        },
+        tf2hahaha: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Comic Sans MS',
+            box: {x: 0.55, y: 0.05, w: 0.3, h: 0.4},
+            maxLines: 4,
             baseImageOverlay: 0
         },
         buzz_1: {

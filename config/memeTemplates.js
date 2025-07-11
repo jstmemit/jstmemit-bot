@@ -247,4 +247,18 @@ export const memeTemplates = {
         ],
         texts: []
     },
+
+    bigthumbsup: {
+        templateFile: 'bigthumbsup.png',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'random', overlay: 'bigthumbsup_1'},
+            {type: 'random', overlay: 'bigthumbsup_2', sameAs: 0},
+            {type: 'random', overlay: 'bigthumbsup_3', sameAs: 0}
+        ],
+        texts: [
+            {key: 'bigthumbsup_1', minLength: 0, maxLength: 4},
+            {key: 'bigthumbsup_2', minLength: 0, maxLength: 4}
+        ]
+    },
 };

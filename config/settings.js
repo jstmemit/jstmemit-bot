@@ -1,4 +1,3 @@
-import {generateGreentext} from "../src/generation/text/markov/generateGreentext.js";
 import {createMemeGenerator} from "../src/generation/visual/memeFactory.js";
 
 export const settings = {
@@ -19,116 +18,121 @@ export const settings = {
         // premiumSkuId: '1387929454356987945', // production bot premium SKU ID
     },
     templates: [
+        // {
+        //     name: "generateQuote",
+        //     generator: createMemeGenerator('quote'),
+        //     requiresImage: true,
+        // },
+        // {
+        //     name: "generateBottomCaption",
+        //     generator: createMemeGenerator('bottomcaption'),
+        //     requiresImage: true,
+        // },
+        // {
+        //     name: "generateFancyBear",
+        //     generator: createMemeGenerator('fancybear'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateUncanny",
+        //     generator: createMemeGenerator('uncanny'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateLooksAtPaperAngry",
+        //     generator: createMemeGenerator('looksatpaperangry'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateCycle",
+        //     generator: createMemeGenerator('cycle'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateSteppedInShit",
+        //     generator: createMemeGenerator('steppedinshit'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateWojackPoint",
+        //     generator: createMemeGenerator('wojackpoint'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateIsThisAPigeon",
+        //     generator: createMemeGenerator('isthisapigeon'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateYesChad",
+        //     generator: createMemeGenerator('yeschad'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateTexting",
+        //     generator: createMemeGenerator('texting'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateConnor",
+        //     generator: createMemeGenerator('connor'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateBuzz",
+        //     generator: createMemeGenerator('buzz'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateExplains",
+        //     generator: createMemeGenerator('explains'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateLiveReaction",
+        //     generator: createMemeGenerator('livereaction'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateSpongebob",
+        //     generator: createMemeGenerator('spongebob'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateCrying",
+        //     generator: createMemeGenerator('crying'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateAbsoluteCinema",
+        //     generator: createMemeGenerator('absolutecinema'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generateSpongebobHappy",
+        //     generator: createMemeGenerator('spongebobhappy'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generatePoliticalCompass1",
+        //     generator: createMemeGenerator('politicalcompass1'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "generatePoliticalCompass2",
+        //     generator: createMemeGenerator('politicalcompass2'),
+        //     requiresImage: false,
+        // },
         {
-            name: "generateQuote",
-            generator: createMemeGenerator('quote'),
-            requiresImage: true,
-        },
-        {
-            name: "generateBottomCaption",
-            generator: createMemeGenerator('bottomcaption'),
-            requiresImage: true,
-        },
-        {
-            name: "generateFancyBear",
-            generator: createMemeGenerator('fancybear'),
+            name: "generateBigThumbsUp",
+            generator: createMemeGenerator('bigthumbsup'),
             requiresImage: false,
         },
-        {
-            name: "generateUncanny",
-            generator: createMemeGenerator('uncanny'),
-            requiresImage: false,
-        },
-        {
-            name: "generateLooksAtPaperAngry",
-            generator: createMemeGenerator('looksatpaperangry'),
-            requiresImage: false,
-        },
-        {
-            name: "generateCycle",
-            generator: createMemeGenerator('cycle'),
-            requiresImage: false,
-        },
-        {
-            name: "generateSteppedInShit",
-            generator: createMemeGenerator('steppedinshit'),
-            requiresImage: false,
-        },
-        {
-            name: "generateWojackPoint",
-            generator: createMemeGenerator('wojackpoint'),
-            requiresImage: false,
-        },
-        {
-            name: "generateIsThisAPigeon",
-            generator: createMemeGenerator('isthisapigeon'),
-            requiresImage: false,
-        },
-        {
-            name: "generateYesChad",
-            generator: createMemeGenerator('yeschad'),
-            requiresImage: false,
-        },
-        {
-            name: "generateTexting",
-            generator: createMemeGenerator('texting'),
-            requiresImage: false,
-        },
-        {
-            name: "generateConnor",
-            generator: createMemeGenerator('connor'),
-            requiresImage: false,
-        },
-        {
-            name: "generateBuzz",
-            generator: createMemeGenerator('buzz'),
-            requiresImage: false,
-        },
-        {
-            name: "generateExplains",
-            generator: createMemeGenerator('explains'),
-            requiresImage: false,
-        },
-        {
-            name: "generateLiveReaction",
-            generator: createMemeGenerator('livereaction'),
-            requiresImage: false,
-        },
-        {
-            name: "generateSpongebob",
-            generator: createMemeGenerator('spongebob'),
-            requiresImage: false,
-        },
-        {
-            name: "generateCrying",
-            generator: createMemeGenerator('crying'),
-            requiresImage: false,
-        },
-        {
-            name: "generateAbsoluteCinema",
-            generator: createMemeGenerator('absolutecinema'),
-            requiresImage: false,
-        },
-        {
-            name: "generateSpongebobHappy",
-            generator: createMemeGenerator('spongebobhappy'),
-            requiresImage: false,
-        },
-        {
-            name: "generatePoliticalCompass1",
-            generator: createMemeGenerator('politicalcompass1'),
-            requiresImage: false,
-        },
-        {
-            name: "generatePoliticalCompass2",
-            generator: createMemeGenerator('politicalcompass2'),
-            requiresImage: false,
-        },
-        {
-            name: "generateGreentext",
-            generator: (image, channelId, interaction) => generateGreentext(channelId),
-            requiresImage: false,
-        },
+        // {
+        //     name: "generateGreentext",
+        //     generator: (image, channelId, interaction) => generateGreentext(channelId),
+        //     requiresImage: false,
+        // },
     ],
     overlaySettings: {
         speechbubble: {
@@ -299,6 +303,24 @@ export const settings = {
             cx: 850,
             cy: 180,
             radius: 90
+        },
+        bigthumbsup_1: {
+            type: 'circle',
+            cx: 40,
+            cy: 60,
+            radius: 45
+        },
+        bigthumbsup_2: {
+            type: 'circle',
+            cx: 50,
+            cy: 260,
+            radius: 45
+        },
+        bigthumbsup_3: {
+            type: 'circle',
+            cx: 50,
+            cy: 450,
+            radius: 45
         },
         crying_1: {
             type: 'fullimage'
@@ -535,6 +557,24 @@ export const settings = {
             font: 'Comic Sans MS',
             box: {x: 0.1, y: 0.8, w: 0.8, h: 0.25},
             maxLines: 1,
+            baseImageOverlay: 0
+        },
+        bigthumbsup_1: {
+            fillStyle: '#000000',
+            outlineStyle: '#ffffff',
+            textAlign: 'left',
+            font: 'Comic Sans MS',
+            box: {x: 0.23, y: 0.03, w: 0.3, h: 0.15},
+            maxLines: 2,
+            baseImageOverlay: 0
+        },
+        bigthumbsup_2: {
+            fillStyle: '#000000',
+            outlineStyle: '#ffffff',
+            textAlign: 'left',
+            font: 'Comic Sans MS',
+            box: {x: 0.23, y: 0.70, w: 0.3, h: 0.15},
+            maxLines: 2,
             baseImageOverlay: 0
         },
         buzz_1: {

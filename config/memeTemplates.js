@@ -294,4 +294,15 @@ export const memeTemplates = {
             {key: 'impactbottomtext', minLength: 0, maxLength: 8}
         ]
     },
+
+    whydoyoulikethismovie: {
+        templateFile: 'whydoyoulikethismovie.png',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'random', overlay: 'whydoyoulikethismovie_1'},
+            {type: 'template', overlay: 'fullimage'},
+            {type: 'random', overlay: 'whydoyoulikethismovie_2'},
+        ],
+        texts: []
+    },
 };

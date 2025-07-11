@@ -1,5 +1,6 @@
 import {createMemeGenerator} from "../src/generation/visual/memeFactory.js";
 import {generateGreentext} from "#src/generation/text/markov/generateGreentext.js";
+import {generatePoll} from "#src/generation/text/markov/generatePoll.js";
 
 export const settings = {
     cache: {
@@ -152,6 +153,11 @@ export const settings = {
         {
             name: "generateGreentext",
             generator: (image, channelId, interaction) => generateGreentext(channelId),
+            requiresImage: false,
+        },
+        {
+            name: "generatePoll",
+            generator: (image, channelId, interaction) => generatePoll(channelId),
             requiresImage: false,
         },
     ],

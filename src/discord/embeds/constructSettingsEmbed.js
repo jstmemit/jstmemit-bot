@@ -138,6 +138,41 @@ export const constructSettingsEmbed = (currentSettings, channelId, hasPremium) =
             value: "absolutecinema",
             emoji: {id: "1391135672118808586"},
         },
+        {
+            label: t("settingsMemesTemplatesOptionLiveReactionTitle", language),
+            value: "livereaction",
+            emoji: {id: "1393247837273460767"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionTf2HahahaTitle", language),
+            value: "tf2hahaha",
+            emoji: {id: "1393247863584063690"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionPoliticalCompassTitle", language),
+            value: "politicalcompass",
+            emoji: {id: "1393247877018423457"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionSleepyTitle", language),
+            value: "sleepy",
+            emoji: {id: "1393247960774475877"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle", language),
+            value: "whydoyoulikethismovie",
+            emoji: {id: "1393247996409282610"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionHomerHidingTitle", language),
+            value: "homerhiding",
+            emoji: {id: "1393248164202418276"},
+        },
+        {
+            label: t("settingsMemesTemplatesOptionSpongebobHappyTitle", language),
+            value: "spongebobhappy",
+            emoji: {id: "1393248198562283641"},
+        },
     ]
 
     const dataRetentionOptions = [

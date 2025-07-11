@@ -104,6 +104,42 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
                     components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
                 });
             }
+        } else if (result instanceof Array) {
+
+            const replaceMentions = channelSettings.replace_mentions;
+
+            result = await Promise.all(result.map(async (option) => {
+                if (typeof option === 'string') {
+                    return await filterMentions(option, replaceMentions);
+                }
+                return option;
+            }));
+
+            try {
+                if (!isUnpromted) {
+                    await interaction.editReply({
+                        poll: {
+                            question: {text: `${result[0]}`.slice(0, 200)},
+                            answers: result.slice(1).map((option, index) => ({
+                                text: option.slice(0, 100),
+                            }))
+                        },
+                        components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+                    });
+                } else {
+                    await interaction.channel.send({
+                        poll: {
+                            question: {text: `${result[0]}`.slice(0, 200)},
+                            answers: result.slice(1).map((option, index) => ({
+                                text: option.slice(0, 100),
+                            }))
+                        },
+                        components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+                    });
+                }
+            } catch (error) {
+                console.error('Error sending poll:', error.message);
+            }
         } else {
 
             // only put watermark if premium server selected their own watermark

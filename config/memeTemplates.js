@@ -305,4 +305,44 @@ export const memeTemplates = {
         ],
         texts: []
     },
+
+    onedollarprivateisland: {
+        templateFile: 'ytthumbnail1.png',
+        requiresChannelMessages: false,
+        images: [
+            {type: 'random', overlay: 'fullimage'},
+            {type: 'template', overlay: 'fullimage'},
+        ],
+        texts: []
+    },
+
+    iadopted100dogs: {
+        templateFile: 'ytthumbnail2.png',
+        requiresChannelMessages: false,
+        images: [
+            {type: 'random', overlay: 'fullimage'},
+            {type: 'template', overlay: 'fullimage'},
+        ],
+        texts: []
+    },
+
+    worldsmostdangeroustrap: {
+        templateFile: 'ytthumbnail3.png',
+        requiresChannelMessages: false,
+        images: [
+            {type: 'random', overlay: 'fullimage'},
+            {type: 'template', overlay: 'fullimage'},
+        ],
+        texts: []
+    },
+
+    igothuntedbyarealbountyhunter: {
+        templateFile: 'ytthumbnail4.png',
+        requiresChannelMessages: false,
+        images: [
+            {type: 'random', overlay: 'fullimage'},
+            {type: 'template', overlay: 'fullimage'},
+        ],
+        texts: []
+    }
 };

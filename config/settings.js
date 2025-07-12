@@ -151,6 +151,26 @@ export const settings = {
             requiresImage: false,
         },
         {
+            name: "generateWorldsMostDangerousTrap",
+            generator: createMemeGenerator('worldsmostdangeroustrap'),
+            requiresImage: false,
+        },
+        {
+            name: "generateOneDollarPrivateIsland",
+            generator: createMemeGenerator('onedollarprivateisland'),
+            requiresImage: false,
+        },
+        {
+            name: "generateIAdopted100Dogs",
+            generator: createMemeGenerator('iadopted100dogs'),
+            requiresImage: false,
+        },
+        {
+            name: "generateIGotHuntedByARealBountyHunter",
+            generator: createMemeGenerator('igothuntedbyarealbountyhunter'),
+            requiresImage: false,
+        },
+        {
             name: "generateGreentext",
             generator: (image, channelId, interaction) => generateGreentext(channelId),
             requiresImage: false,

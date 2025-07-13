@@ -14,11 +14,11 @@ export const settings = {
         maxFileSize: 7 * 1024 * 1024,
         maxDimension: 2048,
         minDimension: 1,
-        emojiYOffset: 10,
+        emojiYOffset: 20,
     },
     monetization: {
-        premiumSkuId: '1388188866057474048', // dev bot premium SKU ID
-        // premiumSkuId: '1387929454356987945', // production bot premium SKU ID
+        // premiumSkuId: '1388188866057474048', // dev bot premium SKU ID
+        premiumSkuId: '1387929454356987945', // production bot premium SKU ID
     },
     templates: [
         {

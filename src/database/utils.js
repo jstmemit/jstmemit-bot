@@ -6,11 +6,11 @@ const VALID_IMAGE_TYPES = [
     'image/webp',
     'image/svg+xml',
     'image/bmp',
-    'image/tiff'
+    'image/tiff',
 ];
 
 const VALID_IMAGE_EXTENSIONS = [
-    '.jpg', '.jpeg', '.png', '.gif',
+    '.jpg', '.jpeg', '.png', 'gif',
     '.webp', '.svg', '.bmp', '.tiff'
 ];
 
@@ -22,7 +22,6 @@ export const validateImage = async (url, options = {}) => {
     } = options;
 
     try {
-        // Quick extension check first
         if (checkExtension) {
             const hasValidExtension = VALID_IMAGE_EXTENSIONS.some(ext =>
                 url.toLowerCase().includes(ext)
@@ -32,7 +31,6 @@ export const validateImage = async (url, options = {}) => {
             }
         }
 
-        // Check content-type header with HEAD request
         if (verifyContent) {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), timeout);

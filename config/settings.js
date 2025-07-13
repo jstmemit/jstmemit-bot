@@ -5,7 +5,7 @@ import {generatePoll} from "#src/generation/text/markov/generatePoll.js";
 export const settings = {
     cache: {
         memeTemplatesAnalyticsCache: 60 * 60 * 1000,
-        channelImagesCache: 5 * 60 * 1000,
+        channelImagesCache: 1 * 60 * 1000,
     },
     values: {
         baseWeight: 0.3,
@@ -14,6 +14,7 @@ export const settings = {
         maxFileSize: 7 * 1024 * 1024,
         maxDimension: 2048,
         minDimension: 1,
+        emojiYOffset: 10,
     },
     monetization: {
         premiumSkuId: '1388188866057474048', // dev bot premium SKU ID

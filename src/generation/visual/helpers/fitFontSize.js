@@ -1,8 +1,8 @@
 import {cutText} from "./cutText.js";
 
-export const fitFontSize = (ctx, rawText, box, maxLines) => {
+export const fitFontSize = (ctx, rawText, box, maxLines, font) => {
     for (let fontSize = 90; fontSize > 20; fontSize--) {
-        ctx.font = `${fontSize}px Impact`;
+        ctx.font = `${fontSize}px ${font}`;
         const lines = cutText(ctx, rawText, box.w);
 
         const totalHeight = fontSize * lines.length * 1.15;
@@ -13,7 +13,7 @@ export const fitFontSize = (ctx, rawText, box, maxLines) => {
         }
     }
 
-    ctx.font = `20px Impact`;
+    ctx.font = `20px ${font}`;
     const fallbackLines = cutText(ctx, rawText, box.w).slice(0, maxLines);
     return {fontSize: 20, lines: fallbackLines};
 };

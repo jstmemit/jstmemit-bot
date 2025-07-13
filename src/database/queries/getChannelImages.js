@@ -31,6 +31,7 @@ export const getChannelImages = async (channelId) => {
              (message LIKE 'https://cdn.discordapp.com/attachments/%'
                  AND timestamp >= DATE_SUB(NOW(), INTERVAL 20 HOUR))
                  OR message LIKE 'https://cdn.discordapp.com/avatars/%'
+                 OR message LIKE 'https://tenor.com/view/%'
              )
          ORDER BY RAND()
          LIMIT 5`,
@@ -40,14 +41,13 @@ export const getChannelImages = async (channelId) => {
             return null;
         }
 
-        // Validate each image URL
         const validImages = [];
         for (const row of rows) {
             const validation = await validateImage(row.message);
             if (validation.isValid) {
-                validImages.push(row.message);
+                validImages.push(validation.url ?? row.message);
             } else {
-                console.warn(`Invalid image URL: ${row.message} - ${validation.reason}`);
+                console.warn(`Invalid image URL: ${row.message} – ${validation.reason}`);
             }
         }
 

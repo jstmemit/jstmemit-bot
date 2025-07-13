@@ -11,7 +11,7 @@ const measureMixedText = (ctx, text, fontSize, baseFont) => {
     let lastIndex = 0;
     let match;
 
-    const emojiFont = `${fontSize}px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Twitter Color Emoji", "EmojiOne Color"`;
+    const emojiFont = `${fontSize}px "Noto Color Emoji"`;
     const textFont = `${fontSize}px ${baseFont}`;
 
     while ((match = emojiRegex.exec(text)) !== null) {

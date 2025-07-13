@@ -1,5 +1,5 @@
 import {getRandomImage} from "../getRandomImage.js";
-import {checkPremium, filterMentions, getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
+import {filterMentions, getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
 import {buildRow} from "../buttons/buildRow.js";
 import {checkIsEnabled} from "../checkIsEnabled.js";
 import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
@@ -8,6 +8,8 @@ import {handleNotEnoughContext} from "../handlers/handleNotEnoughContext.js";
 import {getConfig} from "../../generation/getConfig.js";
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {applyWatermark} from "../../generation/visual/helpers/applyWatermark.js";
+import {checkPremium} from "../helpers/checkPremium.js";
+import {t} from "#src/discord/i18n/utils.js";
 
 export const meme = async (interaction, isRegenerate, isUnpromted) => {
     let channelId, guildId;
@@ -102,6 +104,42 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
                     components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
                 });
             }
+        } else if (result instanceof Array) {
+
+            const replaceMentions = channelSettings.replace_mentions;
+
+            result = await Promise.all(result.map(async (option) => {
+                if (typeof option === 'string') {
+                    return await filterMentions(option, replaceMentions);
+                }
+                return option;
+            }));
+
+            try {
+                if (!isUnpromted) {
+                    await interaction.editReply({
+                        poll: {
+                            question: {text: `${result[0]}`.slice(0, 200)},
+                            answers: result.slice(1).map((option, index) => ({
+                                text: option.slice(0, 100),
+                            }))
+                        },
+                        components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+                    });
+                } else {
+                    await interaction.channel.send({
+                        poll: {
+                            question: {text: `${result[0]}`.slice(0, 200)},
+                            answers: result.slice(1).map((option, index) => ({
+                                text: option.slice(0, 100),
+                            }))
+                        },
+                        components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+                    });
+                }
+            } catch (error) {
+                console.error('Error sending poll:', error.message);
+            }
         } else {
 
             // only put watermark if premium server selected their own watermark
@@ -126,7 +164,8 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
 
     } catch (error) {
         try {
-            const errorMessage = 'An error happened white generating the meme. Please try again later.';
+            const channelSettings = await getChannelSettings(channelId);
+            const errorMessage = t("errorText", channelSettings.language || "english")
 
             if (!isUnpromted) {
                 if (interaction.deferred || interaction.replied) {

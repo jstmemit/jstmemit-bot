@@ -1,27 +1,11 @@
-import {generateSpongebob} from "../src/generation/visual/generateSpongebob.js";
-import {generateAbsoluteCinema} from "../src/generation/visual/generateAbsoluteCinema.js";
-import {generateCrying} from "../src/generation/visual/generateCrying.js";
-import {generateQuote} from "../src/generation/visual/generateQuote.js";
-import {generateBottomCaption} from "../src/generation/visual/generateBottomCaption.js";
-import {generateFancyBear} from "../src/generation/visual/generateFancyBear.js";
-import {generateGreentext} from "../src/generation/text/markov/generateGreentext.js";
-import {generateUncanny} from "../src/generation/visual/generateUncanny.js";
-import {generateLooksAtPaperAngry} from "../src/generation/visual/generateLooksAtPaperAngry.js";
-import {generateCycle} from "../src/generation/visual/generateCycle.js";
-import {generateSteppedInShit} from "../src/generation/visual/generateSteppedInShit.js";
-import {generateWojackPoint} from "../src/generation/visual/generateWojackPoint.js";
-import {generateIsThisAPigeon} from "../src/generation/visual/generateIsThisAPigeon.js";
-import {generateYesChad} from "../src/generation/visual/generateYesChad.js";
-import {generateTexting} from "../src/generation/visual/generateTexting.js";
-import {generateConnor} from "../src/generation/visual/generateConnor.js";
-import {generateBuzz} from "../src/generation/visual/generateBuzz.js";
-import {generateExplains} from "../src/generation/visual/generateExplains.js";
-import {generateLiveReaction} from "../src/generation/visual/generateLiveReaction.js";
+import {createMemeGenerator} from "../src/generation/visual/memeFactory.js";
+import {generateGreentext} from "#src/generation/text/markov/generateGreentext.js";
+import {generatePoll} from "#src/generation/text/markov/generatePoll.js";
 
 export const settings = {
     cache: {
         memeTemplatesAnalyticsCache: 60 * 60 * 1000,
-        channelImagesCache: 5 * 60 * 1000,
+        channelImagesCache: 1 * 60 * 1000,
     },
     values: {
         baseWeight: 0.3,
@@ -30,6 +14,7 @@ export const settings = {
         maxFileSize: 7 * 1024 * 1024,
         maxDimension: 2048,
         minDimension: 1,
+        emojiYOffset: 20,
     },
     monetization: {
         // premiumSkuId: '1388188866057474048', // dev bot premium SKU ID
@@ -38,19 +23,152 @@ export const settings = {
     templates: [
         {
             name: "generateQuote",
-            generator: (image, channelId, interaction) =>
-                generateQuote(image, channelId, interaction),
+            generator: createMemeGenerator('quote'),
             requiresImage: true,
         },
         {
             name: "generateBottomCaption",
-            generator: (image, channelId, interaction) =>
-                generateBottomCaption(image, channelId, interaction),
+            generator: createMemeGenerator('bottomcaption'),
             requiresImage: true,
         },
         {
             name: "generateFancyBear",
-            generator: (image, channelId, interaction) => generateFancyBear(channelId),
+            generator: createMemeGenerator('fancybear'),
+            requiresImage: false,
+        },
+        {
+            name: "generateUncanny",
+            generator: createMemeGenerator('uncanny'),
+            requiresImage: false,
+        },
+        {
+            name: "generateLooksAtPaperAngry",
+            generator: createMemeGenerator('looksatpaperangry'),
+            requiresImage: false,
+        },
+        {
+            name: "generateCycle",
+            generator: createMemeGenerator('cycle'),
+            requiresImage: false,
+        },
+        {
+            name: "generateSteppedInShit",
+            generator: createMemeGenerator('steppedinshit'),
+            requiresImage: false,
+        },
+        {
+            name: "generateWojackPoint",
+            generator: createMemeGenerator('wojackpoint'),
+            requiresImage: false,
+        },
+        {
+            name: "generateIsThisAPigeon",
+            generator: createMemeGenerator('isthisapigeon'),
+            requiresImage: false,
+        },
+        {
+            name: "generateYesChad",
+            generator: createMemeGenerator('yeschad'),
+            requiresImage: false,
+        },
+        {
+            name: "generateTexting",
+            generator: createMemeGenerator('texting'),
+            requiresImage: false,
+        },
+        {
+            name: "generateConnor",
+            generator: createMemeGenerator('connor'),
+            requiresImage: false,
+        },
+        {
+            name: "generateBuzz",
+            generator: createMemeGenerator('buzz'),
+            requiresImage: false,
+        },
+        {
+            name: "generateExplains",
+            generator: createMemeGenerator('explains'),
+            requiresImage: false,
+        },
+        {
+            name: "generateLiveReaction",
+            generator: createMemeGenerator('livereaction'),
+            requiresImage: false,
+        },
+        {
+            name: "generateSpongebob",
+            generator: createMemeGenerator('spongebob'),
+            requiresImage: false,
+        },
+        {
+            name: "generateCrying",
+            generator: createMemeGenerator('crying'),
+            requiresImage: false,
+        },
+        {
+            name: "generateAbsoluteCinema",
+            generator: createMemeGenerator('absolutecinema'),
+            requiresImage: false,
+        },
+        {
+            name: "generateSpongebobHappy",
+            generator: createMemeGenerator('spongebobhappy'),
+            requiresImage: false,
+        },
+        {
+            name: "generatePoliticalCompass1",
+            generator: createMemeGenerator('politicalcompass1'),
+            requiresImage: false,
+        },
+        {
+            name: "generatePoliticalCompass2",
+            generator: createMemeGenerator('politicalcompass2'),
+            requiresImage: false,
+        },
+        {
+            name: "generateBigThumbsUp",
+            generator: createMemeGenerator('bigthumbsup'),
+            requiresImage: false,
+        },
+        {
+            name: "generateTf2Hahaha",
+            generator: createMemeGenerator('tf2hahaha'),
+            requiresImage: false,
+        },
+        {
+            name: "generateHomerHiding",
+            generator: createMemeGenerator('homerhiding'),
+            requiresImage: false,
+        },
+        {
+            name: "generateSleepy",
+            generator: createMemeGenerator('sleepy'),
+            requiresImage: false,
+        },
+        {
+            name: "generateWhyDoYouLikeThisMovie",
+            generator: createMemeGenerator('whydoyoulikethismovie'),
+            requiresImage: false,
+        },
+        {
+            name: "generateWorldsMostDangerousTrap",
+            generator: createMemeGenerator('worldsmostdangeroustrap'),
+            requiresImage: false,
+        },
+        {
+            name: "generateOneDollarPrivateIsland",
+            generator: createMemeGenerator('onedollarprivateisland'),
+            requiresImage: false,
+        },
+        {
+            name: "generateIAdopted100Dogs",
+            generator: createMemeGenerator('iadopted100dogs'),
+            requiresImage: false,
+        },
+        {
+            name: "generateIGotHuntedByARealBountyHunter",
+            generator: createMemeGenerator('igothuntedbyarealbountyhunter'),
             requiresImage: false,
         },
         {
@@ -59,82 +177,8 @@ export const settings = {
             requiresImage: false,
         },
         {
-            name: "generateUncanny",
-            generator: (image, channelId, interaction) => generateUncanny(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "generateLooksAtPaperAngry",
-            generator: (image, channelId, interaction) =>
-                generateLooksAtPaperAngry(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateCycle",
-            generator: (image, channelId, interaction) => generateCycle(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "generateSteppedInShit",
-            generator: (image, channelId, interaction) =>
-                generateSteppedInShit(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateWojackPoint",
-            generator: (image, channelId, interaction) =>
-                generateWojackPoint(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateIsThisAPigeon",
-            generator: (image, channelId, interaction) =>
-                generateIsThisAPigeon(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateYesChad",
-            generator: (image, channelId, interaction) => generateYesChad(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateTexting",
-            generator: (image, channelId, interaction) => generateTexting(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateConnor",
-            generator: (image, channelId, interaction) => generateConnor(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateBuzz",
-            generator: (image, channelId, interaction) => generateBuzz(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateExplains",
-            generator: (image, channelId, interaction) => generateExplains(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateLiveReaction",
-            generator: (image, channelId, interaction) => generateLiveReaction(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateSpongebob",
-            generator: (image, channelId, interaction) => generateSpongebob(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateCrying",
-            generator: (image, channelId, interaction) => generateCrying(channelId, interaction),
-            requiresImage: false,
-        },
-        {
-            name: "generateAbsoluteCinema",
-            generator: (image, channelId, interaction) => generateAbsoluteCinema(channelId, interaction),
+            name: "generatePoll",
+            generator: (image, channelId, interaction) => generatePoll(channelId),
             requiresImage: false,
         },
     ],
@@ -242,14 +286,119 @@ export const settings = {
             cy: 150,
             radius: 200
         },
+        sleepy_1: {
+            type: 'circle',
+            cx: 530,
+            cy: 300,
+            radius: 700
+        },
         spongebob_2: {
             type: 'fullimage'
+        },
+        spongebobhappy_1: {
+            type: 'circle',
+            cx: 280,
+            cy: 270,
+            radius: 130
         },
         absolutecinema_1: {
             type: 'fullimage'
         },
         absolutecinema_2: {
             type: 'fullimage'
+        },
+        fullimage: {
+            type: 'fullimage'
+        },
+        politicalcompass_1: {
+            type: 'circle',
+            cx: 150,
+            cy: 190,
+            radius: 90
+        },
+        politicalcompass_2: {
+            type: 'circle',
+            cx: 700,
+            cy: 200,
+            radius: 90
+        },
+        politicalcompass_3: {
+            type: 'circle',
+            cx: 170,
+            cy: 730,
+            radius: 90
+        },
+        politicalcompass_4: {
+            type: 'circle',
+            cx: 850,
+            cy: 800,
+            radius: 90
+        },
+        politicalcompass_5: {
+            type: 'circle',
+            cx: 250,
+            cy: 200,
+            radius: 90
+        },
+        politicalcompass_6: {
+            type: 'circle',
+            cx: 650,
+            cy: 200,
+            radius: 90
+        },
+        politicalcompass_7: {
+            type: 'circle',
+            cx: 170,
+            cy: 770,
+            radius: 90
+        },
+        politicalcompass_8: {
+            type: 'circle',
+            cx: 850,
+            cy: 180,
+            radius: 90
+        },
+        whydoyoulikethismovie_1: {
+            type: 'circle',
+            cx: 350,
+            cy: 580,
+            radius: 450
+        },
+        whydoyoulikethismovie_2: {
+            type: 'circle',
+            cx: 75,
+            cy: 880,
+            radius: 45
+        },
+        bigthumbsup_1: {
+            type: 'circle',
+            cx: 40,
+            cy: 60,
+            radius: 45
+        },
+        bigthumbsup_2: {
+            type: 'circle',
+            cx: 50,
+            cy: 260,
+            radius: 45
+        },
+        bigthumbsup_3: {
+            type: 'circle',
+            cx: 50,
+            cy: 450,
+            radius: 45
+        },
+        homerhiding_1: {
+            type: 'circle',
+            cx: 180,
+            cy: 95,
+            radius: 60
+        },
+        homerhiding_2: {
+            type: 'circle',
+            cx: 490,
+            cy: 100,
+            radius: 60
         },
         crying_1: {
             type: 'fullimage'
@@ -488,6 +637,33 @@ export const settings = {
             maxLines: 1,
             baseImageOverlay: 0
         },
+        bigthumbsup_1: {
+            fillStyle: '#000000',
+            outlineStyle: '#ffffff',
+            textAlign: 'left',
+            font: 'Comic Sans MS',
+            box: {x: 0.23, y: 0.03, w: 0.3, h: 0.15},
+            maxLines: 2,
+            baseImageOverlay: 0
+        },
+        bigthumbsup_2: {
+            fillStyle: '#000000',
+            outlineStyle: '#ffffff',
+            textAlign: 'left',
+            font: 'Comic Sans MS',
+            box: {x: 0.23, y: 0.70, w: 0.3, h: 0.15},
+            maxLines: 2,
+            baseImageOverlay: 0
+        },
+        tf2hahaha: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Comic Sans MS',
+            box: {x: 0.55, y: 0.05, w: 0.3, h: 0.4},
+            maxLines: 4,
+            baseImageOverlay: 0
+        },
         buzz_1: {
             fillStyle: '#ffffff',
             outlineStyle: '#000000',
@@ -495,6 +671,15 @@ export const settings = {
             font: 'Comic Sans MS',
             box: {x: 0.1, y: 0.75, w: 0.8, h: 0.25},
             maxLines: 1,
+            baseImageOverlay: 0
+        },
+        homerhiding_1: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Impact',
+            box: {x: 0.1, y: 0.75, w: 0.8, h: 0.2},
+            maxLines: 2,
             baseImageOverlay: 0
         },
         explains_1: {
@@ -527,10 +712,19 @@ export const settings = {
         crying_1: {
             fillStyle: '#ffffff',
             outlineStyle: '#000000',
-            textAlign: 'center',
+            textAlign: 'left',
             font: 'Comic Sans MS',
-            box: {x: 0.25, y: 0.75, w: 0.65, h: 0.15},
+            box: {x: 0.4, y: 0.75, w: 0.65, h: 0.15},
             maxLines: 1,
+            baseImageOverlay: 0
+        },
+        impactbottomtext: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Impact',
+            box: {x: 0.1, y: 0.75, w: 0.8, h: 0.2},
+            maxLines: 2,
             baseImageOverlay: 0
         },
     }

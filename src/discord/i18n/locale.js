@@ -43,6 +43,13 @@ export const locale = {
         settingsMemesTemplatesOptionSpongebobTitle: "SpongeBob",
         settingsMemesTemplatesOptionCryingTitle: "Crying",
         settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Absolute Cinema",
+        settingsMemesTemplatesOptionLiveReactionTitle: "Live Reaction",
+        settingsMemesTemplatesOptionTf2HahahaTitle: "TF2 Hahaha",
+        settingsMemesTemplatesOptionPoliticalCompassTitle: "Political Compass",
+        settingsMemesTemplatesOptionSleepyTitle: "Sleepy",
+        settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Why do you like this movie?",
+        settingsMemesTemplatesOptionHomerHidingTitle: "Homer Hiding",
+        settingsMemesTemplatesOptionSpongebobHappyTitle: "SpongeBob Happy",
 
         settingsDataRetentionTitle: "Data Retention",
         settingsDataRetentionDescription: "You can choose how long the bot will keep the data related to this channel. If you want to erase all data, you can also do it here.",
@@ -123,6 +130,8 @@ export const locale = {
 
         yes: "Yes",
         no: "No",
+
+        errorText: "An error happened white generating the meme. Please try again later."
     },
     russian: {
         settingsTitle: "Настройки",
@@ -168,6 +177,14 @@ export const locale = {
         settingsMemesTemplatesOptionSpongebobTitle: "Губка Боб",
         settingsMemesTemplatesOptionCryingTitle: "Плачет",
         settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Абсолютное кино",
+        settingsMemesTemplatesOptionLiveReactionTitle: "Live Reaction",
+        settingsMemesTemplatesOptionTf2HahahaTitle: "TF2 Хахаха",
+        settingsMemesTemplatesOptionPoliticalCompassTitle: "Полит. координаты",
+        settingsMemesTemplatesOptionSleepyTitle: "Сонный",
+        settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Почему тебе нравится этот фильм?",
+        settingsMemesTemplatesOptionHomerHidingTitle: "Гомер прячется",
+        settingsMemesTemplatesOptionSpongebobHappyTitle: "Губка Боб счастлив",
+
 
         settingsDataRetentionTitle: "Хранение данных",
         settingsDataRetentionDescription: "Вы можете выбрать как долго бот будет хранить данные связанные с этим каналом. Если вы хотите удалить все сохраненные сообщения, вы также можете сделать это здесь.",
@@ -248,6 +265,8 @@ export const locale = {
 
         yes: "Да",
         no: "Нет",
+
+        errorText: "Произошла ошибка при генерации мема. Пожалуйста, попробуйте ещё раз позже."
     },
     dutch: {
         settingsTitle: "Instellingen",
@@ -293,6 +312,13 @@ export const locale = {
         settingsMemesTemplatesOptionSpongebobTitle: "SpongeBob",
         settingsMemesTemplatesOptionCryingTitle: "Huilen",
         settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Absoluut cinema",
+        settingsMemesTemplatesOptionLiveReactionTitle: "Live Reaction",
+        settingsMemesTemplatesOptionTf2HahahaTitle: "TF2 Hahaha",
+        settingsMemesTemplatesOptionPoliticalCompassTitle: "Politieke Kompas",
+        settingsMemesTemplatesOptionSleepyTitle: "Slaperig",
+        settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Waarom vind je deze film leuk?",
+        settingsMemesTemplatesOptionHomerHidingTitle: "Homer hiding",
+        settingsMemesTemplatesOptionSpongebobHappyTitle: "SpongeBob blij",
 
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
@@ -373,6 +399,8 @@ export const locale = {
 
         yes: "Ja",
         no: "Nee",
+
+        errorText: "Er is een fout opgetreden bij het genereren van de meme. Probeer het later opnieuw."
     },
     ukrainian: {
         settingsTitle: "Налаштування",
@@ -418,6 +446,13 @@ export const locale = {
         settingsMemesTemplatesOptionSpongebobTitle: "Губка Боб",
         settingsMemesTemplatesOptionCryingTitle: "Плаче",
         settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Абсолютне кіно",
+        settingsMemesTemplatesOptionLiveReactionTitle: "Live Reaction",
+        settingsMemesTemplatesOptionTf2HahahaTitle: "TF2 Хахаха",
+        settingsMemesTemplatesOptionPoliticalCompassTitle: "Політичні координати",
+        settingsMemesTemplatesOptionSleepyTitle: "Сонний",
+        settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Чому тобі подобається цей фільм?",
+        settingsMemesTemplatesOptionHomerHidingTitle: "Гомер ховається",
+        settingsMemesTemplatesOptionSpongebobHappyTitle: "Губка Боб щасливий",
 
         settingsDataRetentionTitle: "Зберігання даних",
         settingsDataRetentionDescription: "Ви можете вибрати як довго бот буде зберігати дані, пов'язані з цим каналом. Якщо ви хочете видалити всі збережені повідомлення, ви також можете зробити це тут.",
@@ -498,5 +533,7 @@ export const locale = {
 
         yes: "Так",
         no: "Ні",
+
+        errorText: "Сталася помилка при генерації мему. Будь ласка, спробуйте ще раз пізніше."
     },
 }

@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
+import {drizzle} from "drizzle-orm/mysql2";
 
 export const pool = mysql.createPool({
     host: dotenv.config().parsed.MYSQL_HOST,
@@ -10,3 +11,5 @@ export const pool = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0,
 });
+
+export const db = drizzle({client: pool});

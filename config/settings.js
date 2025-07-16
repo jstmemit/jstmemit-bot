@@ -16,6 +16,10 @@ export const settings = {
         minDimension: 1,
         emojiYOffset: 20,
     },
+    kumaUptime: {
+        pingUrl: 'http://192.168.1.137:3001/api/push/NHOKlHX89O?status=up&msg=OK&ping=',
+        pingInterval: 60 * 500
+    },
     monetization: {
         // premiumSkuId: '1388188866057474048', // dev bot premium SKU ID
         premiumSkuId: '1387929454356987945', // production bot premium SKU ID

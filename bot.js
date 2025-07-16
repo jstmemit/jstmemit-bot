@@ -28,6 +28,7 @@ import {handleToggleMentions} from "./src/discord/handlers/handleToggleMentions.
 import {handleUpdatePremiumEmbed} from "./src/discord/handlers/handleUpdatePremiumEmbed.js";
 import {handleToggleWatermark} from "./src/discord/handlers/handleToggleWatermark.js";
 import {handleLinkChannel} from "./src/discord/handlers/handleLinkChannel.js";
+import {sendKumaPing} from "#src/analytics/heartbeat/sendKumaPing.js";
 
 let analytics = null;
 try {
@@ -236,5 +237,6 @@ process.on('uncaughtException', (error) => {
 });
 
 startDataRoutine()
+sendKumaPing();
 
 client.login(dotenv.config().parsed.DISCORD_TOKEN);

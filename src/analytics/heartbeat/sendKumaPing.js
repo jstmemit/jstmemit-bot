@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const sendKumaPing = () => {
 
-    if (!settings.kumaUptime || !settings.kumaUptime.pingUrl) {
+    if (!settings?.kumaUptime || !settings?.kumaUptime.pingUrl) {
         console.warn('Kuma url is not set in the settings');
         return;
     }

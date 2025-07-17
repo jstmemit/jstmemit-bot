@@ -1,31 +1,28 @@
-import {pool} from '../initializePool.js';
+import {db} from '../initializePool.js';
+import {channels, messages} from '#database/schema/schema.js';
+import {eq} from 'drizzle-orm';
 
 export const insertMessage = async (channelId, message) => {
     if (!channelId || !message) {
-        console.log('Error in insertMessage')
+        console.log('Error in insertMessage', channelId);
     }
-    const conn = await pool.getConnection();
+
+    const channel = await db
+        .select()
+        .from(channels)
+        .where(eq(channels.channelId, channelId?.toString()))
+        .limit(1);
+
+    if (!channel[0] || !channel[0].isEnabled) {
+        return;
+    }
+
     try {
-        await conn.beginTransaction();
-
-        await conn.query(
-            `INSERT INTO channels (channel_id, is_enabled)
-             VALUES (?, 0)
-             ON DUPLICATE KEY UPDATE channel_id = channel_id`,
-            [channelId],
-        );
-
-        await conn.query(
-            `INSERT INTO messages (channel_id, message)
-             VALUES (?, ?)`,
-            [channelId, message],
-        );
-
-        await conn.commit();
+        await db.insert(messages).values({
+            channelId: channelId.toString(),
+            message,
+        });
     } catch (error) {
-        await conn.rollback();
         console.error('Database error:', error);
-    } finally {
-        conn.release();
     }
 };

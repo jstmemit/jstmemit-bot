@@ -14,8 +14,8 @@ export const settings = async (interaction) => {
     }
 
     if (channelSettings) {
-        if (channelSettings.enabled_random_memes <= 0) {
-            channelSettings.enabled_random_memes = "all";
+        if (channelSettings.enabledRandomMemes <= 0) {
+            channelSettings.enabledRandomMemes = "all";
         }
     }
 

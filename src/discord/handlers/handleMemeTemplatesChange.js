@@ -12,15 +12,15 @@ export const handleMemeTemplatesChange = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
-            enabled_random_memes: selectedTemplates,
+            channelId,
+            enabledRandomMemes: selectedTemplates,
         };
 
         await posthog.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
-                enabledRandomMemes: newSettings.enabled_random_memes,
+                enabledRandomMemes: newSettings.enabledRandomMemes,
             },
         })
 

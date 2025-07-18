@@ -16,7 +16,7 @@ export const handleToggleWatermark = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
+            channelId,
             watermarkLogo: action === 'watermarkenable',
         };
 

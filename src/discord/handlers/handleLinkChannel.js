@@ -24,15 +24,15 @@ export const handleLinkChannel = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
-            linked_channel: linked_channelId
+            channelId,
+            linkedChannel: linked_channelId
         };
 
         await posthog.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
-                LinkedChannel: newSettings.linked_channel,
+                LinkedChannel: newSettings.linkedChannel,
             },
         })
 

@@ -9,7 +9,7 @@ export const handleUpdateEnableEmbed = async (interaction) => {
     }
     try {
         const currentSettings = await getChannelSettings(interaction.channelId);
-        const components = await constructEnableEmbed(currentSettings.is_enabled, interaction.channelId)
+        const components = await constructEnableEmbed(currentSettings.isEnabled, interaction.channelId)
 
         await interaction.editReply({
             flags: MessageFlags.IsComponentsV2,

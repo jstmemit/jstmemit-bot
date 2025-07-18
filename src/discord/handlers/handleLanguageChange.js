@@ -12,7 +12,7 @@ export const handleLanguageChange = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
+            channelId,
             language: newLanguage,
         };
 

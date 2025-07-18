@@ -16,15 +16,15 @@ export const handleToggleMentions = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
-            replace_mentions: action === 'mentionenable',
+            channelId,
+            replaceMentions: action === 'mentionenable',
         };
 
         await posthog.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
-                ReplaceMentions: newSettings.replace_mentions,
+                ReplaceMentions: newSettings.replaceMentions,
             },
         })
 

@@ -12,7 +12,7 @@ export const handleFrequencyChange = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
+            channelId,
             frequency: newFrequency,
         };
 

@@ -10,8 +10,6 @@ export const getChannelSettings = async (channelId) => {
             .from(channels)
             .where(eq(channels.channelId, channelId));
 
-        console.log(result)
-
         if (!result || result.length === 0) {
             await insertMessage(channelId, '');
             return null;

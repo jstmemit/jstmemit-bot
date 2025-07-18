@@ -77,15 +77,15 @@ export const locale = {
         settingsStatusEnabled: "🎉 Bot is ready!",
         settingsStatusDisabled: "🔴 Bot is **disabled** in this channel!",
 
-        notEnoughContextTitle: "Not enough training data",
-        notEnoughContextDescription: "Bot failed to generate text for the meme. This could be because there is not enough training data. Try again after sending about **{{amount}}** more messages.",
+        notEnoughContextTitle: "🤓  Bot is still collecting context! ",
+        notEnoughContextDescription: "Jstmemit couldn't generate a meme this time because it needs more training data from this channel.\n\nMessages in memory: **{{amount}}/30**",
 
         noPermissionsTitle: "You don't have permissions to do that",
         noPermissionsDescription: "You must have **{{permission}}** permission in order to use this command.",
 
         enableDescription: "Bot is disabled in this channel! To respect your privacy, Jstmemit needs to be enabled before it can start learning from messages here. Click on the button below to continue.",
         enableDescriptionReady: "Setup is finished! Bot is training on new messages and will start generating memes as soon as it has ~30 messages in its memory. You can change settings in the menu below.",
-        enableMessagesInMemory: "Messages in memory: **{{amount}}** ",
+        enableMessagesInMemory: "Messages in memory: **{{amount}}/30** ",
 
         premiumTitle: "Premium",
         premiumDescription: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features, which you can see below. More things are coming in the near future!\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.\n\n*Sometimes Discord doesn't render the button propery, if it says \"Product unavailable\" you can still get premium in the bot's profile store.*",

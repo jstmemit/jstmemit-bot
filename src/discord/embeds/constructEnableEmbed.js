@@ -23,7 +23,7 @@ export const constructEnableEmbed = async (isEnabled, channelId) => {
                 new TextDisplayBuilder().setContent(isEnabled ? `${t('enableDescriptionReady', language)}` : `${t('enableDescription', language)}`),
             )
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`${(t("enableMessagesInMemory", language, {amount: messages}))} `),
+                new TextDisplayBuilder().setContent(messages < 30 ? `${t("enableMessagesInMemory", language, {amount: messages})}` : `${t("enableMessagesInMemoryEnough", language, {amount: messages})}`),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${progressBar}`),

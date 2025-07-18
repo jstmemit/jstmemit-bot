@@ -74,7 +74,7 @@ export const locale = {
 
         settingsFooterChannelId: "Channel ID:",
 
-        settingsStatusEnabled: "🟢 Bot is **working** in this channel!",
+        settingsStatusEnabled: "🎉 Bot is ready!",
         settingsStatusDisabled: "🔴 Bot is **disabled** in this channel!",
 
         notEnoughContextTitle: "Not enough training data",
@@ -83,8 +83,9 @@ export const locale = {
         noPermissionsTitle: "You don't have permissions to do that",
         noPermissionsDescription: "You must have **{{permission}}** permission in order to use this command.",
 
-        enableDescription: "If you want to change this, click the button below. There are also more fine-tuned options available in the settings menu.",
-
+        enableDescription: "Bot is disabled in this channel! To respect your privacy, Jstmemit needs to be enabled before it can start learning from messages here. Click on the button below to continue.",
+        enableDescriptionReady: "Setup is finished! Bot is training on new messages and will start generating memes as soon as it has ~30 messages in its memory. You can change settings in the menu below.",
+        enableMessagesInMemory: "Messages in memory: **{{amount}}** ",
 
         premiumTitle: "Premium",
         premiumDescription: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features, which you can see below. More things are coming in the near future!\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.\n\n*Sometimes Discord doesn't render the button propery, if it says \"Product unavailable\" you can still get premium in the bot's profile store.*",
@@ -112,9 +113,11 @@ export const locale = {
         premiumTurnOffMentionsInactive: "❌  Mentions are **not being replaced** in text memes",
 
         btnDisable: "Disable",
+        btnDisableTraining: "Disable training",
         btnEnable: "Enable",
+        btnEnableTraining: "Enable training",
         btnEraseData: "Erase Data",
-        btnSettings: "Settings",
+        btnSettings: "Open settings",
         btnPremiumActive: "Premium is active!",
         btnManagePremium: "Premium settings",
         btnLearnMore: "Learn more",

@@ -1,5 +1,5 @@
 import {db} from "#database/initializePool.js";
-import {messages} from "#database/schema/schema.js";
+import {channels} from "#database/schema/schema.js";
 import {eq} from "drizzle-orm";
 import {insertMessage} from "./insertMessage.js";
 
@@ -7,8 +7,10 @@ export const getChannelSettings = async (channelId) => {
     try {
         const result = await db
             .select()
-            .from(messages)
-            .where(eq(messages.channelId, channelId));
+            .from(channels)
+            .where(eq(channels.channelId, channelId));
+
+        console.log(result)
 
         if (!result) {
             await insertMessage(channelId, '');

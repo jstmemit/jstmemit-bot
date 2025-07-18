@@ -89,7 +89,7 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         if (typeof result === 'string') {
             textResult = result;
 
-            const replaceMentions = channelSettings.replace_mentions;
+            const replaceMentions = channelSettings.replaceMentions
 
             textResult = await filterMentions(textResult, replaceMentions);
 
@@ -106,7 +106,7 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
             }
         } else if (result instanceof Array) {
 
-            const replaceMentions = channelSettings.replace_mentions;
+            const replaceMentions = channelSettings.replaceMentions;
 
             result = await Promise.all(result.map(async (option) => {
                 if (typeof option === 'string') {
@@ -145,7 +145,7 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
             // only put watermark if premium server selected their own watermark
             const serverLogo = interaction.guild?.iconURL({size: 512, extension: 'png'}) || null;
             if (hasPremium) {
-                result = await applyWatermark(result, serverLogo, channelSettings.watermark_text, channelSettings.watermarkLogo);
+                result = await applyWatermark(result, serverLogo, channelSettings.watermarkText, channelSettings.watermarkLogo);
             }
 
             if (!isUnpromted) {

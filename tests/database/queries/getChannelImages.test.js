@@ -4,7 +4,6 @@ import {getChannelSettings} from '#src/database/queries/getChannelSettings.js'
 import {validateImage} from '#src/database/utils.js'
 import {pool} from '#src/database/initializePool.js'
 
-// Mock dependencies
 vi.mock('#src/database/queries/getChannelSettings.js', () => ({
     getChannelSettings: vi.fn()
 }))
@@ -16,7 +15,7 @@ vi.mock('#src/database/utils.js', () => ({
 vi.mock('#src/config/settings.js', () => ({
     settings: {
         cache: {
-            channelImagesCache: 5000 // 5 seconds for testing
+            channelImagesCache: 5000
         }
     }
 }))
@@ -28,9 +27,9 @@ describe('getChannelImages', () => {
 
     it('returns valid images when channel is enabled', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: 'test-channel-1',
-            is_enabled: true
+            internalId: 1,
+            channelId: 'test-channel-1',
+            isEnabled: 1
         }
 
         const mockImages = [
@@ -55,9 +54,9 @@ describe('getChannelImages', () => {
 
     it('returns null when channel is disabled', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: 'test-channel-2',
-            is_enabled: false
+            internalId: 1,
+            channelId: 'test-channel-2',
+            isEnabled: 0
         }
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -91,9 +90,9 @@ describe('getChannelImages', () => {
 
     it('returns null when no images found in database', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: 'test-channel-4',
-            is_enabled: true
+            internalId: 1,
+            channelId: 'test-channel-4',
+            isEnabled: 1
         }
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -109,9 +108,9 @@ describe('getChannelImages', () => {
 
     it('filters out invalid images', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: 'test-channel-5',
-            is_enabled: true
+            internalId: 1,
+            channelId: 'test-channel-5',
+            isEnabled: 1
         }
 
         const consoleWarnSpy = vi
@@ -136,9 +135,9 @@ describe('getChannelImages', () => {
 
     it('returns null when all images are invalid', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: 'test-channel-6',
-            is_enabled: true
+            internalId: 1,
+            channelId: 'test-channel-6',
+            isEnabled: 1
         }
 
         const consoleWarnSpy = vi
@@ -171,9 +170,9 @@ describe('getChannelImages', () => {
         const dbError = new Error('Database connection failed')
 
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: 'test-channel-7',
-            is_enabled: true
+            internalId: 1,
+            channelId: 'test-channel-7',
+            isEnabled: 1
         }
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -208,9 +207,9 @@ describe('getChannelImages', () => {
 
     it('handles validateImage errors', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: 'test-channel-9',
-            is_enabled: true
+            internalId: 1,
+            channelId: 'test-channel-9',
+            isEnabled: 1
         }
 
         const validateError = new Error('Validation service unavailable')
@@ -232,9 +231,9 @@ describe('getChannelImages', () => {
 
     it('uses correct SQL query with parameters', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: 'test-channel-10',
-            is_enabled: true
+            internalId: 1,
+            channelId: 'test-channel-10',
+            isEnabled: 1
         }
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -258,9 +257,9 @@ describe('getChannelImages', () => {
 
     it('caches results and returns cached data on subsequent calls', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: 'test-channel-11',
-            is_enabled: true
+            internalId: 1,
+            channelId: 'test-channel-11',
+            isEnabled: 1
         }
 
         const mockImages = [
@@ -273,15 +272,13 @@ describe('getChannelImages', () => {
         ]])
         validateImage.mockResolvedValue({isValid: true})
 
-        // First call
         const firstResult = await getChannelImages('test-channel-11')
 
-        // Second call should return cached result
         const secondResult = await getChannelImages('test-channel-11')
 
         expect(firstResult).toEqual(mockImages)
         expect(secondResult).toEqual(mockImages)
-        expect(pool.query).toHaveBeenCalledTimes(1) // Only called once due to caching
-        expect(validateImage).toHaveBeenCalledTimes(1) // Only called once due to caching
+        expect(pool.query).toHaveBeenCalledTimes(1)
+        expect(validateImage).toHaveBeenCalledTimes(1)
     })
 })

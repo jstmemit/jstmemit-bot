@@ -14,7 +14,7 @@ export const processChannelMessages = async (channelId, visitedChannels, allMess
     try {
         const channelSettings = await getChannelSettings(channelId);
 
-        if (!channelSettings || !channelSettings.is_enabled) {
+        if (!channelSettings || !channelSettings.isEnabled) {
             return;
         }
 

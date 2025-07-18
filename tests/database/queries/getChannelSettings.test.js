@@ -4,7 +4,7 @@ import {insertMessage} from '#src/database/queries/insertMessage.js'
 import {db} from '#src/database/initializePool.js'
 import {mockChannelSettings, selectBuilder} from './../../setup.js'
 import {getChannelSettings} from '#src/database/queries/getChannelSettings.js'
-import {messages} from '#database/schema/schema.js'
+import {channels} from '#database/schema/schema.js'
 import {eq} from 'drizzle-orm'
 
 vi.mock(
@@ -19,25 +19,26 @@ describe('getChannelSettings', () => {
         const result = await getChannelSettings('123456789')
 
         expect(db.select).toHaveBeenCalledTimes(1)
-        expect(selectBuilder.from).toHaveBeenCalledWith(messages)
+        expect(selectBuilder.from).toHaveBeenCalledWith(channels)
         expect(selectBuilder.where).toHaveBeenCalledWith(
-            eq(messages.channelId, '123456789')
+            eq(channels.channelId, '123456789')
         )
 
         expect(result).toEqual(mockChannelSettings)
         expect(insertMessage).not.toHaveBeenCalled()
     })
 
-    it('returns null (and does NOT insert) when no rows are found', async () => {
+    it('returns null and inserts message when no rows are found', async () => {
         selectBuilder.where.mockResolvedValue([])
 
         const result = await getChannelSettings('nope')
 
         expect(selectBuilder.where).toHaveBeenCalledWith(
-            eq(messages.channelId, 'nope')
+            eq(channels.channelId, 'nope')
         )
         expect(result).toBeNull()
-        expect(insertMessage).not.toHaveBeenCalled()
+        expect(insertMessage).toHaveBeenCalledTimes(1)
+        expect(insertMessage).toHaveBeenCalledWith('nope', '')
     })
 
     it('calls insertMessage and returns null when .where() yields nullish', async () => {
@@ -46,7 +47,7 @@ describe('getChannelSettings', () => {
         const result = await getChannelSettings('new-chan')
 
         expect(selectBuilder.where).toHaveBeenCalledWith(
-            eq(messages.channelId, 'new-chan')
+            eq(channels.channelId, 'new-chan')
         )
         expect(insertMessage).toHaveBeenCalledTimes(1)
         expect(insertMessage).toHaveBeenCalledWith('new-chan', '')
@@ -92,7 +93,7 @@ describe('getChannelSettings', () => {
     })
 
     it('returns the first row when multiple exist', async () => {
-        const second = {...mockChannelSettings, internal_id: 99, is_enabled: false}
+        const second = {...mockChannelSettings, internalId: 99, isEnabled: 0}
         selectBuilder.where.mockResolvedValue([mockChannelSettings, second])
 
         const result = await getChannelSettings('multi-row')
@@ -107,7 +108,7 @@ describe('getChannelSettings', () => {
             const result = await getChannelSettings(chanId)
 
             expect(selectBuilder.where).toHaveBeenCalledWith(
-                eq(messages.channelId, chanId)
+                eq(channels.channelId, chanId)
             )
             expect(result).toEqual(mockChannelSettings)
         })

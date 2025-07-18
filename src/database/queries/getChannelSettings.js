@@ -12,7 +12,7 @@ export const getChannelSettings = async (channelId) => {
 
         console.log(result)
 
-        if (!result) {
+        if (!result || result.length === 0) {
             await insertMessage(channelId, '');
             return null;
         }

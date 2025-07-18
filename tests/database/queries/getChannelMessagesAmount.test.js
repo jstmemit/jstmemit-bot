@@ -14,7 +14,7 @@ describe('getChannelMessagesAmount', () => {
     })
 
     it('returns count when channel is enabled', async () => {
-        getChannelSettings.mockResolvedValue({is_enabled: true})
+        getChannelSettings.mockResolvedValue({isEnabled: true})
         selectBuilder.where.mockResolvedValueOnce([{count: 42}])
 
         const result = await getChannelMessagesAmount('123')
@@ -28,7 +28,7 @@ describe('getChannelMessagesAmount', () => {
     })
 
     it('returns null when channel is disabled', async () => {
-        getChannelSettings.mockResolvedValue({is_enabled: false})
+        getChannelSettings.mockResolvedValue({isEnabled: false})
 
         const result = await getChannelMessagesAmount('123')
 
@@ -60,7 +60,7 @@ describe('getChannelMessagesAmount', () => {
     })
 
     it('returns 0 when no messages exist', async () => {
-        getChannelSettings.mockResolvedValue({is_enabled: true})
+        getChannelSettings.mockResolvedValue({isEnabled: true})
         selectBuilder.where.mockResolvedValueOnce([{count: 0}])
 
         const result = await getChannelMessagesAmount('123')
@@ -70,7 +70,7 @@ describe('getChannelMessagesAmount', () => {
 
     it('handles database errors', async () => {
         const err = new Error('DB failed')
-        getChannelSettings.mockResolvedValue({is_enabled: true})
+        getChannelSettings.mockResolvedValue({isEnabled: true})
         mockDb.select.mockImplementationOnce(() => {
             throw err
         })
@@ -96,7 +96,7 @@ describe('getChannelMessagesAmount', () => {
     })
 
     it('handles large counts', async () => {
-        getChannelSettings.mockResolvedValue({is_enabled: true})
+        getChannelSettings.mockResolvedValue({isEnabled: true})
         selectBuilder.where.mockResolvedValueOnce([{count: 999999}])
 
         const result = await getChannelMessagesAmount('123')
@@ -105,7 +105,7 @@ describe('getChannelMessagesAmount', () => {
     })
 
     it('handles empty channelId', async () => {
-        getChannelSettings.mockResolvedValue({is_enabled: true})
+        getChannelSettings.mockResolvedValue({isEnabled: true})
         selectBuilder.where.mockResolvedValueOnce([{count: 0}])
 
         const result = await getChannelMessagesAmount('')

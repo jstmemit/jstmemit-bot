@@ -14,15 +14,15 @@ vi.mock('#src/database/helpers/processChannelMessages.js', () => ({
 describe('getChannelMessages', () => {
     it('returns messages when channel is enabled and has messages', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: true,
+            internalId: 1,
+            channelId: '123456789',
+            isEnabled: 1,
             frequency: 60
         }
 
         const mockMessages = [
-            {id: 1, content: 'Hello world', channel_id: '123456789'},
-            {id: 2, content: 'Another message', channel_id: '123456789'}
+            {id: 1, content: 'Hello world', channelId: '123456789'},
+            {id: 2, content: 'Another message', channelId: '123456789'}
         ]
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -46,9 +46,9 @@ describe('getChannelMessages', () => {
 
     it('returns null when channel is disabled', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: false,
+            internalId: 1,
+            channelId: '123456789',
+            isEnabled: 0,
             frequency: 60
         }
 
@@ -64,7 +64,7 @@ describe('getChannelMessages', () => {
 
     it('processes messages when channel settings is null', async () => {
         const mockMessages = [
-            {id: 1, content: 'Message from null channel', channel_id: '123456789'}
+            {id: 1, content: 'Message from null channel', channelId: '123456789'}
         ]
 
         getChannelSettings.mockResolvedValue(null)
@@ -82,7 +82,7 @@ describe('getChannelMessages', () => {
 
     it('processes messages when channel settings is undefined', async () => {
         const mockMessages = [
-            {id: 1, content: 'Message from undefined channel', channel_id: '123456789'}
+            {id: 1, content: 'Message from undefined channel', channelId: '123456789'}
         ]
 
         getChannelSettings.mockResolvedValue(undefined)
@@ -100,9 +100,9 @@ describe('getChannelMessages', () => {
 
     it('returns null when no messages are found', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: true
+            internalId: 1,
+            channelId: '123456789',
+            isEnabled: 1
         }
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -125,9 +125,9 @@ describe('getChannelMessages', () => {
         const processingError = new Error('Failed to process channel messages')
 
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: true
+            internalId: 1,
+            channelId: '123456789',
+            isEnabled: 1
         }
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -162,9 +162,9 @@ describe('getChannelMessages', () => {
 
     it('passes correct parameters to processChannelMessages', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: true
+            internalId: 1,
+            channelId: '123456789',
+            isEnabled: 1
         }
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -188,9 +188,9 @@ describe('getChannelMessages', () => {
 
     it('handles empty channel ID', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: '',
-            is_enabled: true
+            internalId: 1,
+            channelId: '',
+            isEnabled: 1
         }
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -222,16 +222,16 @@ describe('getChannelMessages', () => {
         expect(result).toBeNull()
     })
 
-    it('handles channel with is_enabled explicitly set to true', async () => {
+    it('handles channel with isEnabled explicitly set to true', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: true,
+            internalId: 1,
+            channelId: '123456789',
+            isEnabled: 1,
             frequency: 30
         }
 
         const mockMessages = [
-            {id: 1, content: 'Test message', channel_id: '123456789'}
+            {id: 1, content: 'Test message', channelId: '123456789'}
         ]
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)
@@ -248,13 +248,13 @@ describe('getChannelMessages', () => {
 
     it('handles single message result', async () => {
         const mockChannelSettings = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: true
+            internalId: 1,
+            channelId: '123456789',
+            isEnabled: 1
         }
 
         const mockMessage = [
-            {id: 1, content: 'Single message', channel_id: '123456789'}
+            {id: 1, content: 'Single message', channelId: '123456789'}
         ]
 
         getChannelSettings.mockResolvedValue(mockChannelSettings)

@@ -6,7 +6,7 @@ import {getChannelSettings} from "./getChannelSettings.js";
 export const getChannelMessagesAmount = async (channelId) => {
     const channelSettings = await getChannelSettings(channelId);
 
-    if (channelSettings && !channelSettings.is_enabled) {
+    if (channelSettings && !channelSettings.isEnabled) {
         return null;
     }
 

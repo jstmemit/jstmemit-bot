@@ -10,7 +10,7 @@ export const handleDisabledChannel = async (interaction) => {
     if (!channelSettings) {
         isEnabled = false;
     } else {
-        isEnabled = channelSettings.is_enabled
+        isEnabled = channelSettings.isEnabled
     }
 
     await posthog.capture({

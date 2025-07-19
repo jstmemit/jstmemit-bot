@@ -6,7 +6,7 @@ import {constructPremiumEmbed} from "../embeds/constructPremiumEmbed.js";
 import {checkPremium} from "../helpers/checkPremium.js";
 
 export const handleUpdatePremiumEmbed = async (interaction) => {
-    if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
         return;
     }
     try {

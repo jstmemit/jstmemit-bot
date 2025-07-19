@@ -5,7 +5,7 @@ import {analytics as posthog} from "../../../bot.js";
 export const handleEraseData = async interaction => {
     try {
 
-        if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+        if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
             return;
         }
 

@@ -6,7 +6,7 @@ import {handlePermissionCheck} from "./handlePermissionCheck.js";
 import {checkPremium} from "../helpers/checkPremium.js";
 
 export const handleUpdateSettingsEmbed = async (interaction) => {
-    if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
         return;
     }
     try {

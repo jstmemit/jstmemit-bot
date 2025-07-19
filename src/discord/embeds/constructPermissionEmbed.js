@@ -4,7 +4,6 @@ import {
     ButtonStyle,
     ContainerBuilder,
     SectionBuilder,
-    SeparatorBuilder,
     SeparatorSpacingSize,
     TextDisplayBuilder,
     ThumbnailBuilder
@@ -24,15 +23,9 @@ export const constructPermissionEmbed = (currentSettings, channelId, permission)
                             .setURL("https://jstmemit.com/assets/logo.png")
                     )
                     .addTextDisplayComponents(
-                        new TextDisplayBuilder().setContent(`## 🔴  ${t("noPermissionsTitle", language)} `),
+                        new TextDisplayBuilder().setContent(`## 🙌  ${t("noPermissionsTitle", language)} `),
                         new TextDisplayBuilder().setContent(`${t("noPermissionsDescription", language, {permission})}`),
                     ),
             )
-            .addSeparatorComponents(
-                new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`-# ${(t("settingsFooterChannelId", language))} ${channelId}`),
-            ),
     ];
 };

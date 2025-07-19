@@ -4,7 +4,7 @@ import {constructEnableEmbed} from "../embeds/constructEnableEmbed.js";
 import {handlePermissionCheck} from "./handlePermissionCheck.js";
 
 export const handleUpdateEnableEmbed = async (interaction) => {
-    if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
         return;
     }
     try {

@@ -4,7 +4,7 @@ import {handlePermissionCheck} from "./handlePermissionCheck.js";
 import {analytics as posthog} from "../../../bot.js";
 
 export const handleToggleWatermark = async interaction => {
-    if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
         return;
     }
     try {

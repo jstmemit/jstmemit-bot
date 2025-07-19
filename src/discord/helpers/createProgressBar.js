@@ -1,8 +1,19 @@
 import {settings} from "#config/settings.js";
 
-const emojis = settings.progressBar.emojis;
+const emojis = settings?.progressBar?.emojis;
 
 export const createProgressBar = (value, maxValue, segments = 10) => {
+
+    if (typeof value !== 'number' || typeof maxValue !== 'number' || typeof segments !== 'number') {
+        console.error('Invalid input for progress bar');
+        return '';
+    }
+
+    if (!emojis) {
+        console.error('Emojis for progress bar are not defined in settings');
+        return '';
+    }
+
     const clampedValue = Math.max(0, Math.min(value, maxValue));
 
     const percentage = clampedValue / maxValue;

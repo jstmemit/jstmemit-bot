@@ -144,6 +144,11 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 
 		if (customId == 'settings-open') {
+
+			if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
+				return;
+			}
+
 			const loading = await constructLoadingEmbed(interaction.channelId)
 			await interaction.reply({
 				flags: MessageFlags.IsComponentsV2,
@@ -183,7 +188,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (interaction.isStringSelectMenu()) {
 		const {customId} = interaction;
 
-		if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+		if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
 			return;
 		}
 
@@ -214,7 +219,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (interaction.isChannelSelectMenu()) {
 		const {customId} = interaction;
 
-		if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+		if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
 			return;
 		}
 

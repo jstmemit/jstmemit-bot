@@ -213,17 +213,19 @@ export const locale = {
 
         settingsFooterChannelId: "ID канала:",
 
-        settingsStatusEnabled: "🟢 Бот **включен** и работает в этом канале!",
-        settingsStatusDisabled: "🔴 Бот **выключен** в этом канале!",
+        settingsStatusEnabled: "🎉 Бот готов!",
+        settingsStatusDisabled: "🔴 Бот **отключен** в этом канале!",
 
-        notEnoughContextTitle: "Недостаточно данных",
-        notEnoughContextDescription: "Бот не смог сгенерировать текст для мема. Скорее всего у него не хватает данных для обучения. Попробуйте сгенерировать мем ещё раз после отправки **{{amount}}** сообщений.",
+        notEnoughContextTitle: "🤓 Бот все еще собирает контекст!",
+        notEnoughContextDescription: "Jstmemit не смог сгенерировать мем в этот раз, потому что ему нужно больше данных для обучения на этом канале.\n\nСообщений в памяти: **{{amount}}/30**",
 
-        noPermissionsTitle: "У вас нет прав",
-        noPermissionsDescription: "Вы должны иметь доступ к **{{permission}}**, чтобы использовать эту команду.",
+        noPermissionsTitle: "Недостаточно прав!",
+        noPermissionsDescription: "Для использования этой команды вам необходимо разрешение **{{permission}}**.\nПожалуйста, попросите администраторов вашего сервера выполнить это действие.",
 
-        enableDescription: "Вы можете изменить это нажав на кнопку под сообщением. Намного больше параметров доступны в меню настроек.",
-
+        enableDescription: "Бот выключен в этом канале! Чтобы уважать вашу конфиденциальность, Jstmemit необходимо включить, прежде чем он сможет начать обучаться на основе сообщений. Нажмите кнопку ниже, чтобы продолжить.",
+        enableDescriptionReady: "Настройка завершена! Бот теперь обучается на новых сообщениях и начнет генерировать мемы, как только в его памяти наберется ~30 сообщений. Вы можете изменить настройки в меню ниже.",
+        enableMessagesInMemory: "Сообщений в памяти: **{{amount}}/30**",
+        enableMessagesInMemoryEnough: "Сообщений в памяти: **{{amount}}**",
 
         premiumTitle: "Премиум",
         premiumDescription: "Вы можете поддержать разработку этого бота, подписавшись на премиум. Этот сервер получит доступ к **персонализации бота**, **возможности связывать каналы** и некоторым другим функциям, которые вы можете увидеть ниже.\n\nВсе пользователи на этом сервере получат **Премиум** возможности. Даже если только один человек подпишется.",
@@ -251,7 +253,9 @@ export const locale = {
         premiumTurnOffMentionsInactive: "❌  Упоминания **не заменяются** в текстовых мемах",
 
         btnDisable: "Отключить",
+        btnDisableTraining: "Отключить обучение",
         btnEnable: "Включить",
+        btnEnableTraining: "Включить обучение",
         btnEraseData: "Очистить данные",
         btnSettings: "Настройки",
         btnPremiumActive: "Премиум активен!",
@@ -347,16 +351,19 @@ export const locale = {
 
         settingsFooterChannelId: "Kanaal ID:",
 
-        settingsStatusEnabled: "🟢 Bot is **aan** en werkt in dit kanaal!",
+        settingsStatusEnabled: "🎉 Bot is klaar!",
         settingsStatusDisabled: "🔴 Bot is **uit** in dit kanaal!",
 
-        notEnoughContextTitle: "Niet genoeg trainingsdata",
-        notEnoughContextDescription: "De bot kon geen tekst genereren voor de meme. Dit kan komen doordat er niet genoeg trainingsdata is. Probeer het opnieuw nadat je nog ongeveer **{{amount}}** berichten hebt verzonden.",
+        notEnoughContextTitle: "🤓 Bot verzamelt nog steeds context!",
+        notEnoughContextDescription: "Jstmemit kon deze keer geen meme genereren omdat het meer trainingsgegevens van dit kanaal nodig heeft.\n\nBerichten: **{{amount}}/30**",
 
-        noPermissionsTitle: "Je hebt geen rechten om dit te doen",
-        noPermissionsDescription: "Je moet de **{{permission}}** recht hebben om deze command te gebruiken.",
+        noPermissionsTitle: "Niet genoeg rechten!",
+        noPermissionsDescription: "Om dit commando te gebruiken, heeft u de **{{permission}}** permissie nodig.\nVraag alstublieft de beheerders van uw server om deze actie uit te voeren.",
 
-        enableDescription: "Je kunt dit wijzigen door op de knop onder het bericht te klikken. Er zijn nog veel meer parameters beschikbaar in het instellingenmenu.",
+        enableDescription: "De bot is uitgeschakeld in dit kanaal! Om uw privacy te respecteren, moet Jstmemit zijn ingeschakeld voordat het hier kan beginnen met leren van berichten. Klik hieronder op de knop om door te gaan.",
+        enableDescriptionReady: "Installatie voltooid! De bot traint op nieuwe berichten en zal memes genereren zodra het ongeveer 30 berichten in het geheugen heeft. U kunt de instellingen wijzigen in het menu hieronder.",
+        enableMessagesInMemory: "Berichten: **{{amount}}/30**",
+        enableMessagesInMemoryEnough: "Berichten: **{{amount}}**",
 
         premiumTitle: "Premium",
         premiumDescription: "Je kunt de ontwikkeling van deze bot ondersteunen door deze server te abonneren op premium. Deze server krijgt toegang tot **meer personalizatie**, **de mogelijkheid om kanalen aan elkaar te koppelen** en enkele andere functies, die je hieronder kunt zien.\n\nIedereen op deze server krijgt **Premium** voordelen, zelfs als maar een persoon zich abonneert.",
@@ -385,7 +392,9 @@ export const locale = {
         premiumTurnOffMentionsInactive: "❌  Mentions worden **niet vervangen** in tekst meme's",
 
         btnDisable: "Uitzetten",
+        btnDisableTraining: "Training uitschakelen",
         btnEnable: "Aanzetten",
+        btnEnableTraining: "Training aanzetten",
         btnEraseData: "Gegevens wissen",
         btnSettings: "Instellingen",
         btnPremiumActive: "Premium is actief!",
@@ -481,14 +490,14 @@ export const locale = {
 
         settingsFooterChannelId: "ID каналу:",
 
-        settingsStatusEnabled: "🟢 Бот **увімкнений** і працює в цьому каналі!",
+        settingsStatusEnabled: "🎉 Бот готовий!",
         settingsStatusDisabled: "🔴 Бот **вимкнений** в цьому каналі!",
 
-        notEnoughContextTitle: "Недостатньо даних",
-        notEnoughContextDescription: "Бот не зміг згенерувати текст для мему. Це може бути через те, що у нього недостатньо даних. Спробуйте ще раз після відправки приблизно **{{amount}}** повідомлень.",
+        notEnoughContextTitle: "🤓 Бот все ще збирає контекст!",
+        notEnoughContextDescription: "Jstmemit не зміг згенерувати мем цього разу, тому що йому потрібно більше даних для навчання з цього каналу.\n\nПовідомлень у пам'яті: **{{amount}}/30**",
 
-        noPermissionsTitle: "У вас немає прав",
-        noPermissionsDescription: "Вам потрібно **{{permission}}** право, щоб використати цю команду.",
+        noPermissionsTitle: "Недостатньо прав!",
+        noPermissionsDescription: "Щоб використовувати цю команду, вам потрібно право **{{permission}}**.\nБудь ласка, попросіть адміністраторів вашого сервера виконати цю команду.",
 
         enableDescription: "Ви можете змінити це натиснувши на кнопку під повідомленням. Набагато більше параметрів доступні в меню налаштувань.",
 
@@ -519,7 +528,9 @@ export const locale = {
         premiumTurnOffMentionsInactive: "❌  Згадування **не замінюються** в текстових мемах",
 
         btnDisable: "Вимкнути",
+        btnDisableTraining: "Вимкнути навчання",
         btnEnable: "Увімкнути",
+        btnEnableTraining: "Увімкнути навчання",
         btnEraseData: "Очистити дані",
         btnSettings: "Налаштування",
         btnPremiumActive: "Преміум активний!",

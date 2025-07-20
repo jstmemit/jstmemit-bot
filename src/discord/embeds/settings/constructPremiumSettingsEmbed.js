@@ -1,5 +1,4 @@
 // noinspection JSCheckFunctionSignatures
-// almost deprecated
 
 import {
     ActionRowBuilder,
@@ -13,10 +12,10 @@ import {
     TextDisplayBuilder,
     ThumbnailBuilder
 } from 'discord.js';
-import {t} from "../i18n/utils.js";
-import {settings} from "../../../config/settings.js";
+import {t} from "../../i18n/utils.js";
+import {settings} from "#config/settings.js";
 
-export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) => {
+export const constructPremiumSettingsEmbed = (currentSettings, channelId, hasPremium, buttons) => {
 
     const language = currentSettings?.language || "english";
     let watermarkEnabled = false, anyChannelLinked = false;
@@ -191,6 +190,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                                 : t("premiumSetOwnWatermarkInactive", language)
                         ),
                     ),
-            )
+            ),
+        buttons
     ]
 };

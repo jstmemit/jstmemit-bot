@@ -1,4 +1,5 @@
 // noinspection JSCheckFunctionSignatures
+// deprecated
 
 import {
     ActionRowBuilder,

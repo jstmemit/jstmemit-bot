@@ -21,8 +21,8 @@ export const settings = {
         pingInterval: 60 * 500
     },
     monetization: {
-        // premiumSkuId: '1388188866057474048', // dev bot premium SKU ID
-        premiumSkuId: '1387929454356987945', // production bot premium SKU ID
+        premiumSkuId: '1388188866057474048', // dev bot premium SKU ID
+        // premiumSkuId: '1387929454356987945', // production bot premium SKU ID
     },
     progressBar: {
         segments: {
@@ -45,6 +45,26 @@ export const settings = {
             //empty2: '<:empty2:1395787710660087900>',
             //empty3: '<:empty3:1395787699037667369>'
         },
+    },
+    emojis: {
+        settings: {
+            general: {
+                id: "1396188041269215253",
+                name: "<:generalsettings:1396188041269215253>"
+            },
+            meme: {
+                id: "1396185463659823205",
+                name: "<:memegeneration:1396185463659823205>"
+            },
+            data: {
+                id: "1396186481693036575",
+                name: "<:dataretention:1396186481693036575>"
+            },
+            premium: {
+                id: "1396186471957925928",
+                name: "<:premium:1396186471957925928>"
+            }
+        }
     },
     templates: [
         {
@@ -206,6 +226,43 @@ export const settings = {
             name: "generatePoll",
             generator: (image, channelId, interaction) => generatePoll(channelId),
             requiresImage: false,
+        },
+    ],
+    languages: [
+        {
+            label: "English",
+            value: "english",
+            emoji: {id: "1396193190213583051"},
+        },
+        {
+            label: "Русский",
+            value: "russian",
+            emoji: {id: "1396193026250117211"},
+        },
+        {
+            label: "Nederlands",
+            value: "dutch",
+            emoji: {id: "1396192992682971178"},
+        },
+        {
+            label: "Українська",
+            value: "ukrainian",
+            emoji: {id: "1396193067207491745"},
+        },
+        {
+            label: "Polski",
+            value: "polish",
+            emoji: {id: "1396192299393744957"},
+        },
+        {
+            label: "Deutsch",
+            value: "german",
+            emoji: {id: "1396192272894394378"},
+        },
+        {
+            label: "Français",
+            value: "french",
+            emoji: {id: "1396192289952628796"},
         },
     ],
     overlaySettings: {

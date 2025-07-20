@@ -1,10 +1,9 @@
 import {ButtonStyle, MessageFlags} from 'discord.js';
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
-import {constructSettingsEmbed} from "../embeds/constructSettingsEmbed.js";
+import {constructGeneralSettingsEmbed} from "../embeds/settings/constructGeneralSettingsEmbed.js";
 import {handlePermissionCheck} from "../handlers/handlePermissionCheck.js";
 import {analytics as posthog} from "../../../bot.js";
-
-import {checkPremium} from "../helpers/checkPremium.js";
+import {createSettingsButtonRow} from "#src/discord/helpers/createSettingsButtons.js";
 
 export const settings = async (interaction) => {
     let channelSettings = await getChannelSettings(interaction.channelId);
@@ -23,9 +22,9 @@ export const settings = async (interaction) => {
         return;
     }
 
-    const hasPremium = await checkPremium(interaction);
+    const buttons = await createSettingsButtonRow("general", channelSettings.language || "english");
 
-    const settingsEmbed = constructSettingsEmbed(channelSettings, interaction.channelId, hasPremium);
+    const settingsEmbed = await constructGeneralSettingsEmbed(channelSettings, interaction.channelId, buttons);
 
     await posthog.capture({
         distinctId: interaction.channelId,

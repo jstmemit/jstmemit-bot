@@ -1,7 +1,12 @@
 export const locale = {
     english: {
-        settingsTitle: "Settings",
-        settingsDescription: "Here you can change bot's behaviour in this channel.",
+        settingsTitle: "Bot settings",
+        settingsDescription: "This is your control panel for the bot. Here you can customize how the bot behaves in this channel.",
+        settingsFooterDisabled: "🔴 Training is **disabled** in this channel!",
+        settingsFooterNotEnoughContext: "Messages in memory: **{{amount}}/30**  {{progressBar}}",
+        settingsFooterReady: "🧠  Enough context collected! **{{amount}} messages**",
+
+        settingsButtonGeneralSettings: "General",
 
         settingsMemesTitle: "Memes in the chat",
         settingsMemesDescription: "This section contains options related to random memes in the chat. You can control how often bot is going to send memes and also what memes do you want to see.",
@@ -75,7 +80,7 @@ export const locale = {
         settingsFooterChannelId: "Channel ID:",
 
         settingsStatusEnabled: "🎉 Bot is ready!",
-        settingsStatusDisabled: "🔴 Bot is **disabled** in this channel!",
+        settingsStatusDisabled: "🔴 Training is **disabled** in this channel!",
 
         notEnoughContextTitle: "🤓  Bot is still collecting context! ",
         notEnoughContextDescription: "Jstmemit couldn't generate a meme this time because it needs more training data from this channel.\n\nMessages in memory: **{{amount}}/30**",

@@ -113,7 +113,7 @@ client.on(Events.InteractionCreate, async interaction => {
 				await handleUpdateEnableEmbed(interaction);
 			} else {
 				try {
-					await handleUpdateSettingsEmbed(interaction);
+					await handleUpdateSettingsEmbed(interaction, "general");
 				} catch (error) {
 					console.log(error)
 				}
@@ -157,6 +157,17 @@ client.on(Events.InteractionCreate, async interaction => {
 			await handleUpdateSettingsEmbed(interaction);
 		}
 
+		if (customId.startsWith("settings-tab-")) {
+			if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
+				return;
+			}
+
+			const tab = customId.split('-')[2];
+			await interaction.deferUpdate();
+			await handleUpdateSettingsEmbed(interaction, tab);
+			return;
+		}
+
 		if (customId.startsWith("erase-")) {
 			await handleEraseData(interaction);
 			return;
@@ -195,23 +206,23 @@ client.on(Events.InteractionCreate, async interaction => {
 		switch (customId) {
 			case "select-frequency":
 				await handleFrequencyChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "meme");
 				break;
 			case "select-memetemplates":
 				await handleMemeTemplatesChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "meme");
 				break;
 			case "select-dataretention":
 				await handleDataRetentionChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "data");
 				break;
 			case "select-useuserimages":
 				await handleUseUserImagesChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "data");
 				break;
 			case "select-language":
 				await handleLanguageChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "general");
 				break;
 		}
 	}

@@ -13,19 +13,19 @@ export const createSettingsButtonRow = (activeTab, language) => {
         {
             id: "meme",
             customId: "settings-tab-meme",
-            label: "Meme Generation",
+            label: t("settingsButtonMemeSettings", language),
             emoji: settings?.emojis?.settings?.meme?.id,
         },
         {
             id: "data",
             customId: "settings-tab-data",
-            label: "Data Retention",
+            label: t("settingsButtonDataSettings", language),
             emoji: settings?.emojis?.settings?.data?.id,
         },
         {
             id: "premium",
             customId: "settings-tab-premium",
-            label: "Premium",
+            label: t("settingsButtonPremiumSettings", language),
             emoji: settings?.emojis?.settings?.premium?.id,
         }
     ];

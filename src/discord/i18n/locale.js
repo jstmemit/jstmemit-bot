@@ -7,6 +7,9 @@ export const locale = {
         settingsFooterReady: "🧠  Enough context collected! **{{amount}} messages**",
 
         settingsButtonGeneralSettings: "General",
+        settingsButtonMemeSettings: "Meme Generation",
+        settingsButtonDataRetentionSettings: "Data Retention",
+        settingsButtonPremiumSettings: "Premium",
 
         settingsMemesTitle: "Meme Generation",
         settingsMemesDescription: "This section contains options related to random memes in the chat. You can control how often bot is going to send memes and also what memes do you want to see.",
@@ -200,6 +203,9 @@ export const locale = {
         settingsFooterNotEnoughContext: "Сообщений в памяти: **{{amount}}/30**  {{progressBar}}",
         settingsFooterReady: "🧠 Собрано достаточно контекста! **{{amount}} сообщений**",
         settingsButtonGeneralSettings: "Основные",
+        settingsButtonMemeSettings: "Мемы в чате",
+        settingsButtonDataRetentionSettings: "Хранение данных",
+        settingsButtonPremiumSettings: "Премиум",
 
         settingsDataRetentionTitle: "Хранение данных",
         settingsDataRetentionDescription: "Вы можете выбрать как долго бот будет хранить данные связанные с этим каналом. Если вы хотите удалить все сохраненные сообщения, вы также можете сделать это здесь.",
@@ -344,6 +350,9 @@ export const locale = {
         settingsFooterNotEnoughContext: "Berichten in geheugen: **{{amount}}/30**  {{progressBar}}",
         settingsFooterReady: "🧠 Genoeg context verzameld! **{{amount}} berichten**",
         settingsButtonGeneralSettings: "Algemeen",
+        settingsButtonMemeSettings: "Meme Generatie",
+        settingsButtonDataRetentionSettings: "Gegevensbewaring",
+        settingsButtonPremiumSettings: "Premium",
 
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
@@ -489,6 +498,9 @@ export const locale = {
         settingsFooterNotEnoughContext: "Повідомлень у пам'яті: **{{amount}}/30**  {{progressBar}}",
         settingsFooterReady: "🧠 Зібрано достатньо контексту! **{{amount}} повідомлень**",
         settingsButtonGeneralSettings: "Загальні",
+        settingsButtonMemeSettings: "Меми в чаті",
+        settingsButtonDataRetentionSettings: "Зберігання даних",
+        settingsButtonPremiumSettings: "Преміум",
         enableDescriptionReady: "Налаштування завершено! Бот навчається на нових повідомленнях і почне генерувати меми, як тільки в його пам'яті буде ~30 повідомлень. Ви можете змінити налаштування в меню нижче.",
         enableMessagesInMemory: "Повідомлень у пам'яті: **{{amount}}/30**",
         enableMessagesInMemoryEnough: "Повідомлень у пам'яті: **{{amount}}**",
@@ -586,6 +598,10 @@ export const locale = {
         settingsFooterReady: "🧠 Zebrano wystarczająco dużo kontekstu! **{{amount}} wiadomości**",
 
         settingsButtonGeneralSettings: "Ogólne",
+        settingsButtonMemeSettings: "Generowanie memów",
+        settingsButtonDataRetentionSettings: "Przechowywanie danych",
+        settingsButtonPremiumSettings: "Premium",
+
 
         settingsMemesTitle: "Generowanie memów",
         settingsMemesDescription: "Ta sekcja zawiera opcje związane z losowymi memami na czacie. Możesz kontrolować, jak często bot będzie wysyłał memy, a także jakie memy chcesz widzieć.",

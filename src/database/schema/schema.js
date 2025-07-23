@@ -1,14 +1,14 @@
 import {
-	index,
-	int,
-	mysqlEnum,
-	mysqlTable,
-	primaryKey,
-	text,
-	timestamp,
-	tinyint,
-	unique,
-	varchar
+    index,
+    int,
+    mysqlEnum,
+    mysqlTable,
+    primaryKey,
+    text,
+    timestamp,
+    tinyint,
+    unique,
+    varchar
 } from "drizzle-orm/mysql-core"
 
 export const channels = mysqlTable("channels", {
@@ -19,7 +19,7 @@ export const channels = mysqlTable("channels", {
         enabledRandomMemes: varchar("enabled_random_memes", {length: 2000}).default('all').notNull(),
         deleteMessagesAfter: int("delete_messages_after").default(14).notNull(),
         useUserImages: tinyint("use_user_images").default(1).notNull(),
-        language: mysqlEnum(['english', 'ukrainian', 'dutch', 'russian']).notNull(),
+        language: mysqlEnum(['english', 'ukrainian', 'dutch', 'russian', 'polish']).notNull(),
         replaceMentions: tinyint("replace_mentions").default(0).notNull(),
         linkedChannel: varchar("linked_channel", {length: 128}),
         watermarkLogo: tinyint().default(0).notNull(),

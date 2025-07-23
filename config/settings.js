@@ -254,16 +254,17 @@ export const settings = {
             value: "polish",
             emoji: {id: "1396192299393744957"},
         },
-        {
-            label: "Deutsch",
-            value: "german",
-            emoji: {id: "1396192272894394378"},
-        },
-        {
-            label: "Français",
-            value: "french",
-            emoji: {id: "1396192289952628796"},
-        },
+        // maybe later
+        // {
+        //     label: "Deutsch",
+        //     value: "german",
+        //     emoji: {id: "1396192272894394378"},
+        // },
+        // {
+        //     label: "Français",
+        //     value: "french",
+        //     emoji: {id: "1396192289952628796"},
+        // },
     ],
     overlaySettings: {
         speechbubble: {

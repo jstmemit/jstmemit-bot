@@ -37,7 +37,7 @@ export const constructPremiumSettingsEmbed = (currentSettings, channelId, hasPre
                             .setURL("https://jstmemit.com/assets/logo.png")
                     )
                     .addTextDisplayComponents(
-                        new TextDisplayBuilder().setContent(`# ✨ ${(t("premiumTitle", language))}`),
+                        new TextDisplayBuilder().setContent(`# ${settings?.emojis?.settings?.premium?.name}  ${(t("premiumTitle", language))}`),
                         new TextDisplayBuilder().setContent(t("premiumDescription", language)),
                     ),
             )

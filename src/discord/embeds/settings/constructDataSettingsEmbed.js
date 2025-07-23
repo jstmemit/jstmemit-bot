@@ -13,6 +13,7 @@ import {
     TextDisplayBuilder
 } from 'discord.js';
 import {t} from "../../i18n/utils.js";
+import {settings} from "#config/settings.js";
 
 export const constructDataSettingsEmbed = (currentSettings, channelId, buttons) => {
 
@@ -48,7 +49,7 @@ export const constructDataSettingsEmbed = (currentSettings, channelId, buttons) 
     return [
         new ContainerBuilder()
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`## 🔒 ${t("settingsDataRetentionTitle", language)} `),
+                new TextDisplayBuilder().setContent(`# ${settings?.emojis?.settings?.data?.name}  ${(t("settingsDataRetentionTitle", language))}`),
             )
             .addSectionComponents(
                 new SectionBuilder()

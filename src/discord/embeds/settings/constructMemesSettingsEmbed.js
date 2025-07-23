@@ -11,6 +11,7 @@ import {
     TextDisplayBuilder
 } from 'discord.js';
 import {t} from "#src/discord/i18n/utils.js";
+import {settings} from "#config/settings.js";
 
 export const constructMemesSettingsEmbed = (currentSettings, channelId, buttons) => {
 
@@ -189,7 +190,7 @@ export const constructMemesSettingsEmbed = (currentSettings, channelId, buttons)
         // memes in the chat
         new ContainerBuilder()
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`## 💬 ${(t("settingsMemesTitle", language))}`),
+                new TextDisplayBuilder().setContent(`# ${settings?.emojis?.settings?.meme?.name}  ${(t("settingsMemesTitle", language))}`),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(t("settingsMemesDescription", language)),

@@ -83,7 +83,7 @@ export const locale = {
         settingsStatusDisabled: "🔴 Training is **disabled** in this channel!",
 
         notEnoughContextTitle: "🤓  Bot is still collecting context! ",
-        notEnoughContextDescription: "Jstmemit couldn't generate a meme this time because it needs more training data from this channel.\n\nMessages in memory: **{{amount}}/30**",
+        notEnoughContextDescription: "Jstmemit couldn't generate a meme this time because it needs more training data from this channel. Sending both images (or GIFs) and text messages will improve meme quality.\n\nMessages in memory: **{{amount}}/30**",
 
         noPermissionsTitle: "Not enough permissions!",
         noPermissionsDescription: "To use this command, you need the **{{permission}}** permission.\nPlease ask your server administrators to complete this action.",
@@ -134,6 +134,7 @@ export const locale = {
         btnUnlink: "Unlink channels",
         btnSetWatermark: "Set watermark",
         btnRemoveWatermark: "Remove watermark",
+        btnGetPremium: "Premium - $1.99",
 
         loading: "Loading...",
 
@@ -278,6 +279,7 @@ export const locale = {
         btnUnlink: "Отвязать каналы",
         btnSetWatermark: "Установить водяной знак",
         btnRemoveWatermark: "Убрать водяной знак",
+        btnGetPremium: "Премиум - $1.99",
 
         loading: "Загрузка...",
 
@@ -422,6 +424,7 @@ export const locale = {
         btnUnlink: "Kanalen ontkoppelen",
         btnSetWatermark: "Watermerk instellen",
         btnRemoveWatermark: "Watermerk verwijderen",
+        btnGetPremium: "Premium - $1.99",
 
         loading: "Loading...",
 
@@ -566,6 +569,7 @@ export const locale = {
         btnUnlink: "Розв'язати канали",
         btnSetWatermark: "Встановити водяний знак",
         btnRemoveWatermark: "Видалити водяний знак",
+        btnGetPremium: "Преміум - $1.99",
 
         loading: "Загрузка...",
 
@@ -709,6 +713,7 @@ export const locale = {
         btnUnlink: "Rozłącz kanały",
         btnSetWatermark: "Ustaw znak wodny",
         btnRemoveWatermark: "Usuń znak wodny",
+        btnGetPremium: "Premium - $1.99",
 
         loading: "Ładowanie...",
 

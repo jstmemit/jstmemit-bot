@@ -56,8 +56,10 @@ export const constructPremiumSettingsEmbed = (currentSettings, channelId, hasPre
                                 .setDisabled(true)
                             :
                             new ButtonBuilder()
-                                .setStyle(ButtonStyle.Premium)
-                                .setSKUId(`${settings.monetization.premiumSkuId}`)
+                                .setStyle(ButtonStyle.Link)
+                                .setURL("https://discord.com/discovery/applications/1375836467745783990/store/1387929454356987945")
+                                .setLabel(`${t("btnGetPremium", language)}`)
+                                .setEmoji(settings?.emojis?.premium?.id || "💎")
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(

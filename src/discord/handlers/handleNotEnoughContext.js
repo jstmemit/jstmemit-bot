@@ -1,19 +1,19 @@
 import {constructSettingsEmbed} from "../embeds/constructContextEmbed.js";
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {MessageFlags} from "discord.js";
-import {analytics as posthog} from "../../../bot.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const handleNotEnoughContext = async (interaction, amount) => {
     try {
         const currentSettings = await getChannelSettings(interaction.channelId)
         const components = constructSettingsEmbed(currentSettings, interaction.channelId, amount);
 
-        await posthog.capture({
+        await analytics.capture({
             distinctId: interaction.channelId,
             event: 'not_enough_context_failed',
         })
 
-        await posthog.flush()
+        await analytics.flush()
 
         await interaction.reply({
             flags: MessageFlags.IsComponentsV2,

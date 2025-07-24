@@ -3,12 +3,12 @@ import {dirname, join} from 'path';
 import {fileURLToPath} from 'url';
 import {startDataRoutine} from "#database/routines/startDataRoutine.js";
 import {sendKumaPing} from "#src/analytics/heartbeat/sendKumaPing.js";
-import {analytics} from "../../../bot.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export const loadEvents = async (client) => {
+
     const handlersPath = join(__dirname, 'handlers');
     const eventFiles = readdirSync(handlersPath).filter(file => file.endsWith('.js'));
 

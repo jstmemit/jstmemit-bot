@@ -1,6 +1,5 @@
 import {Events} from 'discord.js';
 import {handleNewMessage} from '#src/discord/handlers/handleNewMessage.js';
-import {analytics} from "../../../../bot.js";
 
 export default {
     name: Events.MessageCreate,

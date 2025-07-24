@@ -4,8 +4,8 @@ import {generateText} from "../text/markov/helpers/generateText.js";
 import {addText} from "./helpers/addText.js";
 import {getRandomImage} from "../../discord/getRandomImage.js";
 import {overlayImage} from "./helpers/overlayImage.js";
-import {analytics} from "../../../bot.js";
 import {memeTemplates} from "../../../config/memeTemplates.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export class MemeGenerator {
     constructor(templateName) {

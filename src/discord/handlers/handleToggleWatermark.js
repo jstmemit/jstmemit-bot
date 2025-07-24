@@ -1,7 +1,7 @@
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
 import {handlePermissionCheck} from "./handlePermissionCheck.js";
-import {analytics as posthog} from "../../../bot.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const handleToggleWatermark = async interaction => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
@@ -20,7 +20,7 @@ export const handleToggleWatermark = async interaction => {
             watermarkLogo: action === 'watermarkenable',
         };
 
-        await posthog.capture({
+        await analytics.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
@@ -28,7 +28,7 @@ export const handleToggleWatermark = async interaction => {
             },
         })
 
-        await posthog.flush()
+        await analytics.flush()
 
         await changeChannelSettings(newSettings);
     } catch (error) {

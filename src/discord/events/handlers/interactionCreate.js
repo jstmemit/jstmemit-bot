@@ -1,5 +1,4 @@
 import {Events} from 'discord.js';
-import {analytics} from "../../../../bot.js";
 import {enable} from "#src/discord/commands/enable.js";
 import {settings} from "#src/discord/commands/settings.js";
 import {premium} from "#src/discord/commands/premium.js";

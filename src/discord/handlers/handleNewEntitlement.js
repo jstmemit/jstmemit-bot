@@ -1,7 +1,7 @@
-import {analytics as posthog} from "../../../bot.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const handleNewEntitlement = async (entitlement) => {
-    await posthog.capture({
+    await analytics.capture({
         event: 'entitlement_created',
         properties: {
             entitlementId: entitlement.id,
@@ -9,5 +9,5 @@ export const handleNewEntitlement = async (entitlement) => {
         },
     })
 
-    await posthog.flush()
+    await analytics.flush()
 }

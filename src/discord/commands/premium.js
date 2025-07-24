@@ -1,10 +1,10 @@
 import {ButtonStyle, MessageFlags} from 'discord.js';
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {handlePermissionCheck} from "../handlers/handlePermissionCheck.js";
-import {analytics as posthog} from "../../../bot.js";
 import {constructPremiumEmbed} from "../embeds/constructPremiumEmbed.js";
 
 import {checkPremium} from "../helpers/checkPremium.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const premium = async (interaction) => {
     let channelSettings = await getChannelSettings(interaction.channelId);
@@ -22,7 +22,7 @@ export const premium = async (interaction) => {
 
     const premiumEmbed = constructPremiumEmbed(channelSettings, interaction.channelId, hasPremium);
 
-    await posthog.capture({
+    await analytics.capture({
         distinctId: interaction.channelId,
         event: 'command_sent',
         properties: {
@@ -30,7 +30,7 @@ export const premium = async (interaction) => {
         },
     })
 
-    await posthog.flush()
+    await analytics.flush()
 
     await interaction.reply({
         flags: MessageFlags.IsComponentsV2,

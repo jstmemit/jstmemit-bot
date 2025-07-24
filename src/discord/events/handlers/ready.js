@@ -1,7 +1,7 @@
 import {ActivityType, Events} from 'discord.js';
 import {initializeCommands} from '#src/discord/commands/initializeCommands.js';
 import {commands} from '#src/discord/commands/commands.js';
-import {analytics} from "../../../../bot.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export default {
     name: Events.ClientReady,

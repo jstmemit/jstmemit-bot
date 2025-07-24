@@ -1,6 +1,6 @@
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
-import {analytics as posthog} from "../../../bot.js";
+import {analytics} from "../../analytics/initializeAnalytics.js";
 
 export const handleUseUserImagesChange = async interaction => {
     try {
@@ -16,7 +16,7 @@ export const handleUseUserImagesChange = async interaction => {
             useUserImages,
         };
 
-        await posthog.capture({
+        await analytics.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
@@ -24,7 +24,7 @@ export const handleUseUserImagesChange = async interaction => {
             },
         })
 
-        await posthog.flush()
+        await analytics.flush()
 
         await changeChannelSettings(newSettings);
     } catch (error) {

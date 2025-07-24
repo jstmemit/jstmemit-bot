@@ -1,6 +1,5 @@
 import {Events} from 'discord.js';
 import {handleNewEntitlement} from "#src/discord/handlers/handleNewEntitlement.js";
-import {analytics} from "../../../../bot.js";
 
 export default {
     name: Events.EntitlementCreate,

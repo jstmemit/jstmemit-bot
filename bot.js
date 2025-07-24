@@ -1,8 +1,5 @@
-import {initializeCommands} from "./src/discord/commands/initializeCommands.js";
-import {commands} from "./src/discord/commands/commands.js";
 import dotenv from 'dotenv';
 import {ActivityType, Client, Events, GatewayIntentBits, MessageFlags} from 'discord.js';
-import {handleNewMessage} from "./src/discord/handlers/handleNewMessage.js";
 import {meme} from "./src/discord/commands/meme.js";
 import {vote} from "./src/discord/buttons/vote/votes.js";
 import {checkIsEnabled} from "./src/discord/checkIsEnabled.js";
@@ -30,6 +27,7 @@ import {handleToggleWatermark} from "./src/discord/handlers/handleToggleWatermar
 import {handleLinkChannel} from "./src/discord/handlers/handleLinkChannel.js";
 import {sendKumaPing} from "#src/analytics/heartbeat/sendKumaPing.js";
 import {AutoPoster} from 'topgg-autoposter';
+import {loadEvents} from "#src/discord/events/eventLoader.js";
 
 let analytics = null;
 try {
@@ -52,23 +50,6 @@ export const client = new Client({
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
 	],
-});
-
-client.on(Events.ClientReady, readyClient => {
-	console.log(`Logged in as ${readyClient.user.tag}!`);
-
-	client.user.setActivity('how to make memes', {type: ActivityType.Watching});
-	initializeCommands(commands).then(() => {
-		console.log('Commands initialized successfully.');
-	}).catch(error => {
-		console.error('Error initializing commands:', error);
-	});
-});
-
-client.on(Events.MessageCreate, async message => {
-	if (message.author.bot) return;
-
-	await handleNewMessage(message);
 });
 
 client.on(Events.EntitlementCreate, async entitlement => {
@@ -256,6 +237,8 @@ process.on('uncaughtException', (error) => {
 startDataRoutine()
 sendKumaPing();
 
+
+loadEvents(client);
 
 if (dotenv.config().parsed.TOPGG_TOKEN) {
 	const poster = AutoPoster(dotenv.config().parsed.TOPGG_TOKEN, client)

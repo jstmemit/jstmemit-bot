@@ -29,6 +29,7 @@ import {handleUpdatePremiumEmbed} from "./src/discord/handlers/handleUpdatePremi
 import {handleToggleWatermark} from "./src/discord/handlers/handleToggleWatermark.js";
 import {handleLinkChannel} from "./src/discord/handlers/handleLinkChannel.js";
 import {sendKumaPing} from "#src/analytics/heartbeat/sendKumaPing.js";
+import {AutoPoster} from 'topgg-autoposter';
 
 let analytics = null;
 try {
@@ -255,4 +256,5 @@ process.on('uncaughtException', (error) => {
 startDataRoutine()
 sendKumaPing();
 
+const poster = AutoPoster(dotenv.config().parsed.TOPGG_TOKEN, client)
 client.login(dotenv.config().parsed.DISCORD_TOKEN);

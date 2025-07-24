@@ -256,5 +256,8 @@ process.on('uncaughtException', (error) => {
 startDataRoutine()
 sendKumaPing();
 
-const poster = AutoPoster(dotenv.config().parsed.TOPGG_TOKEN, client)
+
+if (dotenv.config().parsed.TOPGG_TOKEN) {
+	const poster = AutoPoster(dotenv.config().parsed.TOPGG_TOKEN, client)
+}
 client.login(dotenv.config().parsed.DISCORD_TOKEN);

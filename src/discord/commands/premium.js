@@ -14,7 +14,7 @@ export const premium = async (interaction) => {
         channelSettings = await getChannelSettings(interaction.channelId);
     }
 
-    if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
         return;
     }
 

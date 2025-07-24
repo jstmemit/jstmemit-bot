@@ -7,7 +7,7 @@ export const handleNewMessage = async (interaction) => {
     const channelSettings = await getChannelSettings(interaction.channelId);
 
     if (channelSettings) {
-        if (!channelSettings.is_enabled) {
+        if (!channelSettings.isEnabled) {
             return;
         }
     }

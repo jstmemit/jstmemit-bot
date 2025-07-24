@@ -12,15 +12,15 @@ export const handleUseUserImagesChange = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
-            use_user_images: useUserImages,
+            channelId,
+            useUserImages,
         };
 
         await posthog.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
-                useUserImages: newSettings.use_user_images,
+                useUserImages: newSettings.useUserImages,
             },
         })
 

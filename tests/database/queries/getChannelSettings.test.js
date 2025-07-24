@@ -1,184 +1,116 @@
 import {describe, expect, it, vi} from 'vitest'
-import {getChannelSettings} from '#src/database/queries/getChannelSettings.js'
-import {pool} from '#src/database/initializePool.js'
+import './../../setup.js'
 import {insertMessage} from '#src/database/queries/insertMessage.js'
+import {db} from '#src/database/initializePool.js'
+import {mockChannelSettings, selectBuilder} from './../../setup.js'
+import {getChannelSettings} from '#src/database/queries/getChannelSettings.js'
+import {channels} from '#database/schema/schema.js'
+import {eq} from 'drizzle-orm'
 
-vi.mock('#src/database/queries/insertMessage.js', () => ({
-    insertMessage: vi.fn()
-}))
+vi.mock(
+    '#src/database/queries/insertMessage.js',
+    () => ({insertMessage: vi.fn()})
+)
 
 describe('getChannelSettings', () => {
-    it('returns channel settings when channel exists', async () => {
-        const mockChannelData = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: true,
-            frequency: 60,
-            enabled_random_memes: true,
-            delete_messages_after: 3600,
-            use_user_images: false,
-            language: 'english',
-            replace_mentions: true,
-            watermarkLogo: true,
-            linked_channel: '987654321'
-        }
-
-        pool.query = vi.fn().mockResolvedValue([[mockChannelData]])
+    it('returns settings when a row exists', async () => {
+        selectBuilder.where.mockResolvedValue([mockChannelSettings])
 
         const result = await getChannelSettings('123456789')
 
-        expect(pool.query).toHaveBeenCalledOnce()
-        expect(pool.query).toHaveBeenCalledWith(
-            'SELECT * FROM channels WHERE channel_id = ?',
-            ['123456789']
+        expect(db.select).toHaveBeenCalledTimes(1)
+        expect(selectBuilder.from).toHaveBeenCalledWith(channels)
+        expect(selectBuilder.where).toHaveBeenCalledWith(
+            eq(channels.channelId, '123456789')
         )
-        expect(result).toEqual(mockChannelData)
+
+        expect(result).toEqual(mockChannelSettings)
         expect(insertMessage).not.toHaveBeenCalled()
     })
 
-    it('calls insertMessage and returns null when channel does not exist', async () => {
-        pool.query = vi.fn().mockResolvedValue([[]])
-        insertMessage.mockResolvedValue()
+    it('returns null and inserts message when no rows are found', async () => {
+        selectBuilder.where.mockResolvedValue([])
 
-        const result = await getChannelSettings('nonexistent123')
+        const result = await getChannelSettings('nope')
 
-        expect(pool.query).toHaveBeenCalledOnce()
-        expect(pool.query).toHaveBeenCalledWith(
-            'SELECT * FROM channels WHERE channel_id = ?',
-            ['nonexistent123']
+        expect(selectBuilder.where).toHaveBeenCalledWith(
+            eq(channels.channelId, 'nope')
         )
-        expect(insertMessage).toHaveBeenCalledOnce()
-        expect(insertMessage).toHaveBeenCalledWith('nonexistent123', '')
+        expect(result).toBeNull()
+        expect(insertMessage).toHaveBeenCalledTimes(1)
+        expect(insertMessage).toHaveBeenCalledWith('nope', '')
+    })
+
+    it('calls insertMessage and returns null when .where() yields nullish', async () => {
+        selectBuilder.where.mockResolvedValue(null)
+
+        const result = await getChannelSettings('new-chan')
+
+        expect(selectBuilder.where).toHaveBeenCalledWith(
+            eq(channels.channelId, 'new-chan')
+        )
+        expect(insertMessage).toHaveBeenCalledTimes(1)
+        expect(insertMessage).toHaveBeenCalledWith('new-chan', '')
         expect(result).toBeNull()
     })
 
-    it('handles database query errors', async () => {
-        const consoleErrorSpy = vi
-            .spyOn(console, 'error')
-            .mockImplementation(() => {
-            })
-        const dbError = new Error('Database connection failed')
+    it('catches and logs DB errors', async () => {
+        const dbError = new Error('boom!')
+        selectBuilder.where.mockRejectedValue(dbError)
+        const spy = vi.spyOn(console, 'error').mockImplementation(() => {
+        })
 
-        pool.query = vi.fn().mockRejectedValue(dbError)
+        const result = await getChannelSettings('123')
 
-        await expect(getChannelSettings('123456789')).rejects.toThrow(
-            'Database connection failed'
-        )
-
-        expect(pool.query).toHaveBeenCalledOnce()
-        expect(consoleErrorSpy).toHaveBeenCalledWith(
-            'Error fetching channel settings:',
+        expect(result).toBeNull()
+        expect(insertMessage).not.toHaveBeenCalled()
+        expect(spy).toHaveBeenCalledWith(
+            'Error fetching settings for channel 123:',
             dbError
         )
-        expect(insertMessage).not.toHaveBeenCalled()
 
-        consoleErrorSpy.mockRestore()
+        spy.mockRestore()
     })
 
-    it('handles insertMessage errors when channel does not exist', async () => {
-        const consoleErrorSpy = vi
-            .spyOn(console, 'error')
-            .mockImplementation(() => {
-            })
-        const insertError = new Error('Insert failed')
+    it('catches and logs insertMessage errors when fallback is used', async () => {
+        selectBuilder.where.mockResolvedValue(undefined)
+        const insertErr = new Error('insert failed')
+        insertMessage.mockRejectedValue(insertErr)
+        const spy = vi.spyOn(console, 'error').mockImplementation(() => {
+        })
 
-        pool.query = vi.fn().mockResolvedValue([[]])
-        insertMessage.mockRejectedValue(insertError)
+        const result = await getChannelSettings('fallback-chan')
 
-        await expect(getChannelSettings('123456789')).rejects.toThrow(
-            'Insert failed'
-        )
-
-        expect(pool.query).toHaveBeenCalledOnce()
-        expect(insertMessage).toHaveBeenCalledOnce()
-        expect(insertMessage).toHaveBeenCalledWith('123456789', '')
-        expect(consoleErrorSpy).toHaveBeenCalledWith(
-            'Error fetching channel settings:',
-            insertError
-        )
-
-        consoleErrorSpy.mockRestore()
-    })
-
-    it('returns first row when multiple rows exist', async () => {
-        const mockChannelData1 = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: true
-        }
-        const mockChannelData2 = {
-            internal_id: 2,
-            channel_id: '123456789',
-            is_enabled: false
-        }
-
-        pool.query = vi
-            .fn()
-            .mockResolvedValue([[mockChannelData1, mockChannelData2]])
-
-        const result = await getChannelSettings('123456789')
-
-        expect(result).toEqual(mockChannelData1)
-        expect(insertMessage).not.toHaveBeenCalled()
-    })
-
-    it('handles empty channel ID', async () => {
-        pool.query = vi.fn().mockResolvedValue([[]])
-        insertMessage.mockResolvedValue()
-
-        const result = await getChannelSettings('')
-
-        expect(pool.query).toHaveBeenCalledWith(
-            'SELECT * FROM channels WHERE channel_id = ?',
-            ['']
-        )
-        expect(insertMessage).toHaveBeenCalledWith('', '')
         expect(result).toBeNull()
+        expect(insertMessage).toHaveBeenCalledTimes(1)
+        expect(insertMessage).toHaveBeenCalledWith('fallback-chan', '')
+        expect(spy).toHaveBeenCalledWith(
+            'Error fetching settings for channel fallback-chan:',
+            insertErr
+        )
+
+        spy.mockRestore()
     })
 
-    it('handles null channel ID', async () => {
-        pool.query = vi.fn().mockResolvedValue([[]])
-        insertMessage.mockResolvedValue()
+    it('returns the first row when multiple exist', async () => {
+        const second = {...mockChannelSettings, internalId: 99, isEnabled: 0}
+        selectBuilder.where.mockResolvedValue([mockChannelSettings, second])
 
-        const result = await getChannelSettings(null)
+        const result = await getChannelSettings('multi-row')
 
-        expect(pool.query).toHaveBeenCalledWith(
-            'SELECT * FROM channels WHERE channel_id = ?',
-            [null]
-        )
-        expect(insertMessage).toHaveBeenCalledWith(null, '')
-        expect(result).toBeNull()
+        expect(result).toEqual(mockChannelSettings)
     })
 
-    it('handles undefined channel ID', async () => {
-        pool.query = vi.fn().mockResolvedValue([[]])
-        insertMessage.mockResolvedValue()
+    ;['', null, undefined, 42].forEach((chanId) => {
+        it(`handles channelId = ${String(chanId)}`, async () => {
+            selectBuilder.where.mockResolvedValue([mockChannelSettings])
 
-        const result = await getChannelSettings(undefined)
+            const result = await getChannelSettings(chanId)
 
-        expect(pool.query).toHaveBeenCalledWith(
-            'SELECT * FROM channels WHERE channel_id = ?',
-            [undefined]
-        )
-        expect(insertMessage).toHaveBeenCalledWith(undefined, '')
-        expect(result).toBeNull()
-    })
-
-    it('handles numeric channel ID', async () => {
-        const mockChannelData = {
-            internal_id: 1,
-            channel_id: '123456789',
-            is_enabled: true
-        }
-
-        pool.query = vi.fn().mockResolvedValue([[mockChannelData]])
-
-        const result = await getChannelSettings(123456789)
-
-        expect(pool.query).toHaveBeenCalledWith(
-            'SELECT * FROM channels WHERE channel_id = ?',
-            [123456789]
-        )
-        expect(result).toEqual(mockChannelData)
+            expect(selectBuilder.where).toHaveBeenCalledWith(
+                eq(channels.channelId, chanId)
+            )
+            expect(result).toEqual(mockChannelSettings)
+        })
     })
 })

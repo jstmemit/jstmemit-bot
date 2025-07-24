@@ -8,9 +8,9 @@ export const checkIsEnabled = async (channelId) => {
         return false;
     }
 
-    const {channel_id, is_enabled} = channelSettings;
+    const {isEnabled} = channelSettings;
 
-    if (!is_enabled) {
+    if (!isEnabled) {
         return false;
     }
 

@@ -1,11 +1,13 @@
-import {pool} from "../initializePool.js";
+import {db} from "#database/initializePool.js";
+import {messages} from "#database/schema/schema.js";
+import {eq} from "drizzle-orm";
 
 export const fetchChannelMessages = async (channelId) => {
     try {
-        const [rows] = await pool.query(
-            'SELECT * FROM messages WHERE channel_id = ?',
-            [channelId]
-        );
+        const rows = await db
+            .select()
+            .from(messages)
+            .where(eq(messages.channelId, channelId));
 
         if (rows.length === 0) {
             return null;

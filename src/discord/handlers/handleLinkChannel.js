@@ -4,7 +4,7 @@ import {handlePermissionCheck} from "./handlePermissionCheck.js";
 import {analytics as posthog} from "../../../bot.js";
 
 export const handleLinkChannel = async interaction => {
-    if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
         return;
     }
     try {
@@ -24,15 +24,15 @@ export const handleLinkChannel = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
-            linked_channel: linked_channelId
+            channelId,
+            linkedChannel: linked_channelId
         };
 
         await posthog.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
-                LinkedChannel: newSettings.linked_channel,
+                LinkedChannel: newSettings.linkedChannel,
             },
         })
 

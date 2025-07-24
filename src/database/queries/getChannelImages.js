@@ -19,7 +19,7 @@ export const getChannelImages = async (channelId) => {
     }
 
     const channelSettings = await getChannelSettings(channelId);
-    if (channelSettings && !channelSettings.is_enabled) {
+    if (channelSettings && !channelSettings.isEnabled) {
         return null;
     }
 
@@ -34,7 +34,7 @@ export const getChannelImages = async (channelId) => {
                  OR message LIKE 'https://tenor.com/view/%'
              )
          ORDER BY RAND()
-         LIMIT 5`,
+         LIMIT 15`,
         [channelId]
     ).then(async ([rows]) => {
         if (rows.length === 0) {

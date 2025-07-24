@@ -1,5 +1,4 @@
 // noinspection JSCheckFunctionSignatures
-// almost deprecated
 
 import {
     ActionRowBuilder,
@@ -13,10 +12,10 @@ import {
     TextDisplayBuilder,
     ThumbnailBuilder
 } from 'discord.js';
-import {t} from "../i18n/utils.js";
-import {settings} from "../../../config/settings.js";
+import {t} from "../../i18n/utils.js";
+import {settings} from "#config/settings.js";
 
-export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) => {
+export const constructPremiumSettingsEmbed = (currentSettings, channelId, hasPremium, buttons) => {
 
     const language = currentSettings?.language || "english";
     let watermarkEnabled = false, anyChannelLinked = false;
@@ -38,7 +37,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                             .setURL("https://jstmemit.com/assets/logo.png")
                     )
                     .addTextDisplayComponents(
-                        new TextDisplayBuilder().setContent(`# ✨ ${(t("premiumTitle", language))}`),
+                        new TextDisplayBuilder().setContent(`# ${settings?.emojis?.settings?.premium?.name}  ${(t("premiumTitle", language))}`),
                         new TextDisplayBuilder().setContent(t("premiumDescription", language)),
                     ),
             )
@@ -57,8 +56,10 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                                 .setDisabled(true)
                             :
                             new ButtonBuilder()
-                                .setStyle(ButtonStyle.Premium)
-                                .setSKUId(`${settings.monetization.premiumSkuId}`)
+                                .setStyle(ButtonStyle.Link)
+                                .setURL("https://discord.com/discovery/applications/1375836467745783990/store/1387929454356987945")
+                                .setLabel(`${t("btnGetPremium", language)}`)
+                                .setEmoji(settings?.emojis?.premium?.id || "💎")
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
@@ -191,6 +192,7 @@ export const constructPremiumEmbed = (currentSettings, channelId, hasPremium) =>
                                 : t("premiumSetOwnWatermarkInactive", language)
                         ),
                     ),
-            )
+            ),
+        buttons
     ]
 };

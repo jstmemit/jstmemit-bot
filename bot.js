@@ -28,6 +28,8 @@ import {handleToggleMentions} from "./src/discord/handlers/handleToggleMentions.
 import {handleUpdatePremiumEmbed} from "./src/discord/handlers/handleUpdatePremiumEmbed.js";
 import {handleToggleWatermark} from "./src/discord/handlers/handleToggleWatermark.js";
 import {handleLinkChannel} from "./src/discord/handlers/handleLinkChannel.js";
+import {sendKumaPing} from "#src/analytics/heartbeat/sendKumaPing.js";
+import {AutoPoster} from 'topgg-autoposter';
 
 let analytics = null;
 try {
@@ -112,7 +114,7 @@ client.on(Events.InteractionCreate, async interaction => {
 				await handleUpdateEnableEmbed(interaction);
 			} else {
 				try {
-					await handleUpdateSettingsEmbed(interaction);
+					await handleUpdateSettingsEmbed(interaction, "general");
 				} catch (error) {
 					console.log(error)
 				}
@@ -143,12 +145,28 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 
 		if (customId == 'settings-open') {
+
+			if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
+				return;
+			}
+
 			const loading = await constructLoadingEmbed(interaction.channelId)
 			await interaction.reply({
 				flags: MessageFlags.IsComponentsV2,
 				components: loading
 			})
 			await handleUpdateSettingsEmbed(interaction);
+		}
+
+		if (customId.startsWith("settings-tab-")) {
+			if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
+				return;
+			}
+
+			const tab = customId.split('-')[2];
+			await interaction.deferUpdate();
+			await handleUpdateSettingsEmbed(interaction, tab);
+			return;
 		}
 
 		if (customId.startsWith("erase-")) {
@@ -182,30 +200,30 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (interaction.isStringSelectMenu()) {
 		const {customId} = interaction;
 
-		if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+		if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
 			return;
 		}
 
 		switch (customId) {
 			case "select-frequency":
 				await handleFrequencyChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "meme");
 				break;
 			case "select-memetemplates":
 				await handleMemeTemplatesChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "meme");
 				break;
 			case "select-dataretention":
 				await handleDataRetentionChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "data");
 				break;
 			case "select-useuserimages":
 				await handleUseUserImagesChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "data");
 				break;
 			case "select-language":
 				await handleLanguageChange(interaction);
-				await handleUpdateSettingsEmbed(interaction);
+				await handleUpdateSettingsEmbed(interaction, "general");
 				break;
 		}
 	}
@@ -213,7 +231,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (interaction.isChannelSelectMenu()) {
 		const {customId} = interaction;
 
-		if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+		if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
 			return;
 		}
 
@@ -236,5 +254,7 @@ process.on('uncaughtException', (error) => {
 });
 
 startDataRoutine()
+sendKumaPing();
 
+const poster = AutoPoster(dotenv.config().parsed.TOPGG_TOKEN, client)
 client.login(dotenv.config().parsed.DISCORD_TOKEN);

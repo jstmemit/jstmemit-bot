@@ -12,15 +12,15 @@ export const handleDataRetentionChange = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
-            delete_messages_after: newRetentionDays,
+            channelId,
+            deleteMessagesAfter: newRetentionDays,
         };
 
         await posthog.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
-                deleteMessagesAfter: newSettings.delete_messages_after,
+                deleteMessagesAfter: newSettings.deleteMessagesAfter,
             },
         })
 

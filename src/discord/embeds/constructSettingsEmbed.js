@@ -1,4 +1,5 @@
 // noinspection JSCheckFunctionSignatures
+// deprecated
 
 import {
     ActionRowBuilder,
@@ -226,15 +227,15 @@ export const constructSettingsEmbed = (currentSettings, channelId, hasPremium) =
     ]
 
     if (currentSettings) {
-        let memes = currentSettings.enabled_random_memes;
+        let memes = currentSettings.enabledRandomMemes;
         if (
             memes === "all" || memes === "" || (Array.isArray(memes) && (memes[0] === "" || memes.length === 0))
         ) {
-            currentSettings.enabled_random_memes = memeTemplates.map(
+            currentSettings.enabledRandomMemes = memeTemplates.map(
                 template => template.value
             );
         } else if (typeof memes === "string") {
-            currentSettings.enabled_random_memes = memes.split(",");
+            currentSettings.enabledRandomMemes = memes.split(",");
         }
     }
 
@@ -274,12 +275,12 @@ export const constructSettingsEmbed = (currentSettings, channelId, hasPremium) =
                     new SectionBuilder()
                         .setButtonAccessory(
                             new ButtonBuilder()
-                                .setStyle(currentSettings.is_enabled ? ButtonStyle.Danger : ButtonStyle.Success)
-                                .setLabel(`${currentSettings.is_enabled ? (t("btnDisable", language)) : (t("btnEnable", language))}`)
-                                .setCustomId(`${currentSettings.is_enabled ? "disable" : "enable"}-${channelId}`),
+                                .setStyle(currentSettings.isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
+                                .setLabel(`${currentSettings.isEnabled ? (t("btnDisable", language)) : (t("btnEnable", language))}`)
+                                .setCustomId(`${currentSettings.isEnabled ? "disable" : "enable"}-${channelId}`),
                         )
                         .addTextDisplayComponents(
-                            new TextDisplayBuilder().setContent(`${currentSettings.is_enabled ? (t("settingsStatusEnabled", language)) : (t("settingsStatusDisabled", language))}`),
+                            new TextDisplayBuilder().setContent(`${currentSettings.isEnabled ? (t("settingsStatusEnabled", language)) : (t("settingsStatusDisabled", language))}`),
                         ),
                 ),
 
@@ -336,7 +337,7 @@ export const constructSettingsEmbed = (currentSettings, channelId, hasPremium) =
                                     new SelectMenuOptionBuilder()
                                         .setLabel(template.label)
                                         .setValue(template.value)
-                                        .setDefault(currentSettings.enabled_random_memes?.includes(template.value) ?? true)
+                                        .setDefault(currentSettings.enabledRandomMemes?.includes(template.value) ?? true)
                                         .setEmoji(template.emoji)
                                 )
                             )
@@ -378,7 +379,7 @@ export const constructSettingsEmbed = (currentSettings, channelId, hasPremium) =
                                     const builder = new SelectMenuOptionBuilder()
                                         .setLabel(option.label)
                                         .setValue(option.value)
-                                        .setDefault(currentSettings.delete_messages_after === parseInt(option.value))
+                                        .setDefault(currentSettings.deleteMessagesAfter === parseInt(option.value))
                                         .setEmoji(option.emoji);
 
                                     if (option.description) {

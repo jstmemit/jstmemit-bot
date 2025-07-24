@@ -1,9 +1,17 @@
 export const locale = {
     english: {
-        settingsTitle: "Settings",
-        settingsDescription: "Here you can change bot's behaviour in this channel.",
+        settingsTitle: "Bot settings",
+        settingsDescription: "This is your control panel for the bot. Here you can customize how the bot behaves in this channel.",
+        settingsFooterDisabled: "🔴 Training is **disabled** in this channel!",
+        settingsFooterNotEnoughContext: "Messages in memory: **{{amount}}/30**  {{progressBar}}",
+        settingsFooterReady: "🧠  Enough context collected! **{{amount}} messages**",
 
-        settingsMemesTitle: "Memes in the chat",
+        settingsButtonGeneralSettings: "General",
+        settingsButtonMemeSettings: "Meme Generation",
+        settingsButtonDataRetentionSettings: "Data Retention",
+        settingsButtonPremiumSettings: "Premium",
+
+        settingsMemesTitle: "Meme Generation",
         settingsMemesDescription: "This section contains options related to random memes in the chat. You can control how often bot is going to send memes and also what memes do you want to see.",
         settingsMemesFrequencyTitle: "Frequency",
         settingsMemesFrequencyDescription: "How often should the bot send a random meme in the chat without being asked to?",
@@ -74,17 +82,19 @@ export const locale = {
 
         settingsFooterChannelId: "Channel ID:",
 
-        settingsStatusEnabled: "🟢 Bot is **working** in this channel!",
-        settingsStatusDisabled: "🔴 Bot is **disabled** in this channel!",
+        settingsStatusEnabled: "🎉 Bot is ready!",
+        settingsStatusDisabled: "🔴 Training is **disabled** in this channel!",
 
-        notEnoughContextTitle: "Not enough training data",
-        notEnoughContextDescription: "Bot failed to generate text for the meme. This could be because there is not enough training data. Try again after sending about **{{amount}}** more messages.",
+        notEnoughContextTitle: "🤓  Bot is still collecting context! ",
+        notEnoughContextDescription: "Jstmemit couldn't generate a meme this time because it needs more training data from this channel. Sending both images (or GIFs) and text messages will improve meme quality.\n\nMessages in memory: **{{amount}}/30**",
 
-        noPermissionsTitle: "You don't have permissions to do that",
-        noPermissionsDescription: "You must have **{{permission}}** permission in order to use this command.",
+        noPermissionsTitle: "Not enough permissions!",
+        noPermissionsDescription: "To use this command, you need the **{{permission}}** permission.\nPlease ask your server administrators to complete this action.",
 
-        enableDescription: "If you want to change this, click the button below. There are also more fine-tuned options available in the settings menu.",
-
+        enableDescription: "Bot is disabled in this channel! To respect your privacy, Jstmemit needs to be enabled before it can start learning from messages here. Click on the button below to continue.",
+        enableDescriptionReady: "Setup is finished! Bot is training on new messages and will start generating memes as soon as it has ~30 messages in its memory. You can change settings in the menu below.",
+        enableMessagesInMemory: "Messages in memory: **{{amount}}/30** ",
+        enableMessagesInMemoryEnough: "Messages in memory: **{{amount}}** ",
 
         premiumTitle: "Premium",
         premiumDescription: "You can support the development of this bot by subscribing to premium. This server will receive access to **more customization**, **ability to link channels together** and some other features, which you can see below. More things are coming in the near future!\n\nEverybody on this server will receive **Premium** benefits even if only one person subscribes.\n\n*Sometimes Discord doesn't render the button propery, if it says \"Product unavailable\" you can still get premium in the bot's profile store.*",
@@ -112,9 +122,11 @@ export const locale = {
         premiumTurnOffMentionsInactive: "❌  Mentions are **not being replaced** in text memes",
 
         btnDisable: "Disable",
+        btnDisableTraining: "Disable training",
         btnEnable: "Enable",
+        btnEnableTraining: "Enable training",
         btnEraseData: "Erase Data",
-        btnSettings: "Settings",
+        btnSettings: "Open settings",
         btnPremiumActive: "Premium is active!",
         btnManagePremium: "Premium settings",
         btnLearnMore: "Learn more",
@@ -125,6 +137,7 @@ export const locale = {
         btnUnlink: "Unlink channels",
         btnSetWatermark: "Set watermark",
         btnRemoveWatermark: "Remove watermark",
+        btnGetPremium: "Premium - $1.99",
 
         loading: "Loading...",
 
@@ -186,6 +199,14 @@ export const locale = {
         settingsMemesTemplatesOptionSpongebobHappyTitle: "Губка Боб счастлив",
 
 
+        settingsFooterDisabled: "🔴 Обучение **отключено** в этом канале!",
+        settingsFooterNotEnoughContext: "Сообщений в памяти: **{{amount}}/30**  {{progressBar}}",
+        settingsFooterReady: "🧠 Собрано достаточно контекста! **{{amount}} сообщений**",
+        settingsButtonGeneralSettings: "Основные",
+        settingsButtonMemeSettings: "Мемы в чате",
+        settingsButtonDataRetentionSettings: "Хранение данных",
+        settingsButtonPremiumSettings: "Премиум",
+
         settingsDataRetentionTitle: "Хранение данных",
         settingsDataRetentionDescription: "Вы можете выбрать как долго бот будет хранить данные связанные с этим каналом. Если вы хотите удалить все сохраненные сообщения, вы также можете сделать это здесь.",
 
@@ -209,17 +230,19 @@ export const locale = {
 
         settingsFooterChannelId: "ID канала:",
 
-        settingsStatusEnabled: "🟢 Бот **включен** и работает в этом канале!",
-        settingsStatusDisabled: "🔴 Бот **выключен** в этом канале!",
+        settingsStatusEnabled: "🎉 Бот готов!",
+        settingsStatusDisabled: "🔴 Бот **отключен** в этом канале!",
 
-        notEnoughContextTitle: "Недостаточно данных",
-        notEnoughContextDescription: "Бот не смог сгенерировать текст для мема. Скорее всего у него не хватает данных для обучения. Попробуйте сгенерировать мем ещё раз после отправки **{{amount}}** сообщений.",
+        notEnoughContextTitle: "🤓 Бот все еще собирает контекст!",
+        notEnoughContextDescription: "Jstmemit не смог сгенерировать мем в этот раз, потому что ему нужно больше данных для обучения на этом канале.\n\nСообщений в памяти: **{{amount}}/30**",
 
-        noPermissionsTitle: "У вас нет прав",
-        noPermissionsDescription: "Вы должны иметь доступ к **{{permission}}**, чтобы использовать эту команду.",
+        noPermissionsTitle: "Недостаточно прав!",
+        noPermissionsDescription: "Для использования этой команды вам необходимо разрешение **{{permission}}**.\nПожалуйста, попросите администраторов вашего сервера выполнить это действие.",
 
-        enableDescription: "Вы можете изменить это нажав на кнопку под сообщением. Намного больше параметров доступны в меню настроек.",
-
+        enableDescription: "Бот выключен в этом канале! Чтобы уважать вашу конфиденциальность, Jstmemit необходимо включить, прежде чем он сможет начать обучаться на основе сообщений. Нажмите кнопку ниже, чтобы продолжить.",
+        enableDescriptionReady: "Настройка завершена! Бот теперь обучается на новых сообщениях и начнет генерировать мемы, как только в его памяти наберется ~30 сообщений. Вы можете изменить настройки в меню ниже.",
+        enableMessagesInMemory: "Сообщений в памяти: **{{amount}}/30**",
+        enableMessagesInMemoryEnough: "Сообщений в памяти: **{{amount}}**",
 
         premiumTitle: "Премиум",
         premiumDescription: "Вы можете поддержать разработку этого бота, подписавшись на премиум. Этот сервер получит доступ к **персонализации бота**, **возможности связывать каналы** и некоторым другим функциям, которые вы можете увидеть ниже.\n\nВсе пользователи на этом сервере получат **Премиум** возможности. Даже если только один человек подпишется.",
@@ -247,7 +270,9 @@ export const locale = {
         premiumTurnOffMentionsInactive: "❌  Упоминания **не заменяются** в текстовых мемах",
 
         btnDisable: "Отключить",
+        btnDisableTraining: "Отключить обучение",
         btnEnable: "Включить",
+        btnEnableTraining: "Включить обучение",
         btnEraseData: "Очистить данные",
         btnSettings: "Настройки",
         btnPremiumActive: "Премиум активен!",
@@ -260,6 +285,7 @@ export const locale = {
         btnUnlink: "Отвязать каналы",
         btnSetWatermark: "Установить водяной знак",
         btnRemoveWatermark: "Убрать водяной знак",
+        btnGetPremium: "Премиум - $1.99",
 
         loading: "Загрузка...",
 
@@ -320,6 +346,14 @@ export const locale = {
         settingsMemesTemplatesOptionHomerHidingTitle: "Homer hiding",
         settingsMemesTemplatesOptionSpongebobHappyTitle: "SpongeBob blij",
 
+        settingsFooterDisabled: "🔴 Training is **uitgeschakeld** in dit kanaal!",
+        settingsFooterNotEnoughContext: "Berichten in geheugen: **{{amount}}/30**  {{progressBar}}",
+        settingsFooterReady: "🧠 Genoeg context verzameld! **{{amount}} berichten**",
+        settingsButtonGeneralSettings: "Algemeen",
+        settingsButtonMemeSettings: "Meme Generatie",
+        settingsButtonDataRetentionSettings: "Gegevensbewaring",
+        settingsButtonPremiumSettings: "Premium",
+
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
 
@@ -343,16 +377,19 @@ export const locale = {
 
         settingsFooterChannelId: "Kanaal ID:",
 
-        settingsStatusEnabled: "🟢 Bot is **aan** en werkt in dit kanaal!",
+        settingsStatusEnabled: "🎉 Bot is klaar!",
         settingsStatusDisabled: "🔴 Bot is **uit** in dit kanaal!",
 
-        notEnoughContextTitle: "Niet genoeg trainingsdata",
-        notEnoughContextDescription: "De bot kon geen tekst genereren voor de meme. Dit kan komen doordat er niet genoeg trainingsdata is. Probeer het opnieuw nadat je nog ongeveer **{{amount}}** berichten hebt verzonden.",
+        notEnoughContextTitle: "🤓 Bot verzamelt nog steeds context!",
+        notEnoughContextDescription: "Jstmemit kon deze keer geen meme genereren omdat het meer trainingsgegevens van dit kanaal nodig heeft.\n\nBerichten: **{{amount}}/30**",
 
-        noPermissionsTitle: "Je hebt geen rechten om dit te doen",
-        noPermissionsDescription: "Je moet de **{{permission}}** recht hebben om deze command te gebruiken.",
+        noPermissionsTitle: "Niet genoeg rechten!",
+        noPermissionsDescription: "Om dit commando te gebruiken, heeft u de **{{permission}}** permissie nodig.\nVraag alstublieft de beheerders van uw server om deze actie uit te voeren.",
 
-        enableDescription: "Je kunt dit wijzigen door op de knop onder het bericht te klikken. Er zijn nog veel meer parameters beschikbaar in het instellingenmenu.",
+        enableDescription: "De bot is uitgeschakeld in dit kanaal! Om uw privacy te respecteren, moet Jstmemit zijn ingeschakeld voordat het hier kan beginnen met leren van berichten. Klik hieronder op de knop om door te gaan.",
+        enableDescriptionReady: "Installatie voltooid! De bot traint op nieuwe berichten en zal memes genereren zodra het ongeveer 30 berichten in het geheugen heeft. U kunt de instellingen wijzigen in het menu hieronder.",
+        enableMessagesInMemory: "Berichten: **{{amount}}/30**",
+        enableMessagesInMemoryEnough: "Berichten: **{{amount}}**",
 
         premiumTitle: "Premium",
         premiumDescription: "Je kunt de ontwikkeling van deze bot ondersteunen door deze server te abonneren op premium. Deze server krijgt toegang tot **meer personalizatie**, **de mogelijkheid om kanalen aan elkaar te koppelen** en enkele andere functies, die je hieronder kunt zien.\n\nIedereen op deze server krijgt **Premium** voordelen, zelfs als maar een persoon zich abonneert.",
@@ -381,7 +418,9 @@ export const locale = {
         premiumTurnOffMentionsInactive: "❌  Mentions worden **niet vervangen** in tekst meme's",
 
         btnDisable: "Uitzetten",
+        btnDisableTraining: "Training uitschakelen",
         btnEnable: "Aanzetten",
+        btnEnableTraining: "Training aanzetten",
         btnEraseData: "Gegevens wissen",
         btnSettings: "Instellingen",
         btnPremiumActive: "Premium is actief!",
@@ -394,6 +433,7 @@ export const locale = {
         btnUnlink: "Kanalen ontkoppelen",
         btnSetWatermark: "Watermerk instellen",
         btnRemoveWatermark: "Watermerk verwijderen",
+        btnGetPremium: "Premium - $1.99",
 
         loading: "Loading...",
 
@@ -454,6 +494,17 @@ export const locale = {
         settingsMemesTemplatesOptionHomerHidingTitle: "Гомер ховається",
         settingsMemesTemplatesOptionSpongebobHappyTitle: "Губка Боб щасливий",
 
+        settingsFooterDisabled: "🔴 Навчання **вимкнено** у цьому каналі!",
+        settingsFooterNotEnoughContext: "Повідомлень у пам'яті: **{{amount}}/30**  {{progressBar}}",
+        settingsFooterReady: "🧠 Зібрано достатньо контексту! **{{amount}} повідомлень**",
+        settingsButtonGeneralSettings: "Загальні",
+        settingsButtonMemeSettings: "Меми в чаті",
+        settingsButtonDataRetentionSettings: "Зберігання даних",
+        settingsButtonPremiumSettings: "Преміум",
+        enableDescriptionReady: "Налаштування завершено! Бот навчається на нових повідомленнях і почне генерувати меми, як тільки в його пам'яті буде ~30 повідомлень. Ви можете змінити налаштування в меню нижче.",
+        enableMessagesInMemory: "Повідомлень у пам'яті: **{{amount}}/30**",
+        enableMessagesInMemoryEnough: "Повідомлень у пам'яті: **{{amount}}**",
+
         settingsDataRetentionTitle: "Зберігання даних",
         settingsDataRetentionDescription: "Ви можете вибрати як довго бот буде зберігати дані, пов'язані з цим каналом. Якщо ви хочете видалити всі збережені повідомлення, ви також можете зробити це тут.",
 
@@ -477,14 +528,14 @@ export const locale = {
 
         settingsFooterChannelId: "ID каналу:",
 
-        settingsStatusEnabled: "🟢 Бот **увімкнений** і працює в цьому каналі!",
+        settingsStatusEnabled: "🎉 Бот готовий!",
         settingsStatusDisabled: "🔴 Бот **вимкнений** в цьому каналі!",
 
-        notEnoughContextTitle: "Недостатньо даних",
-        notEnoughContextDescription: "Бот не зміг згенерувати текст для мему. Це може бути через те, що у нього недостатньо даних. Спробуйте ще раз після відправки приблизно **{{amount}}** повідомлень.",
+        notEnoughContextTitle: "🤓 Бот все ще збирає контекст!",
+        notEnoughContextDescription: "Jstmemit не зміг згенерувати мем цього разу, тому що йому потрібно більше даних для навчання з цього каналу.\n\nПовідомлень у пам'яті: **{{amount}}/30**",
 
-        noPermissionsTitle: "У вас немає прав",
-        noPermissionsDescription: "Вам потрібно **{{permission}}** право, щоб використати цю команду.",
+        noPermissionsTitle: "Недостатньо прав!",
+        noPermissionsDescription: "Щоб використовувати цю команду, вам потрібно право **{{permission}}**.\nБудь ласка, попросіть адміністраторів вашого сервера виконати цю команду.",
 
         enableDescription: "Ви можете змінити це натиснувши на кнопку під повідомленням. Набагато більше параметрів доступні в меню налаштувань.",
 
@@ -515,7 +566,9 @@ export const locale = {
         premiumTurnOffMentionsInactive: "❌  Згадування **не замінюються** в текстових мемах",
 
         btnDisable: "Вимкнути",
+        btnDisableTraining: "Вимкнути навчання",
         btnEnable: "Увімкнути",
+        btnEnableTraining: "Увімкнути навчання",
         btnEraseData: "Очистити дані",
         btnSettings: "Налаштування",
         btnPremiumActive: "Преміум активний!",
@@ -528,6 +581,7 @@ export const locale = {
         btnUnlink: "Розв'язати канали",
         btnSetWatermark: "Встановити водяний знак",
         btnRemoveWatermark: "Видалити водяний знак",
+        btnGetPremium: "Преміум - $1.99",
 
         loading: "Загрузка...",
 
@@ -536,4 +590,152 @@ export const locale = {
 
         errorText: "Сталася помилка при генерації мему. Будь ласка, спробуйте ще раз пізніше."
     },
+    polish: {
+        settingsTitle: "Ustawienia bota",
+        settingsDescription: "To jest twój panel kontrolny bota. Tutaj możesz dostosować, jak bot zachowuje się na tym kanale.",
+        settingsFooterDisabled: "🔴 Trenowanie jest **wyłączone** na tym kanale!",
+        settingsFooterNotEnoughContext: "Wiadomości w pamięci: **{{amount}}/30**  {{progressBar}}",
+        settingsFooterReady: "🧠 Zebrano wystarczająco dużo kontekstu! **{{amount}} wiadomości**",
+
+        settingsButtonGeneralSettings: "Ogólne",
+        settingsButtonMemeSettings: "Generowanie memów",
+        settingsButtonDataRetentionSettings: "Przechowywanie danych",
+        settingsButtonPremiumSettings: "Premium",
+
+
+        settingsMemesTitle: "Generowanie memów",
+        settingsMemesDescription: "Ta sekcja zawiera opcje związane z losowymi memami na czacie. Możesz kontrolować, jak często bot będzie wysyłał memy, a także jakie memy chcesz widzieć.",
+        settingsMemesFrequencyTitle: "Częstotliwość",
+        settingsMemesFrequencyDescription: "Jak często bot powinien wysyłać losowego mema na czacie bez pytania?",
+
+        settingsMemesFrequencyOptionNeverTitle: "Nigdy",
+        settingsMemesFrequencyOptionNeverDescription: "Nie wysyłaj memów, chyba że na prośbę przez komendę",
+
+        settingsMemesFrequencyOptionHardlyEverTitle: "Bardzo rzadko",
+        settingsMemesFrequencyOptionHardlyEverDescription: "Raz na ~100 wiadomości",
+
+        settingsMemesFrequencyOptionRarelyTitle: "Rzadko",
+        settingsMemesFrequencyOptionRarelyDescription: "Raz na ~50 wiadomości",
+
+        settingsMemesFrequencyOptionSometimesTitle: "Czasami",
+        settingsMemesFrequencyOptionSometimesDescription: "Raz na ~20 wiadomości (zalecane)",
+
+        settingsMemesFrequencyOptionOftenTitle: "Często",
+        settingsMemesFrequencyOptionOftenDescription: "Raz na ~10 wiadomości",
+
+        settingsMemesTemplatesTitle: "Jakie memy będą wysyłane?",
+        settingsMemesTemplatesDescription: "Możesz wybrać, jakie memy chcesz widzieć na czacie. Możesz również wyłączyć niektóre z nich, jeśli ci się nie podobają.",
+
+        settingsMemesTemplatesOptionWojakPointingTitle: "Wojak wskazujący palcem",
+        settingsMemesTemplatesOptionUncannyTitle: "Uncanny",
+        settingsMemesTemplatesOptionSteppedInShitTitle: "Wdepnął w gówno",
+        settingsMemesTemplatesOptionSpeechbubbleTitle: "Dymek z tekstem",
+        settingsMemesTemplatesOptionLooksAtPaperAngryTitle: "Patrzy wściekle na kartkę",
+        settingsMemesTemplatesOptionFancyBearTitle: "Kubuś Puchatek",
+        settingsMemesTemplatesOptionCycleTitle: "Cykl",
+        settingsMemesTemplatesOptionGreentextTitle: "Greentext",
+        settingsMemesTemplatesOptionIsThisAPigeonTitle: "Czy to gołąb?",
+        settingsMemesTemplatesOptionYesChadTitle: "Tak Chad",
+        settingsMemesTemplatesOptionTextingTitle: "Pisze na telefonie",
+        settingsMemesTemplatesOptionConnorTitle: "Connor",
+        settingsMemesTemplatesOptionBigThumbsUpTitle: "Wielki kciuk w górę",
+        settingsMemesTemplatesOptionBuzzTitle: "Buzz Astral",
+        settingsMemesTemplatesOptionSpongebobTitle: "SpongeBob",
+        settingsMemesTemplatesOptionCryingTitle: "Płacze",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Absolutne kino",
+        settingsMemesTemplatesOptionLiveReactionTitle: "Live Reaction",
+        settingsMemesTemplatesOptionTf2HahahaTitle: "TF2 Hahaha",
+        settingsMemesTemplatesOptionPoliticalCompassTitle: "Kompas polityczny",
+        settingsMemesTemplatesOptionSleepyTitle: "Śpiący",
+        settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Dlaczego lubisz ten film?",
+        settingsMemesTemplatesOptionHomerHidingTitle: "Homer chowa się w krzakach",
+        settingsMemesTemplatesOptionSpongebobHappyTitle: "Szczęśliwy SpongeBob",
+
+        settingsDataRetentionTitle: "Przechowywanie danych",
+        settingsDataRetentionDescription: "Możesz wybrać, jak długo bot będzie przechowywał dane związane z tym kanałem. Jeśli chcesz usunąć wszystkie dane, możesz to również zrobić tutaj.",
+
+        settingsDataRetentionHowLongTitle: "Jak długo bot ma przechowywać dane?",
+        settingsDataRetentionHowLongDescription: "Po tej liczbie dni bot usunie zapisane wiadomości dla tego kanału. Więcej kontekstu = lepsze memy.",
+
+        settingsDataRetentionHowLongOption2DaysTitle: "2 dni",
+        settingsDataRetentionHowLongOption2DaysDescription: "Dla bardzo aktywnych kanałów",
+
+        settingsDataRetentionHowLongOption7DaysTitle: "7 dni",
+        settingsDataRetentionHowLongOption7DaysDescription: "Dla aktywnych kanałów",
+
+        settingsDataRetentionHowLongOption14DaysTitle: "14 dni",
+        settingsDataRetentionHowLongOption14DaysDescription: "Dla kanałów o średniej aktywności (zalecane)",
+
+        settingsDataRetentionHowLongOption30DaysTitle: "30 dni",
+        settingsDataRetentionHowLongOption30DaysDescription: "Dla kanałów o niskiej aktywności",
+
+        settingsDataRetentionUserImagesTitle: "Czy bot ma używać obrazków wysłanych przez użytkowników w memach?",
+        settingsDataRetentionUserImagesDescription: "Jeśli ustawione na **tak**, bot czasami zamiast awatarów będzie używał obrazków wysłanych przez użytkowników. Używane będą tylko obrazki wysłane w ciągu ostatnich 24 godzin. __Nie można wyłączyć z powodu nowych ograniczeń Intents Discorda, zostanie to wkrótce naprawione.__",
+
+        settingsFooterChannelId: "ID kanału:",
+
+        settingsStatusEnabled: "🎉 Bot jest gotowy!",
+        settingsStatusDisabled: "🔴 Trenowanie jest **wyłączone** na tym kanale!",
+
+        notEnoughContextTitle: "🤓 Bot wciąż zbiera kontekst!",
+        notEnoughContextDescription: "Jstmemit nie mógł tym razem wygenerować mema, ponieważ potrzebuje więcej danych treningowych z tego kanału.\n\nWiadomości w pamięci: **{{amount}}/30**",
+
+        noPermissionsTitle: "Brak uprawnień!",
+        noPermissionsDescription: "Aby użyć tej komendy, potrzebujesz uprawnienia **{{permission}}**.\nPoproś administratorów serwera o wykonanie tej akcji.",
+
+        enableDescription: "Bot jest wyłączony na tym kanale! Aby szanować Twoją prywatność, Jstmemit musi zostać włączony, zanim zacznie uczyć się z wiadomości. Kliknij przycisk poniżej, aby kontynuować.",
+        enableDescriptionReady: "Konfiguracja zakończona! Bot trenuje na nowych wiadomościach i zacznie generować memy, gdy tylko będzie miał ~30 wiadomości w pamięci. Możesz zmienić ustawienia w menu poniżej.",
+        enableMessagesInMemory: "Wiadomości w pamięci: **{{amount}}/30** ",
+        enableMessagesInMemoryEnough: "Wiadomości w pamięci: **{{amount}}** ",
+
+        premiumTitle: "Premium",
+        premiumDescription: "Możesz wesprzeć rozwój tego bota, subskrybując premium. Ten serwer otrzyma dostęp do **większej personalizacji**, **możliwości łączenia kanałów** i innych funkcji, które możesz zobaczyć poniżej. Więcej nowości już wkrótce!\n\nWszyscy na tym serwerze otrzymają korzyści **Premium**, nawet jeśli tylko jedna osoba wykupi subskrypcję.\n\n*Czasami Discord nie renderuje przycisku poprawnie, jeśli wyświetla się \"Produkt niedostępny\", wciąż możesz zdobyć premium w sklepie w profilu bota.*",
+        premiumDescriptionSettingsVariant: "Możesz wesprzeć rozwój tego bota, subskrybując premium. Ten serwer otrzyma dostęp do **większej personalizacji**, **możliwości łączenia kanałów** i innych funkcji. Więcej nowości już wkrótce!\n\nWszyscy na tym serwerze otrzymają korzyści **Premium**, nawet jeśli tylko jedna osoba wykupi subskrypcję.",
+        premiumStatusActive: "Premium jest **aktywne** na tym serwerze!",
+        premiumStatusInactive: "Premium jest **nieaktywne** na tym serwerze",
+
+        premiumCustomizationTitle: "Większa personalizacja",
+        premiumCustomizationDescription: "Te funkcje dadzą ci większą kontrolę nad tym, jak bot wygląda i zachowuje się na tym kanale. Funkcje są odizolowane na poziomie kanału, więc możesz mieć różne ustawienia na różnych kanałach.",
+
+        premiumSetOwnWatermarkTitle: "Ustaw własny znak wodny",
+        premiumSetOwnWatermarkDescription: "Domyślnie na memach nie ma znaków wodnych, ale z premium możesz ustawić logo swojego serwera jako znak wodny na memach. Zostanie on umieszczony w prawym dolnym rogu mema.",
+        premiumSetOwnWatermarkActive: "✔️ Twój własny znak wodny jest **ustawiony**!",
+        premiumSetOwnWatermarkInactive: "❌ Nie ustawiono znaku wodnego",
+
+        premiumLinkChannelsTogetherTitle: "Połącz dane treningowe kanałów",
+        premiumLinkChannelsTogetherDescription: "Jeśli nie chcesz zaśmiecać ogólnego czatu memami, możesz połączyć go z kanałem do \"floodu\". Bot będzie tam działał z danymi treningowymi z tego kanału, dzięki czemu będzie mógł generować memy na podstawie kontekstu tego kanału.",
+        premiumLinkChannelsTogetherActive: "✔️ <#{{thischannel}}> i <#{{floodchannel}}> są **połączone**!",
+        premiumLinkChannelsTogetherInactive: "❌ Żaden kanał nie jest połączony",
+        premiumSelectChannelPlaceholder: "🔗 Wybierz kanał do połączenia",
+
+        premiumTurnOffMentionsTitle: "Zamieniaj @wzmianki na nazwy użytkowników w memach tekstowych",
+        premiumTurnOffMentionsDescription: "Domyślnie bot może czasami wzmiankować użytkowników w memach tekstowych. Jednak wzmianki @everyone i @here są zawsze wyłączone, nawet w darmowej wersji.",
+        premiumTurnOffMentionsActive: "✔️ Wzmianki są **zamieniane** w memach tekstowych!",
+        premiumTurnOffMentionsInactive: "❌ Wzmianki **nie są zamieniane** w memach tekstowych",
+
+        btnDisable: "Wyłącz",
+        btnDisableTraining: "Wyłącz trenowanie",
+        btnEnable: "Włącz",
+        btnEnableTraining: "Włącz trenowanie",
+        btnEraseData: "Usuń dane",
+        btnSettings: "Otwórz ustawienia",
+        btnPremiumActive: "Premium jest aktywne!",
+        btnManagePremium: "Ustawienia premium",
+        btnLearnMore: "Dowiedz się więcej",
+        btnTurnOn: "Włącz",
+        btnTurnOff: "Wyłącz",
+        btnLink: "Połącz kanały",
+        btnLinkBelow: "Użyj menu poniżej, aby połączyć kanały",
+        btnUnlink: "Rozłącz kanały",
+        btnSetWatermark: "Ustaw znak wodny",
+        btnRemoveWatermark: "Usuń znak wodny",
+        btnGetPremium: "Premium - $1.99",
+
+        loading: "Ładowanie...",
+
+        yes: "Tak",
+        no: "Nie",
+
+        errorText: "Wystąpił błąd podczas generowania mema. Spróbuj ponownie później."
+    }
 }

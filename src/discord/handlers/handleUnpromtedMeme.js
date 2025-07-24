@@ -3,7 +3,7 @@ import {meme} from "../commands/meme.js";
 
 export const handleUnpromtedMeme = async (interaction, channelSettings) => {
     if (channelSettings) {
-        if (!channelSettings.is_enabled) {
+        if (!channelSettings.isEnabled) {
             return;
         }
         const amount = await getChannelMessagesAmount(interaction.channelId);

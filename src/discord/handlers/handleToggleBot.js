@@ -4,7 +4,7 @@ import {handlePermissionCheck} from "./handlePermissionCheck.js";
 import {analytics as posthog} from "../../../bot.js";
 
 export const handleToggleBot = async interaction => {
-    if (!await handlePermissionCheck(interaction, '32', 'MANAGE_GUILD')) {
+    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
         return;
     }
     try {
@@ -16,15 +16,15 @@ export const handleToggleBot = async interaction => {
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
-            channel_id: channelId,
-            is_enabled: action === "enable" ? 1 : 0,
+            channelId: channelId,
+            isEnabled: action === "enable" ? 1 : 0,
         };
 
         await posthog.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
-                isEnabled: newSettings.is_enabled,
+                isEnabled: newSettings.isEnabled,
             },
         })
 

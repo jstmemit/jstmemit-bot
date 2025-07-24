@@ -1,30 +1,55 @@
 import {afterEach, beforeEach, vi} from 'vitest'
 
-vi.mock('#src/database/initializePool.js', () => ({
-    pool: {
-        getConnection: vi.fn()
-    }
-}))
-
 export const mockConnection = {
     beginTransaction: vi.fn(),
     query: vi.fn(),
     commit: vi.fn(),
     rollback: vi.fn(),
-    release: vi.fn()
+    release: vi.fn(),
 }
 
+export const selectBuilder = {
+    from: vi.fn().mockReturnThis(),
+    where: vi.fn().mockReturnThis(),
+    limit: vi.fn(() => Promise.resolve([])),
+}
+
+export const mockDb = {
+    select: vi.fn(() => selectBuilder),
+    insert: vi.fn(() => ({
+        values: vi.fn(() => ({
+            onDuplicateKeyUpdate: vi.fn(() => Promise.resolve())
+        }))
+    })),
+    update: vi.fn(() => ({set: vi.fn(() => Promise.resolve())})),
+    delete: vi.fn(() => ({
+        where: vi.fn(() => Promise.resolve()),
+        from: vi.fn(() => Promise.resolve()),
+    })),
+    transaction: vi.fn((callback) => callback(mockDb)),
+    fn: {
+        count: vi.fn(() => 'COUNT(*)'),
+    },
+}
+
+vi.mock('#src/database/initializePool.js', () => ({
+    pool: {
+        getConnection: vi.fn(),
+    },
+    db: mockDb,
+}))
+
 export const mockChannelSettings = {
-    channel_id: '123456789',
-    is_enabled: true,
-    frequency: 60,
-    enabled_random_memes: true,
-    delete_messages_after: 3600,
-    use_user_images: false,
+    channelId: '123456789',
+    isEnabled: 1,
+    frequency: 5,
+    enabledRandomMemes: 'all',
+    deleteMessagesAfter: 14,
+    useUserImages: 1,
     language: 'english',
-    replace_mentions: true,
-    watermarkLogo: true,
-    linked_channel: '987654321'
+    replaceMentions: 0,
+    watermarkLogo: 0,
+    linkedChannel: null,
 }
 
 vi.mock('posthog-node', () => ({
@@ -73,14 +98,18 @@ vi.mock('@napi-rs/canvas', () => ({
         width: 0,
         height: 0,
     })),
-    loadImage: vi.fn(() => Promise.resolve({
-        width: 100,
-        height: 100,
-    })),
+    loadImage: vi.fn(() => Promise.resolve({width: 100, height: 100})),
 }))
 
 beforeEach(async () => {
     vi.clearAllMocks()
+
+    mockDb.transaction.mockImplementation((callback) => callback(mockDb))
+    mockDb.insert.mockImplementation(() => ({
+        values: vi.fn(() => ({
+            onDuplicateKeyUpdate: vi.fn(() => Promise.resolve())
+        }))
+    }))
 
     const {pool} = await import('#src/database/initializePool.js')
     pool.getConnection.mockResolvedValue(mockConnection)

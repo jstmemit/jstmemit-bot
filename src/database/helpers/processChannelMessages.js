@@ -1,5 +1,7 @@
 import {getChannelSettings} from "../queries/getChannelSettings.js";
-import {pool} from "../initializePool.js";
+import {db} from "#database/initializePool.js";
+import {channels} from "#database/schema/schema.js";
+import {and, eq} from "drizzle-orm";
 import {fetchChannelMessages} from "./fetchChannelMessages.js";
 
 export const processChannelMessages = async (channelId, visitedChannels, allMessages) => {
@@ -12,7 +14,7 @@ export const processChannelMessages = async (channelId, visitedChannels, allMess
     try {
         const channelSettings = await getChannelSettings(channelId);
 
-        if (!channelSettings || !channelSettings.is_enabled) {
+        if (!channelSettings || !channelSettings.isEnabled) {
             return;
         }
 
@@ -29,10 +31,15 @@ export const processChannelMessages = async (channelId, visitedChannels, allMess
             );
         }
 
-        const [linkingChannels] = await pool.query(
-            'SELECT channel_id FROM channels WHERE linked_channel = ? AND is_enabled = 1',
-            [channelId]
-        );
+        const linkingChannels = await db
+            .select()
+            .from(channels)
+            .where(
+                and(
+                    eq(channels.linkedChannel, channelId.toString()),
+                    eq(channels.isEnabled, 1)
+                )
+            );
 
         for (const row of linkingChannels) {
             await processChannelMessages(

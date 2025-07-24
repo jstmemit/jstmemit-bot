@@ -1,6 +1,9 @@
 import {readdirSync} from 'fs';
 import {dirname, join} from 'path';
 import {fileURLToPath} from 'url';
+import {startDataRoutine} from "#database/routines/startDataRoutine.js";
+import {sendKumaPing} from "#src/analytics/heartbeat/sendKumaPing.js";
+import {analytics} from "../../../bot.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -17,5 +20,17 @@ export const loadEvents = async (client) => {
         } else {
             client.on(event.name, (...args) => event.execute(...args));
         }
+    }
+
+    try {
+        startDataRoutine()
+    } catch (error) {
+        analytics.captureException(error);
+    }
+
+    try {
+        sendKumaPing();
+    } catch (error) {
+        analytics.captureException(error);
     }
 }

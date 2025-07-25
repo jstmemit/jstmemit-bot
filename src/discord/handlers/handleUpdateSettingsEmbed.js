@@ -33,7 +33,7 @@ export const handleUpdateSettingsEmbed = async (interaction, tab) => {
                 break;
             case "premium":
                 buttons = createSettingsButtonRow("premium", currentSettings?.language);
-                const hasPremium = await checkPremium(interaction.channelId);
+                const hasPremium = await checkPremium(interaction);
                 components = constructPremiumSettingsEmbed(currentSettings, interaction.channelId, hasPremium, buttons);
                 break;
             default:

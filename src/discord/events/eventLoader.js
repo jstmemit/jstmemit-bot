@@ -3,6 +3,7 @@ import {dirname, join} from 'path';
 import {fileURLToPath} from 'url';
 import {startDataRoutine} from "#database/routines/startDataRoutine.js";
 import {sendKumaPing} from "#src/analytics/heartbeat/sendKumaPing.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

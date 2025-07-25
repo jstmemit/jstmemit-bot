@@ -21,6 +21,7 @@ import {handleMemeTemplatesChange} from "#src/discord/handlers/handleMemeTemplat
 import {handleDataRetentionChange} from "#src/discord/handlers/handleDataRetentionChange.js";
 import {handleUseUserImagesChange} from "#src/discord/handlers/handleUseUserImagesChange.js";
 import {handleLanguageChange} from "#src/discord/handlers/handleLanguageChange.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export default {
     name: Events.InteractionCreate,

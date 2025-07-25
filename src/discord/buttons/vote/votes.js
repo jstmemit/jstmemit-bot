@@ -1,5 +1,6 @@
 import {parseCount} from "../parseReactions.js";
 import {buildRow} from "../buildRow.js";
+import {analytics as posthog} from "#src/analytics/initializeAnalytics.js";
 
 export const votes = new Map();
 
@@ -30,7 +31,7 @@ export const vote = async (interaction, analytics, id) => {
 
     if (id === 'like') {
         record.likes.add(interaction.user.id);
-        await analytics.capture({
+        await posthog.capture({
             distinctId: interaction.channelId,
             event: 'meme_liked',
             properties: {
@@ -42,7 +43,7 @@ export const vote = async (interaction, analytics, id) => {
 
     if (id === 'dislike') {
         record.dislikes.add(interaction.user.id);
-        await analytics.capture({
+        await posthog.capture({
             distinctId: interaction.channelId,
             event: 'meme_disliked',
             properties: {
@@ -52,7 +53,7 @@ export const vote = async (interaction, analytics, id) => {
         })
     }
 
-    await analytics.flush();
+    await posthog.flush();
 
     await interaction.update({
         components: [buildRow(newLikes, newDislikes, analytics)],

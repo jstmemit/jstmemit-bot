@@ -1,4 +1,4 @@
-import {Events} from 'discord.js';
+import {Events, MessageFlags} from 'discord.js';
 import {enable} from "#src/discord/commands/enable.js";
 import {settings} from "#src/discord/commands/settings.js";
 import {premium} from "#src/discord/commands/premium.js";

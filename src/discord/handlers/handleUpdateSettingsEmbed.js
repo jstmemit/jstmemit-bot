@@ -14,9 +14,13 @@ export const handleUpdateSettingsEmbed = async (interaction, tab) => {
         return;
     }
     try {
-        let components, buttons;
+        let components, buttons, currentSettings;
 
-        const currentSettings = await getChannelSettings(interaction.channelId);
+        currentSettings = await getChannelSettings(interaction.channelId);
+
+        if (!currentSettings) {
+            currentSettings = await getChannelSettings(interaction.channelId);
+        }
 
         switch (tab) {
             case "general":

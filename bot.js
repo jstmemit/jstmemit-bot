@@ -31,6 +31,18 @@ loadEvents(client);
 
 if (dotenv.config().parsed.TOPGG_TOKEN) {
 	const poster = AutoPoster(dotenv.config().parsed.TOPGG_TOKEN, client)
+
+	poster.on('posted', async (stats) => {
+		await analytics.capture({
+			distinctId: `topgg-${client.user.id}`,
+			event: 'topgg_stats_posted',
+			properties: {
+				...stats
+			},
+		});
+
+		await analytics.flush();
+	})
 }
 
 client.login(dotenv.config().parsed.DISCORD_TOKEN);

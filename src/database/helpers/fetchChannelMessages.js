@@ -7,7 +7,8 @@ export const fetchChannelMessages = async (channelId) => {
         const rows = await db
             .select()
             .from(messages)
-            .where(eq(messages.channelId, channelId));
+            .where(eq(messages.channelId, channelId))
+            .limit(5000);
 
         if (rows.length === 0) {
             return null;

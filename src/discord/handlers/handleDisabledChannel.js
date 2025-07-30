@@ -1,7 +1,7 @@
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {MessageFlags} from "discord.js";
 import {constructEnableEmbed} from "../embeds/constructEnableEmbed.js";
-import {analytics as posthog} from "../../../bot.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const handleDisabledChannel = async (interaction) => {
     const channelSettings = await getChannelSettings(interaction.channelId);
@@ -13,7 +13,7 @@ export const handleDisabledChannel = async (interaction) => {
         isEnabled = channelSettings.isEnabled
     }
 
-    await posthog.capture({
+    await analytics.capture({
         distinctId: interaction.channelId,
         event: 'answer_failed',
         properties: {
@@ -21,7 +21,7 @@ export const handleDisabledChannel = async (interaction) => {
         },
     })
 
-    await posthog.flush()
+    await analytics.flush()
 
     interaction.reply({
         flags: MessageFlags.IsComponentsV2,

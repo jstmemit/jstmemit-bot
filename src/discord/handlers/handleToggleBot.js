@@ -1,7 +1,7 @@
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
 import {handlePermissionCheck} from "./handlePermissionCheck.js";
-import {analytics as posthog} from "../../../bot.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const handleToggleBot = async interaction => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
@@ -20,7 +20,7 @@ export const handleToggleBot = async interaction => {
             isEnabled: action === "enable" ? 1 : 0,
         };
 
-        await posthog.capture({
+        await analytics.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
@@ -28,7 +28,7 @@ export const handleToggleBot = async interaction => {
             },
         })
 
-        await posthog.flush()
+        await analytics.flush()
 
         await changeChannelSettings(newSettings);
     } catch (error) {

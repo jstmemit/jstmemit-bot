@@ -4,8 +4,8 @@ import {generateText} from "../text/markov/helpers/generateText.js";
 import {addText} from "./helpers/addText.js";
 import {getRandomImage} from "../../discord/getRandomImage.js";
 import {overlayImage} from "./helpers/overlayImage.js";
-import {analytics} from "../../../bot.js";
 import {memeTemplates} from "../../../config/memeTemplates.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export class MemeGenerator {
     constructor(templateName) {
@@ -18,21 +18,37 @@ export class MemeGenerator {
     }
 
     async generate(channelId, serverId, interaction, providedImage = null) {
+
+        const start = performance.now();
+        const timings = {};
+
         try {
+            const channelMessages_start = performance.now();
             const channelMessages = this.config.requiresChannelMessages
                 ? await getChannelMessages(channelId)
                 : null;
+            timings.channel_messages_fetch_ms = performance.now() - channelMessages_start;
 
+            const texts_start = performance.now();
             const texts = await this.generateTexts(channelMessages);
+            timings.texts_generation_ms = performance.now() - texts_start;
 
+            const images_start = performance.now();
             const images = await this.processImages(serverId, channelId, interaction, providedImage);
 
             let result = await this.determineBaseImage(images, providedImage);
             result = await this.overlayImages(result, images);
 
             result = await this.addTexts(result, texts);
+            timings.images_processing_ms = performance.now() - images_start;
 
-            await this.trackAnalytics(channelId);
+            timings.total_ms = performance.now() - start;
+            await this.trackAnalytics(channelId, timings, {
+                template: this.templateName,
+                textsCount: texts.length,
+                imagesCount: images.length,
+                channelMessagesCount: channelMessages ? channelMessages.length : 0
+            });
 
             return result;
 
@@ -147,12 +163,14 @@ export class MemeGenerator {
         return result;
     }
 
-    async trackAnalytics(channelId) {
+    async trackAnalytics(channelId, timings, meta) {
         await analytics.capture({
             distinctId: channelId,
             event: 'meme_generated',
             properties: {
                 template: this.templateName,
+                ...timings,
+                ...meta,
             },
         });
 

@@ -4,7 +4,7 @@ import {generatePoll} from "#src/generation/text/markov/generatePoll.js";
 
 export const settings = {
     cache: {
-        memeTemplatesAnalyticsCache: 60 * 60 * 1000,
+        memeTemplatesAnalyticsCache: 480 * 60 * 1000,
         channelImagesCache: 1 * 60 * 1000,
     },
     values: {

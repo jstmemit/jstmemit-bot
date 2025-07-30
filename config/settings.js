@@ -10,6 +10,16 @@ export const settings = {
     values: {
         baseWeight: 0.3,
     },
+    activeSurveys: [
+        {
+            id: "01985aef-1eb5-0000-5d58-cc519a423f9a",
+            localizedNameTranslationKey: "feedback_survey_august_2025",
+            conditions: {
+                // minMessages: 500,
+                minMessages: 30,
+            }
+        }
+    ],
     canvas: {
         maxFileSize: 7 * 1024 * 1024,
         maxDimension: 2048,

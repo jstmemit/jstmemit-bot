@@ -10,6 +10,7 @@ import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {applyWatermark} from "../../generation/visual/helpers/applyWatermark.js";
 import {checkPremium} from "../helpers/checkPremium.js";
 import {t} from "#src/discord/i18n/utils.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const meme = async (interaction, isRegenerate, isUnpromted) => {
     let channelId, guildId;
@@ -55,6 +56,7 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
                     ephemeral: false
                 });
             } catch (deferError) {
+                analytics.captureException(deferError);
                 console.error('Failed to defer reply:', deferError.message);
                 return;
             }
@@ -63,10 +65,12 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         const [config, image] = await Promise.all([
             withTimeout(getConfig(), 14000).catch(err => {
                 console.error('Config fetch failed:', err.message);
+                analytics.captureException(err);
                 return [];
             }),
             withTimeout(getRandomImage(interaction, channelId), 10000).catch(err => {
                 console.error('Image fetch failed:', err.message);
+                analytics.captureException(err);
                 return null;
             })
         ]);
@@ -183,6 +187,7 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
             }
         } catch (replyError) {
             console.error('Failed to send error message:', replyError.message);
+            analytics.captureException(replyError);
         }
     }
 };

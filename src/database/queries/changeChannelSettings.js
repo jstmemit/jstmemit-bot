@@ -1,7 +1,11 @@
 import {db} from "#database/initializePool.js";
 import {channels} from "#database/schema/schema.js";
+import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const changeChannelSettings = async (channelSettings) => {
+
+    let timer = performance.now();
+
     const {
         channelId,
         isEnabled,
@@ -44,6 +48,16 @@ export const changeChannelSettings = async (channelSettings) => {
                         linkedChannel
                     }
                 });
+        });
+
+        timer = performance.now() - timer;
+        await analytics.capture({
+            distinctId: channelId,
+            event: 'database_metrics',
+            properties: {
+                action: 'changeChannelSettings',
+                duration: timer,
+            },
         });
     } catch (error) {
         console.error('Database error:', error);

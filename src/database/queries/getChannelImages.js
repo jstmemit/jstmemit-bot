@@ -6,13 +6,14 @@ import {validateImage} from "../utils.js";
 const imageCache = new Map();
 let CACHE_TTL = 1000 * 60 * 60;
 
-if (settings) {
-    CACHE_TTL = settings.cache && settings.cache.channelImagesCache
-        ? settings.cache.channelImagesCache
-        : CACHE_TTL;
-}
-
 export const getChannelImages = async (channelId) => {
+    if (settings) {
+        CACHE_TTL = settings.cache && settings.cache.channelImagesCache
+            ? settings.cache.channelImagesCache
+            : CACHE_TTL;
+    }
+
+
     const cached = imageCache.get(channelId);
     if (cached && (Date.now() - cached.timestamp) < CACHE_TTL) {
         return cached.data;

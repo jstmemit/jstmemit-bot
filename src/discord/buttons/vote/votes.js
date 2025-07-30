@@ -1,6 +1,6 @@
 import {parseCount} from "../parseReactions.js";
 import {buildRow} from "../buildRow.js";
-import {analytics as posthog} from "../../../../bot.js";
+import {analytics as posthog} from "#src/analytics/initializeAnalytics.js";
 
 export const votes = new Map();
 

@@ -1,6 +1,7 @@
 import {getTemplateFiles} from "./helpers/getTemplateFiles.js";
 import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
-import {generateText} from "../text/markov/helpers/generateText.js";
+import {generateText} from "../text/markov/generateText.js";
+import {transformText} from "#src/generation/text/openai/transformText.js";
 import {addText} from "./helpers/addText.js";
 import {getRandomImage} from "../../discord/getRandomImage.js";
 import {overlayImage} from "./helpers/overlayImage.js";
@@ -8,9 +9,10 @@ import {memeTemplates} from "../../../config/memeTemplates.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export class MemeGenerator {
-    constructor(templateName) {
+    constructor(templateName, strategy = 'llm') {
         this.config = memeTemplates[templateName];
         this.templateName = templateName;
+        this.strategy = strategy
 
         if (!this.config) {
             throw new Error(`Template ${templateName} not found`);
@@ -59,6 +61,24 @@ export class MemeGenerator {
     }
 
     async generateTexts(channelMessages) {
+        if (this.strategy === 'llm') {
+
+            if (channelMessages && channelMessages.length > 20) {
+                const randomMessages = [];
+                for (let i = 0; i < 20; i++) {
+                    const randomIndex = Math.floor(Math.random() * channelMessages.length);
+                    randomMessages.push(channelMessages[randomIndex]);
+                }
+                channelMessages = randomMessages;
+            }
+
+            return await this.generateTextsWithLLM(channelMessages);
+        } else {
+            return await this.generateTextsWithMarkov(channelMessages);
+        }
+    }
+
+    async generateTextsWithMarkov(channelMessages) {
         const texts = [];
 
         for (const textConfig of this.config.texts) {
@@ -68,6 +88,30 @@ export class MemeGenerator {
                 textConfig.maxLength
             );
             texts.push({key: textConfig.key, text});
+        }
+
+        return texts;
+    }
+
+    async generateTextsWithLLM(channelMessages) {
+        const templateData = {
+            name: this.templateName,
+            description: this.config.description || '',
+            textRequirements: this.config.texts.map(textConfig => ({
+                key: textConfig.key,
+                minLength: textConfig.minLength,
+                maxLength: textConfig.maxLength,
+            }))
+        };
+
+        const generatedTexts = await transformText(channelMessages, templateData);
+
+        const texts = [];
+        for (let i = 0; i < this.config.texts.length && i < generatedTexts.length; i++) {
+            texts.push({
+                key: this.config.texts[i].key,
+                text: generatedTexts[i]
+            });
         }
 
         return texts;

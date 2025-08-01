@@ -1,5 +1,5 @@
-import {getChannelMessages} from "../../../database/queries/getChannelMessages.js"
-import {generateText} from "./helpers/generateText.js";
+import {getChannelMessages} from "#database/queries/getChannelMessages.js"
+import {generateText} from "./markov/generateText.js";
 
 export const generatePoll = async (channelId) => {
     const channelMessages = await getChannelMessages(channelId);

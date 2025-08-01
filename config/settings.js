@@ -1,6 +1,6 @@
 import {createMemeGenerator} from "../src/generation/visual/memeFactory.js";
-import {generateGreentext} from "#src/generation/text/markov/generateGreentext.js";
-import {generatePoll} from "#src/generation/text/markov/generatePoll.js";
+import {generateGreentext} from "#src/generation/text/generateGreentext.js";
+import {generatePoll} from "#src/generation/text/generatePoll.js";
 
 export const settings = {
     cache: {

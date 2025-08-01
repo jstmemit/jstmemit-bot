@@ -10,11 +10,22 @@ export const settings = {
     values: {
         baseWeight: 0.3,
     },
+    activeSurveys: [
+        {
+            id: "019865b8-3dec-0000-56ab-e4825867a78b",
+            conditions: {
+                minMessages: 250,
+            }
+        }
+    ],
     canvas: {
         maxFileSize: 7 * 1024 * 1024,
         maxDimension: 2048,
         minDimension: 1,
         emojiYOffset: 20,
+    },
+    analytics: {
+        posthogBaseUrl: 'https://eu.i.posthog.com',
     },
     kumaUptime: {
         pingUrl: 'http://192.168.1.137:3001/api/push/NHOKlHX89O?status=up&msg=OK&ping=',

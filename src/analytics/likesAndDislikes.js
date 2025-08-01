@@ -1,9 +1,10 @@
 import axios from 'axios';
 import dotenv from "dotenv";
+import {settings} from "#config/settings.js";
 
-const POSTHOG_PROJECT_ID = dotenv.config().parsed.POSTHOG_PROJECT_ID;
-const POSTHOG_PERSONAL_API_KEY = dotenv.config().parsed.POSTHOG_WRITE_KEY;
-const POSTHOG_BASE_URL = 'https://eu.i.posthog.com';
+const posthogProjectId = dotenv.config().parsed.POSTHOG_PROJECT_ID;
+const posthogWriteKey = dotenv.config().parsed.POSTHOG_WRITE_KEY;
+const posthogBaseUrl = settings?.analytics?.posthogBaseUrl || 'https://eu.i.posthog.com';
 
 export const getAnalyticsData = async (days = 30) => {
     try {
@@ -13,12 +14,12 @@ export const getAnalyticsData = async (days = 30) => {
         let allDislikedEvents = [];
         let nextUrl = null;
 
-        nextUrl = `${POSTHOG_BASE_URL}/api/projects/${POSTHOG_PROJECT_ID}/events/?event=meme_liked&after=${startDate}&limit=100`;
+        nextUrl = `${posthogBaseUrl}/api/projects/${posthogProjectId}/events/?event=meme_liked&after=${startDate}&limit=100`;
 
         do {
             const response = await axios.get(nextUrl, {
                 headers: {
-                    'Authorization': `Bearer ${POSTHOG_PERSONAL_API_KEY}`,
+                    'Authorization': `Bearer ${posthogWriteKey}`,
                 },
             });
 
@@ -26,12 +27,12 @@ export const getAnalyticsData = async (days = 30) => {
             nextUrl = response.data.next;
         } while (nextUrl);
 
-        nextUrl = `${POSTHOG_BASE_URL}/api/projects/${POSTHOG_PROJECT_ID}/events/?event=meme_disliked&after=${startDate}&limit=100`;
+        nextUrl = `${posthogBaseUrl}/api/projects/${posthogProjectId}/events/?event=meme_disliked&after=${startDate}&limit=100`;
 
         do {
             const response = await axios.get(nextUrl, {
                 headers: {
-                    'Authorization': `Bearer ${POSTHOG_PERSONAL_API_KEY}`,
+                    'Authorization': `Bearer ${posthogWriteKey}`,
                 },
             });
 

@@ -20,7 +20,6 @@ export const checkSurveyConditions = async (channelId, authorId) => {
             if (channelMessagesAmount < survey.conditions.minMessages) return null;
 
             const canUserParticipate = await hasUserCompletedSurvey(authorId, survey.id);
-            console.log(canUserParticipate)
             if (!canUserParticipate) return null;
 
             return {

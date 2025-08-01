@@ -12,10 +12,9 @@ export const settings = {
     },
     activeSurveys: [
         {
-            id: "019864bd-3394-0000-1fe4-16ad794693d7",
+            id: "019865b8-3dec-0000-56ab-e4825867a78b",
             conditions: {
-                // minMessages: 500,
-                minMessages: 30,
+                minMessages: 250,
             }
         }
     ],

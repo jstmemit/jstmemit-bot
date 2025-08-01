@@ -1,7 +1,8 @@
-import {getSurveysData} from "#src/analytics/surveys/getSurveysData.js";
-import {settings} from "#config/settings.js";
-import {getChannelMessagesAmount} from "#database/queries/getChannelMessagesAmount.js";
+import {constructSurveyEmbed} from "#src/discord/embeds/surveys/constructSurveyEmbed.js";
 import {hasUserCompletedSurvey} from "#src/analytics/surveys/hasUserCompletedSurvey.js";
+import {getChannelMessagesAmount} from "#database/queries/getChannelMessagesAmount.js";
+import {settings} from "#config/settings.js";
+import {getSurveysData} from "#src/analytics/surveys/getSurveysData.js";
 
 export const checkSurveyConditions = async (channelId, authorId) => {
     const surveysData = await getSurveysData();
@@ -22,9 +23,26 @@ export const checkSurveyConditions = async (channelId, authorId) => {
             console.log(canUserParticipate)
             if (!canUserParticipate) return null;
 
-            return survey;
+            return {
+                settingsData: survey,
+                posthogData: surveyData
+            };
         })
     );
 
-    return surveyChecks.filter(survey => survey !== null);
+    const validSurveys = surveyChecks.filter(survey => survey !== null);
+
+    if (validSurveys.length === 0) {
+        return [];
+    }
+
+    const embed = await constructSurveyEmbed(
+        validSurveys[0].settingsData.id,
+        authorId,
+        0,
+        validSurveys[0].posthogData,
+        channelId
+    );
+
+    return embed;
 };

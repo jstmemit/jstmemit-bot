@@ -121,6 +121,17 @@ export const locale = {
         premiumTurnOffMentionsActive: "✔️  Mentions are **being replaced** in text memes!",
         premiumTurnOffMentionsInactive: "❌  Mentions are **not being replaced** in text memes",
 
+        surveyDescription: "You can help us improve Jstmemit by answering a few questions, it won't take more than a minute.",
+        surveyProgress: "Question",
+        surveyCompleted: "Survey completed!",
+        surveyCompletedDescription: "Thank you for answering the questions! Your feedback is very important to us and will help us improve Jstmemit.",
+        surveyTextResponseTitle: "Your response",
+        surveyTextResponseLabel: "Feedback or suggestions",
+        surveySelectOptionsPlaceholder: "Select one or more options...",
+        surveySelectOptionPlaceholder: "Select an option...",
+        surveyWriteYourResponse: "✏️ Write your response",
+        surveyOpenLink: "🔗 Open Link",
+
         btnDisable: "Disable",
         btnDisableTraining: "Disable training",
         btnEnable: "Enable",

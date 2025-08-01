@@ -19,6 +19,8 @@ export const submitSurveyResponse = async (surveyId, questionId, answer, userId)
             properties: properties
         });
 
+        await analytics.flush();
+
         return {success: true};
     } catch (error) {
         analytics.captureException(error);

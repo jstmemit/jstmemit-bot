@@ -1,4 +1,4 @@
-import {Events, MessageFlags} from 'discord.js';
+import {Events, MessageFlags, TextInputStyle} from 'discord.js';
 import {enable} from "#src/discord/commands/enable.js";
 import {settings} from "#src/discord/commands/settings.js";
 import {premium} from "#src/discord/commands/premium.js";
@@ -22,6 +22,9 @@ import {handleDataRetentionChange} from "#src/discord/handlers/handleDataRetenti
 import {handleUseUserImagesChange} from "#src/discord/handlers/handleUseUserImagesChange.js";
 import {handleLanguageChange} from "#src/discord/handlers/handleLanguageChange.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {handleSurveyTextResponse} from "#src/discord/handlers/handleSurveyTextResponse.js";
+import {handleSurveySelectInteraction} from "#src/discord/handlers/handleSurveySelectInteraction.js";
+import {handleSurveyButtonInteraction} from "#src/discord/handlers/handleSurveyButtonInteraction.js";
 
 export default {
     name: Events.InteractionCreate,
@@ -57,6 +60,11 @@ export default {
 
             if (interaction.isButton()) {
                 const {customId} = interaction;
+
+                if (customId.startsWith("rt-") || customId.startsWith("op-") || customId.startsWith("lk-")) {
+                    await handleSurveyButtonInteraction(interaction);
+                    return;
+                }
 
                 if (customId.startsWith("enable-") || customId.startsWith("disable-")) {
                     await handleToggleBot(interaction);
@@ -130,7 +138,7 @@ export default {
                 }
 
                 const id = customId.split('_')[0];
-                const analytics = customId.split('_')[1];
+                const analyticsId = customId.split('_')[1];
 
                 switch (id) {
                     case 'regenerate':
@@ -144,12 +152,17 @@ export default {
                 }
 
                 if (id === 'like' || id === 'dislike') {
-                    await vote(interaction, analytics, id);
+                    await vote(interaction, analyticsId, id);
                 }
             }
 
             if (interaction.isStringSelectMenu()) {
                 const {customId} = interaction;
+
+                if (customId.startsWith("rs-") || customId.startsWith("mc-") || customId.startsWith("sc-")) {
+                    await handleSurveySelectInteraction(interaction);
+                    return;
+                }
 
                 if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
                     return;
@@ -176,6 +189,13 @@ export default {
                         await handleLanguageChange(interaction);
                         await handleUpdateSettingsEmbed(interaction, "general");
                         break;
+                }
+            }
+
+            if (interaction.isModalSubmit()) {
+                if (interaction.customId.startsWith("survey-text-")) {
+                    await handleSurveyTextResponse(interaction);
+                    return;
                 }
             }
 

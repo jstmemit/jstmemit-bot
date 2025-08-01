@@ -12,8 +12,7 @@ export const settings = {
     },
     activeSurveys: [
         {
-            id: "01985aef-1eb5-0000-5d58-cc519a423f9a",
-            localizedNameTranslationKey: "feedback_survey_august_2025",
+            id: "01985d26-57d6-0000-b806-15ffd1b75b7d",
             conditions: {
                 // minMessages: 500,
                 minMessages: 30,

@@ -9,11 +9,10 @@ import {memeTemplates} from "../../../config/memeTemplates.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export class MemeGenerator {
-    constructor(templateName, strategy = 'markov') {
+    constructor(templateName) {
         this.config = memeTemplates[templateName];
         this.templateName = templateName;
         this.description = this.config.description || '';
-        this.strategy = strategy
 
         if (!this.config) {
             throw new Error(`Template ${templateName} not found`);
@@ -32,8 +31,10 @@ export class MemeGenerator {
                 : null;
             timings.channel_messages_fetch_ms = performance.now() - channelMessages_start;
 
+            const engine = await analytics.getFeatureFlag('v2-alpha-meme-engine', channelId)
+
             const texts_start = performance.now();
-            const texts = await this.generateTexts(channelMessages);
+            const texts = await this.generateTexts(channelMessages, engine);
             timings.texts_generation_ms = performance.now() - texts_start;
 
             const images_start = performance.now();
@@ -61,8 +62,8 @@ export class MemeGenerator {
         }
     }
 
-    async generateTexts(channelMessages) {
-        if (this.strategy === 'llm') {
+    async generateTexts(channelMessages, engine = 'markov') {
+        if (engine === 'v2-alpha') {
 
             if (channelMessages && channelMessages?.length > 20) {
                 const randomMessages = [];
@@ -212,6 +213,7 @@ export class MemeGenerator {
         await analytics.capture({
             distinctId: channelId,
             event: 'meme_generated',
+            sendFeatureFlags: true,
             properties: {
                 template: this.templateName,
                 ...timings,

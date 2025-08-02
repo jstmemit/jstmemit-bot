@@ -9,9 +9,10 @@ import {memeTemplates} from "../../../config/memeTemplates.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export class MemeGenerator {
-    constructor(templateName, strategy = 'llm') {
+    constructor(templateName, strategy = 'markov') {
         this.config = memeTemplates[templateName];
         this.templateName = templateName;
+        this.description = this.config.description || '';
         this.strategy = strategy
 
         if (!this.config) {
@@ -63,10 +64,10 @@ export class MemeGenerator {
     async generateTexts(channelMessages) {
         if (this.strategy === 'llm') {
 
-            if (channelMessages && channelMessages.length > 20) {
+            if (channelMessages && channelMessages?.length > 20) {
                 const randomMessages = [];
                 for (let i = 0; i < 20; i++) {
-                    const randomIndex = Math.floor(Math.random() * channelMessages.length);
+                    const randomIndex = Math.floor(Math.random() * channelMessages?.length);
                     randomMessages.push(channelMessages[randomIndex]);
                 }
                 channelMessages = randomMessages;
@@ -121,7 +122,7 @@ export class MemeGenerator {
         const images = [];
         const randomImageCache = [];
 
-        for (let i = 0; i < this.config.images.length; i++) {
+        for (let i = 0; i < this.config.images?.length; i++) {
             const imageConfig = this.config.images[i];
             let image;
 

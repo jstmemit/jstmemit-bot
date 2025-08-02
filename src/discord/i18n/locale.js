@@ -10,6 +10,7 @@ export const locale = {
         settingsButtonMemeSettings: "Meme Generation",
         settingsButtonDataRetentionSettings: "Data Retention",
         settingsButtonPremiumSettings: "Premium",
+        settingsButtonBetaSettings: "Beta Features",
 
         settingsMemesTitle: "Meme Generation",
         settingsMemesDescription: "This section contains options related to random memes in the chat. You can control how often bot is going to send memes and also what memes do you want to see.",
@@ -217,6 +218,7 @@ export const locale = {
         settingsButtonMemeSettings: "Мемы в чате",
         settingsButtonDataRetentionSettings: "Хранение данных",
         settingsButtonPremiumSettings: "Премиум",
+        settingsButtonBetaSettings: "Бета функции",
 
         settingsDataRetentionTitle: "Хранение данных",
         settingsDataRetentionDescription: "Вы можете выбрать как долго бот будет хранить данные связанные с этим каналом. Если вы хотите удалить все сохраненные сообщения, вы также можете сделать это здесь.",

@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
+import {analytics} from "#src/analytics/initializeAnalytics.js";
+
 import {ActivityType, Client, GatewayIntentBits, MessageFlags} from 'discord.js';
 import {AutoPoster} from 'topgg-autoposter';
 import {loadEvents} from "#src/discord/events/eventLoader.js";
-import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const client = new Client({
 	intents: [

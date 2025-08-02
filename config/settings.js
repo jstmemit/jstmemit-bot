@@ -73,77 +73,95 @@ export const settings = {
             premium: {
                 id: "1396186471957925928",
                 name: "<:premium:1396186471957925928>"
+            },
+            beta: {
+                id: "1401219927104290846",
+                name: "<:betafeatures:1401219927104290846>"
             }
         }
     },
     templates: [
         {
             name: "generateQuote",
+            description: "Quote with user image as background",
             generator: createMemeGenerator('quote'),
             requiresImage: true,
         },
         {
             name: "generateBottomCaption",
+            description: "Bottom caption meme with user image as background",
             generator: createMemeGenerator('bottomcaption'),
             requiresImage: true,
         },
         {
             name: "generateFancyBear",
+            description: "Winnie the Pooh comparing two things",
             generator: createMemeGenerator('fancybear'),
             requiresImage: false,
         },
         {
             name: "generateUncanny",
+            description: "Uncanny meme with two face expressions (one is happy and second is sad)",
             generator: createMemeGenerator('uncanny'),
             requiresImage: false,
         },
         {
             name: "generateLooksAtPaperAngry",
+            description: "Looks at paper angrily meme",
             generator: createMemeGenerator('looksatpaperangry'),
             requiresImage: false,
         },
         {
             name: "generateCycle",
+            description: "Cycle meme with things going in a loop",
             generator: createMemeGenerator('cycle'),
             requiresImage: false,
         },
         {
             name: "generateSteppedInShit",
+            description: "What would character that stepped in shit say?",
             generator: createMemeGenerator('steppedinshit'),
             requiresImage: false,
         },
         {
             name: "generateWojackPoint",
+            description: "Words that wojak says when pointing on a user image",
             generator: createMemeGenerator('wojackpoint'),
             requiresImage: false,
         },
         {
             name: "generateIsThisAPigeon",
+            description: "Words that a guy says pointing on a butterfly that is replaced with a user image",
             generator: createMemeGenerator('isthisapigeon'),
             requiresImage: false,
         },
         {
             name: "generateYesChad",
+            description: "Chad reacts to two things, one is bad, second is good",
             generator: createMemeGenerator('yeschad'),
             requiresImage: false,
         },
         {
             name: "generateTexting",
+            description: "Two people text each other",
             generator: createMemeGenerator('texting'),
             requiresImage: false,
         },
         {
             name: "generateConnor",
+            description: "Connor from Detroit is presented with 4 options and he chooses the 4th one",
             generator: createMemeGenerator('connor'),
             requiresImage: false,
         },
         {
             name: "generateBuzz",
+            description: "Buzz Lightyear tells something weird and other guy is confused",
             generator: createMemeGenerator('buzz'),
             requiresImage: false,
         },
         {
             name: "generateExplains",
+            description: "Explains something with a user image",
             generator: createMemeGenerator('explains'),
             requiresImage: false,
         },
@@ -154,6 +172,7 @@ export const settings = {
         },
         {
             name: "generateSpongebob",
+            description: "Spongebob burns a user image and says something",
             generator: createMemeGenerator('spongebob'),
             requiresImage: false,
         },
@@ -169,6 +188,7 @@ export const settings = {
         },
         {
             name: "generateSpongebobHappy",
+            description: "Spongebob is happy and squidward is very sad",
             generator: createMemeGenerator('spongebobhappy'),
             requiresImage: false,
         },
@@ -184,16 +204,19 @@ export const settings = {
         },
         {
             name: "generateBigThumbsUp",
+            description: "One guy tells a group something, they don't care, give him a thumbs up and leave",
             generator: createMemeGenerator('bigthumbsup'),
             requiresImage: false,
         },
         {
             name: "generateTf2Hahaha",
+            description: "Doc tells Heavy a funny thing and they both laugh",
             generator: createMemeGenerator('tf2hahaha'),
             requiresImage: false,
         },
         {
             name: "generateHomerHiding",
+            description: "Homer hiding in the bushes",
             generator: createMemeGenerator('homerhiding'),
             requiresImage: false,
         },

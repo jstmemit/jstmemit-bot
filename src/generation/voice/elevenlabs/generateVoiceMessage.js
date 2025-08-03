@@ -5,7 +5,11 @@ import {settings} from "#config/settings.js";
 
 export const generateVoiceMessage = async (channelId) => {
     const channelMessages = await getChannelMessages(channelId);
-    const text = await generateText(channelMessages, 0, 15);
+    let text = await generateText(channelMessages, 0, 15);
+
+    if (text.length > 250) {
+        text = text.substring(0, 250);
+    }
 
     const voice = settings.voices[Math.floor(Math.random() * settings.voices.length)];
 

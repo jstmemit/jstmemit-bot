@@ -90,7 +90,7 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
             25000
         );
 
-        if (result instanceof Buffer) {
+        if (result instanceof Buffer && functionName.toLowerCase().includes("voice")) {
             if (!isUnpromted) {
                 await interaction.editReply({
                     content: `${mention}`,

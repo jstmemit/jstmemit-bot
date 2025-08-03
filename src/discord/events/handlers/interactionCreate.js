@@ -25,6 +25,7 @@ import {analytics} from "#src/analytics/initializeAnalytics.js";
 import {handleSurveyTextResponse} from "#src/discord/handlers/handleSurveyTextResponse.js";
 import {handleSurveySelectInteraction} from "#src/discord/handlers/handleSurveySelectInteraction.js";
 import {handleSurveyButtonInteraction} from "#src/discord/handlers/handleSurveyButtonInteraction.js";
+import {handleEngineChange} from "#src/discord/handlers/handleEngineChange.js";
 
 export default {
     name: Events.InteractionCreate,
@@ -188,6 +189,9 @@ export default {
                     case "select-language":
                         await handleLanguageChange(interaction);
                         await handleUpdateSettingsEmbed(interaction, "general");
+                        break;
+                    case "select-betaengine":
+                        await handleEngineChange(interaction);
                         break;
                 }
             }

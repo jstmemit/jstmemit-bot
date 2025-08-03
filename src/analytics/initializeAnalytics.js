@@ -10,8 +10,8 @@ try {
         {
             host: 'https://eu.i.posthog.com',
             enableExceptionAutocapture: true,
-            personalApiKey: dotenv.config().parsed.POSTHOG_WRITE_KEY,
-            featureFlagsPollingInterval: 30000
+            // personalApiKey: dotenv.config().parsed.POSTHOG_WRITE_KEY,
+            // featureFlagsPollingInterval: 30000
         }
     );
 } catch (error) {

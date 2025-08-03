@@ -81,6 +81,18 @@ export const locale = {
         settingsDataRetentionUserImagesTitle: "Should bot use user sent images in memes?",
         settingsDataRetentionUserImagesDescription: "If set to **yes**, sometimes instead of using avatars it will use user sent images instead. Only images sent no more than 24 hours ago will be used. __Cannot be disabled due to new Intents limitations, will be fixes soon.__",
 
+        settingsBetaTitle: "Beta Features",
+        settingsBetaDescription: "These features are not fully tested and may not work as expected. If you find any bugs, please report them in the [Support server](https://discord.gg/n8DFFcnwDt) or email them to [support@jstmemit.com](mailto:support@jstmemit.com). Some changes here may take more than 30 seconds to apply, so please be patient.",
+
+        settingsBetaEngineTitle: "Meme engine",
+        settingsBetaEngineDescription: "Based on metrics bot will choose a better engine for your channel, but you can overwrite which meme engine you really want to use. Currently there are two engines available:\n\n- **v1** - generates meme text with Markov chains. Doesn't have its own logic, so it doesn't understand connections between texts..\n- **v2-alpha** - the new engine that transforms channel messages into meme text using LLMs. It has its own logic and in theory this should make better memes, but can be much slower and may not work as expected.",
+
+        settingsBetaEngineV1Title: "v1 - Markov chains",
+        settingsBetaEngineV1Description: "Doesn't understand connections between different texts on the same meme, but usually random = fun.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLMs",
+        settingsBetaEngineV2Description: "If you want memes to make any sense and have actual logic, this is the engine you want to use.",
+
         settingsFooterChannelId: "Channel ID:",
 
         settingsStatusEnabled: "🎉 Bot is ready!",
@@ -243,6 +255,18 @@ export const locale = {
 
         settingsFooterChannelId: "ID канала:",
 
+        settingsBetaTitle: "Бета-функции",
+        settingsBetaDescription: "Эти функции не полностью протестированы и могут не работать как нужно. Если вы обнаружите какие-либо ошибки, сообщите о них на [сервере поддержки](https://discord.gg/n8DFFcnwDt) или отправьте их на [support@jstmemit.com](mailto:support@jstmemit.com). Некоторые изменения этих настроек могут занять более 30 секунд, пожалуйста, будьте терпеливы.",
+
+        settingsBetaEngineTitle: "Движок для мемов",
+        settingsBetaEngineDescription: "На основе метрик бот выберет лучший движок для вашего канала, но вы можете это поменять. В настоящее время доступны два движка:\n\n- **v1** - генерирует текст для мемов с помощью цепей Маркова. Вообще не имеет собственной логики, поэтому не понимает связей между текстами.\n- **v2-alpha** - новый движок, который преобразует сообщения канала в текст для мемов с помощью больших языковых моделей. Он имеет собственную логику и теоретически должен создавать лучшие мемы, но может быть намного медленнее и работать не так, как ожидалось.",
+
+        settingsBetaEngineV1Title: "v1 - Цепи маркова",
+        settingsBetaEngineV1Description: "Не понимает связей между разными текстами на одном и том же меме, но обычно случайность = веселье.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLM",
+        settingsBetaEngineV2Description: "Если вы хотите, чтобы мемы имели какой-то смысл то это тот движок, который вам нужен.",
+
         settingsStatusEnabled: "🎉 Бот готов!",
         settingsStatusDisabled: "🔴 Бот **отключен** в этом канале!",
 
@@ -377,6 +401,20 @@ export const locale = {
         settingsButtonMemeSettings: "Meme Generatie",
         settingsButtonDataRetentionSettings: "Gegevensbewaring",
         settingsButtonPremiumSettings: "Premium",
+
+        settingsButtonBetaSettings: "Bètafuncties",
+
+        settingsBetaTitle: "Bètafuncties",
+        settingsBetaDescription: "Deze functies zijn niet volledig getest en werken mogelijk niet zoals verwacht. Als je bugs vindt, meld ze dan in de [Support server](https://discord.gg/n8DFFcnwDt) of e-mail ze naar [support@jstmemit.com](mailto:support@jstmemit.com). Sommige wijzigingen hier kunnen meer dan 30 seconden duren om toe te passen, dus wees geduldig.",
+
+        settingsBetaEngineTitle: "Meme-engine",
+        settingsBetaEngineDescription: "Op basis van statistieken kiest de bot een betere engine voor je kanaal, maar je kunt overschrijven welke meme-engine je echt wilt gebruiken. Momenteel zijn er twee engines beschikbaar:\n\n- **v1** - genereert memetekst met Markov-ketens. Heeft geen eigen logica, dus begrijpt geen verbanden tussen teksten.\n- **v2-alpha** - de nieuwe engine die kanaalberichten omzet in memetekst met behulp van LLM's. Het heeft zijn eigen logica en zou in theorie betere memes moeten maken, maar kan veel langzamer zijn en mogelijk niet werken zoals verwacht.",
+
+        settingsBetaEngineV1Title: "v1 - Markov-ketens",
+        settingsBetaEngineV1Description: "Begrijpt geen verbanden tussen teksten op memes, maar meestal is random = leuk.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLM's",
+        settingsBetaEngineV2Description: "Als je wilt dat memes logisch zijn, dan dit is de engine die je wilt gebruiken.",
 
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
@@ -528,6 +566,20 @@ export const locale = {
         settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Чому тобі подобається цей фільм?",
         settingsMemesTemplatesOptionHomerHidingTitle: "Гомер ховається",
         settingsMemesTemplatesOptionSpongebobHappyTitle: "Губка Боб щасливий",
+
+        settingsButtonBetaSettings: "Бета-функції",
+
+        settingsBetaTitle: "Бета-функції",
+        settingsBetaDescription: "Ці функції не повністю готові та можуть працювати не так, як очікувалося. Якщо ви знайдете будь-які помилки, повідомте про них на [сервері підтримки](https://discord.gg/n8DFFcnwDt) або надішліть на [support@jstmemit.com](mailto:support@jstmemit.com). Деякі зміни тут можуть застосовуватися довше 30 секунд, будь ласка, будьте терплячі.",
+
+        settingsBetaEngineTitle: "Двіжок для мемів",
+        settingsBetaEngineDescription: "На основі метрик бот вибере кращий двіжок для вашого каналу, але ви можете змінити, який двіжок для мемів ви дійсно хочете використовувати. Наразі доступні два двіжок:\n\n- **v1** - генерує текст для мемів за допомогою ланцюгів Маркова. Не має власної логіки, тому не розуміє зв'язків між текстами.\n- **v2-alpha** - новий двіжок, який перетворює повідомлення каналу в текст для мемів за допомогою LLM. Він має власну логіку і теоретично повинен створювати кращі меми, але може бути набагато повільнішим і працювати не так, як очікувалося.",
+
+        settingsBetaEngineV1Title: "v1 - Ланцюги маркова",
+        settingsBetaEngineV1Description: "Не розуміє зв'язків між текстами на одному й тому ж мемі, але зазвичай випадковість це смішно.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLM",
+        settingsBetaEngineV2Description: "Якщо ви хочете, щоб меми мали сенс і реальну логіку, це той двіжок, який вам потрібен.",
 
         settingsFooterDisabled: "🔴 Навчання **вимкнено** у цьому каналі!",
         settingsFooterNotEnoughContext: "Повідомлень у пам'яті: **{{amount}}/30**  {{progressBar}}",
@@ -717,6 +769,20 @@ export const locale = {
 
         settingsDataRetentionUserImagesTitle: "Czy bot ma używać obrazków wysłanych przez użytkowników w memach?",
         settingsDataRetentionUserImagesDescription: "Jeśli ustawione na **tak**, bot czasami zamiast awatarów będzie używał obrazków wysłanych przez użytkowników. Używane będą tylko obrazki wysłane w ciągu ostatnich 24 godzin. __Nie można wyłączyć z powodu nowych ograniczeń Intents Discorda, zostanie to wkrótce naprawione.__",
+
+        settingsButtonBetaSettings: "Funkcje Beta",
+
+        settingsBetaTitle: "Funkcje Beta",
+        settingsBetaDescription: "Te funkcje nie są w pełni przetestowane i mogą nie działać zgodnie z oczekiwaniami. Jeśli znajdziesz jakieś błędy, zgłoś je na [serwerze wsparcia](https://discord.gg/n8DFFcnwDt) lub wyślij e-mailem na adres [support@jstmemit.com](mailto:support@jstmemit.com). Zastosowanie niektórych zmian może potrwać ponad 30 sekund, więc prosimy o cierpliwość.",
+
+        settingsBetaEngineTitle: "Silnik memów",
+        settingsBetaEngineDescription: "Na podstawie metryk bot wybierze lepszy silnik dla Twojego kanału, ale możesz nadpisać, którego silnika memów chcesz używać. Obecnie dostępne są dwa silniki:\n\n- **v1** - generuje tekst memów za pomocą łańcuchów Markowa. Nie ma własnej logiki, więc nie rozumie powiązań między tekstami.\n- **v2-alpha** - nowy silnik, który przekształca wiadomości z kanału w tekst memów za pomocą LLM. Ma własną logikę i teoretycznie powinien tworzyć lepsze memy, ale może być znacznie wolniejszy i działać nieoczekiwanie.",
+
+        settingsBetaEngineV1Title: "v1 - Łańcuchy Markowa",
+        settingsBetaEngineV1Description: "Nie rozumie powiązań między różnymi tekstami na tym samym memie, ale zazwyczaj losowość = zabawa.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLM",
+        settingsBetaEngineV2Description: "Jeśli chcesz, aby memy miały sens i faktyczną logikę, to jest silnik, którego chcesz użyć.",
 
         settingsFooterChannelId: "ID kanału:",
 

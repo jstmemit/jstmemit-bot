@@ -8,6 +8,7 @@ import {constructMemesSettingsEmbed} from "#src/discord/embeds/settings/construc
 import {constructDataSettingsEmbed} from "#src/discord/embeds/settings/constructDataSettingsEmbed.js";
 import {constructPremiumSettingsEmbed} from "#src/discord/embeds/settings/constructPremiumSettingsEmbed.js";
 import {createSettingsButtonRow} from "#src/discord/helpers/createSettingsButtons.js";
+import {constructBetaSettingsEmbed} from "#src/discord/embeds/settings/constructBetaSettingsEmbed.js";
 
 export const handleUpdateSettingsEmbed = async (interaction, tab) => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
@@ -39,6 +40,10 @@ export const handleUpdateSettingsEmbed = async (interaction, tab) => {
                 buttons = createSettingsButtonRow("premium", currentSettings?.language);
                 const hasPremium = await checkPremium(interaction);
                 components = constructPremiumSettingsEmbed(currentSettings, interaction.channelId, hasPremium, buttons);
+                break;
+            case "beta":
+                buttons = createSettingsButtonRow("beta", currentSettings?.language);
+                components = await constructBetaSettingsEmbed(currentSettings, interaction.channelId, buttons)
                 break;
             default:
                 buttons = createSettingsButtonRow("general", currentSettings?.language);

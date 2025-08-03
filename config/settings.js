@@ -1,6 +1,7 @@
 import {createMemeGenerator} from "../src/generation/visual/memeFactory.js";
 import {generateGreentext} from "#src/generation/text/generateGreentext.js";
 import {generatePoll} from "#src/generation/text/generatePoll.js";
+import {generateVoiceMessage} from "#src/generation/voice/elevenlabs/generateVoiceMessage.js";
 
 export const settings = {
     cache: {
@@ -248,6 +249,11 @@ export const settings = {
         {
             name: "generateIGotHuntedByARealBountyHunter",
             generator: createMemeGenerator('igothuntedbyarealbountyhunter'),
+            requiresImage: false,
+        },
+        {
+            name: "generateVoiceMessage",
+            generator: (image, channelId, interaction) => generateVoiceMessage(channelId),
             requiresImage: false,
         },
         {
@@ -844,5 +850,61 @@ export const settings = {
             maxLines: 2,
             baseImageOverlay: 0
         },
-    }
+    },
+    voices: [
+        {
+            id: "emSmWzY0c0xtx5IFMCVv",
+            name: "Sarah",
+            voiceSettings: {
+                stability: 0.7,
+                similarityBoost: 0.75,
+                style: 0.2
+            },
+        },
+        {
+            id: "zmcVlqmyk3Jpn5AVYcAL",
+            name: "Sapphire",
+            voiceSettings: {
+                stability: 0.4,
+                similarityBoost: 0.9,
+                style: 0.05
+            },
+        },
+        {
+            id: "siw1N9V8LmYeEWKyWBxv",
+            name: "Ruhaan",
+            voiceSettings: {
+                stability: 0.1,
+                similarityBoost: 0.9,
+                style: 0.6
+            },
+        },
+        {
+            id: "Dslrhjl3ZpzrctukrQSN",
+            name: "Brad",
+            voiceSettings: {
+                stability: 0.5,
+                similarityBoost: 0.9,
+                style: 0.2
+            },
+        },
+        {
+            id: "YXpFCvM1S3JbWEJhoskW",
+            name: "Cowboy",
+            voiceSettings: {
+                stability: 0.5,
+                similarityBoost: 0.9,
+                style: 0.01
+            }
+        },
+        {
+            id: "L1QogKoobNwLy4IaMsyA",
+            name: "Lily",
+            voiceSettings: {
+                stability: 0.9,
+                similarityBoost: 0.9,
+                style: 0.8
+            }
+        }
+    ]
 }

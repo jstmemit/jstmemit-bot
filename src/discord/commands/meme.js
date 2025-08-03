@@ -90,6 +90,29 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
             25000
         );
 
+        if (result instanceof Buffer) {
+            if (!isUnpromted) {
+                await interaction.editReply({
+                    content: `${mention}`,
+                    files: [{
+                        attachment: result,
+                        name: '💀.mp3'
+                    }],
+                    components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+                });
+            } else {
+                await interaction.channel.send({
+                    content: mention,
+                    files: [{
+                        attachment: result,
+                        name: '💀.mp3'
+                    }],
+                    components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+                });
+            }
+            return;
+        }
+
         if (typeof result === 'string') {
             textResult = result;
 

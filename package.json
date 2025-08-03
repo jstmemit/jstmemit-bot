@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.7.0",
     "@napi-rs/canvas": "^0.1.70",
     "axios": "^1.9.0",
     "discord.js": "^14.19.3",

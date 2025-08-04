@@ -106,9 +106,9 @@ export default {
 
                 if (customId == 'settings-open') {
 
-                    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
-                        return;
-                    }
+                    // if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
+                    //     return;
+                    // }
 
                     const loading = await constructLoadingEmbed(interaction.channelId)
                     await interaction.reply({
@@ -119,9 +119,9 @@ export default {
                 }
 
                 if (customId.startsWith("settings-tab-")) {
-                    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
-                        return;
-                    }
+                    // if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
+                    //     return;
+                    // }
 
                     const tab = customId.split('-')[2];
                     await interaction.deferUpdate();

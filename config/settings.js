@@ -12,12 +12,12 @@ export const settings = {
         baseWeight: 0.3,
     },
     activeSurveys: [
-        {
-            id: "019865b8-3dec-0000-56ab-e4825867a78b",
-            conditions: {
-                minMessages: 250,
-            }
-        }
+        // {
+        //     id: "019865b8-3dec-0000-56ab-e4825867a78b",
+        //     conditions: {
+        //         minMessages: 250,
+        //     }
+        // }
     ],
     canvas: {
         maxFileSize: 7 * 1024 * 1024,

@@ -33,6 +33,12 @@ export const constructBetaSettingsEmbed = async (currentSettings, channelId, but
             emoji: {name: "💡"},
             description: t("settingsBetaEngineV2Description", language),
         },
+        {
+            label: t("settingsBetaEngineV2QwenTitle", language),
+            value: "v2-alpha-qwen",
+            emoji: {name: "💡"},
+            description: t("settingsBetaEngineV2QwenDescription", language),
+        },
     ]
 
     return [

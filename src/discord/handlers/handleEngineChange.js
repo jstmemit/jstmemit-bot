@@ -8,7 +8,7 @@ export const handleEngineChange = async interaction => {
         const newEngine = interaction.values[0];
 
         await analytics.capture({
-            distinctId: interaction.channelId,
+            distinctId: channelId,
             event: 'settings_changed',
             properties: {
                 engine: newEngine,

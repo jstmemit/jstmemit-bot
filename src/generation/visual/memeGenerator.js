@@ -63,7 +63,7 @@ export class MemeGenerator {
     }
 
     async generateTexts(channelMessages, engine = 'markov') {
-        if (engine === 'v2-alpha') {
+        if (engine && engine.includes('v2')) {
 
             if (channelMessages && channelMessages?.length > 20) {
                 const randomMessages = [];
@@ -106,7 +106,7 @@ export class MemeGenerator {
             }))
         };
 
-        const generatedTexts = await transformText(channelMessages, templateData);
+        const generatedTexts = await transformText(channelMessages, templateData, 'qwen');
 
         const texts = [];
         for (let i = 0; i < this.config.texts.length && i < generatedTexts.length; i++) {

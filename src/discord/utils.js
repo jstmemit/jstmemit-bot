@@ -90,3 +90,8 @@ const escapeRegex = (string) => {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 };
 
+export const normalizeTemplateKey = (s) => {
+    if (!s) return "";
+    const flat = String(s).replace(/[^a-zA-Z0-9]/g, "");
+    return flat.replace(/^generate/i, "").toLowerCase();
+};

@@ -1,12 +1,26 @@
-import {getTemplateFiles} from "./helpers/getTemplateFiles.js";
-import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
-import {generateText} from "../text/markov/generateText.js";
-import {transformText} from "#src/generation/text/openai/transformText.js";
-import {addText} from "./helpers/addText.js";
-import {getRandomImage} from "../../discord/getRandomImage.js";
-import {overlayImage} from "./helpers/overlayImage.js";
-import {memeTemplates} from "../../../config/memeTemplates.js";
-import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {getTemplateFiles} from './helpers/getTemplateFiles.js';
+import {getChannelMessages} from '../../database/queries/getChannelMessages.js';
+import {generateText} from '../text/markov/generateText.js';
+import {transformText} from '#src/generation/text/openai/transformText.js';
+import {addText} from './helpers/addText.js';
+import {getRandomImage} from '../../discord/getRandomImage.js';
+import {overlayImage} from './helpers/overlayImage.js';
+import {memeTemplates} from '../../../config/memeTemplates.js';
+import {analytics} from '#src/analytics/initializeAnalytics.js';
+
+const normalizeEngine = (engine) => {
+    if (engine === undefined) return undefined;
+
+    const e = String(engine).toLowerCase();
+
+    if (e === 'v1' || e === 'markov') return 'v1';
+    if (e === 'v2' || e === 'v2-alpha') {
+        return 'v2-alpha';
+    }
+    if (e === 'v2-alpha-qwen' || e === 'qwen') return 'v2-alpha-qwen';
+
+    return undefined;
+};
 
 export class MemeGenerator {
     constructor(templateName) {
@@ -20,21 +34,20 @@ export class MemeGenerator {
     }
 
     async generate(channelId, serverId, interaction, providedImage = null) {
-
         const start = performance.now();
         const timings = {};
 
         try {
             const channelMessages_start = performance.now();
-            const channelMessages = this.config.requiresChannelMessages
-                ? await getChannelMessages(channelId)
-                : null;
+            const channelMessages = this.config.requiresChannelMessages ? await getChannelMessages(channelId) : null;
             timings.channel_messages_fetch_ms = performance.now() - channelMessages_start;
 
-            const engine = await analytics.getFeatureFlag('v2-alpha-meme-engine', channelId)
+            const overrideEngine = interaction?.options?.getString?.('engine') || undefined;
+            const settingsEngine = await analytics.getFeatureFlag('v2-alpha-meme-engine', channelId);
+            const finalEngine = normalizeEngine(overrideEngine) ?? normalizeEngine(settingsEngine) ?? 'v1';
 
             const texts_start = performance.now();
-            const texts = await this.generateTexts(channelMessages, engine);
+            const texts = await this.generateTexts(channelMessages, finalEngine);
             timings.texts_generation_ms = performance.now() - texts_start;
 
             const images_start = performance.now();
@@ -58,13 +71,13 @@ export class MemeGenerator {
 
         } catch (error) {
             console.error(`Error in ${this.templateName}:`, error.message);
+            console.log(error)
             throw error;
         }
     }
 
-    async generateTexts(channelMessages, engine = 'markov') {
-        if (engine && engine.includes('v2')) {
-
+    async generateTexts(channelMessages, engine = 'v1') {
+        if (engine && engine !== 'v1') {
             if (channelMessages && channelMessages?.length > 20) {
                 const randomMessages = [];
                 for (let i = 0; i < 20; i++) {
@@ -74,7 +87,8 @@ export class MemeGenerator {
                 channelMessages = randomMessages;
             }
 
-            return await this.generateTextsWithLLM(channelMessages);
+            const provider = engine === 'v2-alpha-qwen' ? 'qwen' : 'openai';
+            return await this.generateTextsWithLLM(channelMessages, provider);
         } else {
             return await this.generateTextsWithMarkov(channelMessages);
         }
@@ -95,7 +109,7 @@ export class MemeGenerator {
         return texts;
     }
 
-    async generateTextsWithLLM(channelMessages) {
+    async generateTextsWithLLM(channelMessages, provider) {
         const templateData = {
             name: this.templateName,
             description: this.config.description || '',
@@ -106,7 +120,7 @@ export class MemeGenerator {
             }))
         };
 
-        const generatedTexts = await transformText(channelMessages, templateData, 'qwen');
+        const generatedTexts = await transformText(channelMessages, templateData, provider);
 
         const texts = [];
         for (let i = 0; i < this.config.texts.length && i < generatedTexts.length; i++) {

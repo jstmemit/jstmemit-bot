@@ -3,10 +3,9 @@ import {analytics} from "#src/analytics/initializeAnalytics.js";
 import dotenv from "dotenv";
 import {systemPrompt} from "#src/generation/text/openai/prompts.js";
 
-let client;
-
 export const transformText = async (messages, templateData, provider = "openai") => {
 
+    let client;
 
     if (!provider || provider === "openai") {
         if (!client) {

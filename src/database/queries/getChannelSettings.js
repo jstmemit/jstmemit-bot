@@ -10,15 +10,17 @@ export const getChannelSettings = async (channelId) => {
             .from(channels)
             .where(eq(channels.channelId, channelId));
 
-        if (!result || result.length === 0) {
-            await db.insert(channels).values({
-                channelId: channelId,
-                isEnabled: false,
-                useUserImages: 1,
-                deleteMessagesAfter: 14,
-                language: 'english'
-            });
-            await insertMessage(channelId, '');
+        if (channelId) {
+            if (!result || result.length === 0) {
+                await db.insert(channels).values({
+                    channelId: channelId,
+                    isEnabled: false,
+                    useUserImages: 1,
+                    deleteMessagesAfter: 14,
+                    language: 'english'
+                });
+                await insertMessage(channelId, '');
+            }
         }
 
         return result[0] || null;

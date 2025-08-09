@@ -1,5 +1,10 @@
 import {settings} from "#config/settings.js";
 
+const normalizeTemplate = (name) =>
+    name
+        .replace(/^generate/i, "")
+        .replace(/([a-z])([A-Z])/g, "$1 $2");
+
 export const commands = [
     {
         name: 'meme',
@@ -76,31 +81,24 @@ export const commands = [
                     'pl': 'Wybierz szablon mema',
                 },
                 required: false,
-                choices: [
-                    {
-                        name: 'test 1',
-                        value: 'test_1'
-                    },
-                    {
-                        name: 'test 2',
-                        value: 'test_2'
-                    },
-                    {
-                        name: 'test 3',
-                        value: 'test_3'
-                    }
-                ]
+                choices: settings.templates
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .slice(0, 25)
+                    .map((t) => ({
+                        name: normalizeTemplate(t.name),
+                        value: t.name,
+                    }))
             },
             {
                 type: 5,
                 name: 'ephemeral',
                 name_localizations: {
                     'ru': 'скрытый',
-                    'nl': 'tijdelijk',
+                    'nl': 'geheim',
                     'fr': 'ephemere',
                     'de': 'ephemer',
-                    'uk': 'тимчасовий',
-                    'pl': 'tymczasowy',
+                    'uk': 'скритий',
+                    'pl': 'ephemere'
                 },
                 description: 'Make the response visible only to you',
                 description_localizations: {

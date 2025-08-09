@@ -262,13 +262,16 @@ export const locale = {
         settingsBetaDescription: "Эти функции не полностью протестированы и могут не работать как нужно. Если вы обнаружите какие-либо ошибки, сообщите о них на [сервере поддержки](https://discord.gg/n8DFFcnwDt) или отправьте их на [support@jstmemit.com](mailto:support@jstmemit.com). Некоторые изменения этих настроек могут занять более 30 секунд, пожалуйста, будьте терпеливы.",
 
         settingsBetaEngineTitle: "Движок для мемов",
-        settingsBetaEngineDescription: "На основе метрик бот выберет лучший движок для вашего канала, но вы можете это поменять. В настоящее время доступны два движка:\n\n- **v1** - генерирует текст для мемов с помощью цепей Маркова. Вообще не имеет собственной логики, поэтому не понимает связей между текстами.\n- **v2-alpha** - новый движок, который преобразует сообщения канала в текст для мемов с помощью больших языковых моделей. Он имеет собственную логику и теоретически должен создавать лучшие мемы, но может быть намного медленнее и работать не так, как ожидалось.",
+        settingsBetaEngineDescription: "На основе метрик бот выберет лучший движок для вашего канала, но вы можете переопределить, какой движок для мемов вы хотите использовать. В настоящее время доступны три движка:\n\n- **v1** - генерирует текст для мемов с помощью цепей Маркова. Не имеет собственной логики, поэтому не понимает связи между текстами. **(Рекомендуется для скорости)**\n- **v2-alpha** - новый движок, который преобразует сообщения канала в текст мемов с помощью LLM. Имеет собственную логику и теоретически делает мемы лучше, но может быть гораздо медленнее и работать не так, как ожидается. **(Рекомендуется для качества)**\n- **v2-alpha-qwen** - та же логика, что и v2-alpha, но использует локальную модель Qwen 3. Он чуть медленнее и менее стабилен, но даёт намного больше приватности. Здесь никакие обучающие данные не отправляются в OpenAI или другим третьим сторонам.",
 
-        settingsBetaEngineV1Title: "v1 - Цепи маркова",
+        settingsBetaEngineV1Title: "v1 - Цепи маркова (рекомендуется)",
         settingsBetaEngineV1Description: "Не понимает связей между разными текстами на одном и том же меме, но обычно случайность = веселье.",
 
-        settingsBetaEngineV2Title: "v2-alpha - LLM",
+        settingsBetaEngineV2Title: "v2-alpha - LLM (рекомендуется)",
         settingsBetaEngineV2Description: "Если вы хотите, чтобы мемы имели какой-то смысл то это тот движок, который вам нужен.",
+
+        settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLM",
+        settingsBetaEngineV2QwenDescription: "Использует локальную модель Qwen для преобразования текста в мемы. Медленнее, но более приватно.",
 
         settingsStatusEnabled: "🎉 Бот готов!",
         settingsStatusDisabled: "🔴 Бот **отключен** в этом канале!",
@@ -411,13 +414,16 @@ export const locale = {
         settingsBetaDescription: "Deze functies zijn niet volledig getest en werken mogelijk niet zoals verwacht. Als je bugs vindt, meld ze dan in de [Support server](https://discord.gg/n8DFFcnwDt) of e-mail ze naar [support@jstmemit.com](mailto:support@jstmemit.com). Sommige wijzigingen hier kunnen meer dan 30 seconden duren om toe te passen, dus wees geduldig.",
 
         settingsBetaEngineTitle: "Meme-engine",
-        settingsBetaEngineDescription: "Op basis van statistieken kiest de bot een betere engine voor je kanaal, maar je kunt overschrijven welke meme-engine je echt wilt gebruiken. Momenteel zijn er twee engines beschikbaar:\n\n- **v1** - genereert memetekst met Markov-ketens. Heeft geen eigen logica, dus begrijpt geen verbanden tussen teksten.\n- **v2-alpha** - de nieuwe engine die kanaalberichten omzet in memetekst met behulp van LLM's. Het heeft zijn eigen logica en zou in theorie betere memes moeten maken, maar kan veel langzamer zijn en mogelijk niet werken zoals verwacht.",
+        settingsBetaEngineDescription: "Op basis van statistieken kiest de bot een betere engine voor je kanaal, maar je kunt overschrijven welke meme-engine je echt wilt gebruiken. Momenteel zijn er twee engines beschikbaar:\n\n- **v1** - genereert memetekst met Markov-ketens. Heeft geen eigen logica, dus begrijpt geen verbanden tussen teksten.\n- **v2-alpha** - de nieuwe engine die kanaalberichten omzet in memetekst met behulp van LLM's. Het heeft zijn eigen logica en zou in theorie betere memes moeten maken, maar kan veel langzamer zijn en mogelijk niet werken zoals verwacht.\n- **v2-alpha-qwen** - dezelfde logica als v2-alpha, maar gebruikt alleen zelf-gehoste Qwen 3 model. Het is langzamer en minder stabiel, maar biedt meer privacy. Geen trainingsgegevens worden hier verzonden naar OpenAI of andere derden.",
 
-        settingsBetaEngineV1Title: "v1 - Markov-ketens",
+        settingsBetaEngineV1Title: "v1 - Markov-ketens (aanbevolen)",
         settingsBetaEngineV1Description: "Begrijpt geen verbanden tussen teksten op memes, maar meestal is random = leuk.",
 
-        settingsBetaEngineV2Title: "v2-alpha - LLM's",
+        settingsBetaEngineV2Title: "v2-alpha - LLM's (aanbevolen)",
         settingsBetaEngineV2Description: "Als je wilt dat memes logisch zijn, dan dit is de engine die je wilt gebruiken.",
+
+        settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLM's",
+        settingsBetaEngineV2QwenDescription: "Dezelfde logica als v2-alpha, maar langzamer en meer privacy-vriendelijk.",
 
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
@@ -576,13 +582,16 @@ export const locale = {
         settingsBetaDescription: "Ці функції не повністю готові та можуть працювати не так, як очікувалося. Якщо ви знайдете будь-які помилки, повідомте про них на [сервері підтримки](https://discord.gg/n8DFFcnwDt) або надішліть на [support@jstmemit.com](mailto:support@jstmemit.com). Деякі зміни тут можуть застосовуватися довше 30 секунд, будь ласка, будьте терплячі.",
 
         settingsBetaEngineTitle: "Двіжок для мемів",
-        settingsBetaEngineDescription: "На основі метрик бот вибере кращий двіжок для вашого каналу, але ви можете змінити, який двіжок для мемів ви дійсно хочете використовувати. Наразі доступні два двіжок:\n\n- **v1** - генерує текст для мемів за допомогою ланцюгів Маркова. Не має власної логіки, тому не розуміє зв'язків між текстами.\n- **v2-alpha** - новий двіжок, який перетворює повідомлення каналу в текст для мемів за допомогою LLM. Він має власну логіку і теоретично повинен створювати кращі меми, але може бути набагато повільнішим і працювати не так, як очікувалося.",
+        settingsBetaEngineDescription: "На основі метрик бот вибере кращий двіжок для вашого каналу, але ви можете змінити, який двіжок для мемів ви дійсно хочете використовувати. Наразі доступні два двіжок:\n\n- **v1** - генерує текст для мемів за допомогою ланцюгів Маркова. Не має власної логіки, тому не розуміє зв'язків між текстами.\n- **v2-alpha** - новий двіжок, який перетворює повідомлення каналу в текст для мемів за допомогою LLM. Він має власну логіку і теоретично повинен створювати кращі меми, але може бути набагато повільнішим і працювати не так, як очікувалося.\n- **v2-alpha-qwen** - та сама логіка, що і v2-alpha, але використовує локальну модель Qwen 3. Він трохи повільніший і менш стабільний, але надає більше приватності. Ніякі навчальні дані не надсилаються в OpenAI або іншим третім сторонам.",
 
-        settingsBetaEngineV1Title: "v1 - Ланцюги маркова",
+        settingsBetaEngineV1Title: "v1 - Ланцюги маркова (рекомендовано)",
         settingsBetaEngineV1Description: "Не розуміє зв'язків між текстами на одному й тому ж мемі, але зазвичай випадковість це смішно.",
 
-        settingsBetaEngineV2Title: "v2-alpha - LLM",
+        settingsBetaEngineV2Title: "v2-alpha - LLM (рекомендовано)",
         settingsBetaEngineV2Description: "Якщо ви хочете, щоб меми мали сенс і реальну логіку, це той двіжок, який вам потрібен.",
+
+        settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLM",
+        settingsBetaEngineV2QwenDescription: "Те саме, що і v2-alpha, але використовує локальну модель Qwen 3. Повільніший, але більш приватний.",
 
         settingsFooterDisabled: "🔴 Навчання **вимкнено** у цьому каналі!",
         settingsFooterNotEnoughContext: "Повідомлень у пам'яті: **{{amount}}/30**  {{progressBar}}",

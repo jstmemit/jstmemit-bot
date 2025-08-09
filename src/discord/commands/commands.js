@@ -1,3 +1,5 @@
+import {settings} from "#config/settings.js";
+
 export const commands = [
     {
         name: 'meme',
@@ -178,20 +180,10 @@ export const commands = [
                     'pl': 'Wybierz głos do narracji',
                 },
                 required: false,
-                choices: [
-                    {
-                        name: 'test 1',
-                        value: 'test_1'
-                    },
-                    {
-                        name: 'test 2',
-                        value: 'test_2'
-                    },
-                    {
-                        name: 'test 3',
-                        value: 'test_3'
-                    }
-                ]
+                choices: settings.voices.map(voice => ({
+                    name: voice.name,
+                    value: voice.id
+                }))
             },
             {
                 type: 5,

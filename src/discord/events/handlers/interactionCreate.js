@@ -26,6 +26,7 @@ import {handleSurveyTextResponse} from "#src/discord/handlers/handleSurveyTextRe
 import {handleSurveySelectInteraction} from "#src/discord/handlers/handleSurveySelectInteraction.js";
 import {handleSurveyButtonInteraction} from "#src/discord/handlers/handleSurveyButtonInteraction.js";
 import {handleEngineChange} from "#src/discord/handlers/handleEngineChange.js";
+import {voice} from "#src/discord/commands/voice.js";
 
 export default {
     name: Events.InteractionCreate,
@@ -54,6 +55,9 @@ export default {
                 switch (interaction.commandName) {
                     case 'meme':
                         await meme(interaction);
+                        return;
+                    case 'voice':
+                        await voice(interaction);
                         return;
                 }
 

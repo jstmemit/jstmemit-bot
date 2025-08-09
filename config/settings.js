@@ -854,7 +854,7 @@ export const settings = {
     voices: [
         {
             id: "emSmWzY0c0xtx5IFMCVv",
-            name: "Sarah",
+            name: "😀 Sarah",
             voiceSettings: {
                 stability: 0.7,
                 similarityBoost: 0.75,
@@ -863,7 +863,7 @@ export const settings = {
         },
         {
             id: "zmcVlqmyk3Jpn5AVYcAL",
-            name: "Sapphire",
+            name: "🎮 Sapphire",
             voiceSettings: {
                 stability: 0.4,
                 similarityBoost: 0.9,
@@ -872,7 +872,7 @@ export const settings = {
         },
         {
             id: "siw1N9V8LmYeEWKyWBxv",
-            name: "Ruhaan",
+            name: "💻 Ruhaan",
             voiceSettings: {
                 stability: 0.1,
                 similarityBoost: 0.9,
@@ -881,7 +881,7 @@ export const settings = {
         },
         {
             id: "Dslrhjl3ZpzrctukrQSN",
-            name: "Brad",
+            name: "📺 Brad",
             voiceSettings: {
                 stability: 0.5,
                 similarityBoost: 0.9,
@@ -890,7 +890,7 @@ export const settings = {
         },
         {
             id: "YXpFCvM1S3JbWEJhoskW",
-            name: "Cowboy",
+            name: "🤠 Cowboy",
             voiceSettings: {
                 stability: 0.5,
                 similarityBoost: 0.9,
@@ -899,7 +899,7 @@ export const settings = {
         },
         {
             id: "L1QogKoobNwLy4IaMsyA",
-            name: "Lily",
+            name: "🙄 Lily",
             voiceSettings: {
                 stability: 0.9,
                 similarityBoost: 0.9,

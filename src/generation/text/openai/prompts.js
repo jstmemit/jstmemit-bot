@@ -25,5 +25,5 @@ Text requirements: 1 generated text slot (3-6 words)
 Your response should be this:
 [
 "Imagine your base being raided bro"
-] /no_think
+]
 `

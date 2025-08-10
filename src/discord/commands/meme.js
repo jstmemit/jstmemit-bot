@@ -16,17 +16,24 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
     let channelId, guildId;
 
     try {
+        channelId = interaction.channelId;
+        guildId = interaction.guildId;
+
         const ephemeral = interaction?.options?.getBoolean('ephemeral') || false;
         const engine = interaction?.options?.getString('engine') || "v1";
         const template = isRegenerate ? undefined : (interaction?.options?.getString('template') || undefined);
+
+        const messages = await withTimeout(getChannelMessages(channelId), 10000);
+
+        if (!messages || messages.length < 30) {
+            await handleNotEnoughContext(interaction, messages ? messages.length : 0);
+            return;
+        }
 
         await interaction.deferReply({ephemeral});
 
         let textResult, imageResult, mention = '';
         const hasPremium = checkPremium(interaction);
-
-        channelId = interaction.channelId;
-        guildId = interaction.guildId;
 
         if (!channelId || !guildId) {
             console.error('No channel id or guild id');
@@ -38,13 +45,6 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         // yes, it will be refactored later anyway
         if (!channelSettings) {
             channelSettings = await getChannelSettings(interaction.channelId);
-        }
-
-        const messages = await withTimeout(getChannelMessages(channelId), 10000);
-
-        if (!messages || messages.length < 30) {
-            await handleNotEnoughContext(interaction, messages ? messages.length : 0);
-            return;
         }
 
         if (isRegenerate) {

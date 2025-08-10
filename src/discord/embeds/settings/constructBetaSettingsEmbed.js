@@ -1,15 +1,6 @@
 // noinspection JSCheckFunctionSignatures
 
-import {
-    ActionRowBuilder,
-    ButtonStyle,
-    ContainerBuilder,
-    SelectMenuOptionBuilder,
-    SeparatorBuilder,
-    SeparatorSpacingSize,
-    StringSelectMenuBuilder,
-    TextDisplayBuilder
-} from 'discord.js';
+import {ButtonStyle, ContainerBuilder, SeparatorBuilder, SeparatorSpacingSize, TextDisplayBuilder} from 'discord.js';
 import {t} from "../../i18n/utils.js";
 import {settings} from "#config/settings.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
@@ -57,31 +48,31 @@ export const constructBetaSettingsEmbed = async (currentSettings, channelId, but
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(t("settingsBetaEngineDescription", language))
-            )
-            .addActionRowComponents(
-                new ActionRowBuilder().addComponents(
-                    new StringSelectMenuBuilder()
-                        .setCustomId("select-betaengine")
-                        .addOptions(
-                            engineOptions.map((option) => {
-                                const builder = new SelectMenuOptionBuilder()
-                                    .setLabel(option.label)
-                                    .setValue(option.value)
-                                    .setDefault(
-                                        (engine === "v2-alpha" && option.value === "v2-alpha") ||
-                                        (engine !== "v2-alpha" && option.value === "v1")
-                                    )
-                                    .setEmoji(option.emoji);
-
-                                if (option.description) {
-                                    builder.setDescription(option.description);
-                                }
-
-                                return builder;
-                            })
-                        )
-                ),
             ),
+        // .addActionRowComponents(
+        //     new ActionRowBuilder().addComponents(
+        //         new StringSelectMenuBuilder()
+        //             .setCustomId("select-betaengine")
+        //             .addOptions(
+        //                 engineOptions.map((option) => {
+        //                     const builder = new SelectMenuOptionBuilder()
+        //                         .setLabel(option.label)
+        //                         .setValue(option.value)
+        //                         .setDefault(
+        //                             (engine === "v2-alpha" && option.value === "v2-alpha") ||
+        //                             (engine !== "v2-alpha" && option.value === "v1")
+        //                         )
+        //                         .setEmoji(option.emoji);
+        //
+        //                     if (option.description) {
+        //                         builder.setDescription(option.description);
+        //                     }
+        //
+        //                     return builder;
+        //                 })
+        //             )
+        //     ),
+        // ),
         buttons
     ]
 };

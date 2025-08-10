@@ -251,27 +251,4 @@ export const commands = [
         contexts: [0],
         dm_permission: false
     },
-    {
-        name: 'premium',
-        name_localizations: {
-            'ru': 'премиум',
-            'nl': 'premium',
-            'fr': 'premium',
-            'de': 'premium',
-            'uk': 'преміум',
-            'pl': 'premium',
-        },
-        description: 'View premium status on this server',
-        description_localizations: {
-            'ru': 'Посмотреть статус премиума на этом сервере',
-            'nl': 'Bekijk de status van premium features op deze server',
-            'fr': 'Voir le statut des fonctionnalités premium sur ce serveur',
-            'de': 'Premium-Funktionsstatus auf diesem Server anzeigen',
-            'uk': 'Переглянути статус преміума на цьому сервері',
-            'pl': 'Zobacz status funkcji premium na tym serwerze',
-        },
-        contexts: [0],
-        default_member_permissions: '32',
-        dm_permission: false
-    }
 ];

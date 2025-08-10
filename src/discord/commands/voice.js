@@ -26,7 +26,7 @@ export const voice = async (interaction) => {
         distinctId: interaction.channelId,
         event: 'voice_message_generated',
         properties: {
-            voice: "premium",
+            voice: voice
         },
     })
 

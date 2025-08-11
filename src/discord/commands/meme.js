@@ -1,26 +1,39 @@
-import {getRandomImage} from "../getRandomImage.js";
-import {filterMentions, getTimestamp, runRandomFunction, withTimeout} from "../utils.js";
-import {buildRow} from "../buttons/buildRow.js";
-import {checkIsEnabled} from "../checkIsEnabled.js";
-import {handleDisabledChannel} from "../handlers/handleDisabledChannel.js";
-import {getChannelMessages} from "../../database/queries/getChannelMessages.js";
-import {handleNotEnoughContext} from "../handlers/handleNotEnoughContext.js";
-import {getConfig} from "../../generation/getConfig.js";
-import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
-import {applyWatermark} from "../../generation/visual/helpers/applyWatermark.js";
-import {checkPremium} from "../helpers/checkPremium.js";
-import {t} from "#src/discord/i18n/utils.js";
-import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {getRandomImage} from '../getRandomImage.js';
+import {filterMentions, getTimestamp, normalizeTemplateKey, runRandomFunction, withTimeout} from '../utils.js';
+import {buildRow} from '../buttons/buildRow.js';
+import {checkIsEnabled} from '../checkIsEnabled.js';
+import {handleDisabledChannel} from '../handlers/handleDisabledChannel.js';
+import {getChannelMessages} from '../../database/queries/getChannelMessages.js';
+import {handleNotEnoughContext} from '../handlers/handleNotEnoughContext.js';
+import {getConfig} from '../../generation/getConfig.js';
+import {getChannelSettings} from '../../database/queries/getChannelSettings.js';
+import {applyWatermark} from '../../generation/visual/helpers/applyWatermark.js';
+import {checkPremium} from '../helpers/checkPremium.js';
+import {t} from '#src/discord/i18n/utils.js';
+import {analytics} from '#src/analytics/initializeAnalytics.js';
 
 export const meme = async (interaction, isRegenerate, isUnpromted) => {
     let channelId, guildId;
 
     try {
-        let textResult, imageResult, mention = '';
-        const hasPremium = checkPremium(interaction)
+        channelId = interaction.channelId;
+        guildId = interaction.guildId;
 
-        channelId = interaction.channelId
-        guildId = interaction.guildId
+        const ephemeral = interaction?.options?.getBoolean('ephemeral') || false;
+        const engine = interaction?.options?.getString('engine') || "v1";
+        const template = isRegenerate ? undefined : (interaction?.options?.getString('template') || undefined);
+
+        const messages = await withTimeout(getChannelMessages(channelId), 10000);
+
+        if (!messages || messages.length < 30) {
+            await handleNotEnoughContext(interaction, messages ? messages.length : 0);
+            return;
+        }
+
+        await interaction.deferReply({ephemeral});
+
+        let textResult, imageResult, mention = '';
+        const hasPremium = checkPremium(interaction);
 
         if (!channelId || !guildId) {
             console.error('No channel id or guild id');
@@ -34,13 +47,6 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
             channelSettings = await getChannelSettings(interaction.channelId);
         }
 
-        const messages = await withTimeout(getChannelMessages(channelId), 10000);
-
-        if (!messages || messages.length < 30) {
-            await handleNotEnoughContext(interaction, messages ? messages.length : 0);
-            return;
-        }
-
         if (isRegenerate) {
             const isEnabled = await withTimeout(checkIsEnabled(channelId), 5000);
             if (!isEnabled) {
@@ -52,9 +58,9 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
 
         if (!isUnpromted) {
             try {
-                await interaction.deferReply({
-                    ephemeral: false
-                });
+                // await interaction.deferReply({
+                //     ephemeral: false
+                // });
             } catch (deferError) {
                 analytics.captureException(deferError);
                 console.error('Failed to defer reply:', deferError.message);
@@ -63,32 +69,81 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         }
 
         const [config, image] = await Promise.all([
-            withTimeout(getConfig(), 14000).catch(err => {
+            withTimeout(getConfig(), 14000).catch((err) => {
                 console.error('Config fetch failed:', err.message);
                 analytics.captureException(err);
                 return [];
             }),
-            withTimeout(getRandomImage(interaction, channelId), 10000).catch(err => {
-                console.error('Image fetch failed:', err.message);
-                analytics.captureException(err);
-                return null;
-            })
+            withTimeout(getRandomImage(interaction, channelId), 10000).catch(
+                (err) => {
+                    console.error('Image fetch failed:', err.message);
+                    analytics.captureException(err);
+                    return null;
+                }
+            ),
         ]);
 
         if (!config || config.length === 0) {
             throw new Error('No meme templates');
         }
 
-        const memeTemplates = config.map((template) => ({
-            func: () => template.generator(image, channelId, interaction),
-            weight: template.weight,
-            name: template.name,
-        }));
+        let result, functionName;
 
-        let {result, functionName} = await withTimeout(
-            runRandomFunction(memeTemplates),
-            25000
+        const byExact = new Map(config.map((t) => [t.name, t]));
+        const byNorm = new Map(
+            config.map((t) => [normalizeTemplateKey(t.name), t])
         );
+
+        let selected;
+        if (template) {
+
+            selected = byExact.get(template) || byNorm.get(normalizeTemplateKey(template));
+
+            if (!selected) {
+                selected = config.find(t => t.name === template);
+            }
+        }
+
+        if (selected && typeof selected.generator === 'function') {
+            functionName = selected.name;
+            result = await withTimeout(
+                selected.generator(image, channelId, interaction),
+                25000
+            );
+        } else {
+            // weighted random fallback
+            const memeTemplates = config.map((t) => ({
+                func: () => t.generator(image, channelId, interaction),
+                weight: t.weight,
+                name: t.name,
+            }));
+            const rr = await withTimeout(runRandomFunction(memeTemplates), 25000);
+            result = rr.result;
+            functionName = rr.functionName;
+        }
+
+        if (result instanceof Buffer && functionName.toLowerCase().includes("voice")) {
+            if (!isUnpromted) {
+                await interaction.editReply({
+                    content: `${mention}`,
+                    files: [{
+                        attachment: result,
+                        name: '💀.mp3'
+                    }],
+                    components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+                });
+            } else {
+                await interaction.channel.send({
+                    content: mention,
+                    files: [{
+                        attachment: result,
+                        name: '💀.mp3'
+                    }],
+                    components: [await buildRow(0, 0, `${functionName}-${getTimestamp()}`)]
+                });
+            }
+            return;
+        }
 
         if (typeof result === 'string') {
             textResult = result;

@@ -185,39 +185,6 @@ export const commands = [
                 }))
             },
             {
-                type: 3,
-                name: 'language',
-                name_localizations: {
-                    'ru': 'язык',
-                    'nl': 'taal',
-                    'fr': 'langue',
-                    'de': 'sprache',
-                    'uk': 'мова',
-                    'pl': 'język',
-                },
-                description: 'Choose language of your text',
-                description_localizations: {
-                    'ru': 'Выберите язык озвучки',
-                    'nl': 'Kies de taal van je tekst',
-                    'fr': 'Choisissez la langue de votre texte',
-                    'de': 'Wählen Sie die Sprache Ihres Textes',
-                    'uk': 'Оберіть мову озвучення',
-                    'pl': 'Wybierz język swojego tekstu',
-                },
-                required: false,
-                choices: [
-                    {name: '🤖 Auto (+ Other languages)', value: 'auto'},
-                    {name: 'English', value: 'en'},
-                    {name: 'French', value: 'fr'},
-                    {name: 'Spanish', value: 'es'},
-                    {name: 'Hindi', value: 'hi'},
-                    {name: 'Italian', value: 'it'},
-                    {name: 'Portuguese', value: 'pt'},
-                    {name: 'Japanese', value: 'ja'},
-                    {name: 'Chinese', value: 'zh'},
-                ]
-            },
-            {
                 type: 5,
                 name: 'stutter',
                 name_localizations: {

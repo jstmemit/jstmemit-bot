@@ -23,6 +23,7 @@ export const voice = async (interaction) => {
     const language = channelSettings?.language || "en";
 
     const voice = interaction.options.getString('voice') || "random"
+    const stutter = interaction.options.getBoolean('stutter') || false;
     let text;
 
     if (!interaction.targetId) {
@@ -50,7 +51,7 @@ export const voice = async (interaction) => {
         }
 
     }
-    const result = await narrateText(text, voice);
+    const result = await narrateText(text, voice, stutter);
 
     await analytics.capture({
         distinctId: interaction.channelId,

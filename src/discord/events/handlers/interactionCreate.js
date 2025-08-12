@@ -33,6 +33,19 @@ export default {
     async execute(interaction) {
         try {
 
+            if (interaction.isContextMenuCommand()) {
+                if (!await checkIsEnabled(interaction.channelId)) {
+                    await handleDisabledChannel(interaction);
+                    return;
+                }
+
+                switch (interaction.commandName) {
+                    case 'Narrate text':
+                        await voice(interaction);
+                        return;
+                }
+            }
+
             if (interaction.isChatInputCommand()) {
 
                 switch (interaction.commandName) {

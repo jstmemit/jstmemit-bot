@@ -853,8 +853,37 @@ export const settings = {
     },
     voices: [
         {
+            id: "YXpFCvM1S3JbWEJhoskW",
+            name: "🤠 Cowboy",
+            provider: "elevenlabs",
+            voiceSettings: {
+                stability: 0.5,
+                similarityBoost: 0.9,
+                style: 0.01
+            }
+        },
+        {
+            id: "am_liam",
+            name: "📺 Liam",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.9
+            }
+        },
+        {
+            id: "pm_santa",
+            name: "🎅 Santa",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.9
+            }
+        },
+        {
             id: "emSmWzY0c0xtx5IFMCVv",
             name: "😀 Sarah",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.7,
                 similarityBoost: 0.75,
@@ -864,6 +893,7 @@ export const settings = {
         {
             id: "zmcVlqmyk3Jpn5AVYcAL",
             name: "🎮 Sapphire",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.4,
                 similarityBoost: 0.9,
@@ -873,6 +903,7 @@ export const settings = {
         {
             id: "siw1N9V8LmYeEWKyWBxv",
             name: "💻 Ruhaan",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.1,
                 similarityBoost: 0.9,
@@ -880,8 +911,18 @@ export const settings = {
             },
         },
         {
+            id: "ff_siwis",
+            name: "🥖 Siwis",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "french",
+                speed: 0.9
+            }
+        },
+        {
             id: "Dslrhjl3ZpzrctukrQSN",
             name: "📺 Brad",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.5,
                 similarityBoost: 0.9,
@@ -889,17 +930,27 @@ export const settings = {
             },
         },
         {
-            id: "YXpFCvM1S3JbWEJhoskW",
-            name: "🤠 Cowboy",
+            id: "af_v0nicole",
+            name: "☁️  Whispering",
+            provider: "kokoro",
             voiceSettings: {
-                stability: 0.5,
-                similarityBoost: 0.9,
-                style: 0.01
+                language: "english",
+                speed: 0.9
+            }
+        },
+        {
+            id: "zf_xiaoxiao",
+            name: "😀 Xiao Xiao",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.8
             }
         },
         {
             id: "L1QogKoobNwLy4IaMsyA",
             name: "🙄 Lily",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.9,
                 similarityBoost: 0.9,
@@ -909,11 +960,39 @@ export const settings = {
         {
             id: "NOpBlnGInO9m6vDvFkFC",
             name: "👴 Grandpa",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.5,
                 similarityBoost: 0.9,
                 style: 0.9
             }
-        }
+        },
+        {
+            id: "af_jessica",
+            name: "💻 Jessica",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 1.0
+            }
+        },
+        {
+            id: "zm_yunxia",
+            name: "🤔 Yunxia",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.9
+            }
+        },
+        {
+            id: "pm_alex",
+            name: "🤕 Alex",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.9
+            }
+        },
     ]
 }

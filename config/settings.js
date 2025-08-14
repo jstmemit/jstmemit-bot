@@ -1,7 +1,4 @@
 import {createMemeGenerator} from "../src/generation/visual/memeFactory.js";
-import {generateGreentext} from "#src/generation/text/generateGreentext.js";
-import {generatePoll} from "#src/generation/text/generatePoll.js";
-import {generateVoiceMessage} from "#src/generation/voice/elevenlabs/generateVoiceMessage.js";
 
 export const settings = {
     cache: {
@@ -82,190 +79,244 @@ export const settings = {
         }
     },
     templates: [
+        // {
+        //     name: "quote",
+        //     description: "Quote with user image as background",
+        //     generator: createMemeGenerator('quote'),
+        //     requiresImage: true,
+        // },
+        // {
+        //     name: "superman",
+        //     description: "Superman says a very important phrase",
+        //     generator: createMemeGenerator('superman'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "manbehindblinds",
+        //     description: "Man smiling behind blinds says something strange",
+        //     generator: createMemeGenerator('manbehindblinds'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "manlookingup",
+        //     description: "Man looks up in horror and whispers a phrase",
+        //     generator: createMemeGenerator('manlookingup'),
+        //     requiresImage: false,
+        // },
         {
-            name: "quote",
-            description: "Quote with user image as background",
-            generator: createMemeGenerator('quote'),
+            name: "dissapointed",
+            description: "Guy stands with a very dissapointed face and says something",
+            generator: createMemeGenerator('dissapointed'),
             requiresImage: true,
         },
         {
-            name: "bottomcaption",
-            description: "Bottom caption meme with user image as background",
-            generator: createMemeGenerator('bottomcaption'),
+            name: "cowlookingintoocean",
+            description: "Cow stands on a beach and looks into the ocean",
+            generator: createMemeGenerator('cowlookingintoocean'),
+            requiresImage: false,
+        },
+        {
+            name: "missingpiece",
+            description: "Guy holds last puzzle piece and names a thing that is missing (1-2 words)",
+            generator: createMemeGenerator('missingpiece'),
             requiresImage: true,
         },
         {
-            name: "fancybear",
-            description: "Winnie the Pooh comparing two things",
-            generator: createMemeGenerator('fancybear'),
-            requiresImage: false,
+            name: "sleepythinking",
+            description: "Character is trying to sleep at 7am but can't stop thinking about something",
+            generator: createMemeGenerator('sleepythinking'),
+            requiresImage: true,
         },
         {
-            name: "uncanny",
-            description: "Uncanny meme with two face expressions (one is happy and second is sad)",
-            generator: createMemeGenerator('uncanny'),
-            requiresImage: false,
+            name: "newsreportersitting",
+            description: "News anchor is talking about a very important announcement",
+            generator: createMemeGenerator('newsreportersitting'),
+            requiresImage: true,
         },
         {
-            name: "looksatpaperangry",
-            description: "Looks at paper angrily meme",
-            generator: createMemeGenerator('looksatpaperangry'),
-            requiresImage: false,
+            name: "stonks",
+            description: "Man in a suit is happy about stocks going up and says a phrase",
+            generator: createMemeGenerator('stonks'),
+            requiresImage: true,
         },
-        {
-            name: "cycle",
-            description: "Cycle meme with things going in a loop",
-            generator: createMemeGenerator('cycle'),
-            requiresImage: false,
-        },
-        {
-            name: "steppedinshit",
-            description: "What would character that stepped in shit say?",
-            generator: createMemeGenerator('steppedinshit'),
-            requiresImage: false,
-        },
-        {
-            name: "wojackpoint",
-            description: "Words that wojak says when pointing on a user image",
-            generator: createMemeGenerator('wojackpoint'),
-            requiresImage: false,
-        },
-        {
-            name: "isthisapigeon",
-            description: "Words that a guy says pointing on a butterfly that is replaced with a user image",
-            generator: createMemeGenerator('isthisapigeon'),
-            requiresImage: false,
-        },
-        {
-            name: "yeschad",
-            description: "Chad reacts to two things, one is bad, second is good",
-            generator: createMemeGenerator('yeschad'),
-            requiresImage: false,
-        },
-        {
-            name: "texting",
-            description: "Two people text each other",
-            generator: createMemeGenerator('texting'),
-            requiresImage: false,
-        },
-        {
-            name: "connor",
-            description: "Connor from Detroit is presented with 4 options and he chooses the 4th one",
-            generator: createMemeGenerator('connor'),
-            requiresImage: false,
-        },
-        {
-            name: "buzz",
-            description: "Buzz Lightyear tells something weird and other guy is confused",
-            generator: createMemeGenerator('buzz'),
-            requiresImage: false,
-        },
-        {
-            name: "explains",
-            description: "Explains something with a user image",
-            generator: createMemeGenerator('explains'),
-            requiresImage: false,
-        },
-        {
-            name: "livereaction",
-            generator: createMemeGenerator('livereaction'),
-            requiresImage: false,
-        },
-        {
-            name: "spongebob",
-            description: "Spongebob burns a user image and says something",
-            generator: createMemeGenerator('spongebob'),
-            requiresImage: false,
-        },
-        {
-            name: "crying",
-            generator: createMemeGenerator('crying'),
-            requiresImage: false,
-        },
-        {
-            name: "absolutecinema",
-            generator: createMemeGenerator('absolutecinema'),
-            requiresImage: false,
-        },
-        {
-            name: "spongebobhappy",
-            description: "Spongebob is happy and squidward is very sad",
-            generator: createMemeGenerator('spongebobhappy'),
-            requiresImage: false,
-        },
-        {
-            name: "politicalcompass1",
-            generator: createMemeGenerator('politicalcompass1'),
-            requiresImage: false,
-        },
-        {
-            name: "politicalcompass2",
-            generator: createMemeGenerator('politicalcompass2'),
-            requiresImage: false,
-        },
-        {
-            name: "bigthumbsup",
-            description: "One guy tells a group something, they don't care, give him a thumbs up and leave",
-            generator: createMemeGenerator('bigthumbsup'),
-            requiresImage: false,
-        },
-        {
-            name: "tf2hahaha",
-            description: "Doc tells Heavy a funny thing and they both laugh",
-            generator: createMemeGenerator('tf2hahaha'),
-            requiresImage: false,
-        },
-        {
-            name: "homerhiding",
-            description: "Homer hiding in the bushes",
-            generator: createMemeGenerator('homerhiding'),
-            requiresImage: false,
-        },
-        {
-            name: "sleepy",
-            generator: createMemeGenerator('sleepy'),
-            requiresImage: false,
-        },
-        {
-            name: "whydoyoulikethismovie",
-            generator: createMemeGenerator('whydoyoulikethismovie'),
-            requiresImage: false,
-        },
-        {
-            name: "worldsmostdangeroustrap",
-            generator: createMemeGenerator('worldsmostdangeroustrap'),
-            requiresImage: false,
-        },
-        {
-            name: "onedollarprivateisland",
-            generator: createMemeGenerator('onedollarprivateisland'),
-            requiresImage: false,
-        },
-        {
-            name: "iadopted100dogs",
-            generator: createMemeGenerator('iadopted100dogs'),
-            requiresImage: false,
-        },
-        {
-            name: "igothuntedbyarealbountyhunter",
-            generator: createMemeGenerator('igothuntedbyarealbountyhunter'),
-            requiresImage: false,
-        },
-        {
-            name: "voicemessage",
-            generator: (image, channelId, interaction) => generateVoiceMessage(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "greentext",
-            generator: (image, channelId, interaction) => generateGreentext(channelId),
-            requiresImage: false,
-        },
-        {
-            name: "poll",
-            generator: (image, channelId, interaction) => generatePoll(channelId),
-            requiresImage: false,
-        },
+        // {
+        //     name: "bottomcaption",
+        //     description: "Bottom caption meme with user image as background",
+        //     generator: createMemeGenerator('bottomcaption'),
+        //     requiresImage: true,
+        // },
+        // {
+        //     name: "fancybear",
+        //     description: "Winnie the Pooh comparing two things",
+        //     generator: createMemeGenerator('fancybear'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "uncanny",
+        //     description: "Uncanny meme with two face expressions (one is happy and second is sad)",
+        //     generator: createMemeGenerator('uncanny'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "looksatpaperangry",
+        //     description: "Looks at paper angrily meme",
+        //     generator: createMemeGenerator('looksatpaperangry'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "cycle",
+        //     description: "Cycle meme with things going in a loop",
+        //     generator: createMemeGenerator('cycle'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "steppedinshit",
+        //     description: "What would character that stepped in shit say?",
+        //     generator: createMemeGenerator('steppedinshit'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "wojackpoint",
+        //     description: "Words that wojak says when pointing on a user image",
+        //     generator: createMemeGenerator('wojackpoint'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "isthisapigeon",
+        //     description: "Words that a guy says pointing on a butterfly that is replaced with a user image",
+        //     generator: createMemeGenerator('isthisapigeon'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "yeschad",
+        //     description: "Chad reacts to two things, one is bad, second is good",
+        //     generator: createMemeGenerator('yeschad'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "texting",
+        //     description: "Two people text each other",
+        //     generator: createMemeGenerator('texting'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "connor",
+        //     description: "Connor from Detroit is presented with 4 options and he chooses the 4th one",
+        //     generator: createMemeGenerator('connor'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "buzz",
+        //     description: "Buzz Lightyear tells something weird and other guy is confused",
+        //     generator: createMemeGenerator('buzz'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "explains",
+        //     description: "Explains something with a user image",
+        //     generator: createMemeGenerator('explains'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "livereaction",
+        //     generator: createMemeGenerator('livereaction'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "spongebob",
+        //     description: "Spongebob burns a user image and says something",
+        //     generator: createMemeGenerator('spongebob'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "crying",
+        //     generator: createMemeGenerator('crying'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "absolutecinema",
+        //     generator: createMemeGenerator('absolutecinema'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "spongebobhappy",
+        //     description: "Spongebob is happy and squidward is very sad",
+        //     generator: createMemeGenerator('spongebobhappy'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "politicalcompass1",
+        //     generator: createMemeGenerator('politicalcompass1'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "politicalcompass2",
+        //     generator: createMemeGenerator('politicalcompass2'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "bigthumbsup",
+        //     description: "One guy tells a group something, they don't care, give him a thumbs up and leave",
+        //     generator: createMemeGenerator('bigthumbsup'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "tf2hahaha",
+        //     description: "Doc tells Heavy a funny thing and they both laugh",
+        //     generator: createMemeGenerator('tf2hahaha'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "homerhiding",
+        //     description: "Homer hiding in the bushes",
+        //     generator: createMemeGenerator('homerhiding'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "sleepy",
+        //     generator: createMemeGenerator('sleepy'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "whydoyoulikethismovie",
+        //     generator: createMemeGenerator('whydoyoulikethismovie'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "worldsmostdangeroustrap",
+        //     generator: createMemeGenerator('worldsmostdangeroustrap'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "onedollarprivateisland",
+        //     generator: createMemeGenerator('onedollarprivateisland'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "iadopted100dogs",
+        //     generator: createMemeGenerator('iadopted100dogs'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "igothuntedbyarealbountyhunter",
+        //     generator: createMemeGenerator('igothuntedbyarealbountyhunter'),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "voicemessage",
+        //     generator: (image, channelId, interaction) => generateVoiceMessage(channelId),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "greentext",
+        //     generator: (image, channelId, interaction) => generateGreentext(channelId),
+        //     requiresImage: false,
+        // },
+        // {
+        //     name: "poll",
+        //     generator: (image, channelId, interaction) => generatePoll(channelId),
+        //     requiresImage: false,
+        // },
     ],
     languages: [
         {
@@ -409,6 +460,12 @@ export const settings = {
             cy: 150,
             radius: 200
         },
+        sleepythinking_1: {
+            type: 'circle',
+            cx: 430,
+            cy: 50,
+            radius: 600
+        },
         sleepy_1: {
             type: 'circle',
             cx: 530,
@@ -511,6 +568,12 @@ export const settings = {
             cy: 450,
             radius: 45
         },
+        dissapointed_1: {
+            type: 'circle',
+            cx: 325,
+            cy: 90,
+            radius: 60
+        },
         homerhiding_1: {
             type: 'circle',
             cx: 180,
@@ -552,6 +615,15 @@ export const settings = {
             box: {x: 0.1, y: 0.375, w: 0.80, h: 0.25},
             maxLines: 4,
             baseImageOverlay: 128
+        },
+        stonks_1: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Comic Sans MS',
+            box: {x: 0.4, y: 0.22, w: 0.30, h: 0.15},
+            maxLines: 2,
+            baseImageOverlay: 0
         },
         fancybear_1: {
             fillStyle: '#000000',
@@ -694,6 +766,15 @@ export const settings = {
             textAlign: 'center',
             font: 'Comic Sans MS',
             box: {x: 0.1, y: 0.7, w: 0.80, h: 0.25},
+            maxLines: 4,
+            baseImageOverlay: 0
+        },
+        superman_1: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Comic Sans MS',
+            box: {x: 0.1, y: 0.1, w: 0.80, h: 0.25},
             maxLines: 4,
             baseImageOverlay: 0
         },

@@ -226,7 +226,6 @@ export class MemeGenerator {
         await analytics.capture({
             distinctId: channelId,
             event: 'meme_generated',
-            sendFeatureFlags: true,
             properties: {
                 template: this.templateName,
                 ...timings,

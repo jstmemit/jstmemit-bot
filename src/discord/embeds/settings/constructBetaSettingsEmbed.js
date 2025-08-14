@@ -3,13 +3,10 @@
 import {ButtonStyle, ContainerBuilder, SeparatorBuilder, SeparatorSpacingSize, TextDisplayBuilder} from 'discord.js';
 import {t} from "../../i18n/utils.js";
 import {settings} from "#config/settings.js";
-import {analytics} from "#src/analytics/initializeAnalytics.js";
 
 export const constructBetaSettingsEmbed = async (currentSettings, channelId, buttons) => {
 
     const language = currentSettings?.language || "english";
-
-    let engine = await analytics.getFeatureFlag('v2-alpha-meme-engine', channelId);
 
     const engineOptions = [
         {

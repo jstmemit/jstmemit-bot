@@ -991,7 +991,7 @@ export const settings = {
             provider: "kokoro",
             voiceSettings: {
                 language: "english",
-                speed: 0.9
+                speed: 0.6
             }
         },
     ]

@@ -4,6 +4,8 @@ import {analytics} from "#src/analytics/initializeAnalytics.js";
 import {ActivityType, Client, GatewayIntentBits, MessageFlags} from 'discord.js';
 import {AutoPoster} from 'topgg-autoposter';
 import {loadEvents} from "#src/discord/events/eventLoader.js";
+import {validateSettings} from "#src/validation/validateSettings.js";
+import {settings} from "#config/settings.js";
 
 export const client = new Client({
 	intents: [
@@ -45,5 +47,7 @@ if (dotenv.config().parsed.TOPGG_TOKEN) {
 		await analytics.flush();
 	})
 }
+
+validateSettings(settings)
 
 client.login(dotenv.config().parsed.DISCORD_TOKEN);

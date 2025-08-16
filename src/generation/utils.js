@@ -1,4 +1,5 @@
 import {settings} from "../../config/settings.js";
+import {log} from "../../bot.js";
 
 export const validateCanvasImage = async (image, canvas) => {
     try {
@@ -13,14 +14,14 @@ export const validateCanvasImage = async (image, canvas) => {
         }
 
         if (!image || !image.width || !image.height) {
-            console.log('Image error:', image);
+            log.error('Image error:', image);
             throw new Error('Invalid image');
         }
 
         return await compressImage(image, canvas);
 
     } catch (error) {
-        console.error('Error loading image:', error);
+        log.error('Error loading image:', error);
         throw new Error('Image error');
     }
 };
@@ -81,7 +82,7 @@ const compressImage = async (image, canvas) => {
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = 'medium';
         } catch (error) {
-            console.error(`Failed to create canvas: ${error.message}`);
+            log.error(`Failed to create canvas: ${error.message}`);
         }
 
         try {
@@ -118,7 +119,7 @@ const compressImage = async (image, canvas) => {
         }
 
     } catch (error) {
-        console.error('An error in compressImage', error.message);
+        log.error('An error in compressImage', error.message);
         return image;
     }
 };

@@ -4,6 +4,7 @@ import {handlePermissionCheck} from "./handlePermissionCheck.js";
 import {constructPremiumEmbed} from "../embeds/constructPremiumEmbed.js";
 
 import {checkPremium} from "../helpers/checkPremium.js";
+import {log} from "../../../bot.js";
 
 export const handleUpdatePremiumEmbed = async (interaction) => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
@@ -20,7 +21,7 @@ export const handleUpdatePremiumEmbed = async (interaction) => {
             components: components
         })
     } catch (error) {
-        console.error("Error updating embed:", error);
+        log.error("Error updating embed:", error);
     }
 
 }

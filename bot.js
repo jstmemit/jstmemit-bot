@@ -1,9 +1,16 @@
 import dotenv from 'dotenv';
 import {analytics} from "#src/analytics/initializeAnalytics.js";
-
 import {ActivityType, Client, GatewayIntentBits, MessageFlags} from 'discord.js';
 import {AutoPoster} from 'topgg-autoposter';
 import {loadEvents} from "#src/discord/events/eventLoader.js";
+import {validateSettings} from "#src/validation/validateSettings.js";
+import {settings} from "#config/settings.js";
+import * as tracer from "tracer"
+
+export const log = tracer.colorConsole({
+	format: '{{timestamp}} {{message}}'
+})
+log.info('Starting the bot...');
 
 export const client = new Client({
 	intents: [
@@ -14,17 +21,11 @@ export const client = new Client({
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-	console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-	if (analytics) {
-		analytics.captureException(reason);
-	}
+	log.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });
 
 process.on('uncaughtException', (error) => {
-	console.error('Uncaught Exception:', error);
-	if (analytics) {
-		analytics.captureException(error);
-	}
+	log.error('Uncaught Exception:', error);
 });
 
 
@@ -45,5 +46,7 @@ if (dotenv.config().parsed.TOPGG_TOKEN) {
 		await analytics.flush();
 	})
 }
+
+validateSettings(settings)
 
 client.login(dotenv.config().parsed.DISCORD_TOKEN);

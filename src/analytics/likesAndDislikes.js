@@ -1,6 +1,7 @@
 import axios from 'axios';
 import dotenv from "dotenv";
 import {settings} from "#config/settings.js";
+import {log} from "../../bot.js";
 
 const posthogProjectId = dotenv.config().parsed.POSTHOG_PROJECT_ID;
 const posthogWriteKey = dotenv.config().parsed.POSTHOG_WRITE_KEY;
@@ -105,7 +106,7 @@ export const calculateWeights = (analyticsData) => {
 
         return weights;
     } catch (error) {
-        console.error('Error calculating weights:', error);
+        log.error('Error calculating weights:', error);
         return {};
     }
 };

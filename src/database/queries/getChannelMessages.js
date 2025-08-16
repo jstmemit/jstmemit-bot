@@ -1,6 +1,7 @@
 import {getChannelSettings} from "./getChannelSettings.js";
 import {processChannelMessages} from "../helpers/processChannelMessages.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
 
 export const getChannelMessages = async (channelId) => {
     let timer = performance.now();
@@ -29,7 +30,7 @@ export const getChannelMessages = async (channelId) => {
         return allMessages.length > 0 ? allMessages : null;
 
     } catch (error) {
-        console.error('Error fetching channel messages:', error);
+        log.error('Error fetching channel messages:', error);
         throw error;
     }
 };

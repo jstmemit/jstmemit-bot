@@ -1,5 +1,6 @@
 import {eraseChannelMessages} from "../queries/eraseChannelMessages.js";
 import {pool} from "../initializePool.js";
+import {log} from "../../../bot.js";
 
 export const handleDataRetention = async () => {
     const batchSize = 10;
@@ -17,7 +18,7 @@ export const handleDataRetention = async () => {
                 try {
                     return await eraseChannelMessages(channel_id, 'threshold');
                 } catch (error) {
-                    console.error(`Error processing channel ${channel_id}:`, error);
+                    log.error(`Error processing channel ${channel_id}:`, error);
                     return false;
                 }
             });
@@ -27,7 +28,7 @@ export const handleDataRetention = async () => {
 
         return true;
     } catch (error) {
-        console.error('Error in handleDataRetention:', error);
+        log.error('Error in handleDataRetention:', error);
         return false;
     } finally {
         conn.release();

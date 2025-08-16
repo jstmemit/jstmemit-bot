@@ -1,4 +1,4 @@
-import {client} from "../../bot.js";
+import {client, log} from "../../bot.js";
 
 export const runRandomFunction = async (functionsWithWeights) => {
     try {
@@ -21,7 +21,7 @@ export const runRandomFunction = async (functionsWithWeights) => {
             }
         }
     } catch (error) {
-        console.error('Error in runRandomFunction:', error.message);
+        log.error('Error in runRandomFunction:', error.message);
         throw error;
     }
 };

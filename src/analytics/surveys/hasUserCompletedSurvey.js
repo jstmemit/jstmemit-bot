@@ -1,5 +1,6 @@
 import axios from "axios";
 import {analytics, posthogBaseUrl, posthogProjectId, posthogWriteKey} from "#src/analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
 
 const cache = new Map();
 const cacheTTL = 60 * 1000;
@@ -47,7 +48,7 @@ export const hasUserCompletedSurvey = async (userId, surveyId) => {
 
     } catch (error) {
         analytics.captureException(error);
-        console.error(error);
+        log.error(error);
         return false;
     }
 };

@@ -6,6 +6,7 @@ import {constructMemesSettingsEmbed} from "#src/discord/embeds/settings/construc
 import {constructDataSettingsEmbed} from "#src/discord/embeds/settings/constructDataSettingsEmbed.js";
 import {createSettingsButtonRow} from "#src/discord/helpers/createSettingsButtons.js";
 import {constructBetaSettingsEmbed} from "#src/discord/embeds/settings/constructBetaSettingsEmbed.js";
+import {log} from "../../../bot.js";
 
 export const handleUpdateSettingsEmbed = async (interaction, tab) => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
@@ -54,7 +55,7 @@ export const handleUpdateSettingsEmbed = async (interaction, tab) => {
             components: components
         })
     } catch (error) {
-        console.error("Error updating settings embed:", error);
+        log.error("Error updating settings embed:", error);
     }
 
 }

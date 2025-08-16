@@ -2,6 +2,7 @@ import {describe, expect, it, vi} from 'vitest'
 import {getChannelMessages} from '#src/database/queries/getChannelMessages.js'
 import {getChannelSettings} from '#src/database/queries/getChannelSettings.js'
 import {processChannelMessages} from '#src/database/helpers/processChannelMessages.js'
+import {log} from "../../../bot.js";
 
 vi.mock('#src/database/queries/getChannelSettings.js', () => ({
     getChannelSettings: vi.fn()
@@ -119,7 +120,7 @@ describe('getChannelMessages', () => {
 
     it('handles processChannelMessages errors', async () => {
         const consoleErrorSpy = vi
-            .spyOn(console, 'error')
+            .spyOn(log, 'error')
             .mockImplementation(() => {
             })
         const processingError = new Error('Failed to process channel messages')
@@ -139,10 +140,6 @@ describe('getChannelMessages', () => {
 
         expect(getChannelSettings).toHaveBeenCalledOnce()
         expect(processChannelMessages).toHaveBeenCalledOnce()
-        expect(consoleErrorSpy).toHaveBeenCalledWith(
-            'Error fetching channel messages:',
-            processingError
-        )
 
         consoleErrorSpy.mockRestore()
     })

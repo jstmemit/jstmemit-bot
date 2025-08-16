@@ -4,6 +4,7 @@ import {getTimestamp, validateCanvasImage} from "../../utils.js";
 import {settings} from "../../../../config/settings.js";
 import {drawFullWidth} from "./overlay/drawFullWidth.js";
 import {drawAvatar} from "./overlay/drawAvatar.js";
+import {log} from "../../../../bot.js";
 
 export const overlayImage = async (image1, image2, variant, height = 0, convert) => {
     try {
@@ -71,7 +72,7 @@ export const overlayImage = async (image1, image2, variant, height = 0, convert)
         }
 
     } catch (error) {
-        console.error('An error in overlayImage', error);
+        log.error('An error in overlayImage', error);
         throw new Error(`overlayImage failed: ${error.message}`);
     }
 }

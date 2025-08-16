@@ -3,6 +3,7 @@ import {overlayImage} from "./overlayImage.js";
 import {getTimestamp, validateCanvasImage} from "../../utils.js";
 import {AttachmentBuilder} from "discord.js";
 import Canvas from '@napi-rs/canvas';
+import {log} from "../../../../bot.js";
 
 export const applyWatermark = async (image, logoUrl, text, applyLogo) => {
     try {
@@ -20,13 +21,13 @@ export const applyWatermark = async (image, logoUrl, text, applyLogo) => {
             try {
                 const response = await fetch(logoUrl);
                 if (!response.ok) {
-                    console.error('Failed to fetch logo:', response.statusText);
+                    log.error('Failed to fetch logo:', response.statusText);
                 }
                 const logoBuffer = Buffer.from(await response.arrayBuffer());
 
                 currentImage = await overlayImage(currentImage, logoBuffer, 'watermark_logo', 0, false);
             } catch (logoError) {
-                console.error('Logo watermark failed:', logoError);
+                log.error('Logo watermark failed:', logoError);
             }
         }
 
@@ -34,7 +35,7 @@ export const applyWatermark = async (image, logoUrl, text, applyLogo) => {
             try {
                 currentImage = await addText('watermark_text', currentImage, text);
             } catch (textError) {
-                console.error('Text watermark failed:', textError);
+                log.error('Text watermark failed:', textError);
             }
         }
 
@@ -58,6 +59,6 @@ export const applyWatermark = async (image, logoUrl, text, applyLogo) => {
         return new AttachmentBuilder(buffer, {name: `meme_${getTimestamp()}.png`});
 
     } catch (error) {
-        console.error('Error in applyWatermark:', error);
+        log.error('Error in applyWatermark:', error);
     }
 };

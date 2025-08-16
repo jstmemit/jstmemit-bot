@@ -1,5 +1,6 @@
 import {pool} from '../initializePool.js';
 import {getChannelSettings} from "./getChannelSettings.js";
+import {log} from "../../../bot.js";
 
 export const eraseChannelMessages = async (channelId, type) => {
 
@@ -19,7 +20,7 @@ export const eraseChannelMessages = async (channelId, type) => {
             ).then(() => {
                 return Promise.resolve(true);
             }).catch(error => {
-                console.error('Error deleting all channel messages:', error);
+                log.error('Error deleting all channel messages:', error);
                 return Promise.resolve(false);
             });
         case 'threshold':
@@ -29,7 +30,7 @@ export const eraseChannelMessages = async (channelId, type) => {
             ).then(() => {
                 return Promise.resolve(true);
             }).catch(error => {
-                console.error('Error deleting channel messages by threshold:', error);
+                log.error('Error deleting channel messages by threshold:', error);
                 return Promise.resolve(false);
             });
     }

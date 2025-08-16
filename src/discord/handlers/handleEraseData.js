@@ -1,6 +1,7 @@
 import {eraseChannelMessages} from "../../database/queries/eraseChannelMessages.js";
 import {handlePermissionCheck} from "./handlePermissionCheck.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
 
 export const handleEraseData = async interaction => {
     try {
@@ -35,6 +36,6 @@ export const handleEraseData = async interaction => {
         await analytics.flush()
 
     } catch (error) {
-        console.error("Error erasing data:", error);
+        log.error("Error erasing data:", error);
     }
 };

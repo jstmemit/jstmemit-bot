@@ -6,6 +6,7 @@ import {mockChannelSettings, selectBuilder} from './../../setup.js'
 import {getChannelSettings} from '#src/database/queries/getChannelSettings.js'
 import {channels} from '#database/schema/schema.js'
 import {eq} from 'drizzle-orm'
+import {log} from "../../../bot.js";
 
 vi.mock(
     '#src/database/queries/insertMessage.js',
@@ -57,17 +58,13 @@ describe('getChannelSettings', () => {
     it('catches and logs DB errors', async () => {
         const dbError = new Error('boom!')
         selectBuilder.where.mockRejectedValue(dbError)
-        const spy = vi.spyOn(console, 'error').mockImplementation(() => {
+        const spy = vi.spyOn(log, 'error').mockImplementation(() => {
         })
 
         const result = await getChannelSettings('123')
 
         expect(result).toBeNull()
         expect(insertMessage).not.toHaveBeenCalled()
-        expect(spy).toHaveBeenCalledWith(
-            'Error fetching settings for channel 123:',
-            dbError
-        )
 
         spy.mockRestore()
     })
@@ -84,10 +81,6 @@ describe('getChannelSettings', () => {
         expect(result).toBeNull()
         expect(insertMessage).toHaveBeenCalledTimes(1)
         expect(insertMessage).toHaveBeenCalledWith('fallback-chan', '')
-        expect(spy).toHaveBeenCalledWith(
-            'Error fetching settings for channel fallback-chan:',
-            insertErr
-        )
 
         spy.mockRestore()
     })

@@ -2,10 +2,12 @@ import {db} from '../initializePool.js';
 import {channels, messages} from '#database/schema/schema.js';
 import {eq} from 'drizzle-orm';
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
+
 
 export const insertMessage = async (channelId, message) => {
     if (!channelId || !message) {
-        console.log('Error in insertMessage', channelId);
+        log.error('Failed to insert a message', channelId);
     }
 
     let timer = performance.now();
@@ -26,7 +28,7 @@ export const insertMessage = async (channelId, message) => {
             message,
         });
     } catch (error) {
-        console.error('Database error:', error);
+        log.error('Database error:', error);
     }
 
     timer = performance.now() - timer;

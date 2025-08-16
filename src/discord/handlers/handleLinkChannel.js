@@ -2,6 +2,7 @@ import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
 import {handlePermissionCheck} from "./handlePermissionCheck.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
 
 export const handleLinkChannel = async interaction => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
@@ -40,6 +41,6 @@ export const handleLinkChannel = async interaction => {
 
         await changeChannelSettings(newSettings);
     } catch (error) {
-        console.error("Error linking channel:", error);
+        log.error("Error linking channel:", error);
     }
 };

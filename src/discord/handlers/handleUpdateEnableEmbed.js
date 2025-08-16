@@ -2,6 +2,7 @@ import {MessageFlags} from "discord.js";
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {constructEnableEmbed} from "../embeds/constructEnableEmbed.js";
 import {handlePermissionCheck} from "./handlePermissionCheck.js";
+import {log} from "../../../bot.js";
 
 export const handleUpdateEnableEmbed = async (interaction) => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
@@ -16,7 +17,7 @@ export const handleUpdateEnableEmbed = async (interaction) => {
             components: components
         })
     } catch (error) {
-        console.error("Error updating embed:", error);
+        log.error("Error updating embed:", error);
     }
 
 }

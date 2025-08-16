@@ -1,3 +1,5 @@
+import {log} from "../../../../bot.js";
+
 export const cutText = (ctx, rawText, maxWidth) => {
     try {
         const words = rawText.split(/\s+/);
@@ -16,7 +18,7 @@ export const cutText = (ctx, rawText, maxWidth) => {
         if (line) lines.push(line);
         return lines;
     } catch (error) {
-        console.error('Error cutting text:', error);
+        log.error('Error cutting text:', error);
         return [];
     }
 }

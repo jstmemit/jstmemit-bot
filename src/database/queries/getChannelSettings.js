@@ -2,6 +2,7 @@ import {db} from "#database/initializePool.js";
 import {channels} from "#database/schema/schema.js";
 import {eq} from "drizzle-orm";
 import {insertMessage} from "#database/queries/insertMessage.js";
+import {log} from "../../../bot.js";
 
 export const getChannelSettings = async (channelId) => {
     try {
@@ -25,7 +26,7 @@ export const getChannelSettings = async (channelId) => {
 
         return result[0] || null;
     } catch (error) {
-        console.error(`Error fetching settings for channel ${channelId}:`, error);
+        log.error(`Error fetching settings for channel ${channelId}:`, error);
         return null;
     }
 };

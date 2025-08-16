@@ -1,6 +1,7 @@
 import {db} from "#database/initializePool.js";
 import {messages} from "#database/schema/schema.js";
 import {desc, eq} from "drizzle-orm";
+import {log} from "../../../bot.js";
 
 export const fetchChannelMessages = async (channelId) => {
     try {
@@ -17,7 +18,7 @@ export const fetchChannelMessages = async (channelId) => {
 
         return rows.map(row => row.message);
     } catch (error) {
-        console.error(`Error fetching messages for channel ${channelId}:`, error);
+        log.error(`Error fetching messages for channel ${channelId}:`, error);
         return null;
     }
 };

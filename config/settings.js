@@ -8,6 +8,7 @@ export const settings = {
         memeTemplatesAnalyticsCache: 480 * 60 * 1000,
         channelImagesCache: 1 * 60 * 1000,
     },
+    activity: "how to make memes",
     values: {
         baseWeight: 0.3,
     },

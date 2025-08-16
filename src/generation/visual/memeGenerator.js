@@ -7,6 +7,7 @@ import {getRandomImage} from '../../discord/getRandomImage.js';
 import {overlayImage} from './helpers/overlayImage.js';
 import {memeTemplates} from '../../../config/memeTemplates.js';
 import {analytics} from '#src/analytics/initializeAnalytics.js';
+import {log} from "../../../bot.js";
 
 const normalizeEngine = (engine) => {
     if (engine === undefined) return undefined;
@@ -69,8 +70,8 @@ export class MemeGenerator {
             return result;
 
         } catch (error) {
-            console.error(`Error in ${this.templateName}:`, error.message);
-            console.log(error)
+            log.error(`Error in ${this.templateName}:`, error.message);
+            log.error(error)
             throw error;
         }
     }

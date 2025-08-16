@@ -1,6 +1,7 @@
 import {beforeEach, describe, expect, test, vi} from 'vitest'
 import axios from 'axios'
 import {calculateWeights, getAnalyticsData} from '#src/analytics/likesAndDislikes.js'
+import {log} from "../../bot.js";
 
 vi.mock('axios')
 vi.mock('dotenv', () => ({
@@ -234,7 +235,7 @@ describe('calculateWeights', () => {
     })
 
     test('handles calculation errors gracefully', () => {
-        const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {
+        const consoleSpy = vi.spyOn(log, 'error').mockImplementation(() => {
         })
 
         const result = calculateWeights(null)

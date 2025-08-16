@@ -1,8 +1,11 @@
 import {parseCount} from "../parseReactions.js";
 import {buildRow} from "../buildRow.js";
 import {analytics as posthog} from "#src/analytics/initializeAnalytics.js";
+import {checkSurveyConditions} from "#src/analytics/surveys/checkSurveyConditions.js";
+import {MessageFlags} from "discord.js";
 
 export const votes = new Map();
+export const usersShownSurvey = new Set();
 
 export const vote = async (interaction, analytics, id) => {
     let record = votes.get(analytics);
@@ -58,4 +61,18 @@ export const vote = async (interaction, analytics, id) => {
     await interaction.update({
         components: [buildRow(newLikes, newDislikes, analytics)],
     });
+
+    if (!usersShownSurvey.has(interaction.user.id)) {
+        const survey = await checkSurveyConditions(interaction.channel.id, interaction.user.id);
+
+        if (survey && survey.length > 0) {
+            usersShownSurvey.add(interaction.user.id);
+
+            interaction.followUp({
+                flags: MessageFlags.IsComponentsV2,
+                components: survey,
+                ephemeral: true
+            });
+        }
+    }
 }

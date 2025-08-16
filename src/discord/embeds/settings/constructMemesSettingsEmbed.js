@@ -171,6 +171,52 @@ export const constructMemesSettingsEmbed = (currentSettings, channelId, buttons)
             value: "spongebobhappy",
             emoji: {id: "1393248198562283641"},
         },
+
+        {
+            label: t("settingsMemesTemplatesOptionSupermanTitle", language),
+            value: "superman",
+            emoji: {id: "1405607179872112761"},
+        },
+        // {
+        //     label: t("settingsMemesTemplatesOptionStonksTitle", language),
+        //     value: "stonks",
+        //     emoji: {id: "1393248198562283641"},
+        // },
+        // {
+        //     label: t("settingsMemesTemplatesOptionSleepyThinkingTitle", language),
+        //     value: "sleepythinking",
+        //     emoji: {id: "1393248198562283641"},
+        // },
+        // {
+        //     label: t("settingsMemesTemplatesOptionNewsReporterSittingTitle", language),
+        //     value: "newsreportersitting",
+        //     emoji: {id: "1393248198562283641"},
+        // },
+        // {
+        //     label: t("settingsMemesTemplatesOptionMissingPieceTitle", language),
+        //     value: "missingpiece",
+        //     emoji: {id: "1393248198562283641"},
+        // },
+        // {
+        //     label: t("settingsMemesTemplatesOptionManLookingUpTitle", language),
+        //     value: "manlookingup",
+        //     emoji: {id: "1393248198562283641"},
+        // },
+        // {
+        //     label: t("settingsMemesTemplatesOptionManBehindBlindsTitle", language),
+        //     value: "manbehindblinds",
+        //     emoji: {id: "1393248198562283641"},
+        // },
+        // {
+        //     label: t("settingsMemesTemplatesOptionDissapointedTitle", language),
+        //     value: "dissapointed",
+        //     emoji: {id: "1393248198562283641"},
+        // },
+        // {
+        //     label: t("settingsMemesTemplatesOptionCowLookingIntoOceanTitle", language),
+        //     value: "cowlookingintoocean",
+        //     emoji: {id: "1393248198562283641"},
+        // },
     ]
 
     if (currentSettings) {

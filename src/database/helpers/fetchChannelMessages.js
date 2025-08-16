@@ -1,13 +1,15 @@
 import {db} from "#database/initializePool.js";
 import {messages} from "#database/schema/schema.js";
-import {eq} from "drizzle-orm";
+import {desc, eq} from "drizzle-orm";
 
 export const fetchChannelMessages = async (channelId) => {
     try {
         const rows = await db
             .select()
             .from(messages)
-            .where(eq(messages.channelId, channelId));
+            .where(eq(messages.channelId, channelId))
+            .orderBy(desc(messages.timestamp))
+            .limit(5000);
 
         if (rows.length === 0) {
             return null;

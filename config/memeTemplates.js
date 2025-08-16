@@ -127,6 +127,77 @@ export const memeTemplates = {
         ]
     },
 
+    superman: {
+        templateFile: 'superman.jpg',
+        requiresChannelMessages: true,
+        images: [],
+        texts: [
+            {key: 'bottomcaption', minLength: 0, maxLength: 5}
+        ]
+    },
+
+    manbehindblinds: {
+        templateFile: 'manbehindblinds.jpg',
+        requiresChannelMessages: true,
+        images: [],
+        texts: [
+            {key: 'bottomcaption', minLength: 0, maxLength: 5}
+        ]
+    },
+
+    manlookingup: {
+        templateFile: 'manlookingup.png',
+        requiresChannelMessages: true,
+        images: [],
+        texts: [
+            {key: 'bottomcaption', minLength: 0, maxLength: 5}
+        ]
+    },
+
+    cowlookingintoocean: {
+        templateFile: 'cowlookingintoocean.png',
+        requiresChannelMessages: true,
+        images: [],
+        texts: [
+            {key: 'bottomcaption', minLength: 0, maxLength: 5}
+        ]
+    },
+
+    dissapointed: {
+        templateFile: 'dissapointed.png',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'random', overlay: 'dissapointed_1'}
+        ],
+        texts: [
+            {key: 'bottomcaption', minLength: 0, maxLength: 5}
+        ]
+    },
+
+    missingpiece: {
+        templateFile: 'missingpiece.png',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'random', overlay: 'fullimage'},
+            {type: 'template', overlay: 'fullimage'},
+        ],
+        texts: [
+            {key: 'bottomcaption', minLength: 0, maxLength: 5}
+        ]
+    },
+
+    stonks: {
+        templateFile: 'stonks.png',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'random', overlay: 'fullimage'},
+            {type: 'template', overlay: 'fullimage'},
+        ],
+        texts: [
+            {key: 'stonks_1', minLength: 0, maxLength: 5}
+        ]
+    },
+
     isthisapigeon: {
         templateFile: 'isthisapigeon.png',
         requiresChannelMessages: true,
@@ -170,6 +241,30 @@ export const memeTemplates = {
         ],
         texts: [
             {key: 'spongebob_1', minLength: 0, maxLength: 3}
+        ]
+    },
+
+    sleepythinking: {
+        templateFile: 'sleepythinking.png',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'random', overlay: 'sleepythinking_1'},
+            {type: 'template', overlay: 'fullimage'}
+        ],
+        texts: [
+            {key: 'bottomcaption', minLength: 0, maxLength: 3}
+        ]
+    },
+
+    newsreportersitting: {
+        templateFile: 'newsreportersitting.png',
+        requiresChannelMessages: true,
+        images: [
+            {type: 'random', overlay: 'fullimage'},
+            {type: 'template', overlay: 'fullimage'}
+        ],
+        texts: [
+            {key: 'bottomcaption', minLength: 0, maxLength: 3}
         ]
     },
 

@@ -10,6 +10,7 @@ export const locale = {
         settingsButtonMemeSettings: "Meme Generation",
         settingsButtonDataRetentionSettings: "Data Retention",
         settingsButtonPremiumSettings: "Premium",
+        settingsButtonBetaSettings: "Beta Features",
 
         settingsMemesTitle: "Meme Generation",
         settingsMemesDescription: "This section contains options related to random memes in the chat. You can control how often bot is going to send memes and also what memes do you want to see.",
@@ -58,6 +59,15 @@ export const locale = {
         settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Why do you like this movie?",
         settingsMemesTemplatesOptionHomerHidingTitle: "Homer Hiding",
         settingsMemesTemplatesOptionSpongebobHappyTitle: "SpongeBob Happy",
+        settingsMemesTemplatesOptionSupermanTitle: "Superman",
+        settingsMemesTemplatesOptionStonksTitle: "Stonks",
+        settingsMemesTemplatesOptionSleepyThinkingTitle: "Trying to sleep at 7AM",
+        settingsMemesTemplatesOptionNewsReporterSittingTitle: "News Reporter announcement",
+        settingsMemesTemplatesOptionMissingPieceTitle: "Last missing Piece",
+        settingsMemesTemplatesOptionManLookingUpTitle: "Man is looking up in horror",
+        settingsMemesTemplatesOptionManBehindBlindsTitle: "Man smiling behind blinds",
+        settingsMemesTemplatesOptionDissapointedTitle: "Dissapointed",
+        settingsMemesTemplatesOptionCowLookingIntoOceanTitle: "Cow looking into ocean",
 
         settingsDataRetentionTitle: "Data Retention",
         settingsDataRetentionDescription: "You can choose how long the bot will keep the data related to this channel. If you want to erase all data, you can also do it here.",
@@ -79,6 +89,21 @@ export const locale = {
 
         settingsDataRetentionUserImagesTitle: "Should bot use user sent images in memes?",
         settingsDataRetentionUserImagesDescription: "If set to **yes**, sometimes instead of using avatars it will use user sent images instead. Only images sent no more than 24 hours ago will be used. __Cannot be disabled due to new Intents limitations, will be fixes soon.__",
+
+        settingsBetaTitle: "Beta Features",
+        settingsBetaDescription: "These features are not fully tested and may not work as expected. If you find any bugs, please report them in the [Support server](https://discord.gg/n8DFFcnwDt) or email them to [support@jstmemit.com](mailto:support@jstmemit.com).",
+
+        settingsBetaEngineTitle: "Meme engine",
+        settingsBetaEngineDescription: "Based on metrics bot will choose a better engine for your channel, but you can overwrite which meme engine you really want to use with `/meme engine:name`. Currently there are three engines available:\n\n- **v1** - generates meme text with Markov chains. Doesn't have its own logic, so it doesn't understand connections between texts. **(Recommended for speed)**\n- **v2-alpha** - the new engine that transforms channel messages into meme text using LLMs. It has its own logic and in theory this should make better memes, but can be much slower and may not work as expected. **(Recommended for quality)**\n- **v2-alpha-qwen** - same logic as v2-alpha, but uses only self-hosted Qwen 3 model. It is slower and less stable, but gives you more privacy. No training data here is sent to OpenAI or any other third-parties.",
+
+        settingsBetaEngineV1Title: "v1 - Markov chains (recommended)",
+        settingsBetaEngineV1Description: "Doesn't understand connections between different texts on the same meme, but usually random = fun.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLMs (recommended)",
+        settingsBetaEngineV2Description: "If you want memes to make any sense and have actual logic, this is the engine you want to use.",
+
+        settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLMs",
+        settingsBetaEngineV2QwenDescription: "Uses self-hosted Qwen model to transform text for memes with logic. Slower, but privacy friendly.",
 
         settingsFooterChannelId: "Channel ID:",
 
@@ -120,6 +145,17 @@ export const locale = {
         premiumTurnOffMentionsDescription: "By default bot can in some occasions mention users in text memes. Although @everyone and @here mentions are always turned off even in free version.",
         premiumTurnOffMentionsActive: "✔️  Mentions are **being replaced** in text memes!",
         premiumTurnOffMentionsInactive: "❌  Mentions are **not being replaced** in text memes",
+
+        surveyDescription: "You can help us improve Jstmemit by answering a few questions, it won't take more than a minute.",
+        surveyProgress: "Question",
+        surveyCompleted: "Survey completed!",
+        surveyCompletedDescription: "Thank you for answering the questions! Your feedback is very important to us and will help us improve Jstmemit.",
+        surveyTextResponseTitle: "Your response",
+        surveyTextResponseLabel: "Feedback",
+        surveySelectOptionsPlaceholder: "Select one or more options...",
+        surveySelectOptionPlaceholder: "Select an option...",
+        surveyWriteYourResponse: "✏️ Write your response",
+        surveyOpenLink: "🔗 Open Link",
 
         btnDisable: "Disable",
         btnDisableTraining: "Disable training",
@@ -206,6 +242,7 @@ export const locale = {
         settingsButtonMemeSettings: "Мемы в чате",
         settingsButtonDataRetentionSettings: "Хранение данных",
         settingsButtonPremiumSettings: "Премиум",
+        settingsButtonBetaSettings: "Бета функции",
 
         settingsDataRetentionTitle: "Хранение данных",
         settingsDataRetentionDescription: "Вы можете выбрать как долго бот будет хранить данные связанные с этим каналом. Если вы хотите удалить все сохраненные сообщения, вы также можете сделать это здесь.",
@@ -229,6 +266,21 @@ export const locale = {
         settingsDataRetentionUserImagesDescription: "Если включено, то иногда вместо аватаров будут использоваться отправленные картинки. Но только отправленные не более 24 часов назад. __Не может быть отключено из-за новых ограничений Intents у дискорда, будет исправлено скоро.__",
 
         settingsFooterChannelId: "ID канала:",
+
+        settingsBetaTitle: "Бета-функции",
+        settingsBetaDescription: "Эти функции не полностью протестированы и могут не работать как нужно. Если вы обнаружите какие-либо ошибки, сообщите о них на [сервере поддержки](https://discord.gg/n8DFFcnwDt) или отправьте их на [support@jstmemit.com](mailto:support@jstmemit.com). Некоторые изменения этих настроек могут занять более 30 секунд, пожалуйста, будьте терпеливы.",
+
+        settingsBetaEngineTitle: "Движок для мемов",
+        settingsBetaEngineDescription: "На основе метрик бот выберет лучший движок для вашего канала, но вы можете переопределить, какой движок для мемов вы хотите использовать. В настоящее время доступны три движка:\n\n- **v1** - генерирует текст для мемов с помощью цепей Маркова. Не имеет собственной логики, поэтому не понимает связи между текстами. **(Рекомендуется для скорости)**\n- **v2-alpha** - новый движок, который преобразует сообщения канала в текст мемов с помощью LLM. Имеет собственную логику и теоретически делает мемы лучше, но может быть гораздо медленнее и работать не так, как ожидается. **(Рекомендуется для качества)**\n- **v2-alpha-qwen** - та же логика, что и v2-alpha, но использует локальную модель Qwen 3. Он чуть медленнее и менее стабилен, но даёт намного больше приватности. Здесь никакие обучающие данные не отправляются в OpenAI или другим третьим сторонам.",
+
+        settingsBetaEngineV1Title: "v1 - Цепи маркова (рекомендуется)",
+        settingsBetaEngineV1Description: "Не понимает связей между разными текстами на одном и том же меме, но обычно случайность = веселье.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLM (рекомендуется)",
+        settingsBetaEngineV2Description: "Если вы хотите, чтобы мемы имели какой-то смысл то это тот движок, который вам нужен.",
+
+        settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLM",
+        settingsBetaEngineV2QwenDescription: "Использует локальную модель Qwen для преобразования текста в мемы. Медленнее, но более приватно.",
 
         settingsStatusEnabled: "🎉 Бот готов!",
         settingsStatusDisabled: "🔴 Бот **отключен** в этом канале!",
@@ -268,6 +320,17 @@ export const locale = {
         premiumTurnOffMentionsDescription: "По умолчанию бот может в некоторых случаях упоминать пользователей в текстовых мемах. Хотя упоминания @everyone и @here всегда отключены даже в бесплатной версии.",
         premiumTurnOffMentionsActive: "✔️  Упоминания **заменяются** в текстовых мемах!",
         premiumTurnOffMentionsInactive: "❌  Упоминания **не заменяются** в текстовых мемах",
+
+        surveyDescription: "Вы можете помочь нам улучшить Jstmemit, ответив на несколько вопросов. Это не займет больше минуты.",
+        surveyProgress: "Вопрос",
+        surveyCompleted: "Опрос завершен!",
+        surveyCompletedDescription: "Спасибо за ваши ответы! Ваш отзыв очень важен для нас и поможет нам улучшить Jstmemit.",
+        surveyTextResponseTitle: "Ваш ответ",
+        surveyTextResponseLabel: "Предложения",
+        surveySelectOptionsPlaceholder: "Выберите один или несколько вариантов...",
+        surveySelectOptionPlaceholder: "Выберите вариант...",
+        surveyWriteYourResponse: "✏️ Напишите ваш ответ",
+        surveyOpenLink: "🔗 Открыть ссылку",
 
         btnDisable: "Отключить",
         btnDisableTraining: "Отключить обучение",
@@ -354,6 +417,23 @@ export const locale = {
         settingsButtonDataRetentionSettings: "Gegevensbewaring",
         settingsButtonPremiumSettings: "Premium",
 
+        settingsButtonBetaSettings: "Bètafuncties",
+
+        settingsBetaTitle: "Bètafuncties",
+        settingsBetaDescription: "Deze functies zijn niet volledig getest en werken mogelijk niet zoals verwacht. Als je bugs vindt, meld ze dan in de [Support server](https://discord.gg/n8DFFcnwDt) of e-mail ze naar [support@jstmemit.com](mailto:support@jstmemit.com).",
+
+        settingsBetaEngineTitle: "Meme-engine",
+        settingsBetaEngineDescription: "Op basis van statistieken kiest de bot een betere engine voor je kanaal, maar je kunt overschrijven welke meme-engine je echt wilt gebruiken. Momenteel zijn er drie engines beschikbaar:\n\n- **v1** - genereert memetekst met Markov-ketens. Heeft geen eigen logica, dus begrijpt geen verbanden tussen teksten.\n- **v2-alpha** - de nieuwe engine die kanaalberichten omzet in memetekst met behulp van LLM's. Het heeft zijn eigen logica en zou in theorie betere memes moeten maken, maar kan veel langzamer zijn en mogelijk niet werken zoals verwacht.\n- **v2-alpha-qwen** - dezelfde logica als v2-alpha, maar gebruikt alleen zelf-gehoste Qwen 3 model. Het is langzamer en minder stabiel, maar biedt meer privacy. Geen trainingsgegevens worden hier verzonden naar OpenAI of andere derden.",
+
+        settingsBetaEngineV1Title: "v1 - Markov-ketens (aanbevolen)",
+        settingsBetaEngineV1Description: "Begrijpt geen verbanden tussen teksten op memes, maar meestal is random = leuk.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLM's (aanbevolen)",
+        settingsBetaEngineV2Description: "Als je wilt dat memes logisch zijn, dan dit is de engine die je wilt gebruiken.",
+
+        settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLM's",
+        settingsBetaEngineV2QwenDescription: "Dezelfde logica als v2-alpha, maar langzamer en meer privacy-vriendelijk.",
+
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
 
@@ -416,6 +496,17 @@ export const locale = {
         premiumTurnOffMentionsDescription: "Standaard kan de bot in sommige gevallen gebruikers vermelden in tekst meme's. Hoewel @everyone en @here vermeldingen altijd zijn uitgeschakeld, zelfs in de gratis versie.",
         premiumTurnOffMentionsActive: "✔️  Mentions worden **vervangen** in tekst meme's!",
         premiumTurnOffMentionsInactive: "❌  Mentions worden **niet vervangen** in tekst meme's",
+
+        surveyDescription: "U kunt ons helpen Jstmemit te verbeteren door een paar vragen te beantwoorden. Het duurt niet langer dan een minuut.",
+        surveyProgress: "Vraag",
+        surveyCompleted: "Enquête voltooid!",
+        surveyCompletedDescription: "Bedankt voor het beantwoorden van de vragen! Uw feedback is erg belangrijk voor ons en zal ons helpen Jstmemit te verbeteren.",
+        surveyTextResponseTitle: "Uw antwoord",
+        surveyTextResponseLabel: "Feedback",
+        surveySelectOptionsPlaceholder: "Selecteer een of meer opties...",
+        surveySelectOptionPlaceholder: "Selecteer een optie...",
+        surveyWriteYourResponse: "✏️ Schrijf uw antwoord",
+        surveyOpenLink: "🔗 Link openen",
 
         btnDisable: "Uitzetten",
         btnDisableTraining: "Training uitschakelen",
@@ -494,6 +585,23 @@ export const locale = {
         settingsMemesTemplatesOptionHomerHidingTitle: "Гомер ховається",
         settingsMemesTemplatesOptionSpongebobHappyTitle: "Губка Боб щасливий",
 
+        settingsButtonBetaSettings: "Бета-функції",
+
+        settingsBetaTitle: "Бета-функції",
+        settingsBetaDescription: "Ці функції не повністю готові та можуть працювати не так, як очікувалося. Якщо ви знайдете будь-які помилки, повідомте про них на [сервері підтримки](https://discord.gg/n8DFFcnwDt) або надішліть на [support@jstmemit.com](mailto:support@jstmemit.com). Деякі зміни тут можуть застосовуватися довше 30 секунд, будь ласка, будьте терплячі.",
+
+        settingsBetaEngineTitle: "Двіжок для мемів",
+        settingsBetaEngineDescription: "На основі метрик бот вибере кращий двіжок для вашого каналу, але ви можете змінити, який двіжок для мемів ви дійсно хочете використовувати. Наразі доступні два двіжок:\n\n- **v1** - генерує текст для мемів за допомогою ланцюгів Маркова. Не має власної логіки, тому не розуміє зв'язків між текстами.\n- **v2-alpha** - новий двіжок, який перетворює повідомлення каналу в текст для мемів за допомогою LLM. Він має власну логіку і теоретично повинен створювати кращі меми, але може бути набагато повільнішим і працювати не так, як очікувалося.\n- **v2-alpha-qwen** - та сама логіка, що і v2-alpha, але використовує локальну модель Qwen 3. Він трохи повільніший і менш стабільний, але надає більше приватності. Ніякі навчальні дані не надсилаються в OpenAI або іншим третім сторонам.",
+
+        settingsBetaEngineV1Title: "v1 - Ланцюги маркова (рекомендовано)",
+        settingsBetaEngineV1Description: "Не розуміє зв'язків між текстами на одному й тому ж мемі, але зазвичай випадковість це смішно.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLM (рекомендовано)",
+        settingsBetaEngineV2Description: "Якщо ви хочете, щоб меми мали сенс і реальну логіку, це той двіжок, який вам потрібен.",
+
+        settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLM",
+        settingsBetaEngineV2QwenDescription: "Те саме, що і v2-alpha, але використовує локальну модель Qwen 3. Повільніший, але більш приватний.",
+
         settingsFooterDisabled: "🔴 Навчання **вимкнено** у цьому каналі!",
         settingsFooterNotEnoughContext: "Повідомлень у пам'яті: **{{amount}}/30**  {{progressBar}}",
         settingsFooterReady: "🧠 Зібрано достатньо контексту! **{{amount}} повідомлень**",
@@ -564,6 +672,17 @@ export const locale = {
         premiumTurnOffMentionsDescription: "За замовчуванням бот може в деяких випадках згадувати користувачів у текстових мемах. Хоча @everyone і @here згадки завжди вимкнені навіть у безкоштовній версії.",
         premiumTurnOffMentionsActive: "✔️  Згадування **замінюються** в текстових мемах!",
         premiumTurnOffMentionsInactive: "❌  Згадування **не замінюються** в текстових мемах",
+
+        surveyDescription: "Ви можете допомогти нам покращити Jstmemit, відповівши на кілька запитань. Це не займе більше хвилини.",
+        surveyProgress: "Запитання",
+        surveyCompleted: "Опитування завершено!",
+        surveyCompletedDescription: "Дякуємо за ваші відповіді! Ваш відгук дуже важливий для нас і допоможе нам покращити Jstmemit.",
+        surveyTextResponseTitle: "Ваша відповідь",
+        surveyTextResponseLabel: "Пропозиції",
+        surveySelectOptionsPlaceholder: "Виберіть один або декілька варіантів...",
+        surveySelectOptionPlaceholder: "Виберіть варіант...",
+        surveyWriteYourResponse: "✏️ Напишіть вашу відповідь",
+        surveyOpenLink: "🔗 Відкрити посилання",
 
         btnDisable: "Вимкнути",
         btnDisableTraining: "Вимкнути навчання",
@@ -672,6 +791,20 @@ export const locale = {
         settingsDataRetentionUserImagesTitle: "Czy bot ma używać obrazków wysłanych przez użytkowników w memach?",
         settingsDataRetentionUserImagesDescription: "Jeśli ustawione na **tak**, bot czasami zamiast awatarów będzie używał obrazków wysłanych przez użytkowników. Używane będą tylko obrazki wysłane w ciągu ostatnich 24 godzin. __Nie można wyłączyć z powodu nowych ograniczeń Intents Discorda, zostanie to wkrótce naprawione.__",
 
+        settingsButtonBetaSettings: "Funkcje Beta",
+
+        settingsBetaTitle: "Funkcje Beta",
+        settingsBetaDescription: "Te funkcje nie są w pełni przetestowane i mogą nie działać zgodnie z oczekiwaniami. Jeśli znajdziesz jakieś błędy, zgłoś je na [serwerze wsparcia](https://discord.gg/n8DFFcnwDt) lub wyślij e-mailem na adres [support@jstmemit.com](mailto:support@jstmemit.com).",
+
+        settingsBetaEngineTitle: "Silnik memów",
+        settingsBetaEngineDescription: "Na podstawie metryk bot wybierze lepszy silnik dla Twojego kanału, ale możesz nadpisać, którego silnika memów chcesz używać. Obecnie dostępne są trzy silniki:\n\n- **v1** - generuje tekst dla memów za pomocą łańcuchów Markowa. Nie ma własnej logiki, więc nie rozumie powiązań między tekstami.\n- **v2-alpha** - nowy silnik, który przekształca wiadomości kanału w tekst dla memów za pomocą LLM. Ma własną logikę i teoretycznie powinien tworzyć lepsze memy, ale może być znacznie wolniejszy i działać nie tak, jak oczekiwano.\n- **v2-alpha-qwen** - ta sama logika co v2-alpha, ale używa lokalnego modelu Qwen 3. Jest trochę wolniejszy i mniej stabilny, ale zapewnia większą prywatność. Żadne dane treningowe nie są wysyłane do OpenAI ani innym stronom trzecim.",
+
+        settingsBetaEngineV1Title: "v1 - Łańcuchy Markowa",
+        settingsBetaEngineV1Description: "Nie rozumie powiązań między różnymi tekstami na tym samym memie, ale zazwyczaj losowość = zabawa.",
+
+        settingsBetaEngineV2Title: "v2-alpha - LLM",
+        settingsBetaEngineV2Description: "Jeśli chcesz, aby memy miały sens i faktyczną logikę, to jest silnik, którego chcesz użyć.",
+
         settingsFooterChannelId: "ID kanału:",
 
         settingsStatusEnabled: "🎉 Bot jest gotowy!",
@@ -712,6 +845,17 @@ export const locale = {
         premiumTurnOffMentionsDescription: "Domyślnie bot może czasami wzmiankować użytkowników w memach tekstowych. Jednak wzmianki @everyone i @here są zawsze wyłączone, nawet w darmowej wersji.",
         premiumTurnOffMentionsActive: "✔️ Wzmianki są **zamieniane** w memach tekstowych!",
         premiumTurnOffMentionsInactive: "❌ Wzmianki **nie są zamieniane** w memach tekstowych",
+
+        surveyDescription: "Możesz pomóc nam ulepszyć Jstmemit, odpowiadając na kilka pytań. Nie zajmie to więcej niż minutę.",
+        surveyProgress: "Pytanie",
+        surveyCompleted: "Ankieta zakończona!",
+        surveyCompletedDescription: "Dziękujemy za odpowiedzi! Twoja opinia jest dla nas bardzo ważna i pomoże nam ulepszyć Jstmemit.",
+        surveyTextResponseTitle: "Twoja odpowiedź",
+        surveyTextResponseLabel: "Sugestie",
+        surveySelectOptionsPlaceholder: "Wybierz jedną lub więcej opcji...",
+        surveySelectOptionPlaceholder: "Wybierz opcję...",
+        surveyWriteYourResponse: "✏️ Napisz swoją odpowiedź",
+        surveyOpenLink: "🔗 Otwórz link",
 
         btnDisable: "Wyłącz",
         btnDisableTraining: "Wyłącz trenowanie",

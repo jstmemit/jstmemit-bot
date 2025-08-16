@@ -1,4 +1,4 @@
-import {Events, MessageFlags} from 'discord.js';
+import {Events, MessageFlags, TextInputStyle} from 'discord.js';
 import {enable} from "#src/discord/commands/enable.js";
 import {settings} from "#src/discord/commands/settings.js";
 import {premium} from "#src/discord/commands/premium.js";
@@ -22,11 +22,29 @@ import {handleDataRetentionChange} from "#src/discord/handlers/handleDataRetenti
 import {handleUseUserImagesChange} from "#src/discord/handlers/handleUseUserImagesChange.js";
 import {handleLanguageChange} from "#src/discord/handlers/handleLanguageChange.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {handleSurveyTextResponse} from "#src/discord/handlers/handleSurveyTextResponse.js";
+import {handleSurveySelectInteraction} from "#src/discord/handlers/handleSurveySelectInteraction.js";
+import {handleSurveyButtonInteraction} from "#src/discord/handlers/handleSurveyButtonInteraction.js";
+import {handleEngineChange} from "#src/discord/handlers/handleEngineChange.js";
+import {voice} from "#src/discord/commands/voice.js";
 
 export default {
     name: Events.InteractionCreate,
     async execute(interaction) {
         try {
+
+            if (interaction.isContextMenuCommand()) {
+                if (!await checkIsEnabled(interaction.channelId)) {
+                    await handleDisabledChannel(interaction);
+                    return;
+                }
+
+                switch (interaction.commandName) {
+                    case 'Narrate text':
+                        await voice(interaction);
+                        return;
+                }
+            }
 
             if (interaction.isChatInputCommand()) {
 
@@ -51,12 +69,20 @@ export default {
                     case 'meme':
                         await meme(interaction);
                         return;
+                    case 'voice':
+                        await voice(interaction);
+                        return;
                 }
 
             }
 
             if (interaction.isButton()) {
                 const {customId} = interaction;
+
+                if (customId.startsWith("rt-") || customId.startsWith("op-") || customId.startsWith("lk-")) {
+                    await handleSurveyButtonInteraction(interaction);
+                    return;
+                }
 
                 if (customId.startsWith("enable-") || customId.startsWith("disable-")) {
                     await handleToggleBot(interaction);
@@ -97,9 +123,9 @@ export default {
 
                 if (customId == 'settings-open') {
 
-                    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
-                        return;
-                    }
+                    // if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
+                    //     return;
+                    // }
 
                     const loading = await constructLoadingEmbed(interaction.channelId)
                     await interaction.reply({
@@ -110,9 +136,9 @@ export default {
                 }
 
                 if (customId.startsWith("settings-tab-")) {
-                    if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
-                        return;
-                    }
+                    // if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
+                    //     return;
+                    // }
 
                     const tab = customId.split('-')[2];
                     await interaction.deferUpdate();
@@ -130,7 +156,7 @@ export default {
                 }
 
                 const id = customId.split('_')[0];
-                const analytics = customId.split('_')[1];
+                const analyticsId = customId.split('_')[1];
 
                 switch (id) {
                     case 'regenerate':
@@ -144,12 +170,17 @@ export default {
                 }
 
                 if (id === 'like' || id === 'dislike') {
-                    await vote(interaction, analytics, id);
+                    await vote(interaction, analyticsId, id);
                 }
             }
 
             if (interaction.isStringSelectMenu()) {
                 const {customId} = interaction;
+
+                if (customId.startsWith("rs-") || customId.startsWith("mc-") || customId.startsWith("sc-")) {
+                    await handleSurveySelectInteraction(interaction);
+                    return;
+                }
 
                 if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
                     return;
@@ -176,6 +207,16 @@ export default {
                         await handleLanguageChange(interaction);
                         await handleUpdateSettingsEmbed(interaction, "general");
                         break;
+                    case "select-betaengine":
+                        await handleEngineChange(interaction);
+                        break;
+                }
+            }
+
+            if (interaction.isModalSubmit()) {
+                if (interaction.customId.startsWith("survey-text-")) {
+                    await handleSurveyTextResponse(interaction);
+                    return;
                 }
             }
 

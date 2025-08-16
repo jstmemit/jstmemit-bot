@@ -1,7 +1,10 @@
 # Jstmemit 🤖
 
-Bot that makes memes about whatever you're chatting about. Talk about your failed boss raid, then get fresh memes about
+Discord bot that makes memes about whatever you're chatting about. Talk about your failed boss raid, then get fresh
+memes about
 it, how fun is that?
+
+[Invite bot](https://discord.com/oauth2/authorize?client_id=1375836467745783990)
 
 ![A banner showcasing bot's features with "Personalized memes for your community" main text](https://jstmemit.com/assets/discovery/carousel_banner_1.png)
 
@@ -14,6 +17,8 @@ it, how fun is that?
     - [Narrating text](#narrating-text)
 - [Install and Run](#install-and-run)
 - [FAQ](#faq)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
 
 ## Main features
 
@@ -68,9 +73,11 @@ provider. Jstmemit currently uses voices from the following providers:
 
 4. Open `.env.example` file and fill in the required fields. Rename it to `.env` after you are done.
 
-5. In terminal/command prompt, run `npm install` from the installed directory
+5. In terminal/command prompt, run `npm install` and `npm i drizzle-kit` from the installed directory
 
-6. Run `node bot.js` from the installed directory
+6. Confirm that database details in `.env` file are correct, then run `npx drizzle-kit push`
+
+7. Run `node bot.js` from the installed directory
 
 If you have any difficulties, don't hesitate to ask for help in our [Discord server](https://discord.gg/5q5HP9UVWz).
 
@@ -151,3 +158,31 @@ If you have any difficulties, don't hesitate to ask for help in our [Discord ser
             radius: 90 // size of the circle in pixels, only for "circle" type
         },
   ```
+
+## Troubleshooting
+
+- **Emojis show up as boxes on any generated memes**  
+  You need to install [Noto Color Emoji](https://packages.ubuntu.com/jammy/fonts-noto-color-emoji) font on your system.
+
+
+- **Bot doesn't declare any slash commands**  
+  You must set `DISCORD_USERID` environment variable to your Discord bot user ID. Declaring commands may take up to an
+  hour, reinvite the bot to your server to speed up the process.
+
+
+- **Bot refuses to use selfhosted models**  
+  Both `KOKORO_API_URL` and `LLAMACPP_API_URL` must be in this format: `http://ip:port/v1`. Maybe you forgot to add
+  `/v1` or correct port? 8080 is default for llama.cpp and 8880 is default for Kokoro-FastAPI.
+
+## License
+
+This project is licensed under the GNU Affero General Public License v3.0.
+
+### What you can do with this code:
+
+- Use any part of this code for both private and commercial purposes.
+- Make any changes to the code.
+- Distribute the code.
+
+You must state the changes that you made to the code and provide a link to the original repository. Derivative works
+must also be licensed under the same license.

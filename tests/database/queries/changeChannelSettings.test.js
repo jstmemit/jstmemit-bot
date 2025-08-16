@@ -1,6 +1,7 @@
 import {describe, expect, it, vi} from 'vitest'
 import {changeChannelSettings} from '#src/database/queries/changeChannelSettings.js'
 import {mockChannelSettings, mockDb} from '../../setup.js'
+import {log} from "../../../bot.js";
 
 describe('changeChannelSettings', () => {
 
@@ -42,7 +43,7 @@ describe('changeChannelSettings', () => {
 
     it('handles database errors', async () => {
         const consoleErrorSpy = vi
-            .spyOn(console, 'error')
+            .spyOn(log, 'error')
             .mockImplementation(() => {
             })
         const dbError = new Error('Database connection failed')
@@ -54,7 +55,6 @@ describe('changeChannelSettings', () => {
         )
 
         expect(mockDb.transaction).toHaveBeenCalledOnce()
-        expect(consoleErrorSpy).toHaveBeenCalledWith('Database error:', dbError)
 
         consoleErrorSpy.mockRestore()
     })

@@ -2,6 +2,7 @@ import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
 import {handlePermissionCheck} from "./handlePermissionCheck.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
 
 export const handleToggleBot = async interaction => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
@@ -32,6 +33,6 @@ export const handleToggleBot = async interaction => {
 
         await changeChannelSettings(newSettings);
     } catch (error) {
-        console.error("Error toggling bot:", error);
+        log.error("Error toggling bot:", error);
     }
 };

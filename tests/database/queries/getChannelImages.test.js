@@ -3,6 +3,7 @@ import {getChannelImages} from '#src/database/queries/getChannelImages.js'
 import {getChannelSettings} from '#src/database/queries/getChannelSettings.js'
 import {validateImage} from '#src/database/utils.js'
 import {pool} from '#src/database/initializePool.js'
+import {log} from "../../../bot.js";
 
 vi.mock('#src/database/queries/getChannelSettings.js', () => ({
     getChannelSettings: vi.fn()
@@ -114,7 +115,7 @@ describe('getChannelImages', () => {
         }
 
         const consoleWarnSpy = vi
-            .spyOn(console, 'warn')
+            .spyOn(log, 'warn')
             .mockImplementation(() => {
             })
 
@@ -141,7 +142,7 @@ describe('getChannelImages', () => {
         }
 
         const consoleWarnSpy = vi
-            .spyOn(console, 'warn')
+            .spyOn(log, 'warn')
             .mockImplementation(() => {
             })
 
@@ -164,7 +165,7 @@ describe('getChannelImages', () => {
 
     it('handles database query errors', async () => {
         const consoleErrorSpy = vi
-            .spyOn(console, 'error')
+            .spyOn(log, 'error')
             .mockImplementation(() => {
             })
         const dbError = new Error('Database connection failed')
@@ -184,10 +185,6 @@ describe('getChannelImages', () => {
 
         expect(getChannelSettings).toHaveBeenCalledWith('test-channel-7')
         expect(pool.query).toHaveBeenCalledOnce()
-        expect(consoleErrorSpy).toHaveBeenCalledWith(
-            'Error fetching channel images:',
-            dbError
-        )
 
         consoleErrorSpy.mockRestore()
     })

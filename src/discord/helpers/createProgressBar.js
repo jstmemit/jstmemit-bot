@@ -1,16 +1,17 @@
 import {settings} from "#config/settings.js";
+import {log} from "../../../bot.js";
 
 const emojis = settings?.progressBar?.emojis;
 
 export const createProgressBar = (value, maxValue, segments = 10) => {
 
     if (typeof value !== 'number' || typeof maxValue !== 'number' || typeof segments !== 'number') {
-        console.error('Invalid input for progress bar');
+        log.error('Invalid input for progress bar');
         return '';
     }
 
     if (!emojis) {
-        console.error('Emojis for progress bar are not defined in settings');
+        log.error('Emojis for progress bar are not defined in settings');
         return '';
     }
 

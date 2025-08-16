@@ -2,6 +2,7 @@ import {pool} from '../initializePool.js';
 import {getChannelSettings} from "./getChannelSettings.js";
 import {settings} from "../../../config/settings.js";
 import {validateImage} from "../utils.js";
+import {log} from "../../../bot.js";
 
 const imageCache = new Map();
 let CACHE_TTL = 1000 * 60 * 60;
@@ -48,13 +49,13 @@ export const getChannelImages = async (channelId) => {
             if (validation.isValid) {
                 validImages.push(validation.url ?? row.message);
             } else {
-                console.warn(`Invalid image URL: ${row.message} – ${validation.reason}`);
+                log.warn(`Invalid image URL: ${row.message} – ${validation.reason}`);
             }
         }
 
         return validImages.length > 0 ? validImages : null;
     }).catch(error => {
-        console.error('Error fetching channel images:', error);
+        log.error('Error fetching channel images:', error);
         throw error;
     });
 

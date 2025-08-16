@@ -1,6 +1,7 @@
 import {db} from "#database/initializePool.js";
 import {channels} from "#database/schema/schema.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
 
 export const changeChannelSettings = async (channelSettings) => {
 
@@ -60,7 +61,7 @@ export const changeChannelSettings = async (channelSettings) => {
             },
         });
     } catch (error) {
-        console.error('Database error:', error);
+        log.error('Database error:', error);
         throw error;
     }
 };

@@ -1,10 +1,11 @@
 import {settings} from "#config/settings.js";
 import axios from "axios";
+import {log} from "../../../bot.js";
 
 export const sendKumaPing = () => {
 
     if (!settings?.kumaUptime || !settings?.kumaUptime.pingUrl) {
-        console.warn('Kuma url is not set in the settings');
+        log.warn('Kuma url is not set in the settings');
         return;
     }
 
@@ -14,7 +15,7 @@ export const sendKumaPing = () => {
         try {
             const response = await axios.get(kumaPingUrl)
         } catch (error) {
-            console.error('Error sending Kuma ping:', error);
+            log.error('Error sending Kuma ping:', error);
         }
     }, settings.kumaUptime.pingInterval);
 

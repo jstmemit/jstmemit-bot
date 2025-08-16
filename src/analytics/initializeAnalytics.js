@@ -2,6 +2,7 @@ import {GatewayIntentBits} from "discord.js";
 import {PostHog} from "posthog-node";
 import dotenv from "dotenv";
 import {settings} from "#config/settings.js";
+import {log} from "../../bot.js";
 
 let analytics = null;
 try {
@@ -15,7 +16,7 @@ try {
         }
     );
 } catch (error) {
-    console.error('Failed to initialize PostHog:', error.message);
+    log.info('Failed to initialize PostHog:', error.message);
 }
 
 export const posthogProjectId = dotenv.config().parsed.POSTHOG_PROJECT_ID;

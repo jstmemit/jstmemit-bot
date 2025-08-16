@@ -27,6 +27,7 @@ import {handleSurveySelectInteraction} from "#src/discord/handlers/handleSurveyS
 import {handleSurveyButtonInteraction} from "#src/discord/handlers/handleSurveyButtonInteraction.js";
 import {handleEngineChange} from "#src/discord/handlers/handleEngineChange.js";
 import {voice} from "#src/discord/commands/voice.js";
+import {log} from "../../../../bot.js";
 
 export default {
     name: Events.InteractionCreate,
@@ -93,7 +94,7 @@ export default {
                         try {
                             await handleUpdateSettingsEmbed(interaction, "general");
                         } catch (error) {
-                            console.log(error)
+                            log.error(error)
                         }
                     }
                     return;
@@ -104,7 +105,7 @@ export default {
                         await handleToggleMentions(interaction);
                         await handleUpdatePremiumEmbed(interaction);
                     } catch (error) {
-                        console.log(error)
+                        log.error(error)
                     }
 
                     return;
@@ -115,7 +116,7 @@ export default {
                         await handleToggleWatermark(interaction);
                         await handleUpdatePremiumEmbed(interaction);
                     } catch (error) {
-                        console.log(error)
+                        log.error(error)
                     }
 
                     return;
@@ -236,7 +237,7 @@ export default {
             }
 
         } catch (error) {
-            console.error('Error handling interaction:', error);
+            log.error('Error handling interaction:', error);
             analytics.captureException(error, interaction.channelId);
         }
     },

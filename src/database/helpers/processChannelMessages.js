@@ -3,6 +3,7 @@ import {db} from "#database/initializePool.js";
 import {channels} from "#database/schema/schema.js";
 import {and, eq} from "drizzle-orm";
 import {fetchChannelMessages} from "./fetchChannelMessages.js";
+import {log} from "../../../bot.js";
 
 export const processChannelMessages = async (channelId, visitedChannels, allMessages) => {
     if (visitedChannels.has(channelId)) {
@@ -50,6 +51,6 @@ export const processChannelMessages = async (channelId, visitedChannels, allMess
         }
 
     } catch (error) {
-        console.error(`Error processing channel ${channelId}:`, error);
+        log.error(`Error processing channel ${channelId}:`, error);
     }
 };

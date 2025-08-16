@@ -1,6 +1,7 @@
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
 
 export const handleMemeTemplatesChange = async interaction => {
     try {
@@ -28,6 +29,6 @@ export const handleMemeTemplatesChange = async interaction => {
 
         await changeChannelSettings(newSettings);
     } catch (error) {
-        console.error("Error updating meme templates:", error);
+        log.error("Error updating meme templates:", error);
     }
 };

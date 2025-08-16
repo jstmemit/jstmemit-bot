@@ -1,4 +1,5 @@
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
 
 export const handleEngineChange = async interaction => {
     try {
@@ -20,6 +21,6 @@ export const handleEngineChange = async interaction => {
 
         await analytics.flush()
     } catch (error) {
-        console.error("Error updating language:", error);
+        log.error("Error updating language:", error);
     }
 };

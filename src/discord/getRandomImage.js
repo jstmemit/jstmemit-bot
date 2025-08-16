@@ -1,4 +1,5 @@
 import {getChannelImages} from "../database/queries/getChannelImages.js";
+import {log} from "../../bot.js";
 
 export const getRandomImage = async (interaction, channelId) => {
     try {
@@ -17,7 +18,7 @@ export const getRandomImage = async (interaction, channelId) => {
             return images[Math.floor(Math.random() * images.length)];
         }
     } catch (error) {
-        console.error("Error getting random image", error);
+        log.error("Error getting random image", error);
         throw error;
     }
 };

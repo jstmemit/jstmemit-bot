@@ -1,6 +1,7 @@
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {changeChannelSettings} from "../../database/queries/changeChannelSettings.js";
 import {analytics} from "../../analytics/initializeAnalytics.js";
+import {log} from "../../../bot.js";
 
 export const handleUseUserImagesChange = async interaction => {
     try {
@@ -28,6 +29,6 @@ export const handleUseUserImagesChange = async interaction => {
 
         await changeChannelSettings(newSettings);
     } catch (error) {
-        console.error("Error updating user images setting:", error);
+        log.error("Error updating user images setting:", error);
     }
 };

@@ -2,6 +2,7 @@ import {db} from "../initializePool.js";
 import {messages} from "#database/schema/schema.js";
 import {count, eq} from "drizzle-orm";
 import {getChannelSettings} from "./getChannelSettings.js";
+import {log} from "../../../bot.js";
 
 export const getChannelMessagesAmount = async (channelId) => {
     const channelSettings = await getChannelSettings(channelId);
@@ -18,7 +19,7 @@ export const getChannelMessagesAmount = async (channelId) => {
 
         return result[0]?.count ?? 0;
     } catch (error) {
-        console.error("Error fetching channel messages amount:", error);
+        log.error("Error fetching channel messages amount:", error);
         throw error;
     }
 };

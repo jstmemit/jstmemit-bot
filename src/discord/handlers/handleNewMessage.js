@@ -1,6 +1,7 @@
 import {insertMessage} from "../../database/queries/insertMessage.js";
 import {getChannelSettings} from "../../database/queries/getChannelSettings.js";
 import {handleUnpromtedMeme} from "./handleUnpromtedMeme.js";
+import {log} from "../../../bot.js";
 
 export const handleNewMessage = async (interaction) => {
 
@@ -20,7 +21,7 @@ export const handleNewMessage = async (interaction) => {
                 }
             });
         } catch (error) {
-            console.log(`Error processing attachments: ${error.message}`);
+            log.error(`Error processing attachments: ${error.message}`);
         }
 
         if (interaction.content) {

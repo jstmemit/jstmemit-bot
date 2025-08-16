@@ -1,7 +1,7 @@
 import {createMemeGenerator} from "../src/generation/visual/memeFactory.js";
+import {generateVoiceMessage} from "#src/generation/voice/elevenlabs/generateVoiceMessage.js";
 import {generateGreentext} from "#src/generation/text/generateGreentext.js";
 import {generatePoll} from "#src/generation/text/generatePoll.js";
-import {generateVoiceMessage} from "#src/generation/voice/elevenlabs/generateVoiceMessage.js";
 
 export const settings = {
     cache: {
@@ -86,6 +86,60 @@ export const settings = {
             name: "quote",
             description: "Quote with user image as background",
             generator: createMemeGenerator('quote'),
+            requiresImage: true,
+        },
+        {
+            name: "superman",
+            description: "Superman says a very important phrase",
+            generator: createMemeGenerator('superman'),
+            requiresImage: false,
+        },
+        {
+            name: "manbehindblinds",
+            description: "Man smiling behind blinds says something strange",
+            generator: createMemeGenerator('manbehindblinds'),
+            requiresImage: false,
+        },
+        {
+            name: "manlookingup",
+            description: "Man looks up in horror and whispers a phrase",
+            generator: createMemeGenerator('manlookingup'),
+            requiresImage: false,
+        },
+        {
+            name: "dissapointed",
+            description: "Guy stands with a very dissapointed face and says something",
+            generator: createMemeGenerator('dissapointed'),
+            requiresImage: true,
+        },
+        {
+            name: "cowlookingintoocean",
+            description: "Cow stands on a beach and looks into the ocean",
+            generator: createMemeGenerator('cowlookingintoocean'),
+            requiresImage: false,
+        },
+        {
+            name: "missingpiece",
+            description: "Guy holds last puzzle piece and names a thing that is missing (1-2 words)",
+            generator: createMemeGenerator('missingpiece'),
+            requiresImage: true,
+        },
+        {
+            name: "sleepythinking",
+            description: "Character is trying to sleep at 7am but can't stop thinking about something",
+            generator: createMemeGenerator('sleepythinking'),
+            requiresImage: true,
+        },
+        {
+            name: "newsreportersitting",
+            description: "News anchor is talking about a very important announcement",
+            generator: createMemeGenerator('newsreportersitting'),
+            requiresImage: true,
+        },
+        {
+            name: "stonks",
+            description: "Man in a suit is happy about stocks going up and says a phrase",
+            generator: createMemeGenerator('stonks'),
             requiresImage: true,
         },
         {
@@ -409,6 +463,12 @@ export const settings = {
             cy: 150,
             radius: 200
         },
+        sleepythinking_1: {
+            type: 'circle',
+            cx: 430,
+            cy: 50,
+            radius: 600
+        },
         sleepy_1: {
             type: 'circle',
             cx: 530,
@@ -511,6 +571,12 @@ export const settings = {
             cy: 450,
             radius: 45
         },
+        dissapointed_1: {
+            type: 'circle',
+            cx: 325,
+            cy: 90,
+            radius: 60
+        },
         homerhiding_1: {
             type: 'circle',
             cx: 180,
@@ -552,6 +618,15 @@ export const settings = {
             box: {x: 0.1, y: 0.375, w: 0.80, h: 0.25},
             maxLines: 4,
             baseImageOverlay: 128
+        },
+        stonks_1: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Comic Sans MS',
+            box: {x: 0.4, y: 0.22, w: 0.30, h: 0.15},
+            maxLines: 2,
+            baseImageOverlay: 0
         },
         fancybear_1: {
             fillStyle: '#000000',
@@ -694,6 +769,15 @@ export const settings = {
             textAlign: 'center',
             font: 'Comic Sans MS',
             box: {x: 0.1, y: 0.7, w: 0.80, h: 0.25},
+            maxLines: 4,
+            baseImageOverlay: 0
+        },
+        superman_1: {
+            fillStyle: '#ffffff',
+            outlineStyle: '#000000',
+            textAlign: 'center',
+            font: 'Comic Sans MS',
+            box: {x: 0.1, y: 0.1, w: 0.80, h: 0.25},
             maxLines: 4,
             baseImageOverlay: 0
         },
@@ -853,8 +937,37 @@ export const settings = {
     },
     voices: [
         {
+            id: "YXpFCvM1S3JbWEJhoskW",
+            name: "🤠 Cowboy",
+            provider: "elevenlabs",
+            voiceSettings: {
+                stability: 0.5,
+                similarityBoost: 0.9,
+                style: 0.01
+            }
+        },
+        {
+            id: "am_liam",
+            name: "📺 Liam",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.9
+            }
+        },
+        {
+            id: "pm_santa",
+            name: "🎅 Santa",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.9
+            }
+        },
+        {
             id: "emSmWzY0c0xtx5IFMCVv",
             name: "😀 Sarah",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.7,
                 similarityBoost: 0.75,
@@ -864,6 +977,7 @@ export const settings = {
         {
             id: "zmcVlqmyk3Jpn5AVYcAL",
             name: "🎮 Sapphire",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.4,
                 similarityBoost: 0.9,
@@ -873,6 +987,7 @@ export const settings = {
         {
             id: "siw1N9V8LmYeEWKyWBxv",
             name: "💻 Ruhaan",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.1,
                 similarityBoost: 0.9,
@@ -880,8 +995,18 @@ export const settings = {
             },
         },
         {
+            id: "ff_siwis",
+            name: "🥖 Siwis",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "french",
+                speed: 0.9
+            }
+        },
+        {
             id: "Dslrhjl3ZpzrctukrQSN",
             name: "📺 Brad",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.5,
                 similarityBoost: 0.9,
@@ -889,17 +1014,27 @@ export const settings = {
             },
         },
         {
-            id: "YXpFCvM1S3JbWEJhoskW",
-            name: "🤠 Cowboy",
+            id: "af_v0nicole",
+            name: "☁️  Whispering",
+            provider: "kokoro",
             voiceSettings: {
-                stability: 0.5,
-                similarityBoost: 0.9,
-                style: 0.01
+                language: "english",
+                speed: 0.9
+            }
+        },
+        {
+            id: "zf_xiaoxiao",
+            name: "😀 Xiao Xiao",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.8
             }
         },
         {
             id: "L1QogKoobNwLy4IaMsyA",
             name: "🙄 Lily",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.9,
                 similarityBoost: 0.9,
@@ -909,11 +1044,39 @@ export const settings = {
         {
             id: "NOpBlnGInO9m6vDvFkFC",
             name: "👴 Grandpa",
+            provider: "elevenlabs",
             voiceSettings: {
                 stability: 0.5,
                 similarityBoost: 0.9,
                 style: 0.9
             }
-        }
+        },
+        {
+            id: "af_jessica",
+            name: "💻 Jessica",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 1.0
+            }
+        },
+        {
+            id: "zm_yunxia",
+            name: "🤔 Yunxia",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.9
+            }
+        },
+        {
+            id: "pm_alex",
+            name: "🤕 Alex",
+            provider: "kokoro",
+            voiceSettings: {
+                language: "english",
+                speed: 0.6
+            }
+        },
     ]
 }

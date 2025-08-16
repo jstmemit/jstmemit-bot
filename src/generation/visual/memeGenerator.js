@@ -43,8 +43,7 @@ export class MemeGenerator {
             timings.channel_messages_fetch_ms = performance.now() - channelMessages_start;
 
             const overrideEngine = interaction?.options?.getString?.('engine') || undefined;
-            const settingsEngine = await analytics.getFeatureFlag('v2-alpha-meme-engine', channelId);
-            const finalEngine = normalizeEngine(overrideEngine) ?? normalizeEngine(settingsEngine) ?? 'v1';
+            const finalEngine = normalizeEngine(overrideEngine) ?? 'v2-alpha';
 
             const texts_start = performance.now();
             const texts = await this.generateTexts(channelMessages, finalEngine);
@@ -227,7 +226,6 @@ export class MemeGenerator {
         await analytics.capture({
             distinctId: channelId,
             event: 'meme_generated',
-            sendFeatureFlags: true,
             properties: {
                 template: this.templateName,
                 ...timings,

@@ -6,6 +6,7 @@ const normalizeTemplate = (name) =>
         .replace(/([a-z])([A-Z])/g, "$1 $2");
 
 export const commands = [
+    // slash commands
     {
         name: 'meme',
         name_localizations: {
@@ -185,6 +186,28 @@ export const commands = [
             },
             {
                 type: 5,
+                name: 'stutter',
+                name_localizations: {
+                    'ru': 'заикание',
+                    'nl': 'stotteren',
+                    'fr': 'bégaiement',
+                    'de': 'stottern',
+                    'uk': 'заїкання',
+                    'pl': 'jąkanie',
+                },
+                description: 'Add a stutter effect to the voice (does not work for all voices)',
+                description_localizations: {
+                    'ru': 'Добавить эффект заикания к голосу (работает не для всех голосов)',
+                    'nl': 'Voeg een stotter effect toe aan de stem (werkt niet voor alle stemmen)',
+                    'fr': 'Ajouter un effet de bégaiement à la voix (ne fonctionne pas pour toutes les voix)',
+                    'de': 'Fügen Sie der Stimme einen Stottereffekt hinzu (funktioniert nicht für alle Stimmen)',
+                    'uk': 'Додати ефект заїкання до голосу (не працює для всіх голосів)',
+                    'pl': 'Dodaj efekt jąkania do głosu (nie działa dla wszystkich głosów)',
+                },
+                required: false
+            },
+            {
+                type: 5,
                 name: 'ephemeral',
                 name_localizations: {
                     'ru': 'скрытый',
@@ -251,4 +274,19 @@ export const commands = [
         contexts: [0],
         dm_permission: false
     },
+
+    // context menus
+    {
+        name: "Narrate text",
+        type: 3,
+        contexts: [0],
+        name_localizations: {
+            'ru': 'Озвучить текст',
+            'nl': 'Vertel tekst',
+            'fr': 'Narration de texte',
+            'de': 'Text erzählen',
+            'uk': 'Озвучити текст',
+            'pl': 'Opowiedz tekst'
+        },
+    }
 ];

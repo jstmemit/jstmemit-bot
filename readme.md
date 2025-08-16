@@ -40,7 +40,7 @@ Your memes will not make sense in most cases (doesn't mean they are not funny).
 - [Microsoft Core](https://packages.ubuntu.com/search?keywords=ttf-mscorefonts-installer)
   and [Noto Color Emoji](https://packages.ubuntu.com/jammy/fonts-noto-color-emoji) fonts
 
-### Transforming text with LLMs
+### Transforming text with LLMs (optional)
 
 If you want your meme text to make sense, you can use a LLM to transform it. A small portion of your channel messages
 will be sent to it, so that it can compose one or multiple strings with meme text based on the context. You can use any
@@ -49,12 +49,12 @@ of the following providers:
 - [OpenAI](https://platform.openai.com/docs/models) (tested with `gpt-4.1-nano`)
 - Selfhosted via [llama.cpp](https://github.com/ggml-org/llama.cpp) (tested with `Qwen3-4B-Instruct-2507-Q2_K`)
 
-### Narrating text
+### Narrating text (optional)
 
 If you want `/voice` command to work and `/meme` command to generate audio memes you will need a text-to-speech
 provider. Jstmemit currently uses voices from the following providers:
 
-- [ElevenLabs](https://beta.elevenlabs.io/) (`eleven_flash_v2`)
+- [ElevenLabs](https://elevenlabs.io/) (`eleven_flash_v2_5`)
 - Selfhosted via [Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI)
 
 ## Install and Run
@@ -77,10 +77,9 @@ If you have any difficulties, don't hesitate to ask for help in our [Discord ser
 ## FAQ
 
 - **What if I just want to add this bot to my server?**  
-  There is a managed version of [Jstmemit](https://jstmemit.com/)
-  available: [Add Jstmemit to your server](https://discord.com/oauth2/authorize?client_id=1375836467745783990).
+  [Invite Jstmemit to your server](https://discord.com/oauth2/authorize?client_id=1375836467745783990)
 
-  It's 100% free to use, no ads or limits. You can support the project by voting for it
+  It's 100% free to use, 24/7 online, no ads or limits. You can support the project by voting for it
   on [top.gg](https://top.gg/bot/1375836467745783990).
 
 

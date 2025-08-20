@@ -2,6 +2,7 @@ import {createMemeGenerator} from "../src/generation/visual/memeFactory.js";
 import {generateVoiceMessage} from "#src/generation/voice/elevenlabs/generateVoiceMessage.js";
 import {generateGreentext} from "#src/generation/text/generateGreentext.js";
 import {generatePoll} from "#src/generation/text/generatePoll.js";
+import {generateNewsReport} from "#src/generation/text/generateNewsReport.js";
 
 export const settings = {
     cache: {
@@ -317,6 +318,11 @@ export const settings = {
             requiresImage: false,
         },
         {
+            name: "newsreport",
+            generator: (image, channelId, interaction) => generateNewsReport(channelId),
+            requiresImage: false,
+        },
+        {
             name: "poll",
             generator: (image, channelId, interaction) => generatePoll(channelId),
             requiresImage: false,
@@ -361,10 +367,6 @@ export const settings = {
         // },
     ],
     overlaySettings: {
-        speechbubble: {
-            type: 'fill_full',
-            dy: 0
-        },
         looksatpaperangry_1: {
             type: 'circle',
             cx: 170,

@@ -20,9 +20,9 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
         channelId = interaction.channelId;
         guildId = interaction.guildId;
 
-        const ephemeral = interaction?.options?.getBoolean('ephemeral') || false;
-        const engine = interaction?.options?.getString('engine') || "v1";
-        const template = isRegenerate ? undefined : (interaction?.options?.getString('template') || undefined);
+        const ephemeral = isUnpromted ? false : (interaction?.options?.getBoolean('ephemeral') || false);
+        const engine = isUnpromted ? "v1" : (interaction?.options?.getString('engine') || "v1");
+        const template = isRegenerate ? undefined : (isUnpromted ? undefined : (interaction?.options?.getString('template') || undefined));
 
         const messages = await withTimeout(getChannelMessages(channelId), 10000);
 
@@ -31,7 +31,9 @@ export const meme = async (interaction, isRegenerate, isUnpromted) => {
             return;
         }
 
-        await interaction.deferReply({ephemeral});
+        if (!isUnpromted) {
+            await interaction.deferReply({ephemeral});
+        }
 
         let textResult, imageResult, mention = '';
         const hasPremium = checkPremium(interaction);

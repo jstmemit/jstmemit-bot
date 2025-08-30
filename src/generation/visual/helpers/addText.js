@@ -112,7 +112,7 @@ export const addText = async (templateName, image, text) => {
     try {
         image = await validateCanvasImage(image, Canvas);
 
-        const {
+        let {
             fillStyle,
             font,
             textAlign,
@@ -121,6 +121,8 @@ export const addText = async (templateName, image, text) => {
             baseImageOverlay,
             outlineStyle,
         } = settings.textSettings[templateName];
+
+        font = hasOtherAlphabets(text) ? "Arial" : font;
 
         if (
             image.width <= 0 ||
@@ -211,4 +213,8 @@ export const addText = async (templateName, image, text) => {
         log.error("An error in addText", error);
         throw new Error(`addText failed: ${error.message}`);
     }
+};
+
+const hasOtherAlphabets = (text) => {
+    return /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(text);
 };

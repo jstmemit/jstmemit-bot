@@ -5,7 +5,7 @@ export const locale: Record<string, LocalizationMap> = {
     "enable.heading.enabled": buildLocales("🎉 I'm ready to make memes!", {}),
     "enable.heading.disabled": buildLocales("🔻 Allow making memes in <#{{channelId}}>?", {}),
     "enable.body.enabled": buildLocales(
-        "I'll send memes into **<#{{channelId}}>** during active chats from now on. They will get more personalized as you send more messages, images and GIFs. Once I have **30+ messages** in memory, words in sentences will be mixed as well.",
+        "I'll send memes into **<#{{channelId}}>** during active chats from now on. They will get more personalized as you send more messages, images and GIFs. Once I have **30+ messages** in memory, words in sentences will get mixed for more fun.",
         {},
     ),
     "enable.body.disabled.ready": buildLocales(

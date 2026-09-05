@@ -1195,7 +1195,7 @@ export class ComponentsService implements IComponentsService {
 
         const percentage: number = clamped / max;
 
-        const filled: number = Math.floor(percentage * segments);
+        const filled: number = Math.floor(percentage * segments) + 1;
 
         let progressBar: string = "";
 

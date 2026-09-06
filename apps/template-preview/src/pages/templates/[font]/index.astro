@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Sidebar from "../../../components/Sidebar.astro";
+import { FontValues, type FontValueType } from "@jstmemit/shared/models/Font";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (() => {
+    const availableFonts: FontValueType[] = Object.values(FontValues);
+
+    return availableFonts.map((font: FontValueType) => ({
+        params: { font: font.split(" ").join("-") },
+        props: { font: font },
+    }));
+}) satisfies GetStaticPaths;
+
+const { font } = Astro.props as {
+    font: FontValueType;
+};
+---
+
+<BaseLayout>
+    <div class="flex flex-col gap-10 md:flex-row">
+        <Sidebar currentTopic="all" currentFont={font} currentTemplateName="" />
+        <hr class="text-white/20" />
+        <section class="flex w-full flex-col gap-10">
+            <div class="flex flex-col gap-1">
+                <h1 class="mb-2 max-w-prose text-2xl font-black md:text-4xl">Template preview</h1>
+                <p class="text-zinc-400">
+                    Here you can preview meme templates and how they behave with different sorts of data on them. Choose
+                    one in the sidebar to begin.
+                </p>
+            </div>
+        </section>
+    </div>
+</BaseLayout>

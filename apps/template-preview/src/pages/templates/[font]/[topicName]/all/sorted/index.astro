@@ -3,31 +3,35 @@ import type { GetStaticPaths } from "astro";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import Examples from "../../../../components/Examples.astro";
-import { variants } from "../../../../data/variants.ts";
+import BaseLayout from "../../../../../../layouts/BaseLayout.astro";
+import Examples from "../../../../../../components/Examples.astro";
+import { variants } from "../../../../../../data/variants.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
 import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import { FontsService } from "@jstmemit/shared/services/FontsService";
 import { type TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
+import { type FontValueType, FontValues } from "@jstmemit/shared/models/Font";
 
 export const getStaticPaths = (() => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();
     const templates: Template[] = templatesRepository.getAll();
     const uniqueTopics = Array.from(new Set(templates.flatMap((template: Template) => template.topics)));
+    const availableFonts: FontValueType[] = Object.values(FontValues);
 
-    return uniqueTopics.map((topic) => ({
-        params: { topicName: topic },
-        props: { topic },
-    }));
+    return availableFonts.flatMap((font: FontValueType) =>
+        uniqueTopics.map((topic) => ({
+            params: { font: font.split(" ").join("-"), topicName: topic },
+            props: { font, topic },
+        })),
+    );
 }) satisfies GetStaticPaths;
 
 const fontsRepository: IFontsRepository = new FontsRepository();
 const fontsService: IFontsService = new FontsService(fontsRepository);
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const { topic } = Astro.props as { topic: TemplateTopic };
+const { font, topic } = Astro.props as { font: FontValueType; topic: TemplateTopic };
 const templates: Template[] = templatesRepository
     .getAll()
     .filter((template: Template) => template.topics.includes(topic))
@@ -45,7 +49,7 @@ const templates: Template[] = templatesRepository
                         variants={variants.map((variant: Omit<TemplateProps, "font">) => ({
                             texts: variant.texts,
                             images: variant.images,
-                            font: fontsService.getFontFamiliesForSetting("default"),
+                            font: fontsService.getFontFamiliesForSetting(font),
                         }))}
                         template={template}
                         heading={template.name}

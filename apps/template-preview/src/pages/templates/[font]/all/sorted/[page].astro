@@ -1,20 +1,37 @@
 ---
+import type { GetStaticPaths } from "astro";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import Examples from "../../../components/Examples.astro";
-import { variants } from "../../../data/variants.ts";
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import Examples from "../../../../../components/Examples.astro";
+import { variants } from "../../../../../data/variants.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
 import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import { FontsService } from "@jstmemit/shared/services/FontsService";
+import { FontValues, type FontValueType } from "@jstmemit/shared/models/Font";
+
+export const getStaticPaths = (({ paginate }) => {
+    const templatesRepository: ITemplatesRepository = new TemplatesRepository();
+    const templates: Template[] = templatesRepository.getAll().sort((a, b) => a.name.localeCompare(b.name));
+
+    const availableFonts: FontValueType[] = Object.values(FontValues);
+
+    return availableFonts.flatMap((font: FontValueType) => {
+        return paginate(templates, {
+            params: { font: font.split(" ").join("-") },
+            props: { font: font },
+            pageSize: 50,
+        });
+    });
+}) satisfies GetStaticPaths;
 
 const fontsRepository: IFontsRepository = new FontsRepository();
 const fontsService: IFontsService = new FontsService(fontsRepository);
-const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const templates: Template[] = templatesRepository.getAll().sort((a, b) => a.name.localeCompare(b.name));
+const templates: Template[] = Astro.props.page.data;
+const { font } = Astro.props;
 ---
 
 <BaseLayout>
@@ -28,7 +45,7 @@ const templates: Template[] = templatesRepository.getAll().sort((a, b) => a.name
                         variants={variants.map((variant: Omit<TemplateProps, "font">) => ({
                             texts: variant.texts,
                             images: variant.images,
-                            font: fontsService.getFontFamiliesForSetting("default"),
+                            font: fontsService.getFontFamiliesForSetting(font),
                         }))}
                         template={template}
                         heading={template.name}

@@ -3,26 +3,27 @@ import type { GetStaticPaths } from "astro";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import Examples from "../../../../components/Examples.astro";
-import { variants } from "../../../../data/variants.ts";
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import Examples from "../../../../../components/Examples.astro";
+import { variants } from "../../../../../data/variants.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
 import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import { FontsService } from "@jstmemit/shared/services/FontsService";
-import { FontValues, type FontValueType } from "@jstmemit/shared/models/Font";
+import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
 
 export const getStaticPaths = (({ paginate }) => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-    const templates: Template[] = templatesRepository.getAll().sort((a, b) => a.name.localeCompare(b.name));
+    const allTemplates: Template[] = templatesRepository.getAll().sort((a, b) => a.name.localeCompare(b.name));
+    const uniqueTopics = Array.from(new Set(allTemplates.flatMap((t: Template) => t.topics)));
 
-    const availableFonts: FontValueType[] = Object.values(FontValues);
+    return uniqueTopics.flatMap((topic) => {
+        const filteredTemplates = allTemplates.filter((template) => template.topics.includes(topic));
 
-    return availableFonts.flatMap((font: FontValueType) => {
-        return paginate(templates, {
-            params: { font: font.split(" ").join("-") },
-            props: { font: font },
+        return paginate(filteredTemplates, {
+            params: { topicName: topic },
+            props: { topic },
             pageSize: 50,
         });
     });
@@ -31,7 +32,7 @@ export const getStaticPaths = (({ paginate }) => {
 const fontsRepository: IFontsRepository = new FontsRepository();
 const fontsService: IFontsService = new FontsService(fontsRepository);
 const templates: Template[] = Astro.props.page.data;
-const { font } = Astro.props;
+const { topic } = Astro.props as { topic: TemplateTopic };
 ---
 
 <BaseLayout>
@@ -45,7 +46,7 @@ const { font } = Astro.props;
                         variants={variants.map((variant: Omit<TemplateProps, "font">) => ({
                             texts: variant.texts,
                             images: variant.images,
-                            font: fontsService.getFontFamiliesForSetting(font),
+                            font: fontsService.getFontFamiliesForSetting("default"),
                         }))}
                         template={template}
                         heading={template.name}

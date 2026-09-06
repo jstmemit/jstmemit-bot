@@ -3,16 +3,16 @@ import type { GetStaticPaths } from "astro";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
-import BaseLayout from "../../../../../layouts/BaseLayout.astro";
-import Examples from "../../../../../components/Examples.astro";
-import { variants } from "../../../../../data/variants.ts";
+import BaseLayout from "../../../../../../layouts/BaseLayout.astro";
+import Examples from "../../../../../../components/Examples.astro";
+import { variants } from "../../../../../../data/variants.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
 import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import { FontsService } from "@jstmemit/shared/services/FontsService";
 import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
-import { type FontValueType, FontValues } from "@jstmemit/shared/models/Font.ts";
+import { type FontValueType, FontValues } from "@jstmemit/shared/models/Font";
 
 export const getStaticPaths = (({ paginate }) => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();

@@ -3,15 +3,17 @@ import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplate
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
 import { type TemplateTopic, Topic } from "@jstmemit/shared/models/TemplateTopic";
+import type { FontValueType } from "@jstmemit/shared/models/Font";
 
 interface Props {
+    currentFont?: FontValueType;
     currentTopic: TemplateTopic | "all";
     currentTemplateName: string;
 }
 
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templates: Template[] = templatesRepository.getAll();
-const { currentTopic, currentTemplateName } = Astro.props;
+const { currentFont = "default", currentTopic, currentTemplateName } = Astro.props;
 const topicOptions = Object.entries(Topic).sort((a, b) => a[0].localeCompare(b[0]));
 ---
 
@@ -57,7 +59,7 @@ const topicOptions = Object.entries(Topic).sort((a, b) => a[0].localeCompare(b[0
                     >
                         <a
                             class="truncate"
-                            href={`/templates${currentTopic === "all" ? "" : `/${currentTopic}`}/${template.name}`}
+                            href={`/templates/${currentFont.split(" ").join("-")}${currentTopic === "all" ? "" : `/${currentTopic}`}/${template.name}`}
                         >
                             {template.name}
                         </a>

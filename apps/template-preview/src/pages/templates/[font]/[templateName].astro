@@ -1,0 +1,29 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
+import type { Template } from "@jstmemit/shared/models/Template";
+import TemplateLayout from "../../../layouts/TemplateLayout.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { type FontValueType, FontValues } from "@jstmemit/shared/models/Font.ts";
+
+export const getStaticPaths = (() => {
+    const templatesRepository: ITemplatesRepository = new TemplatesRepository();
+    const templates: Template[] = templatesRepository.getAll();
+
+    const availableFonts: FontValueType[] = Object.values(FontValues);
+
+    return templates.flatMap((template: Template) => {
+        return availableFonts.map((font: FontValueType) => ({
+            params: { font: font.split(" ").join("-"), templateName: template.name },
+            props: { font: font, template: template },
+        }));
+    });
+}) satisfies GetStaticPaths;
+
+const { font, template } = Astro.props;
+---
+
+<BaseLayout>
+    <TemplateLayout font={font} topic={"all"} template={template} />
+</BaseLayout>

@@ -3,12 +3,14 @@ import type { GetStaticPaths } from "astro";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
-import TemplateLayout from "../../layouts/TemplateLayout.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Examples from "../../components/Examples.astro";
-import { variants } from "../../data/variants.ts";
-import { Renderer } from "takumi-js/node";
-import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import Examples from "../../../../components/Examples.astro";
+import { variants } from "../../../../data/variants.ts";
+import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
+import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
+import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
+import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
+import { FontsService } from "@jstmemit/shared/services/FontsService";
 
 export const getStaticPaths = (({ paginate }) => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();
@@ -17,6 +19,8 @@ export const getStaticPaths = (({ paginate }) => {
     return paginate(templates, { pageSize: 50 });
 }) satisfies GetStaticPaths;
 
+const fontsRepository: IFontsRepository = new FontsRepository();
+const fontsService: IFontsService = new FontsService(fontsRepository);
 const templates: Template[] = Astro.props.page.data;
 ---
 
@@ -28,7 +32,11 @@ const templates: Template[] = Astro.props.page.data;
                     <Examples
                         cols={4}
                         gap="gap-1"
-                        variants={variants}
+                        variants={variants.map((variant: Omit<TemplateProps, "font">) => ({
+                            texts: variant.texts,
+                            images: variant.images,
+                            font: fontsService.getFontFamiliesForSetting("default"),
+                        }))}
                         template={template}
                         heading={template.name}
                         link={`/templates/${template.name}`}

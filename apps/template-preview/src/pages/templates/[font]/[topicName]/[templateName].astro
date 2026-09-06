@@ -1,0 +1,39 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
+import type { Template } from "@jstmemit/shared/models/Template";
+import TemplateLayout from "../../../../layouts/TemplateLayout.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { type TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
+import { type FontValueType, FontValues } from "@jstmemit/shared/models/Font.ts";
+
+export const getStaticPaths = (() => {
+    const templatesRepository: ITemplatesRepository = new TemplatesRepository();
+    const templates: Template[] = templatesRepository.getAll();
+    const availableFonts: FontValueType[] = Object.values(FontValues);
+
+    return templates.flatMap((template: Template) =>
+        template.topics.flatMap((topic) =>
+            availableFonts.map((font: FontValueType) => ({
+                params: {
+                    font: font.split(" ").join("-"),
+                    topicName: topic,
+                    templateName: template.name,
+                },
+                props: { font, topic, template },
+            })),
+        ),
+    );
+}) satisfies GetStaticPaths;
+
+const { font, topic, template } = Astro.props as {
+    font: FontValueType;
+    topic: TemplateTopic;
+    template: Template;
+};
+---
+
+<BaseLayout>
+    <TemplateLayout font={font} topic={topic} template={template} />
+</BaseLayout>

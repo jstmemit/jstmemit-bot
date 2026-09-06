@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const blendsMaikaPlusEyes: Template = {
-    name: "blendsMaikaPlusEyes",
-    displayName: buildLocales("Maika plus eyes", {
-        [Locale.Russian]: "Майка с глазами-плюсиками",
-        [Locale.Ukrainian]: "Майка з очима-плюсиками",
-        [Locale.Dutch]: "Maika met plus-ogen",
-        [Locale.French]: "Maika avec des yeux en croix",
-        [Locale.German]: "Maika mit Plus-Augen",
-        [Locale.Polish]: "Maika z oczami w kształcie plusa",
-        [Locale.SpanishES]: "Maika con ojos de cruz",
-        [Locale.SpanishLATAM]: "Maika con ojos de cruz",
-        [Locale.PortugueseBR]: "Maika com olhos em cruz",
-        [Locale.Turkish]: "Maika artı gözlerle",
-        [Locale.Italian]: "Maika con occhi a croce",
-        [Locale.Indonesian]: "Maika dengan mata plus",
-        [Locale.Czech]: "Maika s očima ve tvaru plus",
-        [Locale.Japanese]: "マイカのプラスアイ",
-        [Locale.Korean]: "마이카 플러스 눈",
-        [Locale.ChineseCN]: "麻衣花十字眼",
+export const btrBocchiNeutral: Template = {
+    name: "btrBocchiNeutral",
+    displayName: buildLocales("Bocchi neutral", {
+        [Locale.Russian]: "Бокки невозмутима",
+        [Locale.Ukrainian]: "Боккі незворушна",
+        [Locale.Dutch]: "Bocchi neutraal",
+        [Locale.French]: "Bocchi neutre",
+        [Locale.German]: "Bocchi neutral",
+        [Locale.Polish]: "Bocchi obojętna",
+        [Locale.SpanishES]: "Bocchi neutral",
+        [Locale.SpanishLATAM]: "Bocchi neutral",
+        [Locale.PortugueseBR]: "Bocchi neutra",
+        [Locale.Turkish]: "Bocchi ifadesiz",
+        [Locale.Italian]: "Bocchi neutrale",
+        [Locale.Indonesian]: "Bocchi datar",
+        [Locale.Czech]: "Bocchi neutrální",
+        [Locale.Japanese]: "無表情のぼっち",
+        [Locale.Korean]: "무표정한 봇치",
+        [Locale.ChineseCN]: "波奇面无表情",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 675,
-    height: 495,
-    animationDuration: 1980,
+    topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
+    types: [Type.TextTopWithBackground],
+    width: 498,
+    height: 380,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,10 +44,10 @@ export const blendsMaikaPlusEyes: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/blendsMaikaPlusEyes.webp"
-                width={675}
-                height={375}
-                style={{ position: "absolute", bottom: 0, right: 0 }}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiNeutral.png"
+                width={498}
+                height={280}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
@@ -56,7 +55,7 @@ export const blendsMaikaPlusEyes: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "120px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

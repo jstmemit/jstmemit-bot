@@ -363,7 +363,7 @@ import { blendsMaikaAngryPanic1 } from "#/templates/blendsMaikaAngryPanic1.tsx";
 import { blendsMaikaBlush } from "#/templates/blendsMaikaBlush.tsx";
 import { blendsMaikaInnocent } from "#/templates/blendsMaikaInnocent.tsx";
 import { blendsMaikaNo } from "#/templates/blendsMaikaNo.tsx";
-import { blendsMaikaPlusEyes } from "#/templates/blendsMaikaPlusEyes.tsx";
+import { blendsMafuyuPlusEyes } from "#/templates/blendsMafuyuPlusEyes.tsx";
 import { blendsMaikaSadisticEyes } from "#/templates/blendsMaikaSadisticEyes.tsx";
 import { blendsMaikaWithCat } from "#/templates/blendsMaikaWithCat.tsx";
 import { btrBocchiCrying } from "#/templates/btrBocchiCrying.tsx";
@@ -676,6 +676,50 @@ import { umSpecialWeekRunningWithCarrot } from "#/templates/umSpecialWeekRunning
 import { umOguriCapSweating } from "#/templates/umOguriCapSweating.tsx";
 import { umSpecialWeekSurprised } from "#/templates/umSpecialWeekSurprised.tsx";
 import { umTMOperaOLaughing } from "#/templates/umTMOperaOLaughing.tsx";
+import { acNagisaNotes2 } from "#/templates/acNagisaNotes2.tsx";
+import { acNagisaSmile } from "#/templates/acNagisaSmile.tsx";
+import { adKaguraPanic1 } from "#/templates/adKaguraPanic1.tsx";
+import { acsrMisakaAngry } from "#/templates/acsrMisakaAngry.tsx";
+import { acsrMisakaAngry1 } from "#/templates/acsrMisakaAngry1.tsx";
+import { adChiyoAngryCrying1 } from "#/templates/adChiyoAngryCrying1.tsx";
+import { adChiyoCrying } from "#/templates/adChiyoCrying.tsx";
+import { adChiyoPanic1 } from "#/templates/adChiyoPanic1.tsx";
+import { adChiyoShocked1 } from "#/templates/adChiyoShocked1.tsx";
+import { adKaguraLaughing1 } from "#/templates/adKaguraLaughing1.tsx";
+import { adKaguraPanic2 } from "#/templates/adKaguraPanic2.tsx";
+import { adKaguraPanic3 } from "#/templates/adKaguraPanic3.tsx";
+import { adKaguraPanic4 } from "#/templates/adKaguraPanic4.tsx";
+import { adOsakaNerd } from "#/templates/adOsakaNerd.tsx";
+import { adOsakaPool1 } from "#/templates/adOsakaPool1.tsx";
+import { adOsakaZonedOut } from "#/templates/adOsakaZonedOut.tsx";
+import { adTomoAndOsakaStaring } from "#/templates/adTomoAndOsakaStaring.tsx";
+import { adTomoBoasting1 } from "#/templates/adTomoBoasting1.tsx";
+import { arobmiSistineAndRumiaShocked1 } from "#/templates/arobmiSistineAndRumiaShocked1.tsx";
+import { arobmiSistineBlush2 } from "#/templates/arobmiSistineBlush2.tsx";
+import { arobmiSistineShocked1 } from "#/templates/arobmiSistineShocked1.tsx";
+import { arobmiSistineConfused1 } from "#/templates/arobmiSistineConfused1.tsx";
+import { arobmiSistineNeutral } from "#/templates/arobmiSistineNeutral.tsx";
+import { arobmiSistineUtterlyConfused } from "#/templates/arobmiSistineUtterlyConfused.tsx";
+import { barakamonNaruSlapHuh } from "#/templates/barakamonNaruSlapHuh.tsx";
+import { blendsKahoFlustered1 } from "#/templates/blendsKahoFlustered1.tsx";
+import { blendsMaikaBlush1 } from "#/templates/blendsMaikaBlush1.tsx";
+import { blendsMafuyuPlusEyes1 } from "#/templates/blendsMafuyuPlusEyes1.tsx";
+import { blendsMaikaSadisticSmile1 } from "#/templates/blendsMaikaSadisticSmile1.tsx";
+import { blendsMaikaSmile } from "#/templates/blendsMaikaSmile.tsx";
+import { btrBocchiDefeated1 } from "#/templates/btrBocchiDefeated1.tsx";
+import { btrBocchiDefeated2 } from "#/templates/btrBocchiDefeated2.tsx";
+import { btrBocchiDoubtful } from "#/templates/btrBocchiDoubtful.tsx";
+import { btrBocchiExcited1 } from "#/templates/btrBocchiExcited1.tsx";
+import { btrBocchiHiding1 } from "#/templates/btrBocchiHiding1.tsx";
+import { btrBocchiNeutral } from "#/templates/btrBocchiNeutral.tsx";
+import { btrBocchiNo1 } from "#/templates/btrBocchiNo1.tsx";
+import { btrBocchiPanic1 } from "#/templates/btrBocchiPanic1.tsx";
+import { btrBocchiPanic2 } from "#/templates/btrBocchiPanic2.tsx";
+import { adOsakaNerd1 } from "#/templates/adOsakaNerd1.tsx";
+import { adTomoAndOsakaStaring1 } from "#/templates/adTomoAndOsakaStaring1.tsx";
+import { adTomoBoasting2 } from "#/templates/adTomoBoasting2.tsx";
+import { btrBocchiPanic3 } from "#/templates/btrBocchiPanic3.tsx";
+import { btrBocchiPanic4 } from "#/templates/btrBocchiPanic4.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1075,7 +1119,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             blendsMaikaBlush,
             blendsMaikaInnocent,
             blendsMaikaNo,
-            blendsMaikaPlusEyes,
+            blendsMafuyuPlusEyes,
             blendsMaikaSadisticEyes,
             blendsMaikaWithCat,
             btrBocchiCrying,
@@ -1385,6 +1429,50 @@ export class TemplatesRepository implements ITemplatesRepository {
             umOguriCapSweating,
             umSpecialWeekSurprised,
             umTMOperaOLaughing,
+            acNagisaNotes2,
+            acNagisaSmile,
+            acsrMisakaAngry,
+            acsrMisakaAngry1,
+            adChiyoAngryCrying1,
+            adChiyoCrying,
+            adChiyoPanic1,
+            adChiyoShocked1,
+            adKaguraLaughing1,
+            adKaguraPanic1,
+            adKaguraPanic2,
+            adKaguraPanic3,
+            adKaguraPanic4,
+            adOsakaNerd,
+            adOsakaNerd1,
+            adOsakaPool1,
+            adOsakaZonedOut,
+            adTomoAndOsakaStaring,
+            adTomoAndOsakaStaring1,
+            adTomoBoasting1,
+            adTomoBoasting2,
+            arobmiSistineAndRumiaShocked1,
+            arobmiSistineBlush2,
+            arobmiSistineShocked1,
+            arobmiSistineConfused1,
+            arobmiSistineNeutral,
+            arobmiSistineUtterlyConfused,
+            barakamonNaruSlapHuh,
+            blendsKahoFlustered1,
+            blendsMaikaBlush1,
+            blendsMafuyuPlusEyes1,
+            blendsMaikaSadisticSmile1,
+            blendsMaikaSmile,
+            btrBocchiDefeated1,
+            btrBocchiDefeated2,
+            btrBocchiDoubtful,
+            btrBocchiExcited1,
+            btrBocchiHiding1,
+            btrBocchiNeutral,
+            btrBocchiNo1,
+            btrBocchiPanic1,
+            btrBocchiPanic2,
+            btrBocchiPanic3,
+            btrBocchiPanic4,
         ];
 
         return this._templates;

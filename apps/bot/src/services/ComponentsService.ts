@@ -531,7 +531,7 @@ export class ComponentsService implements IComponentsService {
     public getNotEnoughContextButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
         return new ActionRowBuilder<ButtonBuilder>().addComponents(
             new ButtonBuilder()
-                .setStyle(ButtonStyle.Primary)
+                .setStyle(ButtonStyle.Secondary)
                 .setLabel(t("error.button.tryAgain", language))
                 .setCustomId("meme"),
             new ButtonBuilder()

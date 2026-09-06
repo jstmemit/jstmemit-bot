@@ -1,22 +1,30 @@
 ---
 import Sidebar from "../components/Sidebar.astro";
 import type { Template } from "@jstmemit/shared/models/Template";
-import { variants } from "../data/variants.ts";
-
 import Slots from "../components/Slots.astro";
 import Examples from "../components/Examples.astro";
 import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
+import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
+import type { FontValueType } from "@jstmemit/shared/models/Font";
+import { variants } from "../data/variants.ts";
+import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
+import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
+import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
+import { FontsService } from "@jstmemit/shared/services/FontsService";
 
 interface Props {
+    font?: FontValueType;
     topic: TemplateTopic | "all";
     template: Template;
 }
 
-const { topic, template } = Astro.props;
+const fontsRepository: IFontsRepository = new FontsRepository();
+const fontsService: IFontsService = new FontsService(fontsRepository);
+const { font = "default", topic, template } = Astro.props;
 ---
 
 <div class="flex flex-col gap-10 md:flex-row">
-    <Sidebar currentTopic={topic} currentTemplateName={template.name} />
+    <Sidebar currentTopic={topic} currentFont={font} currentTemplateName={template.name} />
     <hr class="text-neon-ice/25" />
     <section class="flex w-full min-w-0 flex-col gap-10">
         <div class="flex flex-col gap-1">
@@ -33,6 +41,13 @@ const { topic, template } = Astro.props;
         <Slots title="Text slots" slots={template.texts} />
         <Slots title="Image slots" slots={template.images} />
 
-        <Examples variants={variants} template={template} />
+        <Examples
+            variants={variants.map((variant: Omit<TemplateProps, "font">) => ({
+                texts: variant.texts,
+                images: variant.images,
+                font: fontsService.getFontFamiliesForSetting(font),
+            }))}
+            template={template}
+        />
     </section>
 </div>

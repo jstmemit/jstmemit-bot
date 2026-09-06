@@ -3,9 +3,9 @@ import type { GetStaticPaths, Page } from "astro";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
-import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { FontValues, type FontValueType } from "@jstmemit/shared/models/Font";
-import TemplatesList from "../../../../../components/TemplatesList.astro";
+import TemplatesList from "@/components/TemplatesList.astro";
 
 interface Props {
     font: FontValueType;

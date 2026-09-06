@@ -36,7 +36,7 @@ export const getStaticPaths = (({ paginate }) => {
 const fontsRepository: IFontsRepository = new FontsRepository();
 const fontsService: IFontsService = new FontsService(fontsRepository);
 const templates: Template[] = Astro.props.page.data;
-const { font, topic } = Astro.props as { font: FontValueType; topic: TemplateTopic };
+const { font, topic } = Astro.props;
 ---
 
 <BaseLayout>

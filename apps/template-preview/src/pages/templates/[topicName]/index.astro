@@ -11,7 +11,7 @@ export const getStaticPaths = (() => {
     }));
 }) satisfies GetStaticPaths;
 
-const { topic } = Astro.props as { topic: TemplateTopic };
+const { topic } = Astro.props;
 ---
 
 <BaseLayout>

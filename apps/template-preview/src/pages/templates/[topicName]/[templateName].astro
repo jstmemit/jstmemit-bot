@@ -19,7 +19,7 @@ export const getStaticPaths = (() => {
     );
 }) satisfies GetStaticPaths;
 
-const { topic, template } = Astro.props as { topic: TemplateTopic; template: Template };
+const { topic, template } = Astro.props;
 ---
 
 <BaseLayout>

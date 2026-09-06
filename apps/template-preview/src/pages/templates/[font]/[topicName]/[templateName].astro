@@ -27,11 +27,7 @@ export const getStaticPaths = (() => {
     );
 }) satisfies GetStaticPaths;
 
-const { font, topic, template } = Astro.props as {
-    font: FontValueType;
-    topic: TemplateTopic;
-    template: Template;
-};
+const { font, topic, template } = Astro.props;
 ---
 
 <BaseLayout>

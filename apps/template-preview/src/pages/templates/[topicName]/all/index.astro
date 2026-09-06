@@ -27,7 +27,7 @@ export const getStaticPaths = (() => {
 const fontsRepository: IFontsRepository = new FontsRepository();
 const fontsService: IFontsService = new FontsService(fontsRepository);
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const { topic } = Astro.props as { topic: TemplateTopic };
+const { topic } = Astro.props;
 const templates: Template[] = templatesRepository
     .getAll()
     .filter((template: Template) => template.topics.includes(topic));

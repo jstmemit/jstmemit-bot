@@ -13,9 +13,7 @@ export const getStaticPaths = (() => {
     }));
 }) satisfies GetStaticPaths;
 
-const { font } = Astro.props as {
-    font: FontValueType;
-};
+const { font } = Astro.props;
 ---
 
 <BaseLayout>

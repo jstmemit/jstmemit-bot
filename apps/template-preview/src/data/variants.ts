@@ -1,14 +1,5 @@
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
-import { FontsService } from "@jstmemit/shared/services/FontsService.ts";
-import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import _ from "lodash";
-import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
-import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
-
-const fontsRepository: IFontsRepository = new FontsRepository();
-const fontsService: IFontsService = new FontsService(fontsRepository);
-
-// test data for meme template previews
 
 export const texts: string[] = [
     "lorem",
@@ -40,12 +31,11 @@ export const images: string[] = [
     "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/rust.jpg",
 ];
 
-export const variants: TemplateProps[] = [];
+export const variants: Omit<TemplateProps, "font">[] = [];
 
 for (let i: number = 0; i < texts.length; i++) {
     variants.push({
         texts: _.times(5, (): string => texts[i]),
         images: _.drop(_.shuffle(images), 5),
-        font: fontsService.getFontFamiliesForSetting("Comic Sans MS"),
     });
 }

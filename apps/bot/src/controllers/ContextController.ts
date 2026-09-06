@@ -19,6 +19,7 @@ import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import type { ContextImage } from "@jstmemit/shared/models/ContextImage";
 import type { messagesTable } from "@jstmemit/db/schema.ts";
 import { mentionRegex } from "@jstmemit/shared/regex/mentionRegex";
+import { client } from "#/bot.ts";
 
 const env = Env.parse(process.env);
 
@@ -281,6 +282,10 @@ export class ContextController implements IContextController {
 
             if (!id) {
                 return match;
+            }
+
+            if (match.includes(String(client?.user?.id))) {
+                return "";
             }
 
             if (match.startsWith("<#")) {

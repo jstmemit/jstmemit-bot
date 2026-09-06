@@ -7,12 +7,17 @@ import TemplateLayout from "../../../layouts/TemplateLayout.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { type TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
 
+interface Props {
+    topic: TemplateTopic;
+    template: Template;
+}
+
 export const getStaticPaths = (() => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();
     const templates: Template[] = templatesRepository.getAll();
 
     return templates.flatMap((template: Template) =>
-        template.topics.map((topic) => ({
+        template.topics.map((topic: TemplateTopic) => ({
             params: { topicName: topic, templateName: template.name },
             props: { topic, template },
         })),

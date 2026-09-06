@@ -1,15 +1,20 @@
 ---
 import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import Sidebar from "../../../../components/Sidebar.astro";
+import IndexLayout from "../../../../layouts/IndexLayout.astro";
 import { type TemplateTopic, Topic } from "@jstmemit/shared/models/TemplateTopic";
 import { FontValues, type FontValueType } from "@jstmemit/shared/models/Font";
+
+interface Props {
+    font: FontValueType;
+    topic: TemplateTopic;
+}
 
 export const getStaticPaths = (() => {
     const availableFonts: FontValueType[] = Object.values(FontValues);
 
     return availableFonts.flatMap((font: FontValueType) =>
-        Object.values(Topic).map((topic) => ({
+        Object.values(Topic).map((topic: TemplateTopic) => ({
             params: {
                 font: font.split(" ").join("-"),
                 topicName: topic,
@@ -26,17 +31,5 @@ const { font, topic } = Astro.props;
 ---
 
 <BaseLayout>
-    <div class="flex flex-col gap-10 md:flex-row">
-        <Sidebar currentTopic={topic} currentFont={font} currentTemplateName="" />
-        <hr class="text-white/20" />
-        <section class="flex w-full min-w-0 flex-col gap-10">
-            <div class="flex flex-col gap-1">
-                <h1 class="mb-2 max-w-prose text-2xl font-black md:text-4xl">Template preview</h1>
-                <p class="text-zinc-400">
-                    Here you can preview meme templates and how they behave with different sorts of data on them. Choose
-                    one in the sidebar to begin.
-                </p>
-            </div>
-        </section>
-    </div>
+    <IndexLayout font={font} topic={topic} />
 </BaseLayout>

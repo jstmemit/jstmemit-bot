@@ -1,4 +1,6 @@
 import type { IContextController } from "#/interfaces/IContextController.ts";
+import type { Role } from "discord.js";
+import { type Channel, type MessageMentions } from "discord.js";
 import { type Guild } from "discord.js";
 import { type Collection, type GuildMember, type Message, type TextBasedChannel } from "discord.js";
 import { PermissionFlagsBits } from "discord.js";
@@ -16,6 +18,8 @@ import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import type { ContextImage } from "@jstmemit/shared/models/ContextImage";
 import type { messagesTable } from "@jstmemit/db/schema.ts";
+import { mentionRegex } from "@jstmemit/shared/regex/mentionRegex";
+import { client } from "#/bot.ts";
 
 const env = Env.parse(process.env);
 
@@ -51,7 +55,7 @@ export class ContextController implements IContextController {
     public async handleNewMessage(message: Message): Promise<void> {
         try {
             let mentioned: boolean = false;
-            const { id, content, channelId, attachments, embeds, author } = message;
+            const { id, content, channelId, attachments, embeds, author, mentions } = message;
 
             if (!channelId) {
                 return;
@@ -123,7 +127,12 @@ export class ContextController implements IContextController {
                     await this._contextService.saveGif(id, channelId, embeds[0], content);
                 } else {
                     await this._contextService.saveContent([
-                        { messageId: id, channelId, content, timestamp: new Date() },
+                        {
+                            messageId: id,
+                            channelId,
+                            content: this._translateMentions(content, mentions),
+                            timestamp: new Date(),
+                        },
                     ]);
                 }
             }
@@ -265,5 +274,31 @@ export class ContextController implements IContextController {
         }
 
         return prefetched;
+    }
+
+    private _translateMentions(content: string, mentions: MessageMentions): string {
+        return content.replace(mentionRegex, (match: string): string => {
+            const id: string | undefined = match.match(/\d+/)?.[0];
+
+            if (!id) {
+                return match;
+            }
+
+            if (match.includes(String(client?.user?.id))) {
+                return "";
+            }
+
+            if (match.startsWith("<#")) {
+                const channel: Channel | undefined = mentions.channels.get(id);
+                return channel && !channel.isDMBased() ? `#${channel.name}` : match;
+            }
+
+            if (match.startsWith("<@&")) {
+                const role: Role | undefined = mentions.roles.get(id);
+                return role ? `@${role.name}` : match;
+            }
+
+            return mentions.members?.get(id)?.displayName || mentions.users.get(id)?.displayName || match;
+        });
     }
 }

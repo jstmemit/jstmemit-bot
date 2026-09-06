@@ -7,6 +7,8 @@ import type { BatchItem } from "drizzle-orm/batch";
 
 export class MessagesRepository implements IMessagesRepository {
     public async new(messages: readonly (typeof messagesTable.$inferInsert)[]): Promise<number> {
+        messages = messages?.filter((message): boolean => message?.content?.length >= 1);
+
         if (messages.length === 0) {
             return 0;
         }

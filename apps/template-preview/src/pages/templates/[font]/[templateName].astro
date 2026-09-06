@@ -3,9 +3,14 @@ import type { GetStaticPaths } from "astro";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
-import TemplateLayout from "../../../layouts/TemplateLayout.astro";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
+import TemplateLayout from "@/layouts/TemplateLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { type FontValueType, FontValues } from "@jstmemit/shared/models/Font.ts";
+
+interface Props {
+    font: FontValueType;
+    template: Template;
+}
 
 export const getStaticPaths = (() => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();

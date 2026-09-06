@@ -8,12 +8,12 @@ import type { FontValueType } from "@jstmemit/shared/models/Font";
 interface Props {
     currentFont?: FontValueType;
     currentTopic: TemplateTopic | "all";
-    currentTemplateName: string;
+    currentTemplateName?: string;
 }
 
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templates: Template[] = templatesRepository.getAll();
-const { currentFont = "default", currentTopic, currentTemplateName } = Astro.props;
+const { currentFont = "default", currentTopic, currentTemplateName = "" } = Astro.props;
 const topicOptions = Object.entries(Topic).sort((a, b) => a[0].localeCompare(b[0]));
 ---
 

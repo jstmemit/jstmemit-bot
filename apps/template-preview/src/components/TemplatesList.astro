@@ -1,0 +1,41 @@
+---
+import type { Template } from "@jstmemit/shared/models/Template";
+import { variants } from "../data/variants.ts";
+import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
+import Examples from "./Examples.astro";
+import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
+import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
+import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
+import { FontsService } from "@jstmemit/shared/services/FontsService";
+import { type FontValueType } from "@jstmemit/shared/models/Font";
+
+interface Props {
+    font?: FontValueType;
+    templates: Template[];
+}
+
+const fontsRepository: IFontsRepository = new FontsRepository();
+const fontsService: IFontsService = new FontsService(fontsRepository);
+const { font = "default", templates } = Astro.props;
+---
+
+<ul>
+    {
+        templates.map((template: Template) => (
+            <li class="mt-5 list-none">
+                <Examples
+                    cols={4}
+                    gap="gap-1"
+                    variants={variants.map((variant: Omit<TemplateProps, "font">) => ({
+                        texts: variant.texts,
+                        images: variant.images,
+                        font: fontsService.getFontFamiliesForSetting(font),
+                    }))}
+                    template={template}
+                    heading={template.name}
+                    link={`/templates/${font}/${template.name}`}
+                />
+            </li>
+        ))
+    }
+</ul>

@@ -3,23 +3,28 @@ import type { GetStaticPaths } from "astro";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
-import TemplateLayout from "../../../layouts/TemplateLayout.astro";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
+import TemplateLayout from "@/layouts/TemplateLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { type TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
+
+interface Props {
+    topic: TemplateTopic;
+    template: Template;
+}
 
 export const getStaticPaths = (() => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();
     const templates: Template[] = templatesRepository.getAll();
 
     return templates.flatMap((template: Template) =>
-        template.topics.map((topic) => ({
+        template.topics.map((topic: TemplateTopic) => ({
             params: { topicName: topic, templateName: template.name },
             props: { topic, template },
         })),
     );
 }) satisfies GetStaticPaths;
 
-const { topic, template } = Astro.props as { topic: TemplateTopic; template: Template };
+const { topic, template } = Astro.props;
 ---
 
 <BaseLayout>

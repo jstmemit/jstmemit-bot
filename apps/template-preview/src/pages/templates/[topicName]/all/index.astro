@@ -1,57 +1,37 @@
 ---
+import type { GetStaticPaths } from "astro";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import Examples from "../../../../components/Examples.astro";
-import { variants } from "../../../../data/variants.ts";
-import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
-import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
-import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
-import { FontsService } from "@jstmemit/shared/services/FontsService";
-import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
-import type { GetStaticPaths } from "astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import TemplatesList from "@/components/TemplatesList.astro";
 import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
+
+interface Props {
+    topic: TemplateTopic;
+    templates: Template[];
+}
 
 export const getStaticPaths = (() => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-    const templates: Template[] = templatesRepository.getAll();
-    const uniqueTopics = Array.from(new Set(templates.flatMap((template: Template) => template.topics)));
+    const allTemplates: Template[] = templatesRepository.getAll();
+    const uniqueTopics: TemplateTopic[] = Array.from(
+        new Set(allTemplates.flatMap((template: Template) => template.topics)),
+    );
 
-    return uniqueTopics.map((topic) => ({
-        params: { topicName: topic },
-        props: { topic },
-    }));
+    return uniqueTopics.map((topic) => {
+        const filteredTemplates = allTemplates.filter((template: Template) => template.topics.includes(topic));
+
+        return {
+            params: { topicName: topic },
+            props: { topic, templates: filteredTemplates },
+        };
+    });
 }) satisfies GetStaticPaths;
 
-const fontsRepository: IFontsRepository = new FontsRepository();
-const fontsService: IFontsService = new FontsService(fontsRepository);
-const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const { topic } = Astro.props as { topic: TemplateTopic };
-const templates: Template[] = templatesRepository
-    .getAll()
-    .filter((template: Template) => template.topics.includes(topic));
+const { topic, templates } = Astro.props;
 ---
 
 <BaseLayout>
-    <ul>
-        {
-            templates.map((template: Template) => (
-                <li class="mt-5 list-none">
-                    <Examples
-                        cols={4}
-                        gap="gap-1"
-                        variants={variants.map((variant: Omit<TemplateProps, "font">) => ({
-                            texts: variant.texts,
-                            images: variant.images,
-                            font: fontsService.getFontFamiliesForSetting("default"),
-                        }))}
-                        template={template}
-                        heading={template.name}
-                        link={`/templates/${template.name}`}
-                    />
-                </li>
-            ))
-        }
-    </ul>
+    <TemplatesList templates={templates} />
 </BaseLayout>

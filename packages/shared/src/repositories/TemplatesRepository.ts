@@ -363,7 +363,7 @@ import { blendsMaikaAngryPanic1 } from "#/templates/blendsMaikaAngryPanic1.tsx";
 import { blendsMaikaBlush } from "#/templates/blendsMaikaBlush.tsx";
 import { blendsMaikaInnocent } from "#/templates/blendsMaikaInnocent.tsx";
 import { blendsMaikaNo } from "#/templates/blendsMaikaNo.tsx";
-import { blendsMaikaPlusEyes } from "#/templates/blendsMaikaPlusEyes.tsx";
+import { blendsMafuyuPlusEyes } from "#/templates/blendsMafuyuPlusEyes.tsx";
 import { blendsMaikaSadisticEyes } from "#/templates/blendsMaikaSadisticEyes.tsx";
 import { blendsMaikaWithCat } from "#/templates/blendsMaikaWithCat.tsx";
 import { btrBocchiCrying } from "#/templates/btrBocchiCrying.tsx";
@@ -1075,7 +1075,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             blendsMaikaBlush,
             blendsMaikaInnocent,
             blendsMaikaNo,
-            blendsMaikaPlusEyes,
+            blendsMafuyuPlusEyes,
             blendsMaikaSadisticEyes,
             blendsMaikaWithCat,
             btrBocchiCrying,

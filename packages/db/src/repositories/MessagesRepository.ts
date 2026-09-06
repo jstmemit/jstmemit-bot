@@ -72,6 +72,8 @@ export class MessagesRepository implements IMessagesRepository {
                 .orderBy(sql`random()`)
                 .limit(limit);
 
+            console.log(messages);
+
             return messages.map((message): string => message.content);
         } catch (error) {
             analytics.captureException(error);

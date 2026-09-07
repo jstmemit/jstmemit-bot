@@ -1,3 +1,4 @@
+import type { StringSelectMenuOptionBuilder } from "discord.js";
 import { type Locale, type MessageActionRowComponentBuilder } from "discord.js";
 import {
     ActionRowBuilder,
@@ -21,6 +22,7 @@ import type { Achievement } from "@jstmemit/shared/models/Achievement";
 import { achievementsList } from "#/data/achievementsList.ts";
 import type { ICommandsService } from "#/interfaces/ICommandsService.ts";
 import type { Font } from "@jstmemit/shared/models/Font";
+import type { Faq } from "@jstmemit/shared/models/Faq";
 
 export class ComponentsService implements IComponentsService {
     private readonly _commandsService: ICommandsService;
@@ -912,16 +914,32 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
-     * Returns back a message component for FAQ part of the /help command.
+     * Returns a message component for the FAQ command + selected question if there is one.
      *
      * @param language
+     * @param faqs
      *
      * @author Kyrylo Maliuha
      */
-    public getHelpFaqMessageComponent(language: Locale): ContainerBuilder {
+    public getHelpFaqMessageComponent(language: Locale, faqs: Faq[]): ContainerBuilder {
         return new ContainerBuilder()
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.heading", language)}`))
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.description", language)}`))
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder().setCustomId("faqs").addOptions(
+                        faqs.map((option: Faq): StringSelectMenuOptionBuilder =>
+                            new SelectMenuOptionBuilder()
+                                .setLabel(option.question)
+                                .setValue(option.question.substring(0, 25))
+                                .setEmoji({ name: "❓" })
+                                .setDescription(
+                                    option.answer.substring(0, 50) + (option.answer.length > 50 ? "..." : ""),
+                                ),
+                        ),
+                    ),
+                ),
+            )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`### ${t("help.faq.iAddedTheBotWhatNow.question", language)}`),
@@ -932,63 +950,6 @@ export class ComponentsService implements IComponentsService {
                         enable: this._commandsService.getCommandMention("enable"),
                         meme: this._commandsService.getCommandMention("meme"),
                         settings: this._commandsService.getCommandMention("settings"),
-                    }),
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `### ${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.question", language)}`,
-                ),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.answer", language)}`,
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${t("help.faq.isThereALimit.question", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.isThereALimit.answer", language, {
-                        meme: this._commandsService.getCommandMention("meme"),
-                    }),
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${t("help.faq.canIDeleteStoredData.question", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.canIDeleteStoredData.answer", language, {
-                        settings: this._commandsService.getCommandMention("settings"),
-                    }),
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${t("help.faq.addBotToMyApps.question", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.addBotToMyApps.answer", language, {
-                        custom: this._commandsService.getCommandMention("custom"),
-                    }),
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `### ${t("help.faq.whatIfIWantToMakeACustomMeme.question", language)}`,
-                ),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.whatIfIWantToMakeACustomMeme.answer", language, {
-                        custom: this._commandsService.getCommandMention("custom"),
                     }),
                 ),
             );

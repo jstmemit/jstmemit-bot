@@ -1,6 +1,7 @@
 import type { ActionRowBuilder, ButtonBuilder, ContainerBuilder, Locale } from "discord.js";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import type { Achievement } from "@jstmemit/shared/models/Achievement";
+import type { Faq } from "@jstmemit/shared/models/Faq";
 
 export abstract class IComponentsService {
     public abstract getEnableMessageComponent(
@@ -55,7 +56,7 @@ export abstract class IComponentsService {
     public abstract getHelpHeaderMessageComponent(language: Locale, isEnabled?: boolean): ContainerBuilder;
     public abstract getHelpAutoMemesMessageComponent(language: Locale): ContainerBuilder;
     public abstract getHelpRightClickMessageComponent(language: Locale): ContainerBuilder;
-    public abstract getHelpFaqMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getHelpFaqMessageComponent(language: Locale, faqs: Faq[]): ContainerBuilder;
     public abstract getHelpVoiceMessageComponent(language: Locale): ContainerBuilder;
     public abstract getSettingsHeaderMessageComponent(language: Locale, isEnabled: boolean): ContainerBuilder;
     public abstract getSettingsBodyMessageComponent(

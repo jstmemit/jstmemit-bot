@@ -1,3 +1,4 @@
+import type { Locale } from "discord.js";
 import { type ChatInputCommandInteraction, InteractionContextType } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
@@ -5,6 +6,7 @@ import { respond } from "#/helpers/respond.ts";
 import { analytics } from "@jstmemit/analytics";
 import type { IHelpController } from "#/interfaces/IHelpController.ts";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
+import type { Faq } from "@jstmemit/shared/models/Faq";
 
 export class HelpController implements IHelpController {
     private readonly _componentsService: IComponentsService;
@@ -93,12 +95,11 @@ export class HelpController implements IHelpController {
                 },
             });
 
+            const faqs: Faq[] = this._getFaqs(interaction.locale);
+
             await respond(
                 interaction,
-                [
-                    this._componentsService.getHelpHeaderMessageComponent(interaction.locale, channel?.enabled),
-                    this._componentsService.getHelpFaqMessageComponent(interaction.locale),
-                ],
+                [this._componentsService.getHelpFaqMessageComponent(interaction.locale, faqs)],
                 true,
             );
         } catch (error) {
@@ -107,5 +108,14 @@ export class HelpController implements IHelpController {
                 this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
             ]);
         }
+    }
+
+    private _getFaqs(language: Locale): Faq[] {
+        return [
+            {
+                question: "test",
+                answer: "test 2",
+            },
+        ];
     }
 }

@@ -1818,7 +1818,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "## ❓ Časté dotazy",
     }),
     "help.faq.description": buildLocales(
-        "Can't find an answer to your question? We can help you in the [Support server](https://discord.gg/THRnn8fhkZ)",
+        "**Select your question in the selection menu below to see the answer.**\nCan't find an answer to your question? We can help you in the [Support server](https://discord.gg/THRnn8fhkZ)",
         {
             [Locale.Russian]:
                 "Не нашли ответ на свой вопрос? Мы поможем вам на [сервере поддержки](https://discord.gg/THRnn8fhkZ)",

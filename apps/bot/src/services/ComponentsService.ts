@@ -23,6 +23,7 @@ import { achievementsList } from "#/data/achievementsList.ts";
 import type { ICommandsService } from "#/interfaces/ICommandsService.ts";
 import type { Font } from "@jstmemit/shared/models/Font";
 import type { Faq } from "@jstmemit/shared/models/Faq";
+import removeMd from "remove-markdown";
 
 export class ComponentsService implements IComponentsService {
     private readonly _commandsService: ICommandsService;
@@ -941,7 +942,9 @@ export class ComponentsService implements IComponentsService {
                                 .setEmoji({ name: "❓" })
                                 .setDefault(option.question.substring(0, 25) === selected)
                                 .setDescription(
-                                    option.answer.substring(0, 50) + (option.answer.length > 50 ? "..." : ""),
+                                    removeMd(option.answer.substring(0, 50) + (option.answer.length > 50 ? "..." : ""))
+                                        .replaceAll("{{", "/")
+                                        .replaceAll("}}", ""),
                                 ),
                         ),
                     ),

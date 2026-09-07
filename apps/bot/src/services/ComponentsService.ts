@@ -923,9 +923,14 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getHelpFaqMessageComponent(language: Locale, faqs: Faq[], selected: string | undefined): ContainerBuilder {
-        return new ContainerBuilder()
+        const selectedFaq: Faq | undefined = faqs.find(
+            (faq: Faq): boolean => faq.question.substring(0, 25) === selected,
+        );
+
+        const container: ContainerBuilder = new ContainerBuilder()
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.heading", language)}`))
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.description", language)}`))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
                     new StringSelectMenuBuilder().setCustomId("faq").addOptions(
@@ -941,20 +946,26 @@ export class ComponentsService implements IComponentsService {
                         ),
                     ),
                 ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${t("help.faq.iAddedTheBotWhatNow.question", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.iAddedTheBotWhatNow.answer", language, {
-                        enable: this._commandsService.getCommandMention("enable"),
-                        meme: this._commandsService.getCommandMention("meme"),
-                        settings: this._commandsService.getCommandMention("settings"),
-                    }),
-                ),
             );
+
+        if (selectedFaq) {
+            container
+                .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`### ${t(selectedFaq.question, language)}`),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        t(selectedFaq.answer, language, {
+                            enable: this._commandsService.getCommandMention("enable"),
+                            meme: this._commandsService.getCommandMention("meme"),
+                            settings: this._commandsService.getCommandMention("settings"),
+                        }),
+                    ),
+                );
+        }
+
+        return container;
     }
 
     /**

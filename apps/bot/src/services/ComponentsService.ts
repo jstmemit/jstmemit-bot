@@ -924,9 +924,7 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getHelpFaqMessageComponent(language: Locale, faqs: Faq[], selected: string | undefined): ContainerBuilder {
-        const selectedFaq: Faq | undefined = faqs.find(
-            (faq: Faq): boolean => faq.question.substring(0, 25) === selected,
-        );
+        const selectedFaq: Faq | undefined = faqs.find((faq: Faq): boolean => faq.value === selected);
 
         const container: ContainerBuilder = new ContainerBuilder()
             .addSectionComponents(
@@ -948,9 +946,9 @@ export class ComponentsService implements IComponentsService {
                         faqs.map((option: Faq): StringSelectMenuOptionBuilder =>
                             new SelectMenuOptionBuilder()
                                 .setLabel(option.question)
-                                .setValue(option.question.substring(0, 25))
+                                .setValue(option.value)
                                 .setEmoji({ name: "❓" })
-                                .setDefault(option.question.substring(0, 25) === selected)
+                                .setDefault(option.value === selected)
                                 .setDescription(
                                     removeMd(option.answer.substring(0, 50) + (option.answer.length > 50 ? "..." : ""))
                                         .replaceAll("{{", "/")

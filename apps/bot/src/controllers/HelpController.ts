@@ -131,6 +131,7 @@ export class HelpController implements IHelpController {
         return keys.map((key: string): Faq => ({
             question: t(`${key}.question`, language),
             answer: t(`${key}.answer`, language),
+            value: key,
         }));
     }
 }

@@ -918,21 +918,23 @@ export class ComponentsService implements IComponentsService {
      *
      * @param language
      * @param faqs
+     * @param selected
      *
      * @author Kyrylo Maliuha
      */
-    public getHelpFaqMessageComponent(language: Locale, faqs: Faq[]): ContainerBuilder {
+    public getHelpFaqMessageComponent(language: Locale, faqs: Faq[], selected: string | undefined): ContainerBuilder {
         return new ContainerBuilder()
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.heading", language)}`))
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.description", language)}`))
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
-                    new StringSelectMenuBuilder().setCustomId("faqs").addOptions(
+                    new StringSelectMenuBuilder().setCustomId("faq").addOptions(
                         faqs.map((option: Faq): StringSelectMenuOptionBuilder =>
                             new SelectMenuOptionBuilder()
                                 .setLabel(option.question)
                                 .setValue(option.question.substring(0, 25))
                                 .setEmoji({ name: "❓" })
+                                .setDefault(option.question.substring(0, 25) === selected)
                                 .setDescription(
                                     option.answer.substring(0, 50) + (option.answer.length > 50 ? "..." : ""),
                                 ),

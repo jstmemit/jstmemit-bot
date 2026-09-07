@@ -402,6 +402,9 @@ export class EventsController implements IEventsController {
                     case "avatar":
                         await this._settingsController.handleUserAvatarsSelect(interaction);
                         return;
+                    case "faq":
+                        await this._helpController.handleFaqInteraction(interaction);
+                        return;
                 }
             }
         } catch (error) {

@@ -1,4 +1,4 @@
-import type { Locale } from "discord.js";
+import type { Locale, StringSelectMenuInteraction } from "discord.js";
 import { type ChatInputCommandInteraction, InteractionContextType } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
@@ -72,11 +72,18 @@ export class HelpController implements IHelpController {
      *
      * @author Kyrylo Maliuha
      */
-    public async handleFaqInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
+    public async handleFaqInteraction(
+        interaction: ChatInputCommandInteraction | StringSelectMenuInteraction,
+    ): Promise<void> {
         try {
+            let selected: string | undefined;
             const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
                 interaction.channelId,
             );
+
+            if (interaction.isStringSelectMenu()) {
+                selected = interaction?.values[0];
+            }
 
             analytics.capture({
                 event: "faq_opened",
@@ -99,7 +106,7 @@ export class HelpController implements IHelpController {
 
             await respond(
                 interaction,
-                [this._componentsService.getHelpFaqMessageComponent(interaction.locale, faqs)],
+                [this._componentsService.getHelpFaqMessageComponent(interaction.locale, faqs, selected)],
                 true,
             );
         } catch (error) {

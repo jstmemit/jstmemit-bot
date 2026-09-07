@@ -56,7 +56,11 @@ export abstract class IComponentsService {
     public abstract getHelpHeaderMessageComponent(language: Locale, isEnabled?: boolean): ContainerBuilder;
     public abstract getHelpAutoMemesMessageComponent(language: Locale): ContainerBuilder;
     public abstract getHelpRightClickMessageComponent(language: Locale): ContainerBuilder;
-    public abstract getHelpFaqMessageComponent(language: Locale, faqs: Faq[]): ContainerBuilder;
+    public abstract getHelpFaqMessageComponent(
+        language: Locale,
+        faqs: Faq[],
+        selected: string | undefined,
+    ): ContainerBuilder;
     public abstract getHelpVoiceMessageComponent(language: Locale): ContainerBuilder;
     public abstract getSettingsHeaderMessageComponent(language: Locale, isEnabled: boolean): ContainerBuilder;
     public abstract getSettingsBodyMessageComponent(

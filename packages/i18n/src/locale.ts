@@ -1755,6 +1755,7 @@ export const locale: Record<string, LocalizationMap> = {
                 "Můžeš s ním taky předělat jakoukoliv existující zprávu (i hlasovou!) na citát, zprávy nebo tweet od Groka. Nebo dát něčí profilovku na YouTube náhled „ve stylu MrBeasta“.\n\nOtevři menu Aplikace pravým kliknutím nebo dlouhým podržením na mobilu, vyber Jstmemit a pak mem, který chceš.",
         },
     ),
+    "help.button.achievements": buildLocales("🏆 View achievements", {}),
     "help.voice.heading": buildLocales("## 🔊  Make voice messages", {
         [Locale.Russian]: "## 🔊  Голосовые сообщения",
         [Locale.Ukrainian]: "## 🔊  Голосові повідомлення",

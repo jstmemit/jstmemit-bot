@@ -410,38 +410,6 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
-     * Returns back a row with Frequently Asked Questions button
-     *
-     * @param language
-     *
-     * @author Kyrylo Maliuha
-     */
-    public getFaqButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
-        return new ActionRowBuilder<ButtonBuilder>().addComponents(
-            new ButtonBuilder()
-                .setStyle(ButtonStyle.Secondary)
-                .setLabel(t("help.button.faq", language))
-                .setCustomId(`faq`),
-        );
-    }
-
-    /**
-     * Returns back a row with Features list button
-     *
-     * @param language
-     *
-     * @author Kyrylo Maliuha
-     */
-    public getHelpButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
-        return new ActionRowBuilder<ButtonBuilder>().addComponents(
-            new ButtonBuilder()
-                .setStyle(ButtonStyle.Secondary)
-                .setLabel(t("help.button.features", language))
-                .setCustomId(`help`),
-        );
-    }
-
-    /**
      * Returns back a message component for an unknown error
      *
      * @param language
@@ -863,6 +831,21 @@ export class ComponentsService implements IComponentsService {
                                   )
                                   .setCustomId(isEnabled ? "settings" : "enable"),
                           ]),
+
+                    ...(isEnabled === undefined
+                        ? []
+                        : [
+                              new ButtonBuilder()
+                                  .setStyle(ButtonStyle.Secondary)
+                                  .setLabel(t("help.button.achievements", language))
+                                  .setCustomId("achievements"),
+                          ]),
+
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Secondary)
+                        .setLabel(t("help.button.faq", language))
+                        .setCustomId(`faq`),
+
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
                         .setLabel(t("help.button.addJstmemit", language))

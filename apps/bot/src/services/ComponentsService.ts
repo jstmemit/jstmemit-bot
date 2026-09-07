@@ -924,7 +924,7 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getHelpFaqMessageComponent(language: Locale, faqs: Faq[], selected: string | undefined): ContainerBuilder {
-        const selectedFaq: Faq | undefined = faqs.find((faq: Faq): boolean => faq.value === selected);
+        const faq: Faq | undefined = faqs.find((faq: Faq): boolean => faq.value === selected);
 
         const container: ContainerBuilder = new ContainerBuilder()
             .addSectionComponents(
@@ -959,18 +959,14 @@ export class ComponentsService implements IComponentsService {
                 ),
             );
 
-        if (selectedFaq) {
+        if (faq) {
             container
                 .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-                .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent(`### ${t(selectedFaq.question, language)}`),
-                )
+                .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### ${t(faq.question, language)}`))
                 .addTextDisplayComponents(
                     new TextDisplayBuilder().setContent(
-                        t(selectedFaq.answer, language, {
-                            enable: this._commandsService.getCommandMention("enable"),
-                            meme: this._commandsService.getCommandMention("meme"),
-                            settings: this._commandsService.getCommandMention("settings"),
+                        t(faq.answer, language, {
+                            ...this._commandsService.getAllCommandMentions(),
                         }),
                     ),
                 );

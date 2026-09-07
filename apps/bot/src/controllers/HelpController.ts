@@ -7,6 +7,7 @@ import { analytics } from "@jstmemit/analytics";
 import type { IHelpController } from "#/interfaces/IHelpController.ts";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import type { Faq } from "@jstmemit/shared/models/Faq";
+import { t } from "@jstmemit/i18n";
 
 export class HelpController implements IHelpController {
     private readonly _componentsService: IComponentsService;
@@ -118,11 +119,18 @@ export class HelpController implements IHelpController {
     }
 
     private _getFaqs(language: Locale): Faq[] {
-        return [
-            {
-                question: "test",
-                answer: "test 2",
-            },
+        const keys: string[] = [
+            "help.faq.iAddedTheBotWhatNow",
+            "help.faq.canIHaveDifferentQuestionsForEveryChannel",
+            "help.faq.isThereALimit",
+            "help.faq.canIDeleteStoredData",
+            "help.faq.addBotToMyApps",
+            "help.faq.whatIfIWantToMakeACustomMeme",
         ];
+
+        return keys.map((key: string): Faq => ({
+            question: t(`${key}.question`, language),
+            answer: t(`${key}.answer`, language),
+        }));
     }
 }

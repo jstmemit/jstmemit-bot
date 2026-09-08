@@ -4,10 +4,8 @@ import "@fontsource-variable/plus-jakarta-sans";
 import plusJakartaSansWoff2 from "@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2";
 ---
 
-<main role="main">
-    <div class="fixed top-0 z-3 h-10 w-screen bg-linear-to-t from-transparent to-black/20" aria-hidden="true"></div>
-
-    <slot />
-
-    <div class="fixed bottom-0 z-3 h-10 w-screen bg-linear-to-b from-transparent to-black/20" aria-hidden="true"></div>
-</main>
+<body>
+    <main role="main">
+        <slot />
+    </main>
+</body>

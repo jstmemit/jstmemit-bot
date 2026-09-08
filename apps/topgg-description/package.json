@@ -29,6 +29,7 @@
         "astro-og": "^0.3.2",
         "astro-robots-txt": "^1.0.0",
         "astro-swiper": "^2.7.1",
+        "node-html-parser": "^9.0.4",
         "tailwindcss": "^4.3.3"
     }
 }

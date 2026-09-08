@@ -1,12 +1,14 @@
 import type { ActionRowBuilder, ButtonBuilder, ContainerBuilder, Locale } from "discord.js";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import type { Achievement } from "@jstmemit/shared/models/Achievement";
+import type { Faq } from "@jstmemit/shared/models/Faq";
 
 export abstract class IComponentsService {
     public abstract getEnableMessageComponent(
         language: Locale,
         isEnabled: boolean,
         permissions: RequiredBotPermissions,
+        channelId: string,
         messagesAmount?: number,
     ): ContainerBuilder;
     public abstract getEnableButtonsComponent(
@@ -25,7 +27,9 @@ export abstract class IComponentsService {
         interactionId: string,
         messagesAmount: number,
     ): ContainerBuilder;
+    public abstract getNotEnoughContextButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getMissingPermissionsButtons(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getMilestoneViewMessageComponent(
         language: Locale,
         channelId: string,
@@ -52,11 +56,13 @@ export abstract class IComponentsService {
     public abstract getHelpHeaderMessageComponent(language: Locale, isEnabled?: boolean): ContainerBuilder;
     public abstract getHelpAutoMemesMessageComponent(language: Locale): ContainerBuilder;
     public abstract getHelpRightClickMessageComponent(language: Locale): ContainerBuilder;
-    public abstract getHelpFaqMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getHelpFaqMessageComponent(
+        language: Locale,
+        faqs: Faq[],
+        selected: string | undefined,
+    ): ContainerBuilder;
     public abstract getHelpVoiceMessageComponent(language: Locale): ContainerBuilder;
     public abstract getSettingsHeaderMessageComponent(language: Locale, isEnabled: boolean): ContainerBuilder;
-    public abstract getFaqButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
-    public abstract getHelpButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getSettingsBodyMessageComponent(
         language: Locale,
         frequency: number,
@@ -68,6 +74,7 @@ export abstract class IComponentsService {
     public abstract getDeleteDataButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getDeleteDataConfirmationMessageComponent(language: Locale): ContainerBuilder;
     public abstract getDeleteDataSuccessMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getDeleteDataSuccessButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getUnknownTemplateMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getWrongFileFormatMessageComponent(
         language: Locale,

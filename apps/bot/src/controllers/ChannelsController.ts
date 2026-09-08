@@ -179,6 +179,7 @@ export class ChannelsController implements IChannelsController {
             interaction.locale,
             isEnabled,
             permissions,
+            interaction.channelId,
             contextAmount,
         );
 

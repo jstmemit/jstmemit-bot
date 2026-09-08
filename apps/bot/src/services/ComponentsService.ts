@@ -1,4 +1,5 @@
-import type { Locale, MessageActionRowComponentBuilder } from "discord.js";
+import type { StringSelectMenuOptionBuilder } from "discord.js";
+import { type Locale, type MessageActionRowComponentBuilder } from "discord.js";
 import {
     ActionRowBuilder,
     ButtonBuilder,
@@ -21,6 +22,8 @@ import type { Achievement } from "@jstmemit/shared/models/Achievement";
 import { achievementsList } from "#/data/achievementsList.ts";
 import type { ICommandsService } from "#/interfaces/ICommandsService.ts";
 import type { Font } from "@jstmemit/shared/models/Font";
+import type { Faq } from "@jstmemit/shared/models/Faq";
+import removeMd from "remove-markdown";
 
 export class ComponentsService implements IComponentsService {
     private readonly _commandsService: ICommandsService;
@@ -37,6 +40,7 @@ export class ComponentsService implements IComponentsService {
      * @param isEnabled
      * @param messagesAmount
      * @param permissions
+     * @param channelId
      *
      * @author Kyrylo Maliuha
      */
@@ -44,46 +48,57 @@ export class ComponentsService implements IComponentsService {
         language: Locale,
         isEnabled: boolean,
         permissions: RequiredBotPermissions,
+        channelId: string = "",
         messagesAmount: number = 0,
     ): ContainerBuilder {
         const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
         const hasMissingPermissions: boolean = Object.values(permissions).some((granted) => !granted);
 
-        const container: ContainerBuilder = new ContainerBuilder()
-            .addSectionComponents(
-                new SectionBuilder()
-                    .setThumbnailAccessory(
-                        new ThumbnailBuilder().setURL(
-                            isEnabled
-                                ? "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp"
-                                : "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/idle.webp",
-                        ),
-                    )
-                    .addTextDisplayComponents(
-                        new TextDisplayBuilder().setContent(
-                            `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language)}`,
-                        ),
-                        new TextDisplayBuilder().setContent(
-                            isEnabled
-                                ? t("enable.body.enabled", language)
-                                : messagesAmount >= 30
-                                  ? t("enable.body.disabled.ready", language, {
-                                        messagesAmount: String(messagesAmount),
-                                    })
-                                  : t("enable.body.disabled.notReady", language),
-                        ),
+        const container: ContainerBuilder = new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        isEnabled
+                            ? "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp"
+                            : "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/idle.webp",
                     ),
-            )
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language, { channelId: channelId })}`,
+                    ),
+                    new TextDisplayBuilder().setContent(
+                        isEnabled
+                            ? t("enable.body.enabled", language, { channelId: channelId })
+                            : messagesAmount >= 30
+                              ? t("enable.body.disabled.ready", language, {
+                                    messagesAmount: String(messagesAmount),
+                                })
+                              : t("enable.body.disabled.notReady", language),
+                    ),
+                ),
+        );
 
-            .addTextDisplayComponents(
+        container.addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(
+                `**${emojis.check} ${t("enable.body.checklist.inviteJstmemit", language)}**\n**${hasMissingPermissions ? "◽" : emojis.check} ${t("enable.body.checklist.givePermission", language)}**\n**${!isEnabled ? "◽" : emojis.check} ${t("enable.body.checklist.allowMakingMemes", language, { channelId: channelId })}**`,
+            ),
+        );
+
+        if (isEnabled) {
+            container.addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     messagesAmount < 30
                         ? t("enable.memory.progress", language, { messagesAmount: String(messagesAmount) })
                         : t("enable.memory.full", language, { messagesAmount: String(messagesAmount) }),
                 ),
             );
-
-        container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+            container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+        } else {
+            container.addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`-# ${t("enable.body.disabled.enableToStart", language)}`),
+            );
+        }
 
         if (hasMissingPermissions) {
             container.addSeparatorComponents(
@@ -137,30 +152,39 @@ export class ComponentsService implements IComponentsService {
     ): ActionRowBuilder<ButtonBuilder> {
         const showFirstMeme: boolean | undefined = isEnabled && isFirstTime && count > 10;
 
-        return new ActionRowBuilder<ButtonBuilder>()
-            .addComponents(
-                new ButtonBuilder()
-                    .setStyle(
-                        showFirstMeme ? ButtonStyle.Success : isEnabled ? ButtonStyle.Danger : ButtonStyle.Success,
-                    )
-                    .setLabel(
-                        t(
-                            showFirstMeme
-                                ? "enable.button.firstMeme"
-                                : isEnabled
-                                  ? "enable.button.turnOff"
-                                  : "enable.button.turnOn",
-                            language,
-                        ),
-                    )
-                    .setCustomId(showFirstMeme ? "meme" : isEnabled ? "disable" : "enable"),
-            )
-            .addComponents(
+        const container: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(showFirstMeme ? ButtonStyle.Success : isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
+                .setLabel(
+                    t(
+                        showFirstMeme
+                            ? "enable.button.firstMeme"
+                            : isEnabled
+                              ? "enable.button.turnOff"
+                              : "enable.button.allowMakingMemes",
+                        language,
+                    ),
+                )
+                .setCustomId(showFirstMeme ? "meme" : isEnabled ? "disable" : "enable"),
+        );
+
+        if (isEnabled) {
+            container.addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
                     .setLabel(t("enable.button.settings", language))
                     .setCustomId("settings"),
             );
+        } else {
+            container.addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(t("enable.button.notNow", language))
+                    .setCustomId("notnow"),
+            );
+        }
+
+        return container;
     }
 
     /**
@@ -389,38 +413,6 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
-     * Returns back a row with Frequently Asked Questions button
-     *
-     * @param language
-     *
-     * @author Kyrylo Maliuha
-     */
-    public getFaqButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
-        return new ActionRowBuilder<ButtonBuilder>().addComponents(
-            new ButtonBuilder()
-                .setStyle(ButtonStyle.Secondary)
-                .setLabel(t("help.button.faq", language))
-                .setCustomId(`faq`),
-        );
-    }
-
-    /**
-     * Returns back a row with Features list button
-     *
-     * @param language
-     *
-     * @author Kyrylo Maliuha
-     */
-    public getHelpButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
-        return new ActionRowBuilder<ButtonBuilder>().addComponents(
-            new ButtonBuilder()
-                .setStyle(ButtonStyle.Secondary)
-                .setLabel(t("help.button.features", language))
-                .setCustomId(`help`),
-        );
-    }
-
-    /**
      * Returns back a message component for an unknown error
      *
      * @param language
@@ -507,6 +499,19 @@ export class ComponentsService implements IComponentsService {
         return container;
     }
 
+    public getNotEnoughContextButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("error.button.tryAgain", language))
+                .setCustomId("meme"),
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("enable.button.settings", language))
+                .setCustomId("settings"),
+        );
+    }
+
     /**
      * Returns back a message component for the "unknown template" error
      *
@@ -516,18 +521,25 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getUnknownTemplateMessageComponent(language: Locale, interactionId: string): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("unknownTemplate.heading", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("unknownTemplate.body", language, {
-                        custom: this._commandsService.getCommandMention("custom"),
-                    }),
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/error.webp",
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("unknownTemplate.heading", language)}`),
+                    new TextDisplayBuilder().setContent(
+                        t("unknownTemplate.body", language, {
+                            custom: this._commandsService.getCommandMention("custom"),
+                        }),
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })),
                 ),
-            )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
+        );
     }
 
     /**
@@ -540,14 +552,21 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getWrongFileFormatMessageComponent(language: Locale, interactionId: string, file: string): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("wrongFileFormat.heading", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(t("wrongFileFormat.body", language, { file })),
-            )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/error.webp",
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("wrongFileFormat.heading", language)}`),
+                    new TextDisplayBuilder().setContent(t("wrongFileFormat.body", language, { file })),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })),
+                ),
+        );
     }
 
     /**
@@ -560,10 +579,39 @@ export class ComponentsService implements IComponentsService {
      */
     public getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("missingPermissions.heading", language)}`),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/hmm.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(`# ${t("missingPermissions.heading", language)}`),
+                        new TextDisplayBuilder().setContent(t("missingPermissions.body", language)),
+                    ),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("missingPermissions.body", language)));
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("missingPermissions.alternatives", language, {
+                        custom: this._commandsService.getCommandMention("custom"),
+                        voice: this._commandsService.getCommandMention("voice"),
+                    }),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(t("missingPermissions.userInstall", language)),
+            );
+    }
+
+    public getMissingPermissionsButtons(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Link)
+                .setLabel(t("missingPermissions.button.addToMyApps", language))
+                .setURL("https://discord.com/oauth2/authorize?client_id=1375836467745783990"),
+        );
     }
 
     /**
@@ -627,16 +675,44 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getDeleteDataSuccessMessageComponent(language: Locale): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("deleteData.success.heading", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("deleteData.success.body", language, {
-                        enable: this._commandsService.getCommandMention("enable"),
-                    }),
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/sad.webp",
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("deleteData.success.heading", language)}`),
+                    new TextDisplayBuilder().setContent(
+                        t("deleteData.success.body", language, {
+                            enable: this._commandsService.getCommandMention("enable"),
+                        }),
+                    ),
                 ),
+        );
+    }
+
+    /**
+     * Returns back a row with turn on and feedback buttons
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getDeleteDataSuccessButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Success)
+                    .setLabel(t("deleteData.button.turnBackOn", language))
+                    .setCustomId(`enable`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(t("deleteData.button.tellUsWhy", language))
+                    .setCustomId(`feedback-not-error`),
             );
     }
 
@@ -758,6 +834,21 @@ export class ComponentsService implements IComponentsService {
                                   )
                                   .setCustomId(isEnabled ? "settings" : "enable"),
                           ]),
+
+                    ...(isEnabled === undefined
+                        ? []
+                        : [
+                              new ButtonBuilder()
+                                  .setStyle(ButtonStyle.Secondary)
+                                  .setLabel(t("help.button.achievements", language))
+                                  .setCustomId("achievements"),
+                          ]),
+
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Secondary)
+                        .setLabel(t("help.button.faq", language))
+                        .setCustomId(`faq`),
+
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
                         .setLabel(t("help.button.addJstmemit", language))
@@ -824,86 +915,64 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
-     * Returns back a message component for FAQ part of the /help command.
+     * Returns a message component for the FAQ command + selected question if there is one.
      *
      * @param language
+     * @param faqs
+     * @param selected
      *
      * @author Kyrylo Maliuha
      */
-    public getHelpFaqMessageComponent(language: Locale): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.heading", language)}`))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.description", language)}`))
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${t("help.faq.iAddedTheBotWhatNow.question", language)}`),
+    public getHelpFaqMessageComponent(language: Locale, faqs: Faq[], selected: string | undefined): ContainerBuilder {
+        const faq: Faq | undefined = faqs.find((faq: Faq): boolean => faq.value === selected);
+
+        const container: ContainerBuilder = new ContainerBuilder()
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/confused.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(`${t("help.faq.heading", language)}`),
+                        new TextDisplayBuilder().setContent(`${t("help.faq.description", language)}`),
+                    ),
             )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.iAddedTheBotWhatNow.answer", language, {
-                        enable: this._commandsService.getCommandMention("enable"),
-                        meme: this._commandsService.getCommandMention("meme"),
-                        settings: this._commandsService.getCommandMention("settings"),
-                    }),
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `### ${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.question", language)}`,
-                ),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.answer", language)}`,
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${t("help.faq.isThereALimit.question", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.isThereALimit.answer", language, {
-                        meme: this._commandsService.getCommandMention("meme"),
-                    }),
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${t("help.faq.canIDeleteStoredData.question", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.canIDeleteStoredData.answer", language, {
-                        settings: this._commandsService.getCommandMention("settings"),
-                    }),
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${t("help.faq.addBotToMyApps.question", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.addBotToMyApps.answer", language, {
-                        custom: this._commandsService.getCommandMention("custom"),
-                    }),
-                ),
-            )
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `### ${t("help.faq.whatIfIWantToMakeACustomMeme.question", language)}`,
-                ),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("help.faq.whatIfIWantToMakeACustomMeme.answer", language, {
-                        custom: this._commandsService.getCommandMention("custom"),
-                    }),
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder().setCustomId("faq").addOptions(
+                        faqs.map((option: Faq): StringSelectMenuOptionBuilder =>
+                            new SelectMenuOptionBuilder()
+                                .setLabel(option.question)
+                                .setValue(option.value)
+                                .setEmoji({ name: "❓" })
+                                .setDefault(option.value === selected)
+                                .setDescription(
+                                    removeMd(option.answer.substring(0, 50) + (option.answer.length > 50 ? "..." : ""))
+                                        .replaceAll("{{", "/")
+                                        .replaceAll("}}", ""),
+                                ),
+                        ),
+                    ),
                 ),
             );
+
+        if (faq) {
+            container
+                .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+                .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### ${t(faq.question, language)}`))
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        t(faq.answer, language, {
+                            ...this._commandsService.getAllCommandMentions(),
+                        }),
+                    ),
+                );
+        }
+
+        return container;
     }
 
     /**
@@ -922,7 +991,7 @@ export class ComponentsService implements IComponentsService {
         frequency: number,
         useAvatarsInMemes: boolean,
         milestones: boolean,
-        font: string | null = "Random",
+        font: string | null = "Comic Sans MS",
     ): ContainerBuilder {
         const frequencies: Frequency[] = this._getFrequencyOptions(language);
         const fonts: Font[] = this._getFontOptions(language);
@@ -961,7 +1030,11 @@ export class ComponentsService implements IComponentsService {
                             new SelectMenuOptionBuilder()
                                 .setLabel(option.label)
                                 .setValue(option.value)
-                                .setDefault(font === null && option.value === "default" ? true : option.value === font)
+                                .setDefault(
+                                    font === null || (font === "default" && option.value === "Comic Sans MS")
+                                        ? true
+                                        : option.value === font,
+                                )
                                 .setEmoji({ name: option.emoji })
                                 .setDescription(option.description),
                         ),
@@ -1090,7 +1163,7 @@ export class ComponentsService implements IComponentsService {
 
         const percentage: number = clamped / max;
 
-        const filled: number = Math.floor(percentage * segments);
+        const filled: number = Math.floor(percentage * segments) + 1;
 
         let progressBar: string = "";
 
@@ -1174,12 +1247,6 @@ export class ComponentsService implements IComponentsService {
      */
     private _getFontOptions(language: Locale): Font[] {
         return [
-            {
-                label: t("settings.font.random.label", language),
-                description: t("settings.font.random.description", language),
-                value: "default",
-                emoji: "🎲",
-            },
             {
                 label: t("settings.font.comicSans.label", language),
                 value: "Comic Sans MS",

@@ -1,3 +1,4 @@
+import type { Locale, StringSelectMenuInteraction } from "discord.js";
 import { type ChatInputCommandInteraction, InteractionContextType } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
@@ -5,6 +6,8 @@ import { respond } from "#/helpers/respond.ts";
 import { analytics } from "@jstmemit/analytics";
 import type { IHelpController } from "#/interfaces/IHelpController.ts";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
+import type { Faq } from "@jstmemit/shared/models/Faq";
+import { t } from "@jstmemit/i18n";
 
 export class HelpController implements IHelpController {
     private readonly _componentsService: IComponentsService;
@@ -52,7 +55,6 @@ export class HelpController implements IHelpController {
                     this._componentsService.getHelpAutoMemesMessageComponent(interaction.locale),
                     this._componentsService.getHelpRightClickMessageComponent(interaction.locale),
                     this._componentsService.getHelpVoiceMessageComponent(interaction.locale),
-                    this._componentsService.getFaqButtonComponent(interaction.locale),
                 ],
                 true,
             );
@@ -71,11 +73,18 @@ export class HelpController implements IHelpController {
      *
      * @author Kyrylo Maliuha
      */
-    public async handleFaqInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
+    public async handleFaqInteraction(
+        interaction: ChatInputCommandInteraction | StringSelectMenuInteraction,
+    ): Promise<void> {
         try {
+            let selected: string | undefined;
             const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
                 interaction.channelId,
             );
+
+            if (interaction.isStringSelectMenu()) {
+                selected = interaction?.values[0];
+            }
 
             analytics.capture({
                 event: "faq_opened",
@@ -94,13 +103,11 @@ export class HelpController implements IHelpController {
                 },
             });
 
+            const faqs: Faq[] = this._getFaqs(interaction.locale);
+
             await respond(
                 interaction,
-                [
-                    this._componentsService.getHelpHeaderMessageComponent(interaction.locale, channel?.enabled),
-                    this._componentsService.getHelpFaqMessageComponent(interaction.locale),
-                    this._componentsService.getHelpButtonComponent(interaction.locale),
-                ],
+                [this._componentsService.getHelpFaqMessageComponent(interaction.locale, faqs, selected)],
                 true,
             );
         } catch (error) {
@@ -109,5 +116,22 @@ export class HelpController implements IHelpController {
                 this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
             ]);
         }
+    }
+
+    private _getFaqs(language: Locale): Faq[] {
+        const keys: string[] = [
+            "help.faq.iAddedTheBotWhatNow",
+            "help.faq.canIHaveDifferentQuestionsForEveryChannel",
+            "help.faq.isThereALimit",
+            "help.faq.canIDeleteStoredData",
+            "help.faq.addBotToMyApps",
+            "help.faq.whatIfIWantToMakeACustomMeme",
+        ];
+
+        return keys.map((key: string): Faq => ({
+            question: t(`${key}.question`, language),
+            answer: t(`${key}.answer`, language),
+            value: key,
+        }));
     }
 }

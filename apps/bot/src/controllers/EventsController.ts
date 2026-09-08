@@ -353,6 +353,9 @@ export class EventsController implements IEventsController {
                     case "help":
                         await this._helpController.handleHelpInteraction(interaction);
                         return;
+                    case "feedback-not-error":
+                        await this._feedbackController.handleOpenFeedbackModal(interaction);
+                        return;
                     case "feedback":
                         await this._feedbackController.handleOpenFeedbackModal(interaction, true);
                         return;
@@ -398,6 +401,9 @@ export class EventsController implements IEventsController {
                         return;
                     case "avatar":
                         await this._settingsController.handleUserAvatarsSelect(interaction);
+                        return;
+                    case "faq":
+                        await this._helpController.handleFaqInteraction(interaction);
                         return;
                 }
             }

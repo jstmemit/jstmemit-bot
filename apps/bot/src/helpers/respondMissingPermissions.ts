@@ -14,6 +14,9 @@ export const respondMissingPermissions = async (
 ): Promise<void> => {
     await interaction.reply({
         flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
-        components: [componentsService.getMissingPermissionsMessageComponent(interaction.locale)],
+        components: [
+            componentsService.getMissingPermissionsMessageComponent(interaction.locale),
+            componentsService.getMissingPermissionsButtons(interaction.locale),
+        ],
     });
 };

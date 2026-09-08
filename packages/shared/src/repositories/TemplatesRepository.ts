@@ -720,6 +720,9 @@ import { adTomoAndOsakaStaring1 } from "#/templates/adTomoAndOsakaStaring1.tsx";
 import { adTomoBoasting2 } from "#/templates/adTomoBoasting2.tsx";
 import { btrBocchiPanic3 } from "#/templates/btrBocchiPanic3.tsx";
 import { btrBocchiPanic4 } from "#/templates/btrBocchiPanic4.tsx";
+import { reactionDouble } from "#/templates/reactionDouble.tsx";
+import { reactionTriple } from "#/templates/reactionTriple.tsx";
+import { reactionQuadruple } from "#/templates/reactionQuadruple.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1473,6 +1476,9 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrBocchiPanic2,
             btrBocchiPanic3,
             btrBocchiPanic4,
+            reactionDouble,
+            reactionTriple,
+            reactionQuadruple,
         ];
 
         return this._templates;

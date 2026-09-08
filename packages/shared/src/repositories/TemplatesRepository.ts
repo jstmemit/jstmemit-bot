@@ -727,6 +727,10 @@ import { adChiyoShockedVsCrying } from "#/templates/adChiyoShockedVsCrying.tsx";
 import { adKaguraPanicStages } from "#/templates/adKaguraPanicStages.tsx";
 import { btrBocchiPanicStages } from "#/templates/btrBocchiPanicStages.tsx";
 import { btrBocchiPanicStages1 } from "#/templates/btrBocchiPanicStages1.tsx";
+import { arobmiSistineConfusionStages } from "#/templates/arobmiSistineConfusionStages.tsx";
+import { arobmiSistineConfusionStages1 } from "#/templates/arobmiSistineConfusionStages1.tsx";
+import { arobmiSistineConfusionStages2 } from "#/templates/arobmiSistineConfusionStages2.tsx";
+import { arobmiSistineConfusionStages3 } from "#/templates/arobmiSistineConfusionStages3.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1487,6 +1491,10 @@ export class TemplatesRepository implements ITemplatesRepository {
             adKaguraPanicStages,
             btrBocchiPanicStages,
             btrBocchiPanicStages1,
+            arobmiSistineConfusionStages,
+            arobmiSistineConfusionStages1,
+            arobmiSistineConfusionStages2,
+            arobmiSistineConfusionStages3,
         ];
 
         return this._templates;

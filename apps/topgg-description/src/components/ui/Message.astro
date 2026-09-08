@@ -1,0 +1,16 @@
+---
+interface Props {
+    heading: string;
+    color: string;
+    classes?: string;
+}
+
+const { heading, color, classes } = Astro.props;
+---
+
+<li class:list={[classes]}>
+    <p class="text-sm text-white/25 uppercase">{heading}</p>
+    <p class="text-base">
+        <em class:list={["not-italic", color]}>“</em><slot /><em class:list={["not-italic", color]}>“</em>
+    </p>
+</li>

@@ -1,0 +1,35 @@
+---
+interface Props {
+    variant?: "dot" | "arrow" | "text" | "hr";
+    classes?: string;
+    text?: string;
+}
+
+const { variant = "dot", classes, text } = Astro.props;
+---
+
+{
+    variant === "dot" && (
+        <li class:list={[classes]}>
+            <div class="size-1 rounded-full bg-white/20" />
+        </li>
+    )
+}
+
+{
+    variant === "arrow" && (
+        <li class:list={[classes]}>
+            <img src="https://files.jstmemit.com/jstmemit/images/icons/arrow.svg" alt="Arrow pointing right" />
+        </li>
+    )
+}
+
+{
+    variant === "text" && (
+        <li class:list={["flex items-center justify-center", classes]}>
+            <span>{text}</span>
+        </li>
+    )
+}
+
+{variant === "hr" && <hr class:list={["my-5 border-t-1 border-dashed border-white/50 text-transparent", classes]} />}

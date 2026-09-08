@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+    --color-neon-ice: #21f1ed;
+    --color-hot-fuchsia: #f72d55;
+    --color-dark-cyan: #159592;
+    --color-bubblegum-pink: #ec5775;
+    --color-carbon-black: #1e2124;
+    --color-ash-black: #0f1112;
+    --color-void-black: #090a0b;
+    --color-carbon-gray: #3f3f3f;
+    --color-carbon-light-gray: #424242;
+    --color-golden: #ffab25;
+    --color-discord-blue: #5865f2;
+
+    --text-shadow-1: 0 1px 0 rgba(0, 0, 0, 0.25);
+
+    --shadow-5: 0 5px 0 0 rgba(0, 0, 0, 0.25);
+    --shadow-10: 0 10px 0 0 rgba(0, 0, 0, 0.25);
+
+    --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
+}

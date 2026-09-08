@@ -1,0 +1,21 @@
+---
+interface Props {
+    href: string;
+    name: string;
+    target?: string;
+    rel?: string;
+}
+
+const { href, name, target, rel } = Astro.props;
+---
+
+<li>
+    <a
+        href={href}
+        class="opacity-60 transition-all duration-180 ease-in-out hover:opacity-100"
+        target={target}
+        rel={rel}
+    >
+        {name}
+    </a>
+</li>

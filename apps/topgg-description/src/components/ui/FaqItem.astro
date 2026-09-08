@@ -1,0 +1,20 @@
+---
+interface Props {
+    headingId: string;
+    descriptionId: string;
+    classes?: string;
+}
+
+const { classes, headingId, descriptionId } = Astro.props;
+---
+
+<li
+    class:list={[
+        "border-bubblegum-pink flex w-full flex-col gap-2 rounded-xl border-3 border-dashed p-3 text-lg font-bold",
+        classes,
+    ]}
+    aria-labelledby={headingId}
+    aria-describedby={descriptionId}
+>
+    <slot />
+</li>

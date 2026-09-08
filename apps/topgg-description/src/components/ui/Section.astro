@@ -1,0 +1,46 @@
+---
+import BlurredMemes from "#/components/background/decorations/BlurredMemes.astro";
+import GradientBackground from "#/components/background/variants/GradientBackground.astro";
+
+interface Props {
+    variant: "light" | "dark" | "gradient";
+    headingId: string;
+    descriptionId: string;
+    classes?: string;
+}
+
+const { variant, classes, headingId, descriptionId } = Astro.props;
+---
+
+<section
+    aria-labelledby={headingId}
+    aria-describedby={descriptionId}
+    class:list={[
+        "relative flex flex-col gap-5 overflow-hidden px-8 py-10 text-white xl:py-20",
+        classes,
+        variant === "gradient" && "bg-black",
+        variant === "light" && "bg-ash-black",
+        variant === "light" && "bg-ash-black",
+        variant === "dark" && "bg-void-black",
+    ]}
+>
+    <slot name="text" />
+
+    {
+        variant !== "gradient" && (
+            <img
+                class="pointer-events-none absolute top-0 left-0 z-1 h-full w-full object-cover opacity-6 select-none"
+                src="https://jstmemit.com/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=30,slow-connection-quality=30,width=auto/https://files.jstmemit.com/jstmemit/images/background/Noise.png"
+                alt="background noise"
+            />
+        )
+    }
+
+    {
+        variant === "gradient" && (
+            <GradientBackground>
+                <BlurredMemes slot="decorations" />
+            </GradientBackground>
+        )
+    }
+</section>

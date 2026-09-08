@@ -1,0 +1,36 @@
+---
+interface Props {
+    label: string;
+    color?: string;
+    border?: string;
+    classes?: string;
+    background?: string;
+}
+
+const {
+    label,
+    classes,
+    background = "bg-carbon-black",
+    color = "bg-bubblegum-pink",
+    border = "border-bubblegum-pink border-4",
+} = Astro.props;
+---
+
+<div
+    class:list={[
+        "relative w-full rounded-2xl rounded-t-none text-white shadow-(--shadow-10)",
+        background,
+        classes,
+        border,
+    ]}
+>
+    <span
+        class:list={[
+            "absolute -top-7 -right-1 -left-1 truncate rounded-xl rounded-b-none p-1 px-2 text-xl font-extrabold uppercase",
+            color,
+        ]}
+    >
+        {label}
+    </span>
+    <slot />
+</div>

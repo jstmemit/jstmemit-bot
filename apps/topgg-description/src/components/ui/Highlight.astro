@@ -1,0 +1,10 @@
+---
+interface Props {
+    color: string;
+    classes?: string;
+}
+
+const { color, classes } = Astro.props;
+---
+
+<em class:list={[color, classes, "not-italic"]}><slot /></em>

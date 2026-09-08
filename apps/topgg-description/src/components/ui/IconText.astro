@@ -1,0 +1,15 @@
+---
+interface Props {
+    text: string;
+    icon: string;
+    alt: string;
+    classes?: string;
+}
+
+const { text, icon, alt, classes } = Astro.props;
+---
+
+<li class:list={["flex items-center gap-3 whitespace-nowrap", classes]}>
+    <img class="size-6" src={icon} alt={alt} fetchpriority="low" decoding="async" loading="lazy" />
+    <p class="mb-0.5 text-xl">{text}</p>
+</li>

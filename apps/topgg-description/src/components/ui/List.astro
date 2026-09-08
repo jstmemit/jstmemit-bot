@@ -1,0 +1,16 @@
+---
+interface Props {
+    classes?: string;
+}
+
+const { classes } = Astro.props;
+---
+
+<ul
+    class:list={[
+        "mx-auto mt-2.5 flex flex-wrap items-center gap-2.5 text-2xl font-bold md:mx-0 md:mt-5 md:gap-5",
+        classes,
+    ]}
+>
+    <slot />
+</ul>

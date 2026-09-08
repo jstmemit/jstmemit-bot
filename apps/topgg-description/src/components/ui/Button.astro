@@ -1,0 +1,30 @@
+---
+interface Props {
+    href: string;
+    background: string;
+    textColor: string;
+    icon: string;
+    alt: string;
+    name: string;
+    target?: string;
+    rel?: string;
+    classes?: string;
+}
+
+const { href, background, textColor, icon, name, alt, target, rel, classes } = Astro.props;
+---
+
+<a
+    href={href}
+    target={target}
+    rel={rel}
+    class:list={[
+        "flex max-w-fit items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-bold opacity-100 shadow-(--shadow-5) transition-all duration-180 ease-in-out select-none text-shadow-(--text-shadow-1) hover:cursor-pointer hover:opacity-80 sm:text-base",
+        background,
+        textColor,
+        classes,
+    ]}
+>
+    <img src={icon} alt={alt} class="mt-0.5" />
+    {name}
+</a>

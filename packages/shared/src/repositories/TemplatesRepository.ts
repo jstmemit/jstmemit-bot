@@ -723,6 +723,8 @@ import { btrBocchiPanic4 } from "#/templates/btrBocchiPanic4.tsx";
 import { reactionDouble } from "#/templates/reactionDouble.tsx";
 import { reactionTriple } from "#/templates/reactionTriple.tsx";
 import { reactionQuadruple } from "#/templates/reactionQuadruple.tsx";
+import { adChiyoShockedVsCrying } from "#/templates/adChiyoShockedVsCrying.tsx";
+import { adKaguraPanicStages } from "#/templates/adKaguraPanicStages.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1479,6 +1481,8 @@ export class TemplatesRepository implements ITemplatesRepository {
             reactionDouble,
             reactionTriple,
             reactionQuadruple,
+            adChiyoShockedVsCrying,
+            adKaguraPanicStages,
         ];
 
         return this._templates;

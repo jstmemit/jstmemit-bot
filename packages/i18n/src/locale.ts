@@ -2,26 +2,204 @@ import { Locale, type LocalizationMap } from "discord.js";
 import { buildLocales } from "#/helpers/buildLocales.ts";
 
 export const locale: Record<string, LocalizationMap> = {
-    "enable.heading.enabled": buildLocales("🎉 I'm ready to make memes!", {}),
-    "enable.heading.disabled": buildLocales("🔻 Allow making memes in <#{{channelId}}>?", {}),
+    "enable.heading.enabled": buildLocales("🎉 I'm ready to make memes!", {
+        [Locale.Russian]: "🎉 Я готов делать мемы!",
+        [Locale.Ukrainian]: "🎉 Я готовий робити меми!",
+        [Locale.Dutch]: "🎉 Ik ben klaar om memes te maken!",
+        [Locale.French]: "🎉 Je suis prêt à faire des mèmes !",
+        [Locale.German]: "🎉 Ich bin bereit, Memes zu machen!",
+        [Locale.Polish]: "🎉 Jestem gotowy robić memy!",
+        [Locale.SpanishES]: "🎉 ¡Estoy listo para hacer memes!",
+        [Locale.SpanishLATAM]: "🎉 ¡Estoy listo para hacer memes!",
+        [Locale.PortugueseBR]: "🎉 Estou pronto para fazer memes!",
+        [Locale.Turkish]: "🎉 Caps yapmaya hazırım!",
+        [Locale.Italian]: "🎉 Sono pronto a fare meme!",
+        [Locale.Indonesian]: "🎉 Aku siap bikin meme!",
+        [Locale.Czech]: "🎉 Jsem připravený dělat memy!",
+    }),
+    "enable.heading.disabled": buildLocales("🔻 Allow making memes in <#{{channelId}}>?", {
+        [Locale.Russian]: "🔻 Разрешить делать мемы в <#{{channelId}}>?",
+        [Locale.Ukrainian]: "🔻 Дозволити робити меми в <#{{channelId}}>?",
+        [Locale.Dutch]: "🔻 Memes maken in <#{{channelId}}> toestaan?",
+        [Locale.French]: "🔻 Autoriser les mèmes dans <#{{channelId}}> ?",
+        [Locale.German]: "🔻 Memes in <#{{channelId}}> erlauben?",
+        [Locale.Polish]: "🔻 Pozwolić robić memy na <#{{channelId}}>?",
+        [Locale.SpanishES]: "🔻 ¿Permitir hacer memes en <#{{channelId}}>?",
+        [Locale.SpanishLATAM]: "🔻 ¿Permitir hacer memes en <#{{channelId}}>?",
+        [Locale.PortugueseBR]: "🔻 Permitir fazer memes em <#{{channelId}}>?",
+        [Locale.Turkish]: "🔻 <#{{channelId}}> kanalında caps yapmaya izin veriyor musun?",
+        [Locale.Italian]: "🔻 Permettere di fare meme in <#{{channelId}}>?",
+        [Locale.Indonesian]: "🔻 Izinkan bikin meme di <#{{channelId}}>?",
+        [Locale.Czech]: "🔻 Povolit dělat memy v <#{{channelId}}>?",
+    }),
     "enable.body.enabled": buildLocales(
         "I'll send memes into **<#{{channelId}}>** during active chats from now on. They will get more personalized as you send more messages, images and GIFs. Once I have **30+ messages** in memory, words in sentences will get mixed for more fun.",
-        {},
+        {
+            [Locale.Russian]:
+                "Теперь я буду присылать мемы в **<#{{channelId}}>** во время активных разговоров. Чем больше сообщений, картинок и GIF вы отправите, тем более личными они станут. Когда у меня будет **30+ сообщений** в памяти, слова в предложениях начнут перемешиваться, так веселее.",
+            [Locale.Ukrainian]:
+                "Тепер я надсилатиму меми в **<#{{channelId}}>** під час активних розмов. Що більше повідомлень, картинок і GIF ви надішлете, то особистішими вони стануть. Коли в мене буде **30+ повідомлень** у пам'яті, слова в реченнях почнуть перемішуватися, так веселіше.",
+            [Locale.Dutch]:
+                "Vanaf nu stuur ik memes in **<#{{channelId}}>** tijdens actieve gesprekken. Ze worden persoonlijker naarmate jullie meer berichten, afbeeldingen en GIFs sturen. Zodra ik **30+ berichten** in mijn geheugen heb, ga ik woorden in zinnen door elkaar husselen, dat is leuker.",
+            [Locale.French]:
+                "À partir de maintenant, j'enverrai des mèmes dans **<#{{channelId}}>** pendant les conversations actives. Ils deviendront plus personnels au fur et à mesure que vous enverrez des messages, des images et des GIF. Dès que j'aurai **30+ messages** en mémoire, je mélangerai les mots dans les phrases, c'est plus drôle.",
+            [Locale.German]:
+                "Ab jetzt schicke ich Memes in **<#{{channelId}}>**, wenn dort gerade was los ist. Sie werden persönlicher, je mehr Nachrichten, Bilder und GIFs ihr schickt. Sobald ich **30+ Nachrichten** im Speicher habe, mische ich die Wörter in den Sätzen durch, das macht mehr Spaß.",
+            [Locale.Polish]:
+                "Od teraz będę wysyłać memy na **<#{{channelId}}>** podczas aktywnych rozmów. Będą coraz bardziej osobiste, im więcej wiadomości, obrazków i GIF-ów wyślecie. Gdy będę mieć **30+ wiadomości** w pamięci, zacznę mieszać słowa w zdaniach, tak jest zabawniej.",
+            [Locale.SpanishES]:
+                "A partir de ahora enviaré memes en **<#{{channelId}}>** durante las conversaciones activas. Se irán volviendo más personales cuantos más mensajes, imágenes y GIF enviéis. Cuando tenga **30+ mensajes** en memoria, empezaré a mezclar las palabras de las frases, así tiene más gracia.",
+            [Locale.SpanishLATAM]:
+                "A partir de ahora voy a enviar memes en **<#{{channelId}}>** durante las conversaciones activas. Se van a volver más personales mientras más mensajes, imágenes y GIF envíen. Cuando tenga **30+ mensajes** en memoria, voy a empezar a mezclar las palabras de las frases, así es más divertido.",
+            [Locale.PortugueseBR]:
+                "A partir de agora vou mandar memes em **<#{{channelId}}>** durante as conversas ativas. Eles vão ficando mais pessoais conforme vocês mandam mais mensagens, imagens e GIFs. Quando eu tiver **30+ mensagens** na memória, vou começar a misturar as palavras das frases, fica mais engraçado.",
+            [Locale.Turkish]:
+                "Bundan sonra sohbet hareketliyken **<#{{channelId}}>** kanalına caps göndereceğim. Ne kadar çok mesaj, görsel ve GIF gönderirseniz o kadar kişisel olacaklar. Hafızamda **30+ mesaj** olunca cümlelerdeki kelimeleri karıştırmaya başlayacağım, böylesi daha eğlenceli.",
+            [Locale.Italian]:
+                "Da adesso manderò meme in **<#{{channelId}}>** durante le conversazioni attive. Diventeranno più personali man mano che mandate messaggi, immagini e GIF. Quando avrò **30+ messaggi** in memoria, inizierò a mescolare le parole nelle frasi, così è più divertente.",
+            [Locale.Indonesian]:
+                "Mulai sekarang aku akan mengirim meme ke **<#{{channelId}}>** saat obrolan sedang ramai. Meme akan makin personal seiring kalian mengirim lebih banyak pesan, gambar, dan GIF. Begitu aku punya **30+ pesan** di memori, kata-kata dalam kalimat akan mulai diacak, lebih seru begitu.",
+            [Locale.Czech]:
+                "Od teď budu posílat memy do **<#{{channelId}}>**, když se tam bude něco dít. Budou osobnější, čím víc zpráv, obrázků a GIFů pošlete. Až budu mít v paměti **30+ zpráv**, začnu míchat slova ve větách, tak je to zábavnější.",
+        },
     ),
     "enable.body.disabled.ready": buildLocales(
         "You already have over **{{messagesAmount}} messages** in memory, so Jstmemit is ready to make memes. Just turn the bot back on and it'll start generating them during active chats.",
-        {},
+        {
+            [Locale.Russian]:
+                "У вас уже больше **{{messagesAmount}} сообщений** в памяти, так что Jstmemit готов делать мемы. Просто включите бота обратно, и он начнёт генерировать их во время активных разговоров.",
+            [Locale.Ukrainian]:
+                "У вас уже понад **{{messagesAmount}} повідомлень** у пам'яті, тож Jstmemit готовий робити меми. Просто увімкніть бота назад, і він почне генерувати їх під час активних розмов.",
+            [Locale.Dutch]:
+                "Je hebt al meer dan **{{messagesAmount}} berichten** in het geheugen, dus Jstmemit kan meteen memes maken. Zet de bot gewoon weer aan en hij begint ze te maken tijdens actieve gesprekken.",
+            [Locale.French]:
+                "Vous avez déjà plus de **{{messagesAmount}} messages** en mémoire, donc Jstmemit est prêt à faire des mèmes. Réactivez simplement le bot et il commencera à en générer pendant les conversations actives.",
+            [Locale.German]:
+                "Du hast schon über **{{messagesAmount}} Nachrichten** im Speicher, Jstmemit kann also sofort Memes machen. Schalte den Bot einfach wieder ein und er fängt bei aktiven Gesprächen an, welche zu generieren.",
+            [Locale.Polish]:
+                "Masz już ponad **{{messagesAmount}} wiadomości** w pamięci, więc Jstmemit jest gotowy robić memy. Po prostu włącz bota z powrotem, a zacznie je generować podczas aktywnych rozmów.",
+            [Locale.SpanishES]:
+                "Ya tienes más de **{{messagesAmount}} mensajes** en memoria, así que Jstmemit está listo para hacer memes. Solo tienes que volver a activar el bot y empezará a generarlos durante las conversaciones activas.",
+            [Locale.SpanishLATAM]:
+                "Ya tienes más de **{{messagesAmount}} mensajes** en memoria, así que Jstmemit está listo para hacer memes. Solo vuelve a activar el bot y va a empezar a generarlos durante las conversaciones activas.",
+            [Locale.PortugueseBR]:
+                "Você já tem mais de **{{messagesAmount}} mensagens** na memória, então o Jstmemit está pronto para fazer memes. É só religar o bot que ele começa a gerar memes durante as conversas ativas.",
+            [Locale.Turkish]:
+                "Hafızada zaten **{{messagesAmount}} mesajdan** fazlası var, yani Jstmemit caps yapmaya hazır. Botu tekrar açman yeterli, sohbet hareketliyken caps üretmeye başlayacak.",
+            [Locale.Italian]:
+                "Hai già più di **{{messagesAmount}} messaggi** in memoria, quindi Jstmemit è pronto a fare meme. Basta riaccendere il bot e inizierà a generarli durante le conversazioni attive.",
+            [Locale.Indonesian]:
+                "Kamu sudah punya lebih dari **{{messagesAmount}} pesan** di memori, jadi Jstmemit siap bikin meme. Tinggal nyalakan lagi botnya dan dia akan mulai membuat meme saat obrolan ramai.",
+            [Locale.Czech]:
+                "Máš už přes **{{messagesAmount}} zpráv** v paměti, takže Jstmemit může rovnou dělat memy. Stačí bota zase zapnout a začne je generovat, když se bude něco dít.",
+        },
     ),
     "enable.body.disabled.notReady": buildLocales(
         "Hi! I'm the bot that makes memes from your chat. Talk about anything and I'll turn it into a meme on one of 660+ templates. Click on the button below and let's generate some memes!",
-        {},
+        {
+            [Locale.Russian]:
+                "Привет! Я бот, который делает мемы из вашего чата. Говорите о чём угодно, а я превращу это в мем на одном из 660+ шаблонов. Нажмите кнопку ниже, и давайте делать мемы!",
+            [Locale.Ukrainian]:
+                "Привіт! Я бот, який робить меми з вашого чату. Говоріть про що завгодно, а я перетворю це на мем на одному з 660+ шаблонів. Натисніть кнопку нижче, і почнімо робити меми!",
+            [Locale.Dutch]:
+                "Hoi! Ik ben de bot die memes maakt van jullie chat. Praat waar je maar over wilt en ik maak er een meme van op een van de 660+ templates. Klik op de knop hieronder en we gaan memes maken!",
+            [Locale.French]:
+                "Salut ! Je suis le bot qui fait des mèmes à partir de votre chat. Parlez de ce que vous voulez et j'en ferai un mème sur un de mes 660+ modèles. Cliquez sur le bouton ci-dessous et c'est parti !",
+            [Locale.German]:
+                "Hey! Ich bin der Bot, der Memes aus eurem Chat macht. Redet über was ihr wollt und ich mache daraus ein Meme auf einer von 660+ Vorlagen. Klick auf den Button unten und los geht's!",
+            [Locale.Polish]:
+                "Cześć! Jestem botem, który robi memy z waszego czatu. Gadajcie o czym chcecie, a ja zrobię z tego mema na jednym z 660+ szablonów. Kliknij przycisk poniżej i robimy memy!",
+            [Locale.SpanishES]:
+                "¡Hola! Soy el bot que hace memes de vuestro chat. Hablad de lo que queráis y lo convertiré en un meme con una de mis 660+ plantillas. ¡Pulsa el botón de abajo y vamos a hacer memes!",
+            [Locale.SpanishLATAM]:
+                "¡Hola! Soy el bot que hace memes de su chat. Hablen de lo que quieran y lo voy a convertir en un meme con una de mis 660+ plantillas. ¡Presiona el botón de abajo y vamos a hacer memes!",
+            [Locale.PortugueseBR]:
+                "Oi! Eu sou o bot que faz memes do seu chat. Falem do que quiserem que eu transformo isso em meme com um dos meus 660+ templates. Clica no botão aí embaixo e bora fazer meme!",
+            [Locale.Turkish]:
+                "Selam! Sohbetinizden caps üreten botum. Ne konuşursanız konuşun, onu 660'ten fazla şablondan biriyle capse çeviririm. Aşağıdaki butona tıkla ve caps yapmaya başlayalım!",
+            [Locale.Italian]:
+                "Ciao! Sono il bot che fa meme dalla vostra chat. Parlate di quello che vi pare e io lo trasformo in un meme con uno dei miei 660+ template. Clicca il pulsante qui sotto e facciamo un po' di meme!",
+            [Locale.Indonesian]:
+                "Halo! Aku bot yang bikin meme dari chat kalian. Ngobrolin apa saja dan aku akan mengubahnya jadi meme pakai salah satu dari 660+ template. Klik tombol di bawah dan ayo bikin meme!",
+            [Locale.Czech]:
+                "Ahoj! Jsem bot, který dělá memy z vašeho chatu. Bavte se o čemkoliv a já z toho udělám mem na jedné z 660+ šablon. Klikni na tlačítko níž a jdeme na to!",
+        },
     ),
-    "enable.body.checklist.inviteJstmemit": buildLocales("Invite Jstmemit to this server", {}),
-    "enable.body.checklist.givePermission": buildLocales("Give permission to read/send messages", {}),
-    "enable.body.checklist.allowMakingMemes": buildLocales("Allow making memes in <#{{channelId}}>", {}),
+    "enable.body.checklist.inviteJstmemit": buildLocales("Invite Jstmemit to this server", {
+        [Locale.Russian]: "Пригласить Jstmemit на этот сервер",
+        [Locale.Ukrainian]: "Запросити Jstmemit на цей сервер",
+        [Locale.Dutch]: "Jstmemit uitnodigen in deze server",
+        [Locale.French]: "Inviter Jstmemit sur ce serveur",
+        [Locale.German]: "Jstmemit auf diesen Server einladen",
+        [Locale.Polish]: "Zaprosić Jstmemit na ten serwer",
+        [Locale.SpanishES]: "Invitar a Jstmemit a este servidor",
+        [Locale.SpanishLATAM]: "Invitar a Jstmemit a este servidor",
+        [Locale.PortugueseBR]: "Convidar o Jstmemit para este servidor",
+        [Locale.Turkish]: "Jstmemit'i bu sunucuya davet et",
+        [Locale.Italian]: "Invitare Jstmemit in questo server",
+        [Locale.Indonesian]: "Undang Jstmemit ke server ini",
+        [Locale.Czech]: "Pozvat Jstmemit na tento server",
+    }),
+    "enable.body.checklist.givePermission": buildLocales("Give permission to read/send messages", {
+        [Locale.Russian]: "Выдать права на чтение и отправку сообщений",
+        [Locale.Ukrainian]: "Надати права на читання та надсилання повідомлень",
+        [Locale.Dutch]: "Permissies geven om berichten te lezen en sturen",
+        [Locale.French]: "Donner les permissions de lire et envoyer des messages",
+        [Locale.German]: "Berechtigungen zum Lesen und Senden von Nachrichten geben",
+        [Locale.Polish]: "Nadać uprawnienia do czytania i wysyłania wiadomości",
+        [Locale.SpanishES]: "Dar permisos para leer y enviar mensajes",
+        [Locale.SpanishLATAM]: "Dar permisos para leer y enviar mensajes",
+        [Locale.PortugueseBR]: "Dar permissão para ler e enviar mensagens",
+        [Locale.Turkish]: "Mesaj okuma ve gönderme izni ver",
+        [Locale.Italian]: "Dare i permessi per leggere e inviare messaggi",
+        [Locale.Indonesian]: "Beri izin membaca dan mengirim pesan",
+        [Locale.Czech]: "Dát oprávnění číst a posílat zprávy",
+    }),
+    "enable.body.checklist.allowMakingMemes": buildLocales("Allow making memes in <#{{channelId}}>", {
+        [Locale.Russian]: "Разрешить делать мемы в <#{{channelId}}>",
+        [Locale.Ukrainian]: "Дозволити робити меми в <#{{channelId}}>",
+        [Locale.Dutch]: "Memes maken toestaan in <#{{channelId}}>",
+        [Locale.French]: "Autoriser les mèmes dans <#{{channelId}}>",
+        [Locale.German]: "Memes in <#{{channelId}}> erlauben",
+        [Locale.Polish]: "Pozwolić robić memy na <#{{channelId}}>",
+        [Locale.SpanishES]: "Permitir hacer memes en <#{{channelId}}>",
+        [Locale.SpanishLATAM]: "Permitir hacer memes en <#{{channelId}}>",
+        [Locale.PortugueseBR]: "Permitir fazer memes em <#{{channelId}}>",
+        [Locale.Turkish]: "<#{{channelId}}> kanalında caps yapmaya izin ver",
+        [Locale.Italian]: "Permettere di fare meme in <#{{channelId}}>",
+        [Locale.Indonesian]: "Izinkan bikin meme di <#{{channelId}}>",
+        [Locale.Czech]: "Povolit dělat memy v <#{{channelId}}>",
+    }),
     "enable.body.disabled.enableToStart": buildLocales(
         "You can always turn me off later or delete everything I've stored if you want to start fresh.",
-        {},
+        {
+            [Locale.Russian]:
+                "Меня всегда можно выключить позже или удалить всё, что я сохранил, если захотите начать с чистого листа.",
+            [Locale.Ukrainian]:
+                "Мене завжди можна вимкнути пізніше або видалити все, що я зберіг, якщо захочете почати з чистого аркуша.",
+            [Locale.Dutch]:
+                "Je kunt me later altijd weer uitzetten of alles wissen wat ik heb opgeslagen als je opnieuw wilt beginnen.",
+            [Locale.French]:
+                "Vous pouvez toujours me désactiver plus tard ou supprimer tout ce que j'ai gardé si vous voulez repartir de zéro.",
+            [Locale.German]:
+                "Du kannst mich später jederzeit wieder ausschalten oder alles löschen, was ich gespeichert habe, wenn du neu anfangen willst.",
+            [Locale.Polish]:
+                "Zawsze możesz mnie później wyłączyć albo usunąć wszystko, co zapisałem, jeśli chcesz zacząć od zera.",
+            [Locale.SpanishES]:
+                "Siempre puedes desactivarme más tarde o borrar todo lo que he guardado si quieres empezar de cero.",
+            [Locale.SpanishLATAM]:
+                "Siempre puedes desactivarme después o borrar todo lo que guardé si quieres empezar de cero.",
+            [Locale.PortugueseBR]:
+                "Você sempre pode me desligar depois ou apagar tudo que eu guardei se quiser começar do zero.",
+            [Locale.Turkish]:
+                "Beni istediğin zaman kapatabilir ya da sıfırdan başlamak istersen sakladığım her şeyi silebilirsin.",
+            [Locale.Italian]:
+                "Puoi sempre spegnermi più tardi o cancellare tutto quello che ho salvato se vuoi ricominciare da capo.",
+            [Locale.Indonesian]:
+                "Kamu selalu bisa mematikan aku nanti atau menghapus semua yang aku simpan kalau mau mulai dari awal.",
+            [Locale.Czech]:
+                "Kdykoliv mě můžeš zase vypnout nebo smazat všechno, co jsem si uložil, když budeš chtít začít znovu.",
+        },
     ),
     "enable.memory.progress": buildLocales("Messages in memory: **{{messagesAmount}}**", {
         [Locale.Russian]: "Сообщений в памяти: **{{messagesAmount}}**",
@@ -94,7 +272,7 @@ export const locale: Record<string, LocalizationMap> = {
             [Locale.Italian]:
                 "Al bot servono un paio di permessi per funzionare, come **Allega file** per poter inviare i meme che genera, **Visualizza canale** per avere contesto per i meme o **Incorpora link** perché il menu {{settings}} funzioni bene:\n",
             [Locale.Indonesian]:
-                "Bot butuh beberapa izin supaya bisa jalan, misalnya **Lampirkan File** untuk bisa mengirim meme yang dibuatnya atau **Sematkan Tautan** supaya menu {{settings}} berfungsi dengan benar:\n",
+                "Bot butuh beberapa izin supaya bisa jalan, misalnya **Lampirkan File** untuk bisa mengirim meme yang dibuatnya, **Lihat Channel** untuk mendapat konteks meme, atau **Sematkan Tautan** supaya menu {{settings}} berfungsi dengan benar:\n",
             [Locale.Czech]:
                 "Bot potřebuje pár oprávnění, aby fungoval, třeba **Připojovat soubory**, aby mohl posílat vytvořené memy, **Zobrazit kanál**, aby měl kontext pro memy, nebo **Vkládat odkazy**, aby menu {{settings}} fungovalo správně:\n",
         },
@@ -204,8 +382,36 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "Nyalakan",
         [Locale.Czech]: "Zapnout",
     }),
-    "enable.button.allowMakingMemes": buildLocales("✔ Allow in this channel", {}),
-    "enable.button.notNow": buildLocales("No, thanks", {}),
+    "enable.button.allowMakingMemes": buildLocales("✔ Allow in this channel", {
+        [Locale.Russian]: "✔ Разрешить в этом канале",
+        [Locale.Ukrainian]: "✔ Дозволити в цьому каналі",
+        [Locale.Dutch]: "✔ Toestaan in dit kanaal",
+        [Locale.French]: "✔ Autoriser dans ce salon",
+        [Locale.German]: "✔ In diesem Kanal erlauben",
+        [Locale.Polish]: "✔ Pozwól na tym kanale",
+        [Locale.SpanishES]: "✔ Permitir en este canal",
+        [Locale.SpanishLATAM]: "✔ Permitir en este canal",
+        [Locale.PortugueseBR]: "✔ Permitir neste canal",
+        [Locale.Turkish]: "✔ Bu kanalda izin ver",
+        [Locale.Italian]: "✔ Permetti in questo canale",
+        [Locale.Indonesian]: "✔ Izinkan di channel ini",
+        [Locale.Czech]: "✔ Povolit v tomto kanálu",
+    }),
+    "enable.button.notNow": buildLocales("No, thanks", {
+        [Locale.Russian]: "Нет, спасибо",
+        [Locale.Ukrainian]: "Ні, дякую",
+        [Locale.Dutch]: "Nee, bedankt",
+        [Locale.French]: "Non merci",
+        [Locale.German]: "Nein, danke",
+        [Locale.Polish]: "Nie, dzięki",
+        [Locale.SpanishES]: "No, gracias",
+        [Locale.SpanishLATAM]: "No, gracias",
+        [Locale.PortugueseBR]: "Não, obrigado",
+        [Locale.Turkish]: "Hayır, teşekkürler",
+        [Locale.Italian]: "No, grazie",
+        [Locale.Indonesian]: "Tidak, terima kasih",
+        [Locale.Czech]: "Ne, díky",
+    }),
     "enable.button.firstMeme": buildLocales("Generate your first meme", {
         [Locale.Russian]: "Сделать первый мем",
         [Locale.Ukrainian]: "Зробити перший мем",
@@ -321,10 +527,51 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "💬 Laporkan error",
         [Locale.Czech]: "💬 Nahlásit chybu",
     }),
-    "notEnoughContext.heading": buildLocales("🤔 I don't know enough for a meme yet", {}),
+    "notEnoughContext.heading": buildLocales("🤔 I don't know enough for a meme yet", {
+        [Locale.Russian]: "🤔 Я пока знаю слишком мало для мема",
+        [Locale.Ukrainian]: "🤔 Я поки знаю замало для мема",
+        [Locale.Dutch]: "🤔 Ik weet nog te weinig voor een meme",
+        [Locale.French]: "🤔 Je n'en sais pas encore assez pour un mème",
+        [Locale.German]: "🤔 Ich weiß noch zu wenig für ein Meme",
+        [Locale.Polish]: "🤔 Wiem jeszcze za mało na mema",
+        [Locale.SpanishES]: "🤔 Todavía no sé lo suficiente para un meme",
+        [Locale.SpanishLATAM]: "🤔 Todavía no sé lo suficiente para un meme",
+        [Locale.PortugueseBR]: "🤔 Ainda não sei o bastante para um meme",
+        [Locale.Turkish]: "🤔 Caps için henüz yeterince bilmiyorum",
+        [Locale.Italian]: "🤔 Non so ancora abbastanza per un meme",
+        [Locale.Indonesian]: "🤔 Aku belum tahu cukup untuk bikin meme",
+        [Locale.Czech]: "🤔 Zatím toho na mem vím málo",
+    }),
     "notEnoughContext.body": buildLocales(
         "There were not many messages sent in this channel, so I didn't have enough context to make a meme. Please try again after a few more messages.",
-        {},
+        {
+            [Locale.Russian]:
+                "В этом канале было отправлено мало сообщений, так что мне не хватило контекста для мема. Попробуйте ещё раз, когда их наберётся немного больше.",
+            [Locale.Ukrainian]:
+                "У цьому каналі надіслали мало повідомлень, тож мені забракло контексту для мема. Спробуйте ще раз, коли їх набереться трохи більше.",
+            [Locale.Dutch]:
+                "Er zijn nog niet veel berichten in dit kanaal, dus ik had te weinig context voor een meme. Probeer het opnieuw na een paar berichten meer.",
+            [Locale.French]:
+                "Il n'y a pas eu beaucoup de messages dans ce salon, donc je n'avais pas assez de contexte pour un mème. Réessayez après quelques messages de plus.",
+            [Locale.German]:
+                "In diesem Kanal wurden noch nicht viele Nachrichten geschrieben, deshalb hatte ich zu wenig Kontext für ein Meme. Versuch es nach ein paar weiteren Nachrichten nochmal.",
+            [Locale.Polish]:
+                "Na tym kanale wysłano jeszcze mało wiadomości, więc zabrakło mi kontekstu na mema. Spróbuj ponownie po kilku kolejnych wiadomościach.",
+            [Locale.SpanishES]:
+                "No se han enviado muchos mensajes en este canal, así que no tenía suficiente contexto para un meme. Vuelve a intentarlo después de unos cuantos mensajes más.",
+            [Locale.SpanishLATAM]:
+                "No se enviaron muchos mensajes en este canal, así que no tenía suficiente contexto para un meme. Intenta de nuevo después de unos mensajes más.",
+            [Locale.PortugueseBR]:
+                "Não foram enviadas muitas mensagens neste canal, então não tive contexto suficiente para um meme. Tente de novo depois de mais algumas mensagens.",
+            [Locale.Turkish]:
+                "Bu kanalda çok fazla mesaj gönderilmemiş, bu yüzden caps için yeterli bağlamım yoktu. Birkaç mesaj daha sonra tekrar dene.",
+            [Locale.Italian]:
+                "In questo canale non sono stati mandati molti messaggi, quindi non avevo abbastanza contesto per un meme. Riprova dopo qualche messaggio in più.",
+            [Locale.Indonesian]:
+                "Belum banyak pesan yang dikirim di channel ini, jadi konteksku belum cukup untuk bikin meme. Coba lagi setelah ada beberapa pesan lagi.",
+            [Locale.Czech]:
+                "V tomto kanálu zatím nepřišlo moc zpráv, takže jsem neměl dost kontextu na mem. Zkus to znovu po pár dalších zprávách.",
+        },
     ),
     "unknownTemplate.heading": buildLocales("🤔 I don't know such template", {
         [Locale.Russian]: "🤔 Я не знаю такой шаблон",
@@ -402,20 +649,129 @@ export const locale: Record<string, LocalizationMap> = {
             [Locale.Czech]: 'Soubor pro "{{file}}" není obrázek. Zkus to znovu s PNG/JPEG/AVIF/WebP.',
         },
     ),
-    "missingPermissions.heading": buildLocales("🔒 I need someone with permissions", {}),
+    "missingPermissions.heading": buildLocales("🔒 I need someone with permissions", {
+        [Locale.Russian]: "🔒 Нужен кто-то с правами",
+        [Locale.Ukrainian]: "🔒 Потрібен хтось із правами",
+        [Locale.Dutch]: "🔒 Ik heb iemand met permissies nodig",
+        [Locale.French]: "🔒 J'ai besoin de quelqu'un qui a les permissions",
+        [Locale.German]: "🔒 Ich brauche jemanden mit Berechtigungen",
+        [Locale.Polish]: "🔒 Potrzebuję kogoś z uprawnieniami",
+        [Locale.SpanishES]: "🔒 Necesito a alguien con permisos",
+        [Locale.SpanishLATAM]: "🔒 Necesito a alguien con permisos",
+        [Locale.PortugueseBR]: "🔒 Preciso de alguém com permissões",
+        [Locale.Turkish]: "🔒 Yetkisi olan birine ihtiyacım var",
+        [Locale.Italian]: "🔒 Mi serve qualcuno con i permessi",
+        [Locale.Indonesian]: "🔒 Aku butuh orang yang punya izin",
+        [Locale.Czech]: "🔒 Potřebuju někoho s oprávněními",
+    }),
     "missingPermissions.body": buildLocales(
         "Please tell someone with **Manage Server** or **Manage Channels** permissions that you want to turn me on here or change settings.",
-        {},
+        {
+            [Locale.Russian]:
+                "Попросите кого-нибудь с правами **Управлять сервером** или **Управлять каналами** включить меня здесь или поменять настройки.",
+            [Locale.Ukrainian]:
+                "Попросіть когось із правами **Керувати сервером** або **Керувати каналами** увімкнути мене тут чи змінити налаштування.",
+            [Locale.Dutch]:
+                "Vraag iemand met de permissie **Server beheren** of **Kanalen beheren** om me hier aan te zetten of de instellingen aan te passen.",
+            [Locale.French]:
+                "Demandez à quelqu'un ayant les permissions **Gérer le serveur** ou **Gérer les salons** de m'activer ici ou de changer les paramètres.",
+            [Locale.German]:
+                "Bitte jemanden mit den Berechtigungen **Server verwalten** oder **Kanäle verwalten**, mich hier einzuschalten oder die Einstellungen zu ändern.",
+            [Locale.Polish]:
+                "Poproś kogoś z uprawnieniami **Zarządzanie serwerem** lub **Zarządzanie kanałami**, żeby włączył mnie tutaj albo zmienił ustawienia.",
+            [Locale.SpanishES]:
+                "Pídele a alguien con permisos de **Gestionar servidor** o **Gestionar canales** que me active aquí o que cambie los ajustes.",
+            [Locale.SpanishLATAM]:
+                "Pídele a alguien con permisos de **Administrar servidor** o **Administrar canales** que me active aquí o que cambie la configuración.",
+            [Locale.PortugueseBR]:
+                "Peça para alguém com permissão de **Gerenciar servidor** ou **Gerenciar canais** me ligar aqui ou mudar as configurações.",
+            [Locale.Turkish]:
+                "**Sunucuyu Yönet** ya da **Kanalları Yönet** yetkisi olan birinden beni burada açmasını veya ayarları değiştirmesini iste.",
+            [Locale.Italian]:
+                "Chiedi a qualcuno con i permessi **Gestisci server** o **Gestisci canali** di accendermi qui o di cambiare le impostazioni.",
+            [Locale.Indonesian]:
+                "Minta orang yang punya izin **Kelola Server** atau **Kelola Channel** untuk menyalakan aku di sini atau mengubah pengaturannya.",
+            [Locale.Czech]:
+                "Požádej někoho s oprávněním **Spravovat server** nebo **Spravovat kanály**, ať mě tady zapne nebo změní nastavení.",
+        },
     ),
     "missingPermissions.alternatives": buildLocales(
         "### In the meantime, you can still use these commands:\n**{{custom}}** - Pick any of 660+ templates and fill it in yourself\n**{{voice}}** - Narrate any text in one of 23 voices",
-        {},
+        {
+            [Locale.Russian]:
+                "### А пока вам всё ещё доступны эти команды:\n**{{custom}}** - Выберите любой из 660+ шаблонов и заполните его сами\n**{{voice}}** - Озвучьте любой текст одним из 23 голосов",
+            [Locale.Ukrainian]:
+                "### А поки вам усе ще доступні ці команди:\n**{{custom}}** - Оберіть будь-який з 660+ шаблонів і заповніть його самі\n**{{voice}}** - Озвучте будь-який текст одним із 23 голосів",
+            [Locale.Dutch]:
+                "### Ondertussen kun je deze commando's nog steeds gebruiken:\n**{{custom}}** - Kies een van de 660+ templates en vul hem zelf in\n**{{voice}}** - Laat elke tekst voorlezen door een van de 23 stemmen",
+            [Locale.French]:
+                "### En attendant, vous pouvez toujours utiliser ces commandes :\n**{{custom}}** - Choisissez un des 660+ modèles et remplissez-le vous-même\n**{{voice}}** - Faites lire n'importe quel texte par une des 23 voix",
+            [Locale.German]:
+                "### In der Zwischenzeit kannst du diese Befehle trotzdem nutzen:\n**{{custom}}** - Wähl eine von 660+ Vorlagen und füll sie selbst aus\n**{{voice}}** - Lass jeden Text von einer der 23 Stimmen vorlesen",
+            [Locale.Polish]:
+                "### W międzyczasie nadal możesz używać tych komend:\n**{{custom}}** - Wybierz jeden z 660+ szablonów i wypełnij go sam\n**{{voice}}** - Przeczytaj dowolny tekst jednym z 23 głosów",
+            [Locale.SpanishES]:
+                "### Mientras tanto, aún puedes usar estos comandos:\n**{{custom}}** - Elige una de las 660+ plantillas y rellénala tú mismo\n**{{voice}}** - Narra cualquier texto con una de las 23 voces",
+            [Locale.SpanishLATAM]:
+                "### Mientras tanto, todavía puedes usar estos comandos:\n**{{custom}}** - Elige una de las 660+ plantillas y llénala tú mismo\n**{{voice}}** - Narra cualquier texto con una de las 23 voces",
+            [Locale.PortugueseBR]:
+                "### Enquanto isso, você ainda pode usar estes comandos:\n**{{custom}}** - Escolha um dos 660+ templates e preencha você mesmo\n**{{voice}}** - Narre qualquer texto com uma das 23 vozes",
+            [Locale.Turkish]:
+                "### Bu arada bu komutları yine de kullanabilirsin:\n**{{custom}}** - 660'tan fazla şablondan birini seç ve kendin doldur\n**{{voice}}** - Herhangi bir metni 23 sesten biriyle okut",
+            [Locale.Italian]:
+                "### Nel frattempo puoi comunque usare questi comandi:\n**{{custom}}** - Scegli uno dei 660+ template e riempilo tu\n**{{voice}}** - Fai leggere qualsiasi testo da una delle 23 voci",
+            [Locale.Indonesian]:
+                "### Sementara itu, kamu tetap bisa pakai perintah ini:\n**{{custom}}** - Pilih salah satu dari 660+ template dan isi sendiri\n**{{voice}}** - Bacakan teks apa pun dengan salah satu dari 23 suara",
+            [Locale.Czech]:
+                "### Zatím můžeš pořád používat tyhle příkazy:\n**{{custom}}** - Vyber si jednu z 660+ šablon a vyplň si ji sám\n**{{voice}}** - Nech si přečíst jakýkoliv text jedním z 23 hlasů",
+        },
     ),
     "missingPermissions.userInstall": buildLocales(
         'Those commands will work even in DMs and servers without me there!\nFor this to work you can add me to **"My Apps"** using the button below.',
-        {},
+        {
+            [Locale.Russian]:
+                "Эти команды работают даже в личных сообщениях и на серверах, где меня нет!\nЧтобы это заработало, добавьте меня в **«Мои приложения»** кнопкой ниже.",
+            [Locale.Ukrainian]:
+                "Ці команди працюють навіть у приватних повідомленнях і на серверах, де мене немає!\nЩоб це запрацювало, додайте мене до **«Моїх застосунків»** кнопкою нижче.",
+            [Locale.Dutch]:
+                "Die commando's werken zelfs in DM's en op servers waar ik niet in zit!\nDaarvoor kun je me met de knop hieronder toevoegen aan **\"Mijn apps\"**.",
+            [Locale.French]:
+                "Ces commandes marchent même en MP et sur les serveurs où je ne suis pas !\nPour ça, vous pouvez m'ajouter à **« Mes applications »** avec le bouton ci-dessous.",
+            [Locale.German]:
+                'Diese Befehle funktionieren sogar in DMs und auf Servern, auf denen ich nicht bin!\nDafür kannst du mich mit dem Button unten zu **"Meine Apps"** hinzufügen.',
+            [Locale.Polish]:
+                "Te komendy działają nawet w wiadomościach prywatnych i na serwerach, na których mnie nie ma!\nŻeby to działało, dodaj mnie do **„Moich aplikacji”** przyciskiem poniżej.",
+            [Locale.SpanishES]:
+                "¡Esos comandos funcionan incluso en MD y en servidores donde no estoy!\nPara eso puedes añadirme a **«Mis aplicaciones»** con el botón de abajo.",
+            [Locale.SpanishLATAM]:
+                "¡Esos comandos funcionan incluso en MD y en servidores donde no estoy!\nPara eso puedes agregarme a **«Mis aplicaciones»** con el botón de abajo.",
+            [Locale.PortugueseBR]:
+                'Esses comandos funcionam até em DMs e em servidores onde eu não estou!\nPara isso você pode me adicionar em **"Meus aplicativos"** usando o botão abaixo.',
+            [Locale.Turkish]:
+                'Bu komutlar DM\'lerde ve benim olmadığım sunucularda bile çalışır!\nBunun için aşağıdaki butonla beni **"Uygulamalarım"a** ekleyebilirsin.',
+            [Locale.Italian]:
+                'Questi comandi funzionano anche nei DM e nei server dove non ci sono!\nPer farlo puoi aggiungermi a **"Le mie app"** con il pulsante qui sotto.',
+            [Locale.Indonesian]:
+                'Perintah itu bisa dipakai bahkan di DM dan di server yang tidak ada aku!\nUntuk itu kamu bisa menambahkan aku ke **"Aplikasi Saya"** lewat tombol di bawah.',
+            [Locale.Czech]:
+                "Tyhle příkazy fungují i v DM a na serverech, kde nejsem!\nStačí si mě tlačítkem níž přidat do **„Moje aplikace“**.",
+        },
     ),
-    "missingPermissions.button.addToMyApps": buildLocales("🔗 Add to My Apps", {}),
+    "missingPermissions.button.addToMyApps": buildLocales("🔗 Add to My Apps", {
+        [Locale.Russian]: "🔗 Добавить в «Мои приложения»",
+        [Locale.Ukrainian]: "🔗 Додати до «Моїх застосунків»",
+        [Locale.Dutch]: "🔗 Toevoegen aan Mijn apps",
+        [Locale.French]: "🔗 Ajouter à Mes applications",
+        [Locale.German]: "🔗 Zu Meine Apps hinzufügen",
+        [Locale.Polish]: "🔗 Dodaj do Moich aplikacji",
+        [Locale.SpanishES]: "🔗 Añadir a Mis aplicaciones",
+        [Locale.SpanishLATAM]: "🔗 Agregar a Mis aplicaciones",
+        [Locale.PortugueseBR]: "🔗 Adicionar aos Meus aplicativos",
+        [Locale.Turkish]: "🔗 Uygulamalarım'a ekle",
+        [Locale.Italian]: "🔗 Aggiungi a Le mie app",
+        [Locale.Indonesian]: "🔗 Tambahkan ke Aplikasi Saya",
+        [Locale.Czech]: "🔗 Přidat do Moje aplikace",
+    }),
     "missingBotPermissions.heading": buildLocales("🔒 Jstmemit can't send memes here", {
         [Locale.Russian]: "🔒 Jstmemit не может отправлять мемы тут",
         [Locale.Ukrainian]: "🔒 Jstmemit не може надсилати меми тут",
@@ -508,13 +864,82 @@ export const locale: Record<string, LocalizationMap> = {
                 "Tím se z Jstmemitu trvale smažou všechny uložené zprávy a odkazy na obrázky pro tento kanál a nejde to vrátit zpět. Bot se navíc v tomto kanálu vypne, takže přestane sbírat nové zprávy. Kdykoliv ho můžeš zase zapnout přes {{enable}}.",
         },
     ),
-    "deleteData.success.heading": buildLocales("✅ Data for this channel was removed", {}),
+    "deleteData.success.heading": buildLocales("✅ Data for this channel was removed", {
+        [Locale.Russian]: "✅ Данные этого канала удалены",
+        [Locale.Ukrainian]: "✅ Дані цього каналу видалено",
+        [Locale.Dutch]: "✅ De data van dit kanaal is verwijderd",
+        [Locale.French]: "✅ Les données de ce salon ont été supprimées",
+        [Locale.German]: "✅ Die Daten dieses Kanals wurden gelöscht",
+        [Locale.Polish]: "✅ Dane tego kanału zostały usunięte",
+        [Locale.SpanishES]: "✅ Los datos de este canal se han borrado",
+        [Locale.SpanishLATAM]: "✅ Los datos de este canal se borraron",
+        [Locale.PortugueseBR]: "✅ Os dados deste canal foram apagados",
+        [Locale.Turkish]: "✅ Bu kanalın verileri silindi",
+        [Locale.Italian]: "✅ I dati di questo canale sono stati eliminati",
+        [Locale.Indonesian]: "✅ Data channel ini sudah dihapus",
+        [Locale.Czech]: "✅ Data tohoto kanálu byla smazána",
+    }),
     "deleteData.success.body": buildLocales(
         "Every saved message and image link for this channel is deleted and I'm switched off here. Turn me back on with {{enable}} or a button below at any time.",
-        {},
+        {
+            [Locale.Russian]:
+                "Все сохранённые сообщения и ссылки на изображения для этого канала удалены, и здесь я выключен. Включить меня обратно можно в любой момент через {{enable}} или кнопкой ниже.",
+            [Locale.Ukrainian]:
+                "Усі збережені повідомлення та посилання на зображення для цього каналу видалено, і тут я вимкнений. Увімкнути мене назад можна будь-коли через {{enable}} або кнопкою нижче.",
+            [Locale.Dutch]:
+                "Elk opgeslagen bericht en elke afbeeldingslink van dit kanaal is verwijderd en ik sta hier uit. Zet me wanneer je maar wilt weer aan met {{enable}} of met de knop hieronder.",
+            [Locale.French]:
+                "Tous les messages et liens d'images enregistrés pour ce salon sont supprimés et je suis désactivé ici. Réactivez-moi à tout moment avec {{enable}} ou le bouton ci-dessous.",
+            [Locale.German]:
+                "Alle gespeicherten Nachrichten und Bildlinks für diesen Kanal sind gelöscht und ich bin hier ausgeschaltet. Schalte mich jederzeit mit {{enable}} oder dem Button unten wieder ein.",
+            [Locale.Polish]:
+                "Wszystkie zapisane wiadomości i linki do obrazków dla tego kanału zostały usunięte, a ja jestem tu wyłączony. Włącz mnie z powrotem w każdej chwili przez {{enable}} albo przyciskiem poniżej.",
+            [Locale.SpanishES]:
+                "Todos los mensajes y enlaces de imágenes guardados de este canal están borrados y aquí estoy desactivado. Vuelve a activarme cuando quieras con {{enable}} o con el botón de abajo.",
+            [Locale.SpanishLATAM]:
+                "Todos los mensajes y enlaces de imágenes guardados de este canal están borrados y aquí estoy desactivado. Vuelve a activarme cuando quieras con {{enable}} o con el botón de abajo.",
+            [Locale.PortugueseBR]:
+                "Todas as mensagens e links de imagens salvos deste canal foram apagados e aqui eu estou desligado. Me ligue de novo quando quiser com {{enable}} ou pelo botão abaixo.",
+            [Locale.Turkish]:
+                "Bu kanala ait tüm kayıtlı mesajlar ve görsel bağlantıları silindi, burada kapalıyım. İstediğin zaman {{enable}} ile ya da aşağıdaki butonla beni tekrar açabilirsin.",
+            [Locale.Italian]:
+                "Tutti i messaggi e i link alle immagini salvati per questo canale sono stati eliminati e qui sono spento. Riaccendimi quando vuoi con {{enable}} o con il pulsante qui sotto.",
+            [Locale.Indonesian]:
+                "Semua pesan dan tautan gambar yang tersimpan untuk channel ini sudah dihapus dan aku dimatikan di sini. Nyalakan aku lagi kapan saja lewat {{enable}} atau tombol di bawah.",
+            [Locale.Czech]:
+                "Všechny uložené zprávy a odkazy na obrázky pro tento kanál jsou smazané a jsem tu vypnutý. Kdykoliv mě můžeš zase zapnout přes {{enable}} nebo tlačítkem níž.",
+        },
     ),
-    "deleteData.button.turnBackOn": buildLocales("Turn back on", {}),
-    "deleteData.button.tellUsWhy": buildLocales("💬 Tell us why", {}),
+    "deleteData.button.turnBackOn": buildLocales("Turn back on", {
+        [Locale.Russian]: "Включить обратно",
+        [Locale.Ukrainian]: "Увімкнути назад",
+        [Locale.Dutch]: "Weer aanzetten",
+        [Locale.French]: "Réactiver",
+        [Locale.German]: "Wieder einschalten",
+        [Locale.Polish]: "Włącz z powrotem",
+        [Locale.SpanishES]: "Volver a activar",
+        [Locale.SpanishLATAM]: "Volver a activar",
+        [Locale.PortugueseBR]: "Ligar de novo",
+        [Locale.Turkish]: "Tekrar aç",
+        [Locale.Italian]: "Riaccendi",
+        [Locale.Indonesian]: "Nyalakan lagi",
+        [Locale.Czech]: "Zase zapnout",
+    }),
+    "deleteData.button.tellUsWhy": buildLocales("💬 Tell us why", {
+        [Locale.Russian]: "💬 Рассказать почему",
+        [Locale.Ukrainian]: "💬 Розповісти чому",
+        [Locale.Dutch]: "💬 Vertel ons waarom",
+        [Locale.French]: "💬 Dites-nous pourquoi",
+        [Locale.German]: "💬 Sag uns warum",
+        [Locale.Polish]: "💬 Powiedz nam dlaczego",
+        [Locale.SpanishES]: "💬 Cuéntanos por qué",
+        [Locale.SpanishLATAM]: "💬 Cuéntanos por qué",
+        [Locale.PortugueseBR]: "💬 Conte o motivo",
+        [Locale.Turkish]: "💬 Nedenini söyle",
+        [Locale.Italian]: "💬 Dicci perché",
+        [Locale.Indonesian]: "💬 Ceritakan alasannya",
+        [Locale.Czech]: "💬 Řekni nám proč",
+    }),
     "deleteData.button.cancel": buildLocales("Cancel", {
         [Locale.Russian]: "Отмена",
         [Locale.Ukrainian]: "Скасувати",
@@ -561,7 +986,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "<:jstmemit:1533562196980797462> Čau, jsem Jstmemit",
     }),
     "settings.about.body": buildLocales(
-        "The bot that makes memes from your chat. Talk about anything and...\nit will turn that into a meme on one of 660+ templates ¯\\_(ツ)_/¯",
+        "The bot that makes memes from your chat. Talk about anything and...\nit will turn that into a meme on one of 660+ templates and roast you with it ¯\\_(ツ)_/¯",
         {
             [Locale.Russian]:
                 "Бот, который делает мемы из вашего чата. Говорите о чём угодно, а он...\nпревратит это в мем на одном из 660+ шаблонов и постебётся над вами ¯\\_(ツ)_/¯",
@@ -1285,7 +1710,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Ano",
     }),
     "settings.milestones.yes.description": buildLocales(
-        "Bot will send a recap every time the channel hits a meme count milestone.",
+        "Bot will send a recap every time the channel hits a meme count milestone",
         {
             [Locale.Russian]: "Бот пришлёт итоги, когда канал возьмёт новую отметку",
             [Locale.Ukrainian]: "Бот надішле підсумки, коли канал візьме нову позначку",
@@ -1755,7 +2180,21 @@ export const locale: Record<string, LocalizationMap> = {
                 "Můžeš s ním taky předělat jakoukoliv existující zprávu (i hlasovou!) na citát, zprávy nebo tweet od Groka. Nebo dát něčí profilovku na YouTube náhled „ve stylu MrBeasta“.\n\nOtevři menu Aplikace pravým kliknutím nebo dlouhým podržením na mobilu, vyber Jstmemit a pak mem, který chceš.",
         },
     ),
-    "help.button.achievements": buildLocales("🏆 View achievements", {}),
+    "help.button.achievements": buildLocales("🏆 View achievements", {
+        [Locale.Russian]: "🏆 Посмотреть достижения",
+        [Locale.Ukrainian]: "🏆 Переглянути досягнення",
+        [Locale.Dutch]: "🏆 Prestaties bekijken",
+        [Locale.French]: "🏆 Voir les succès",
+        [Locale.German]: "🏆 Erfolge ansehen",
+        [Locale.Polish]: "🏆 Zobacz osiągnięcia",
+        [Locale.SpanishES]: "🏆 Ver logros",
+        [Locale.SpanishLATAM]: "🏆 Ver logros",
+        [Locale.PortugueseBR]: "🏆 Ver conquistas",
+        [Locale.Turkish]: "🏆 Başarıları gör",
+        [Locale.Italian]: "🏆 Vedi obiettivi",
+        [Locale.Indonesian]: "🏆 Lihat pencapaian",
+        [Locale.Czech]: "🏆 Zobrazit úspěchy",
+    }),
     "help.voice.heading": buildLocales("## 🔊  Make voice messages", {
         [Locale.Russian]: "## 🔊  Голосовые сообщения",
         [Locale.Ukrainian]: "## 🔊  Голосові повідомлення",
@@ -1821,31 +2260,31 @@ export const locale: Record<string, LocalizationMap> = {
         "**Select your question in the selection menu below to see the answer.**\nCan't find an answer to your question? We can help you in the [Support server](https://discord.gg/THRnn8fhkZ)",
         {
             [Locale.Russian]:
-                "Не нашли ответ на свой вопрос? Мы поможем вам на [сервере поддержки](https://discord.gg/THRnn8fhkZ)",
+                "**Выберите свой вопрос в меню ниже, чтобы увидеть ответ.**\nНе нашли ответ на свой вопрос? Мы поможем вам на [сервере поддержки](https://discord.gg/THRnn8fhkZ)",
             [Locale.Ukrainian]:
-                "Не знайшли відповідь на своє питання? Ми допоможемо вам на [сервері підтримки](https://discord.gg/THRnn8fhkZ)",
+                "**Оберіть своє питання в меню нижче, щоб побачити відповідь.**\nНе знайшли відповідь на своє питання? Ми допоможемо вам на [сервері підтримки](https://discord.gg/THRnn8fhkZ)",
             [Locale.Dutch]:
-                "Kun je het antwoord op je vraag niet vinden? We helpen je graag in de [Support server](https://discord.gg/THRnn8fhkZ)",
+                "**Kies je vraag in het menu hieronder om het antwoord te zien.**\nKun je het antwoord op je vraag niet vinden? We helpen je graag in de [Support server](https://discord.gg/THRnn8fhkZ)",
             [Locale.French]:
-                "Vous ne trouvez pas la réponse à votre question ? On peut vous aider sur le [serveur de support](https://discord.gg/THRnn8fhkZ)",
+                "**Sélectionnez votre question dans le menu ci-dessous pour voir la réponse.**\nVous ne trouvez pas la réponse à votre question ? On peut vous aider sur le [serveur de support](https://discord.gg/THRnn8fhkZ)",
             [Locale.German]:
-                "Keine Antwort auf deine Frage gefunden? Wir helfen dir auf dem [Support-Server](https://discord.gg/THRnn8fhkZ)",
+                "**Wähl deine Frage im Menü unten aus, um die Antwort zu sehen.**\nKeine Antwort auf deine Frage gefunden? Wir helfen dir auf dem [Support-Server](https://discord.gg/THRnn8fhkZ)",
             [Locale.Polish]:
-                "Nie możesz znaleźć odpowiedzi na swoje pytanie? Pomożemy ci na [serwerze supportu](https://discord.gg/THRnn8fhkZ)",
+                "**Wybierz swoje pytanie w menu poniżej, żeby zobaczyć odpowiedź.**\nNie możesz znaleźć odpowiedzi na swoje pytanie? Pomożemy ci na [serwerze supportu](https://discord.gg/THRnn8fhkZ)",
             [Locale.SpanishES]:
-                "¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
+                "**Selecciona tu pregunta en el menú de abajo para ver la respuesta.**\n¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
             [Locale.SpanishLATAM]:
-                "¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
+                "**Selecciona tu pregunta en el menú de abajo para ver la respuesta.**\n¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
             [Locale.PortugueseBR]:
-                "Não achou a resposta para a sua pergunta? A gente pode te ajudar no [servidor de suporte](https://discord.gg/THRnn8fhkZ)",
+                "**Selecione sua pergunta no menu abaixo para ver a resposta.**\nNão achou a resposta para a sua pergunta? A gente pode te ajudar no [servidor de suporte](https://discord.gg/THRnn8fhkZ)",
             [Locale.Turkish]:
-                "Sorunun cevabını bulamadın mı? [Destek sunucusunda](https://discord.gg/THRnn8fhkZ) yardımcı olabiliriz",
+                "**Cevabı görmek için aşağıdaki menüden sorunu seç.**\nSorunun cevabını bulamadın mı? [Destek sunucusunda](https://discord.gg/THRnn8fhkZ) yardımcı olabiliriz",
             [Locale.Italian]:
-                "Non trovi la risposta alla tua domanda? Possiamo aiutarti sul [server di supporto](https://discord.gg/THRnn8fhkZ)",
+                "**Seleziona la tua domanda nel menu qui sotto per vedere la risposta.**\nNon trovi la risposta alla tua domanda? Possiamo aiutarti sul [server di supporto](https://discord.gg/THRnn8fhkZ)",
             [Locale.Indonesian]:
-                "Tidak menemukan jawaban untuk pertanyaanmu? Kami bisa bantu di [server support](https://discord.gg/THRnn8fhkZ)",
+                "**Pilih pertanyaanmu di menu di bawah untuk melihat jawabannya.**\nTidak menemukan jawaban untuk pertanyaanmu? Kami bisa bantu di [server support](https://discord.gg/THRnn8fhkZ)",
             [Locale.Czech]:
-                "Nemůžeš najít odpověď na svou otázku? Pomůžeme ti na [serveru podpory](https://discord.gg/THRnn8fhkZ)",
+                "**Vyber svou otázku v menu níž a uvidíš odpověď.**\nNemůžeš najít odpověď na svou otázku? Pomůžeme ti na [serveru podpory](https://discord.gg/THRnn8fhkZ)",
         },
     ),
     "help.faq.iAddedTheBotWhatNow.question": buildLocales("I added the bot, what now?", {

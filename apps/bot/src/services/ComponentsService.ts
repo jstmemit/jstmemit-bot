@@ -991,7 +991,7 @@ export class ComponentsService implements IComponentsService {
         frequency: number,
         useAvatarsInMemes: boolean,
         milestones: boolean,
-        font: string | null = "Random",
+        font: string | null = "Comic Sans MS",
     ): ContainerBuilder {
         const frequencies: Frequency[] = this._getFrequencyOptions(language);
         const fonts: Font[] = this._getFontOptions(language);
@@ -1030,7 +1030,11 @@ export class ComponentsService implements IComponentsService {
                             new SelectMenuOptionBuilder()
                                 .setLabel(option.label)
                                 .setValue(option.value)
-                                .setDefault(font === null && option.value === "default" ? true : option.value === font)
+                                .setDefault(
+                                    font === null || (font === "default" && option.value === "Comic Sans MS")
+                                        ? true
+                                        : option.value === font,
+                                )
                                 .setEmoji({ name: option.emoji })
                                 .setDescription(option.description),
                         ),
@@ -1243,12 +1247,6 @@ export class ComponentsService implements IComponentsService {
      */
     private _getFontOptions(language: Locale): Font[] {
         return [
-            {
-                label: t("settings.font.random.label", language),
-                description: t("settings.font.random.description", language),
-                value: "default",
-                emoji: "🎲",
-            },
             {
                 label: t("settings.font.comicSans.label", language),
                 value: "Comic Sans MS",

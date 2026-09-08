@@ -163,7 +163,7 @@ export class SettingsController implements ISettingsController {
                 throw new Error();
             }
 
-            const old: Font["value"] = (channel?.font || "default") as Font["value"];
+            const old: Font["value"] = (channel?.font || "Comic Sans MS") as Font["value"];
             channel.font = interaction.values[0] as Font["value"];
 
             await this._channelsService.setChannel(interaction.channelId, channel);

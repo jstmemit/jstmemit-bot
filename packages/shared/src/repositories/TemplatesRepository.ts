@@ -731,6 +731,7 @@ import { arobmiSistineConfusionStages } from "#/templates/arobmiSistineConfusion
 import { arobmiSistineConfusionStages1 } from "#/templates/arobmiSistineConfusionStages1.tsx";
 import { arobmiSistineConfusionStages2 } from "#/templates/arobmiSistineConfusionStages2.tsx";
 import { arobmiSistineConfusionStages3 } from "#/templates/arobmiSistineConfusionStages3.tsx";
+import { blendsMaikaSmileVsSadistic } from "#/templates/blendsMaikaSmileVsSadistic.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1495,6 +1496,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             arobmiSistineConfusionStages1,
             arobmiSistineConfusionStages2,
             arobmiSistineConfusionStages3,
+            blendsMaikaSmileVsSadistic,
         ];
 
         return this._templates;

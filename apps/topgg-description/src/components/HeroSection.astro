@@ -1,0 +1,78 @@
+---
+
+---
+
+<section class="hero-section">
+    <div class="hero-text-content">
+        <p class="hero-mascot">
+            <img
+                alt="jstmemit's mascot logo jumping around"
+                src="https://files.jstmemit.com/jstmemit/images/logos/animated/yes.webp"
+            />
+            Hey, I'm Jstmemit
+        </p>
+        <h1>
+            Get <em>personalized memes</em>
+            <br /> based on chat messages, <br /> images and GIFs
+        </h1>
+        <p class="hero-text-bonus">...for free and without watermarks!</p>
+    </div>
+</section>
+
+<style>
+    .hero-section {
+        border-radius: 2rem;
+        padding: 4rem;
+        background-image: url("https://files.jstmemit.com/jstmemit/images/background/background%20v2.png");
+        background-size: cover;
+        background-position: center;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-text-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        line-height: 2.75rem;
+
+        font-weight: 800;
+        font-size: 1.2rem;
+
+        transform: rotate(-2.591deg);
+    }
+
+    .hero-mascot {
+        display: flex;
+        align-items: center;
+
+        margin-top: -2rem;
+        margin-left: -1rem;
+        margin-bottom: -1.9rem;
+
+        font-style: italic;
+        font-weight: 900;
+        line-height: normal;
+    }
+
+    .hero-mascot img {
+        width: 5.5rem;
+    }
+
+    .hero-text-bonus {
+        margin-top: -2.25rem;
+        font-size: 0.9rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        .hero-text-content h1 br {
+            display: none;
+        }
+
+        .hero-text-content h1 span {
+            display: block;
+        }
+    }
+</style>

@@ -20,3 +20,13 @@
 
     --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
 }
+
+em {
+    color: var(--color-bubblegum-pink);
+    font-weight: 800;
+    font-style: normal;
+}
+
+h2 em {
+    font-weight: 700;
+}

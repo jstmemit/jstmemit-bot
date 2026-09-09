@@ -1,0 +1,72 @@
+---
+
+---
+
+<section class="result-section">
+    <h2>Animated memes</h2>
+
+    <div class="result-text-content">
+        <p class="why-jstmemit-text-block">
+            <b>Turn any existing message into a meme</b>
+            After adding Jstmemit, right-click a message, click on "Apps", choose Jstmemit and select the meme you want to
+            get. This way you can remake any existing (even voice!) message into a quote, a fake news report or a Grok tweet.
+        </p>
+        <p class="why-jstmemit-text-block">
+            <b>Generate voice messages with /voice</b>
+            Use /voice to narrate your text using one of 23 different voices. Perfect for making soundboard phrases or simply
+            narrating funny messages. And it's free, same as all other features.
+        </p>
+    </div>
+    <img
+        class="result-meme"
+        src="https://cdn.discordapp.com/attachments/1524494877490942152/1543371239366725772/meme.webp?ex=6aa277b9&is=6aa12639&hm=98e6a83ec9aed8eb201286bbf6d739ed57c6e57339be8bb5e8f5c550f54503fb&"
+        alt="Meme with a photo of a minecraft base and 'our base is trash' text over it"
+    />
+</section>
+
+<style>
+    .result-section {
+        position: relative;
+        margin-top: 5.5rem;
+        display: flex;
+        align-items: stretch;
+        gap: 2rem;
+    }
+
+    .result-section img {
+        width: 50%;
+        border-radius: 2rem;
+        border: 2px solid var(--color-bubblegum-pink);
+    }
+
+    .result-section h3 {
+        font-weight: 700;
+        margin-block-start: 0;
+        margin-block-end: 0.5em;
+    }
+
+    .result-text-content {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+    }
+
+    .why-jstmemit-text-block {
+        padding: 0 2rem;
+        border-radius: 2rem;
+    }
+
+    h2 {
+        right: 2rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        .result-section {
+            flex-direction: column-reverse;
+        }
+
+        .result-section img {
+            width: 100%;
+        }
+    }
+</style>

@@ -49,7 +49,7 @@ div > p > b {
     color: #fff;
 }
 
-h2 {
+.description h2 {
     position: absolute;
     padding: 1rem;
     background-color: var(--color-ash-black);

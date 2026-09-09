@@ -17,6 +17,18 @@
         </h1>
         <p class="hero-text-bonus">...for free and without watermarks!</p>
     </article>
+
+    <ul>
+        <a class="button" href="https://discord.com/oauth2/authorize?client_id=1375836467745783990">
+            <img
+                src="https://files.jstmemit.com/jstmemit/images/discord.svg"
+                alt="discord logo"
+                target="_blank"
+                rel="noopener noreferrer"
+            />
+            Invite to your server
+        </a>
+    </ul>
 </section>
 
 <style>
@@ -28,6 +40,7 @@
         background-position: center;
 
         display: flex;
+        justify-content: space-between;
         align-items: center;
     }
 
@@ -66,7 +79,34 @@
         font-size: 0.9rem;
     }
 
+    .button {
+        background-color: var(--color-discord-blue);
+        color: #fff;
+        border: none;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        font-weight: 700;
+        font-size: 1.25rem;
+        text-shadow: var(--text-shadow-1);
+        box-shadow: var(--shadow-10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .button img {
+        width: 2rem;
+        margin-top: 0.25rem;
+    }
+
     @media screen and (max-width: 1024px) {
+        .hero-section {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
         .hero-text-content h1 br {
             display: none;
         }

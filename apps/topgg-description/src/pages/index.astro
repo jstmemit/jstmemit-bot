@@ -7,6 +7,7 @@ import HowDoesItWorkSection from "#/components/HowDoesItWorkSection.astro";
 <PageLayout>
     <HeroSection />
     <section class="meme-examples-section">
+        <h2>Meme examples</h2>
         <img
             class="meme-examples"
             src="https://files.jstmemit.com/jstmemit/images/topgg/meme%20examples.png"
@@ -15,7 +16,7 @@ import HowDoesItWorkSection from "#/components/HowDoesItWorkSection.astro";
     </section>
     <HowDoesItWorkSection />
     <section class="result-section">
-        <h2>Example meme</h2>
+        <h2>Just 1 of 600+ meme templates</h2>
 
         <img
             class="result-meme"
@@ -40,7 +41,12 @@ import HowDoesItWorkSection from "#/components/HowDoesItWorkSection.astro";
 
 <style>
     .meme-examples-section {
-        margin-top: 3rem;
+        margin-top: 5.5rem;
+        position: relative;
+        background-color: var(--color-ash-black);
+        border: 2px solid var(--color-bubblegum-pink);
+        border-radius: 2rem;
+        padding: 3rem 1.5rem 1.5rem;
     }
 
     .meme-examples {
@@ -70,15 +76,12 @@ import HowDoesItWorkSection from "#/components/HowDoesItWorkSection.astro";
     .result-text-content {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
         min-height: 100%;
     }
 
     .why-jstmemit-text-block {
-        background-color: var(--color-ash-black);
         padding: 2rem;
         border-radius: 2rem;
-        border: 2px solid var(--color-bubblegum-pink);
     }
 
     h2 {

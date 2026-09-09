@@ -22,17 +22,7 @@
 }
 
 body {
-    background-color: var(--color-ash-black);
-}
-
-em {
-    color: var(--color-bubblegum-pink);
-    font-weight: 800;
-    font-style: normal;
-}
-
-h2 em {
-    font-weight: 700;
+    background-color: var(--color-carbon-gray);
 }
 
 div > p {

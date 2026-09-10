@@ -33,7 +33,7 @@ const { font = "default", templates } = Astro.props;
                     }))}
                     template={template}
                     heading={template.name}
-                    link={`/templates/${font}/${template.name}`}
+                    link={`/templates/${font.split(" ").join("-")}/${template.name}`}
                 />
             </li>
         ))

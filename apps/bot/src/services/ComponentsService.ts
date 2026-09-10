@@ -996,6 +996,11 @@ export class ComponentsService implements IComponentsService {
         const frequencies: Frequency[] = this._getFrequencyOptions(language);
         const fonts: Font[] = this._getFontOptions(language);
 
+        const selectedFont: string =
+            !font || font === "default" || !fonts.some((fontOption: Font): boolean => fontOption.value === font)
+                ? "Comic Sans MS"
+                : font;
+
         return new ContainerBuilder()
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${t("settings.meme.heading", language)}`))
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.meme.body", language)))
@@ -1030,11 +1035,7 @@ export class ComponentsService implements IComponentsService {
                             new SelectMenuOptionBuilder()
                                 .setLabel(option.label)
                                 .setValue(option.value)
-                                .setDefault(
-                                    font === null || (font === "default" && option.value === "Comic Sans MS")
-                                        ? true
-                                        : option.value === font,
-                                )
+                                .setDefault(option.value === selectedFont)
                                 .setEmoji({ name: option.emoji })
                                 .setDescription(option.description),
                         ),

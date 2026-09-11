@@ -163,7 +163,7 @@ export class SettingsController implements ISettingsController {
                 throw new Error();
             }
 
-            const old: Font["value"] = (channel?.font || "default") as Font["value"];
+            const old: Font["value"] = (channel?.font || "Comic Sans MS") as Font["value"];
             channel.font = interaction.values[0] as Font["value"];
 
             await this._channelsService.setChannel(interaction.channelId, channel);
@@ -396,7 +396,10 @@ export class SettingsController implements ISettingsController {
      * @author Kyrylo Maliuha
      */
     private async _replyWithDeleteDataSuccess(interaction: ButtonInteraction): Promise<void> {
-        await respond(interaction, [this._componentsService.getDeleteDataSuccessMessageComponent(interaction.locale)]);
+        await respond(interaction, [
+            this._componentsService.getDeleteDataSuccessMessageComponent(interaction.locale),
+            this._componentsService.getDeleteDataSuccessButtonsComponent(interaction.locale),
+        ]);
     }
 
     /**

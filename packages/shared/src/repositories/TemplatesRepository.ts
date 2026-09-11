@@ -720,6 +720,23 @@ import { adTomoAndOsakaStaring1 } from "#/templates/adTomoAndOsakaStaring1.tsx";
 import { adTomoBoasting2 } from "#/templates/adTomoBoasting2.tsx";
 import { btrBocchiPanic3 } from "#/templates/btrBocchiPanic3.tsx";
 import { btrBocchiPanic4 } from "#/templates/btrBocchiPanic4.tsx";
+import { reactionDouble } from "#/templates/reactionDouble.tsx";
+import { reactionTriple } from "#/templates/reactionTriple.tsx";
+import { reactionQuadruple } from "#/templates/reactionQuadruple.tsx";
+import { adChiyoShockedVsCrying } from "#/templates/adChiyoShockedVsCrying.tsx";
+import { adKaguraPanicStages } from "#/templates/adKaguraPanicStages.tsx";
+import { btrBocchiPanicStages } from "#/templates/btrBocchiPanicStages.tsx";
+import { btrBocchiPanicStages1 } from "#/templates/btrBocchiPanicStages1.tsx";
+import { arobmiSistineConfusionStages } from "#/templates/arobmiSistineConfusionStages.tsx";
+import { arobmiSistineConfusionStages1 } from "#/templates/arobmiSistineConfusionStages1.tsx";
+import { arobmiSistineConfusionStages2 } from "#/templates/arobmiSistineConfusionStages2.tsx";
+import { arobmiSistineConfusionStages3 } from "#/templates/arobmiSistineConfusionStages3.tsx";
+import { blendsMaikaSmileVsSadistic } from "#/templates/blendsMaikaSmileVsSadistic.tsx";
+import { btrBocchiDefeatedStages } from "#/templates/btrBocchiDefeatedStages.tsx";
+import { btrBocchiIntrovertStages } from "#/templates/btrBocchiIntrovertStages.tsx";
+import { btrBocchiIntrovertStages1 } from "#/templates/btrBocchiIntrovertStages1.tsx";
+import { btrBocchiIntrovertStages2 } from "#/templates/btrBocchiIntrovertStages2.tsx";
+import { btrBocchiIntrovertStages3 } from "#/templates/btrBocchiIntrovertStages3.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1473,6 +1490,23 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrBocchiPanic2,
             btrBocchiPanic3,
             btrBocchiPanic4,
+            reactionDouble,
+            reactionTriple,
+            reactionQuadruple,
+            adChiyoShockedVsCrying,
+            adKaguraPanicStages,
+            btrBocchiPanicStages,
+            btrBocchiPanicStages1,
+            arobmiSistineConfusionStages,
+            arobmiSistineConfusionStages1,
+            arobmiSistineConfusionStages2,
+            arobmiSistineConfusionStages3,
+            blendsMaikaSmileVsSadistic,
+            btrBocchiDefeatedStages,
+            btrBocchiIntrovertStages,
+            btrBocchiIntrovertStages1,
+            btrBocchiIntrovertStages2,
+            btrBocchiIntrovertStages3,
         ];
 
         return this._templates;

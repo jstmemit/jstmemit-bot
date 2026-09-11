@@ -19,6 +19,7 @@ export const emojis = {
     // obsidian: "<:Obsidian:1536301885798219776>",
     // mithril: "<:Mithril:1536301869780181022>",
     // adamantite: "<:Adamantite:1536301760350785647>",
+    // check: "<:check:1545743815061545071>",
 
     // production bot emojis
     fill1: "<:fill1:1395787757749801091>",
@@ -40,4 +41,5 @@ export const emojis = {
     obsidian: "<:Obsidian:1536393126829232301>",
     mithril: "<:Mithril:1536393110605664307>",
     adamantite: "<:Adamantite:1536393012987301899>",
+    check: "<:check:1545743615735894016>",
 } as const;

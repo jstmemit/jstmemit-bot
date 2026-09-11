@@ -307,6 +307,9 @@ importers:
       music-metadata:
         specifier: ^11.14.0
         version: 11.14.0(supports-color@7.2.0)
+      remove-markdown:
+        specifier: ^0.7.0
+        version: 0.7.0
       topgg-autoposter:
         specifier: ^2.0.2
         version: 2.0.2
@@ -4362,6 +4365,9 @@ packages:
     resolution: {integrity: sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==}
     engines: {node: '>= 0.10'}
 
+  remove-markdown@0.7.0:
+    resolution: {integrity: sha512-ZMYw/4jLXcO+pZTB8eAjGt48mhAF17yzfkiW4q0tDVLqcsqm39EGSs1XAJLk0i932KfCYc5ixNysn1EsSnMIAw==}
+
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
@@ -8185,6 +8191,8 @@ snapshots:
       regex-utilities: 2.3.0
 
   relateurl@0.2.7: {}
+
+  remove-markdown@0.7.0: {}
 
   require-directory@2.1.1: {}
 
